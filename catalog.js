@@ -1233,6 +1233,18 @@ window.MONSTER_CATALOG_DATA = [
                          "Java Vanilla Light"
                      ]
     },
+	{
+        "id":  "catalog_java_7",
+        "name":  "Lo-Ball",
+        "image":  "assets/monster/java/Lo-Ball.webp",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Monster Lo-Ball, caffe a basso contenuto. Discontinued.",
+        "variants":  [
+                         "Java Vanilla Light"
+                     ]
+    },
     {
         "id":  "catalog_java_8",
         "name":  "Big Black",
