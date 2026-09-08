@@ -705,7 +705,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_lemonade",
-        "name":  "Lemonade",
+        "name":  "Rehab Lemonade",
         "image":  "assets/monster/rehab/rehab-lemonade.webp",
         "series":  "rehab",
         "rarity":  "common",
@@ -717,7 +717,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_peach",
-        "name":  "Peach Tea",
+        "name":  "Rehab Peach Tea",
         "image":  "assets/monster/rehab/rehab-peach-tea.webp",
         "series":  "rehab",
         "rarity":  "common",
@@ -729,7 +729,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_green",
-        "name":  "Green Tea",
+        "name":  "Rehab Green Tea",
         "image":  "assets/monster/rehab/rehab-green-tea.webp",
         "series":  "rehab",
         "rarity":  "uncommon",
@@ -741,7 +741,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_berry",
-        "name":  "Wild Berry Tea",
+        "name":  "Rehab Wild Berry Tea",
         "image":  "assets/monster/rehab/rehab-wild-berry.webp",
         "series":  "rehab",
         "rarity":  "rare",
@@ -753,7 +753,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_white_pineapple",
-        "name":  "White Pineapple",
+        "name":  "Reserve White Pineapple",
         "image":  "assets/monster/reserve/reserve-white-pineapple.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -765,7 +765,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_watermelon",
-        "name":  "Watermelon",
+        "name":  "Reserve Watermelon",
         "image":  "assets/monster/reserve/reserve-watermelon.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -777,7 +777,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_orange",
-        "name":  "Orange Dreamsicle",
+        "name":  "Reserve Orange Dreamsicle",
         "image":  "assets/monster/reserve/reserve-orange-dreamsicle.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -789,7 +789,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_peaches",
-        "name":  "Peaches n' Creme",
+        "name":  "Reserve Peaches n' Creme",
         "image":  "assets/monster/reserve/reserve-peach-n-creme.png",
         "series":  "reserve",
         "rarity":  "epic",
@@ -801,7 +801,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_kiwi_strawberry",
-        "name":  "Kiwi Strawberry",
+        "name":  "Reserve Kiwi Strawberry",
         "image":  "assets/monster/reserve/reserve-kiwi-strawberry.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -1327,7 +1327,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_28",
-        "name":  "Strawberry",
+        "name":  "Rehab Strawberry",
         "image":  "assets/monster/rehab/rehab-strawberry.png",
         "series":  "rehab",
         "rarity":  "rare",
@@ -1339,7 +1339,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_29",
-        "name":  "Watermelon",
+        "name":  "Rehab Watermelon",
         "image":  "assets/monster/rehab/rehab-watermelon.png",
         "series":  "rehab",
         "rarity":  "rare",
@@ -1351,7 +1351,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_31",
-        "name":  "Orangeade",
+        "name":  "Rehab Orangeade",
         "image":  "assets/monster/rehab/rehab-orangeade.webp",
         "series":  "rehab",
         "rarity":  "rare",
@@ -1363,7 +1363,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_32",
-        "name":  "Protean",
+        "name":  "Rehab Protean",
         "image":  "assets/monster/rehab/rehab-protean.png",
         "series":  "rehab",
         "rarity":  "epic",
