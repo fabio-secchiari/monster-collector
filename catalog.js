@@ -753,7 +753,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_white_pineapple",
-        "name":  "White Pineapple",
+        "name":  "Reserve White Pineapple",
         "image":  "assets/monster/reserve/reserve-white-pineapple.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -765,7 +765,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_watermelon",
-        "name":  "Watermelon",
+        "name":  "Reserve Watermelon",
         "image":  "assets/monster/reserve/reserve-watermelon.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -777,7 +777,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_orange",
-        "name":  "Orange Dreamsicle",
+        "name":  "Reserve Orange Dreamsicle",
         "image":  "assets/monster/reserve/reserve-orange-dreamsicle.png",
         "series":  "reserve",
         "rarity":  "rare",
@@ -789,7 +789,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_peaches",
-        "name":  "Peaches n' Creme",
+        "name":  "Reserve Peaches n' Creme",
         "image":  "assets/monster/reserve/reserve-peach-n-creme.png",
         "series":  "reserve",
         "rarity":  "epic",
@@ -801,7 +801,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_kiwi_strawberry",
-        "name":  "Kiwi Strawberry",
+        "name":  "Reserve Kiwi Strawberry",
         "image":  "assets/monster/reserve/reserve-kiwi-strawberry.png",
         "series":  "reserve",
         "rarity":  "rare",
