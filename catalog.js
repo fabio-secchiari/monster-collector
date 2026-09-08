@@ -1031,32 +1031,40 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_muscle_chocolate",
-        "name":  "Monster Muscle Chocolate",
-        "image":  "assets/monster/muscle/chocolate.png",
+        "name":  "Muscle Chocolate",
+        "image":  "assets/monster/muscle/chocolate.webp",
         "series":  "muscle",
         "rarity":  "uncommon",
         "limited":  false,
         "description":  "Shake proteico al cioccolato con caffeina.",
         "variants":  [
-                         "Chocolate"
-                     ]
+                         "Chocolate",
+                         "Chocolate Bottle"
+                     ],
+                     "variantImages":  {
+                              "Chocolate Bottle":  "assets/monster/muscle/chocolate-bottle.webp"
+                          }
     },
     {
         "id":  "monster_muscle_vanilla",
-        "name":  "Monster Muscle Vanilla",
-        "image":  "assets/monster/muscle/vanilla.png",
+        "name":  "Muscle Vanilla",
+        "image":  "assets/monster/muscle/vanilla.webp",
         "series":  "muscle",
         "rarity":  "uncommon",
         "limited":  false,
         "description":  "Shake proteico alla vaniglia con caffeina.",
         "variants":  [
-                         "Vanilla"
-                     ]
+                         "Vanilla",
+                         "Vanilla Bottle"
+                     ],
+                     "variantImages":  {
+                              "Vanilla Bottle":  "assets/monster/muscle/vanilla-bottle.webp"
+                          }
     },
     {
         "id":  "monster_muscle_strawberry",
-        "name":  "Monster Muscle Strawberry",
-        "image":  "assets/monster/muscle/strawberry.png",
+        "name":  "Muscle Strawberry",
+        "image":  "assets/monster/muscle/strawberry.webp",
         "series":  "muscle",
         "rarity":  "rare",
         "limited":  true,
@@ -1415,62 +1423,14 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_muscle_39",
-        "name":  "Muscle Shake Coffee",
-        "image":  "assets/monster/muscle/e.png",
+        "name":  "Muscle Coffee",
+        "image":  "assets/monster/muscle/coffee.webp",
         "series":  "muscle",
         "rarity":  "uncommon",
         "limited":  false,
         "description":  "Muscle Shake al caffe.",
         "variants":  [
-                         "Muscle Shake Coffee"
-                     ]
-    },
-    {
-        "id":  "catalog_muscle_40",
-        "name":  "Muscle Shake Strawberry",
-        "image":  "assets/monster/muscle/e.png",
-        "series":  "muscle",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Muscle Shake alla fragola. Edizione limitata.",
-        "variants":  [
-                         "Muscle Shake Strawberry"
-                     ]
-    },
-    {
-        "id":  "catalog_muscle_41",
-        "name":  "Muscle Shake Chocolate",
-        "image":  "assets/monster/muscle/e.png",
-        "series":  "muscle",
-        "rarity":  "uncommon",
-        "limited":  false,
-        "description":  "Muscle Shake al cioccolato.",
-        "variants":  [
-                         "Muscle Shake Chocolate"
-                     ]
-    },
-    {
-        "id":  "catalog_muscle_42",
-        "name":  "Muscle Shake Vanilla",
-        "image":  "assets/monster/muscle/e.png",
-        "series":  "muscle",
-        "rarity":  "uncommon",
-        "limited":  false,
-        "description":  "Muscle Shake alla vaniglia.",
-        "variants":  [
-                         "Muscle Shake Vanilla"
-                     ]
-    },
-    {
-        "id":  "catalog_muscle_43",
-        "name":  "Muscle Shake Vanilla Bottle",
-        "image":  "assets/monster/muscle/e.png",
-        "series":  "muscle",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Muscle Shake Vanilla in bottiglia. Rara.",
-        "variants":  [
-                         "Muscle Shake Vanilla Bottle"
+                         "Muscle Coffee"
                      ]
     },
     {
