@@ -1032,6 +1032,90 @@ body.image-bg-on .can-art {
   background-position: center;
   background-color: #0a0a0f;
 }
+
+.btn-nav {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-nav:hover {
+  transform: scale(1.15);
+}
+
+.btn-nav:active {
+  transform: scale(0.92);
+}
+
+.btn-nav img {
+  transition: filter 0.2s ease;
+}
+
+.btn-nav:hover img {
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)) !important;
+}
+
+#search-clear {
+  display: none !important; /* Nascondi di default */
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  padding: 0 6px;
+  transition: color 0.2s ease;
+  font-weight: 300;
+  line-height: 1;
+}
+
+#search-clear.visible {
+  display: inline-block !important;
+}
+
+#search-clear:hover {
+  color: #ff4444;
+}
+
+.selected-variant-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 12px; /* Aggiungi spazio sotto */
+}
+
+.variants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Aumenta il gap tra i bottoni */
+  margin-top: 6px;
+}
+
+.variant-btn {
+  min-width: 70px;
+  padding: 8px 14px; /* Aumenta il padding */
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+  color: inherit;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.variant-btn:hover {
+  background: rgba(0,255,65,0.08);
+  border-color: rgba(0,255,65,0.2);
+  transform: translateY(-2px) scale(1.02);
+}
 </style>
 </head>
 <body>
@@ -1177,11 +1261,11 @@ body.image-bg-on .can-art {
           <span class="limited-badge" id="main-limited" style="display:none;">⭐</span>
         </div>
         <div class="nav-buttons">
-		  <button class="btn-adaptive ghost" id="prev">
-			<img src="assets/ui/prev.png" alt="Prev" style="width:24px; height:24px;">
+		  <button class="btn-nav" id="prev">
+			<img src="assets/ui/prev.png" alt="Prev" style="width:32px; height:32px; filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));">
 		  </button>
-		  <button class="btn-adaptive ghost" id="next">
-			<img src="assets/ui/next.png" alt="Next" style="width:24px; height:24px;">
+		  <button class="btn-nav" id="next">
+			<img src="assets/ui/next.png" alt="Next" style="width:32px; height:32px; filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));">
 		  </button>
 		</div>
       </div>
@@ -1243,7 +1327,7 @@ body.image-bg-on .can-art {
 
 	  <div class="action-row">
 		<button class="btn-adaptive" id="acquire-all">Acquisisci tutte</button>
-    <button class="btn-adaptive ghost" id="clear-all">🗑 Cancella tutto</button>
+    <button class="btn-adaptive ghost" id="clear-all">Cancella tutte</button>
 	  </div>
 	</div>
 	</div>
@@ -1751,10 +1835,14 @@ function getVariantImageForCan(can, variant) {
     return can.variantImages[variant];
   }
   
-  // Se l'immagine base è classic.png, prova a costruire il percorso della variante
-  const baseImage = can.image || 'assets/monster/classic.png';
+  // Se la variante è "Zero Sugar" o "Nitro", usa l'immagine base (non ha immagine separata)
+  const noSeparateImage = ['Zero Sugar', 'Nitro', 'Original', 'Classic'];
+  if (noSeparateImage.includes(variant) && !can.hasVariantImage) {
+    return can.image || 'assets/monster/classic.png';
+  }
   
   // Se l'immagine base è già un percorso specifico (non classic.png), usala
+  const baseImage = can.image || 'assets/monster/classic.png';
   if (baseImage !== 'assets/monster/classic.png' && !baseImage.includes('classic')) {
     return baseImage;
   }
@@ -1776,7 +1864,8 @@ function getVariantImageForCan(can, variant) {
     'vr46-zero-sugar': 'vr46-zero-sugar',
     'lando-norris-gold-edition': 'lando-gold',
     'original': 'classic',
-    'classic': 'classic'
+    'classic': 'classic',
+    'nitro': 'nitro'
   };
   suffix = specialMap[suffix] || suffix;
   
@@ -1903,34 +1992,43 @@ function renderVariants(can) {
     btn.appendChild(dot);
     btn.appendChild(label);
 
-    dot.addEventListener('click', (e) => {
-      e.stopPropagation();
-      st.variants[variant] = {
-        ...(st.variants[variant] || {}),
-        owned: !owned,
-        rating: st.variants[variant]?.rating || 0,
-        notes: st.variants[variant]?.notes || ''
-      };
-      saveState(state);
-      renderSidebar();
-      selectIndex(currentIndex);
-      playClickSound();
-    });
+    // CLICK sul pulsante INTERO - toggle owned
+	btn.addEventListener('click', (e) => {
+	  e.stopPropagation();
+	  // Toggle owned
+	  st.variants[variant] = {
+		...(st.variants[variant] || {}),
+		owned: !owned,
+		rating: st.variants[variant]?.rating || 0,
+		notes: st.variants[variant]?.notes || ''
+	  };
+	  saveState(state);
+	  renderSidebar();
+	  selectIndex(currentIndex);
+	  playClickSound();
+	});
 
     // HOVER - cambia l'immagine al passaggio del mouse
 	btn.addEventListener('mouseenter', () => {
 	  const variantImg = getVariantImageForCan(can, variant);
-	  // Prova a caricare l'immagine della variante
+	  // Prova a caricare l'immagine della variante con fallback
 	  const testImg = new Image();
 	  testImg.onload = () => { 
 		mainImg.src = variantImg + '?' + Date.now(); 
 	  };
 	  testImg.onerror = () => {
-		// Se non trova l'immagine della variante, usa l'immagine base
+		// Se non trova l'immagine della variante, usa l'immagine base della lattina
 		if (can.image) {
-		  mainImg.src = can.image + '?' + Date.now();
+		  const testImg2 = new Image();
+		  testImg2.onload = () => {
+			mainImg.src = can.image + '?' + Date.now();
+		  };
+		  testImg2.onerror = () => {
+			mainImg.src = 'assets/monster/classic.png?' + Date.now();
+		  };
+		  testImg2.src = can.image;
 		} else {
-		  mainImg.src = 'assets/monster/classic.png';
+		  mainImg.src = 'assets/monster/classic.png?' + Date.now();
 		}
 	  };
 	  testImg.src = variantImg;
@@ -1940,7 +2038,6 @@ function renderVariants(can) {
 	  // Torna all'immagine della variante selezionata
 	  const currentVariant = window.selectedVariant || can.variants[0];
 	  const currentImg = getVariantImageForCan(can, currentVariant);
-	  // Verifica che l'immagine esista prima di impostarla
 	  const testImg = new Image();
 	  testImg.onload = () => {
 		mainImg.src = currentImg + '?' + Date.now();
@@ -1949,7 +2046,7 @@ function renderVariants(can) {
 		if (can.image) {
 		  mainImg.src = can.image + '?' + Date.now();
 		} else {
-		  mainImg.src = 'assets/monster/classic.png';
+		  mainImg.src = 'assets/monster/classic.png?' + Date.now();
 		}
 	  };
 	  testImg.src = currentImg;
@@ -2158,7 +2255,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (searchInput && searchClear) {
     searchInput.addEventListener('input', () => {
-      searchClear.style.display = searchInput.value.length > 0 ? 'inline' : 'none';
+      if (searchInput.value.length > 0) {
+        searchClear.classList.add('visible');
+        searchClear.style.display = 'inline';
+      } else {
+        searchClear.classList.remove('visible');
+        searchClear.style.display = 'none';
+      }
     });
 
     searchClear.addEventListener('click', () => {
@@ -2169,6 +2272,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (document.getElementById('grid-view').classList.contains('active')) {
         buildGridView();
       }
+      searchClear.classList.remove('visible');
+      searchClear.style.display = 'none';
     });
   }
 });
@@ -2223,27 +2328,53 @@ function buildGridView() {
 
     const card = document.createElement('div');
     card.className = 'grid-card';
-	card.setAttribute('data-series', can.series);
+    card.setAttribute('data-series', can.series);
 
     const imgDiv = document.createElement('div');
-	imgDiv.className = 'grid-image';
-	// Aggiungi lo sfondo basato sulla serie
-	const seriesBgMap = {
-	  classic: 'assets/ui/bg-classic.jpg',
-	  ultra: 'assets/ui/bg-ultra.jpg',
-	  juice: 'assets/ui/bg-juice.jpg',
-	  java: 'assets/ui/bg-java.jpeg',
-	  rehab: 'assets/ui/bg-rehab.jpeg'
-	};
-	imgDiv.style.backgroundImage = `url('${seriesBgMap[can.series] || 'assets/ui/bg-classic.jpg'}')`;
-	imgDiv.style.backgroundSize = 'cover';
-	imgDiv.style.backgroundPosition = 'center';
-	const img = document.createElement('img');
-	img.src = can.image || 'assets/monster/classic.png';
-	img.onerror = function() {
-	  this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"%3E%3Crect width="36" height="48" fill="%230a0a0f" rx="4"/%3E%3Ctext x="18" y="28" font-size="20" text-anchor="middle" fill="%2300ff41" font-family="monospace"%3E%3C/text%3E%3C/svg%3E';
-	};
-	imgDiv.appendChild(img);
+    imgDiv.className = 'grid-image';
+    
+    // Aggiungi lo sfondo basato sulla serie
+    const seriesBgMap = {
+      classic: 'assets/ui/bg-classic.jpg',
+      ultra: 'assets/ui/bg-ultra.jpg',
+      juice: 'assets/ui/bg-juice.jpg',
+      java: 'assets/ui/bg-java.jpeg',
+      rehab: 'assets/ui/bg-rehab.jpeg'
+    };
+    imgDiv.style.backgroundImage = `url('${seriesBgMap[can.series] || 'assets/ui/bg-classic.jpg'}')`;
+    imgDiv.style.backgroundSize = 'cover';
+    imgDiv.style.backgroundPosition = 'center';
+    
+    const img = document.createElement('img');
+    // USA SEMPRE LA PRIMA VARIANTE (BASE) - NON TUTTE LE VARIANTI
+    const baseVariant = can.variants[0];
+    const variantImg = getVariantImageForCan(can, baseVariant);
+    
+    // Carica con fallback
+    const testImg = new Image();
+    testImg.onload = function() {
+      img.src = variantImg;
+    };
+    testImg.onerror = function() {
+      if (can.image) {
+        const testImg2 = new Image();
+        testImg2.onload = function() {
+          img.src = can.image;
+        };
+        testImg2.onerror = function() {
+          img.src = 'assets/monster/classic.png';
+        };
+        testImg2.src = can.image;
+      } else {
+        img.src = 'assets/monster/classic.png';
+      }
+    };
+    testImg.src = variantImg;
+    
+    img.onerror = function() {
+      this.src = 'assets/monster/classic.png';
+    };
+    imgDiv.appendChild(img);
 
     const name = document.createElement('div');
     name.className = 'grid-name';
@@ -2279,7 +2410,7 @@ function buildGridView() {
     fill.style.width = percent + '%';
     prog.appendChild(fill);
 
-    // Valutazione (semplice, solo se esiste)
+    // Valutazione (semplice, solo la prima variante)
     const firstVariant = can.variants[0];
     const rating = st.variants[firstVariant]?.rating || 0;
     const ratingDiv = document.createElement('div');
@@ -2304,12 +2435,11 @@ function buildGridView() {
     card.appendChild(ratingDiv);
 
     card.addEventListener('click', () => {
-	  if (gridMode) {
-		setGridMode(false);
-	  }
-	  // Usa selectIndex che ora gestisce correttamente l'immagine
-	  selectIndex(CANS.indexOf(can));
-	});
+      if (gridMode) {
+        setGridMode(false);
+      }
+      selectIndex(CANS.indexOf(can));
+    });
 
     grid.appendChild(card);
   });
