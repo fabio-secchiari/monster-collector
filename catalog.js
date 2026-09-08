@@ -440,7 +440,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_mango",
-        "name":  "Mango Loco",
+        "name":  "Juice Mango Loco",
         "image":  "assets/monster/juice/juiced-mango-loco.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -453,7 +453,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_juice_17",
-        "name":  "Monarch",
+        "name":  "Juice Monarch",
         "image":  "assets/monster/juice/juiced-monarch.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -465,7 +465,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_pacific",
-        "name":  "Pacific Punch",
+        "name":  "Juice Pacific Punch",
         "image":  "assets/monster/juice/pacific-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -477,7 +477,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_pipeline",
-        "name":  "Pipeline Punch",
+        "name":  "Juice Pipeline Punch",
         "image":  "assets/monster/juice/pipeline-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -489,7 +489,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_khaotic",
-        "name":  "Khaotic",
+        "name":  "Juice Khaotic",
         "image":  "assets/monster/juice/juiced-khaotic.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -501,7 +501,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_papillon",
-        "name":  "Papillon (Monarch)",
+        "name":  "Juice Papillon",
         "image":  "assets/monster/juice/juiced-papillon.webp",
         "series":  "juice",
         "rarity":  "rare",
@@ -513,7 +513,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_aussie",
-        "name":  "Aussie Lemonade",
+        "name":  "Juice Aussie Lemonade",
         "image":  "assets/monster/juice/juiced-aussie-lemonade.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -525,7 +525,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_bad_apple",
-        "name":  "Bad Apple",
+        "name":  "Juice Bad Apple",
         "image":  "assets/monster/juice/juiced-bad-apple.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -537,7 +537,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_rio",
-        "name":  "Rio Punch",
+        "name":  "Juice Rio Punch",
         "image":  "assets/monster/juice/rio-punch.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -549,7 +549,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_viking",
-        "name":  "Viking Berry",
+        "name":  "Juice Viking Berry",
         "image":  "assets/monster/juice/viking-berry.webp",
         "series":  "juice",
         "rarity":  "rare",
@@ -561,7 +561,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_strawberry_lemonade",
-        "name":  "Strawberry Lemonade",
+        "name":  "Juice Strawberry Lemonade",
         "image":  "assets/monster/juice/strawberry-lemonade.webp",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -573,7 +573,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_voodoo_grape",
-        "name":  "Voodoo Grape",
+        "name":  "Juice Voodoo Grape",
         "image":  "assets/monster/juice/voodoo-grape.webp",
         "series":  "juice",
         "rarity":  "rare",
@@ -585,7 +585,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_mixxd_punch",
-        "name":  "Mixxd Punch",
+        "name":  "Juice Mixxd Punch",
         "image":  "assets/monster/juice/mixxd-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -597,7 +597,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_ripper",
-        "name":  "Ripper",
+        "name":  "Juice Ripper",
         "image":  "assets/monster/juice/juiced-ripper.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
