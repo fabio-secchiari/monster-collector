@@ -1068,7 +1068,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_mean_green",
         "name":  "Beast Unleashed Mean Green",
-        "image":  "assets/monster/beast/mean-green.png",
+        "image":  "assets/monster/beast/mean-green.webp",
         "series":  "beast",
         "rarity":  "uncommon",
         "limited":  false,
@@ -1080,7 +1080,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_white_haze",
         "name":  "Beast Unleashed White Haze",
-        "image":  "assets/monster/beast/white-haze.png",
+        "image":  "assets/monster/beast/white-haze.webp",
         "series":  "beast",
         "rarity":  "uncommon",
         "limited":  false,
@@ -1092,7 +1092,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_peach_perfect",
         "name":  "Beast Unleashed Peach Perfect",
-        "image":  "assets/monster/beast/peach-perfect.png",
+        "image":  "assets/monster/beast/peach-perfect.webp",
         "series":  "beast",
         "rarity":  "uncommon",
         "limited":  false,
@@ -1104,7 +1104,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_scary_berries",
         "name":  "Beast Unleashed Scary Berries",
-        "image":  "assets/monster/beast/scary-berries.png",
+        "image":  "assets/monster/beast/scary-berries.webp",
         "series":  "beast",
         "rarity":  "rare",
         "limited":  false,
@@ -1116,7 +1116,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_killer_sunrise",
         "name":  "Beast Unleashed Killer Sunrise",
-        "image":  "assets/monster/beast/killer-sunrise.png",
+        "image":  "assets/monster/beast/killer-sunrise.webp",
         "series":  "beast",
         "rarity":  "rare",
         "limited":  false,
@@ -1128,7 +1128,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_pink_poison",
         "name":  "Beast Unleashed Pink Poison",
-        "image":  "assets/monster/beast/pink-poison.png",
+        "image":  "assets/monster/beast/pink-poison.webp",
         "series":  "beast",
         "rarity":  "rare",
         "limited":  false,
@@ -1140,7 +1140,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_beast_gnarly_grape",
         "name":  "Beast Unleashed Gnarly Grape",
-        "image":  "assets/monster/beast/gnarly-grape.png",
+        "image":  "assets/monster/beast/gnarly-grape.webp",
         "series":  "beast",
         "rarity":  "rare",
         "limited":  false,
@@ -1152,7 +1152,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_nasty_original",
         "name":  "Nasty Beast Original",
-        "image":  "assets/monster/beast/nasty-original.png",
+        "image":  "assets/monster/beast/nasty-beast-original.webp",
         "series":  "beast",
         "rarity":  "uncommon",
         "limited":  false,
@@ -1164,7 +1164,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_nasty_tea_lemonade",
         "name":  "Nasty Beast Tea + Lemonade",
-        "image":  "assets/monster/beast/nasty-tea-lemonade.png",
+        "image":  "assets/monster/beast/nasty-beast-lemonade.webp",
         "series":  "beast",
         "rarity":  "uncommon",
         "limited":  false,
@@ -1176,7 +1176,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_nasty_peach",
         "name":  "Nasty Beast Peach",
-        "image":  "assets/monster/beast/nasty-peach.png",
+        "image":  "assets/monster/beast/nasty-beast-peach.webp",
         "series":  "beast",
         "rarity":  "rare",
         "limited":  false,
@@ -1188,7 +1188,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_nasty_green_tea",
         "name":  "Nasty Beast Green Tea",
-        "image":  "assets/monster/beast/nasty-green-tea.png",
+        "image":  "assets/monster/beast/nasty-beast-green-tea.webp",
         "series":  "beast",
         "rarity":  "rare",
         "limited":  false,
@@ -1199,8 +1199,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_dragon_green",
-        "name":  "Monster Dragon Tea Green",
-        "image":  "assets/monster/dragon/green.png",
+        "name":  "Dragon Tea Green",
+        "image":  "assets/monster/dragon/dragon-tea-green.webp",
         "series":  "dragon",
         "rarity":  "epic",
         "limited":  true,
@@ -1211,8 +1211,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_dragon_white",
-        "name":  "Monster Dragon Tea White",
-        "image":  "assets/monster/dragon/white.png",
+        "name":  "Dragon Tea White",
+        "image":  "assets/monster/dragon/dragon-tea-white.png",
         "series":  "dragon",
         "rarity":  "epic",
         "limited":  true,
@@ -1427,26 +1427,38 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_dragon_36",
-        "name":  "Dragon Tea Yerba Tea",
-        "image":  "assets/monster/dragon/b.png",
+        "name":  "Dragon Tea Yerba Mate",
+        "image":  "assets/monster/dragon/dragon-tea-yerba-mate.webp",
         "series":  "dragon",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Dragon Tea Yerba. FUORI PRODUZIONE (marchio cancellato 2025).",
+        "description":  "Dragon Tea Yerba Mate. FUORI PRODUZIONE (marchio cancellato 2025).",
         "variants":  [
-                         "Dragon Tea Yerba Tea"
+                         "Dragon Tea Yerba Mate"
                      ]
     },
     {
         "id":  "catalog_dragon_38",
-        "name":  "Dragon Tea Ice Tea Lemon",
-        "image":  "assets/monster/dragon/b.png",
+        "name":  "Dragon Ice Tea Lemon",
+        "image":  "assets/monster/dragon/dragon-ice-tea-lemon.webp",
         "series":  "dragon",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Dragon Tea Ice Tea Lemon. FUORI PRODUZIONE.",
+        "description":  "Dragon Ice Tea Lemon. FUORI PRODUZIONE.",
         "variants":  [
-                         "Dragon Tea Ice Tea Lemon"
+                         "Dragon Ice Tea Lemon"
+                     ]
+    },
+    {
+        "id":  "catalog_dragon_38b",
+        "name":  "Dragon Ice Tea Peach",
+        "image":  "assets/monster/dragon/dragon-ice-tea-peach.webp",
+        "series":  "dragon",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Dragon Ice Tea Peach. FUORI PRODUZIONE.",
+        "variants":  [
+                         "Dragon Ice Tea Peach"
                      ]
     },
     {
