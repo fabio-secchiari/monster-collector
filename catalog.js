@@ -175,7 +175,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_white",
-        "name":  "White",
+        "name":  "Ultra White",
         "image":  "assets/monster/ultra/ultra-white.jpg",
         "series":  "ultra",
         "rarity":  "common",
@@ -188,7 +188,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_red",
-        "name":  "Red",
+        "name":  "Ultra Red",
         "image":  "assets/monster/ultra/ultra-red.jpg",
         "series":  "ultra",
         "rarity":  "common",
@@ -200,7 +200,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_blue",
-        "name":  "Blue",
+        "name":  "Ultra Blue",
         "image":  "assets/monster/ultra/ultra-blue.jpg",
         "series":  "ultra",
         "rarity":  "common",
@@ -212,7 +212,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_violet",
-        "name":  "Violet",
+        "name":  "Ultra Violet",
         "image":  "assets/monster/ultra/ultra-violet.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -224,7 +224,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_paradise",
-        "name":  "Paradise",
+        "name":  "Ultra Paradise",
         "image":  "assets/monster/ultra/ultra-paradise.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -236,7 +236,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_sunrise",
-        "name":  "Sunrise",
+        "name":  "Ultra Sunrise",
         "image":  "assets/monster/ultra/ultra-sunrise.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -248,7 +248,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_fiesta",
-        "name":  "Fiesta Mango",
+        "name":  "Ultra Fiesta Mango",
         "image":  "assets/monster/ultra/ultra-fiesta-mango.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -260,7 +260,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_ultra_1",
-        "name":  "Fiesta",
+        "name":  "Ultra Fiesta",
         "image":  "assets/monster/ultra/ultra-fiesta.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -272,7 +272,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_watermelon",
-        "name":  "Watermelon",
+        "name":  "Ultra Watermelon",
         "image":  "assets/monster/ultra/ultra-watermelon.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -284,7 +284,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_rosa",
-        "name":  "Rosa",
+        "name":  "Ultra Rosa",
         "image":  "assets/monster/ultra/ultra-rosa.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -296,7 +296,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_gold",
-        "name":  "Gold",
+        "name":  "Ultra Gold",
         "image":  "assets/monster/ultra/ultra-gold.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -308,7 +308,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_ultra_0",
-        "name":  "Citron",
+        "name":  "Ultra Citron",
         "image":  "assets/monster/ultra/ultra-citron.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -320,7 +320,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_peachy",
-        "name":  "Peachy Keen",
+        "name":  "Ultra Peachy Keen",
         "image":  "assets/monster/ultra/ultra-peachy-keen.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -332,7 +332,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_strawberry",
-        "name":  "Strawberry Dreams",
+        "name":  "Ultra Strawberry Dreams",
         "image":  "assets/monster/ultra/ultra-strawberry-dreams.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -344,7 +344,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_ruby",
-        "name":  "Fantasy Ruby Red",
+        "name":  "Ultra Fantasy Ruby Red",
         "image":  "assets/monster/ultra/ultra-fantasy-ruby-red.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -356,7 +356,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_black",
-        "name":  "Black",
+        "name":  "Ultra Black",
         "image":  "assets/monster/ultra/ultra-black.jpg",
         "series":  "ultra",
         "rarity":  "epic",
@@ -368,7 +368,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_guava",
-        "name":  "Vice Guava",
+        "name":  "Ultra Vice Guava",
         "image":  "assets/monster/ultra/ultra-vice-guava.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -380,7 +380,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_pineapple",
-        "name":  "Pineapple",
+        "name":  "Ultra Pineapple",
         "image":  "assets/monster/ultra/ultra-pineapple.webp",
         "series":  "ultra",
         "rarity":  "epic",
@@ -392,7 +392,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_blue_hawaiian",
-        "name":  "Blue Hawaiian",
+        "name":  "Ultra Blue Hawaiian",
         "image":  "assets/monster/ultra/ultra-blue-hawaiian.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -404,7 +404,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_punk_punch",
-        "name":  "Punk Punch",
+        "name":  "Ultra Punk Punch",
         "image":  "assets/monster/ultra/ultra-punk-punch.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -416,7 +416,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_red_white_blue_razz",
-        "name":  "Red White & Blue Razz",
+        "name":  "Ultra Red White & Blue Razz",
         "image":  "assets/monster/ultra/ultra-red-white-blue-razz.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -428,7 +428,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_wild_passion",
-        "name":  "Wild Passion",
+        "name":  "Ultra Wild Passion",
         "image":  "assets/monster/ultra/ultra-wild-passion.webp",
         "series":  "ultra",
         "rarity":  "rare",
