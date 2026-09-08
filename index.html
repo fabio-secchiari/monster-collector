@@ -12,7 +12,7 @@
 :root {
   --bg: #0a0a0f;
   --panel: #12121a;
-  --muted: #7a7a8e;
+  --muted: #ffffff;
   --primary: #00ff41;
   --accent: #00cc33;
   --gold: #ffd166;
@@ -367,7 +367,7 @@ body {
 
 .can-item .info .sub {
   font-size: 11px;
-  color: var(--muted);
+  color: #7a7a8e;
 }
 
 .can-item .progress {
@@ -559,6 +559,11 @@ body {
 
 .variant-btn.owned.limited {
   border-color: rgba(255,215,0,0.3);
+}
+
+.variant-btn.selected {
+  border-color: #00ff41;
+  box-shadow: 0 0 0 2px rgba(0,255,65,0.18);
 }
 
 .variant-btn .dot {
@@ -1231,7 +1236,7 @@ body.image-bg-on .can-art {
   <div class="footer">
     <span id="footer-stats">Lattine: 0 • Varianti: 0</span>
     <span id="footer-limited">⭐ Limited: 0</span>
-    <a href="#" target="_blank">📂 GitHub</a>
+    <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
   </div>
 </div>
 
@@ -2485,7 +2490,7 @@ function getLimitedCount() {
 }
 
 function getOwnedLimited() {
-  return CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => state[c.id].variants[v])).length;
+  return CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => state[c.id].variants[v]?.owned)).length;
 }
 
 // ============================================================
@@ -2651,8 +2656,16 @@ function selectIndex(idx) {
   const notesEl = document.getElementById('main-notes');
 
   // Usa la variante selezionata corrente (se non esiste, usa la prima)
-  let currentVariant = window.selectedVariant || can.variants[0];
+  let currentVariant = loadSelectedVariant(can.id);
+  if (!currentVariant || !can.variants.includes(currentVariant)) {
+    currentVariant = can.variants[0];
+  }
+  window.selectedVariant = currentVariant;
   notesEl.textContent = st.variants[currentVariant]?.notes || '';
+  notesEditing = false;
+  notesEl.contentEditable = 'false';
+  document.getElementById('edit-notes-btn').textContent = '✏️ Modifica';
+  document.getElementById('edit-notes-btn').style.color = '';
 
    // Descrizione
    const descEl = document.getElementById('main-desc');
@@ -2799,11 +2812,6 @@ function renderVariants(can) {
     return `${base}-${suffix}.${ext}`;
   }
 
-  // Variabile globale per la variante selezionata (se non esiste, la creiamo)
-  if (typeof window.selectedVariant === 'undefined') {
-    window.selectedVariant = 'basic';
-  }
-
   can.variants.forEach(variant => {
     // ORA VARIANTI SONO OGGETTI
     const variantData = st.variants[variant] || { owned: false, rating: 0, notes: '' };
@@ -2811,6 +2819,7 @@ function renderVariants(can) {
 
     const btn = document.createElement('button');
     btn.className = `variant-btn${owned ? ' owned' : ''}`;
+    if (variant === window.selectedVariant) btn.classList.add('selected');
     if (can.limited && owned) btn.classList.add('limited');
 
     const dot = document.createElement('span');
@@ -2821,6 +2830,20 @@ function renderVariants(can) {
 
     btn.appendChild(dot);
     btn.appendChild(label);
+
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      st.variants[variant] = {
+        ...(st.variants[variant] || {}),
+        owned: !owned,
+        rating: st.variants[variant]?.rating || 0,
+        notes: st.variants[variant]?.notes || ''
+      };
+      saveState(state);
+      renderSidebar();
+      selectIndex(currentIndex);
+      playClickSound();
+    });
 
     // HOVER
     btn.addEventListener('mouseenter', () => {
@@ -2835,46 +2858,17 @@ function renderVariants(can) {
       mainImg.src = can.image;
     });
 
-    // CLICK
+    // Seleziona la variante per modificarne immagine, note e rating.
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-
-      // Toggle owned
-      st.variants[variant].owned = !st.variants[variant].owned;
-      saveState(state);
+      window.selectedVariant = variant;
+      saveSelectedVariant(can.id, variant);
+      mainImg.src = can.variantImages?.[variant] || can.image;
+      mainImg.onerror = () => { mainImg.src = can.image; };
+      document.getElementById('main-notes').textContent = st.variants[variant]?.notes || '';
+      updateRatingDisplay(variant);
+      renderVariants(can);
       playClickSound();
-
-      // Se è stata acquisita, selezionala; altrimenti scegli la prima posseduta
-      if (st.variants[variant].owned) {
-        window.selectedVariant = variant;
-        saveSelectedVariant(can.id, variant);
-        const variantImg = getVariantImage(variant);
-        mainImg.src = variantImg;
-        // Aggiorna note e rating per la variante selezionata
-        const notesEl = document.getElementById('main-notes');
-        notesEl.textContent = st.variants[variant].notes || '';
-        updateRatingDisplay(variant);
-      } else {
-        // Trova la prima variante posseduta
-        let fallback = 'basic';
-        for (const v of can.variants) {
-          if (st.variants[v] && st.variants[v].owned) { fallback = v; break; }
-        }
-        window.selectedVariant = fallback;
-        saveSelectedVariant(can.id, fallback);
-        const variantImg = getVariantImage(fallback);
-        mainImg.src = variantImg;
-        const notesEl = document.getElementById('main-notes');
-        notesEl.textContent = st.variants[fallback]?.notes || '';
-        updateRatingDisplay(fallback);
-      }
-
-      // Ricarica UI
-      selectIndex(currentIndex);
-      renderSidebar();
-      if (document.getElementById('grid-view').classList.contains('active')) {
-        buildGridView();
-      }
     });
 
     grid.appendChild(btn);
@@ -2922,7 +2916,7 @@ function getFilteredCans() {
     if (series !== 'all' && can.series !== series) return false;
     if (onlyOwned) {
       const st = state[can.id];
-      if (!st || !can.variants.some(v => st.variants[v])) return false;
+      if (!st || !can.variants.some(v => st.variants[v]?.owned)) return false;
     }
     if (onlyLimited && !can.limited) return false;
     return true;
@@ -3019,7 +3013,9 @@ toggleImageBg.addEventListener('change', function() {
 document.getElementById('acquire-all').addEventListener('click', () => {
   const can = CANS[currentIndex];
   const st = state[can.id];
-  can.variants.forEach(v => { st.variants[v] = true; });
+  can.variants.forEach(v => {
+    st.variants[v] = { ...(st.variants[v] || {}), owned: true, rating: st.variants[v]?.rating || 0, notes: st.variants[v]?.notes || '' };
+  });
   saveState(state);
   playClickSound();
   selectIndex(currentIndex);
@@ -3035,7 +3031,9 @@ document.getElementById('clear-all').addEventListener('click', async () => {
   const ok = await showConfirm(`Cancellare tutte le varianti di ${can.name}?`);
   if (!ok) return;
   const st = state[can.id];
-  can.variants.forEach(v => { st.variants[v] = false; });
+  can.variants.forEach(v => {
+    st.variants[v] = { ...(st.variants[v] || {}), owned: false, rating: st.variants[v]?.rating || 0, notes: st.variants[v]?.notes || '' };
+  });
   saveState(state);
   selectIndex(currentIndex);
   renderSidebar();
@@ -3146,8 +3144,7 @@ function buildGridView() {
   const grid = document.getElementById('grid-view');
   grid.innerHTML = '';
 
-  // USA TUTTE LE LATTINE, SENZA FILTRI
-  const filtered = CANS;
+  const filtered = getFilteredCans();
 
   if (filtered.length === 0) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Nessuna lattina trovata</div>`;
@@ -3617,10 +3614,6 @@ document.addEventListener('keydown', (e) => {
     } else {
       showToast('✅ Tutte le varianti sono già possedute!');
     }
-  }
-  if (e.key === 'm' || e.key === 'M') {
-    musicBtn.click();
-    e.preventDefault();
   }
   if (e.key === 'g' || e.key === 'G') {
     document.getElementById('btn-grid-toggle').click();
