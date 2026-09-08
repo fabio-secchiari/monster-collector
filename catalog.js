@@ -1067,7 +1067,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_mean_green",
-        "name":  "Beast Unleashed Mean Green",
+        "name":  "Mean Green",
         "image":  "assets/monster/beast/mean-green.webp",
         "series":  "beast",
         "rarity":  "uncommon",
@@ -1079,7 +1079,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_white_haze",
-        "name":  "Beast Unleashed White Haze",
+        "name":  "White Haze",
         "image":  "assets/monster/beast/white-haze.webp",
         "series":  "beast",
         "rarity":  "uncommon",
@@ -1091,7 +1091,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_peach_perfect",
-        "name":  "Beast Unleashed Peach Perfect",
+        "name":  "Peach Perfect",
         "image":  "assets/monster/beast/peach-perfect.webp",
         "series":  "beast",
         "rarity":  "uncommon",
@@ -1103,7 +1103,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_scary_berries",
-        "name":  "Beast Unleashed Scary Berries",
+        "name":  "Scary Berries",
         "image":  "assets/monster/beast/scary-berries.webp",
         "series":  "beast",
         "rarity":  "rare",
@@ -1115,7 +1115,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_killer_sunrise",
-        "name":  "Beast Unleashed Killer Sunrise",
+        "name":  "Killer Sunrise",
         "image":  "assets/monster/beast/killer-sunrise.webp",
         "series":  "beast",
         "rarity":  "rare",
@@ -1127,7 +1127,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_pink_poison",
-        "name":  "Beast Unleashed Pink Poison",
+        "name":  "Pink Poison",
         "image":  "assets/monster/beast/pink-poison.webp",
         "series":  "beast",
         "rarity":  "rare",
@@ -1139,7 +1139,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_beast_gnarly_grape",
-        "name":  "Beast Unleashed Gnarly Grape",
+        "name":  "Gnarly Grape",
         "image":  "assets/monster/beast/gnarly-grape.webp",
         "series":  "beast",
         "rarity":  "rare",
