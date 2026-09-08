@@ -1,0 +1,3567 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="assets/icons/logo.png">
+<title>Monster Energy Tracker</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0f;
+  --panel: #12121a;
+  --muted: #7a7a8e;
+  --primary: #00ff41;
+  --accent: #00cc33;
+  --gold: #ffd166;
+  --complete: #16a34a;
+  --glass: rgba(0,255,65,0.03);
+  --card-radius: 12px;
+  --shadow: 0 18px 40px rgba(0,0,0,0.6);
+  --ease: cubic-bezier(.2,.9,.3,1);
+  --font-heading: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #e6e6f0;
+  background: var(--bg);
+  background-image: url('assets/ui/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: rgba(0,0,0,0.8);
+  border: 1px solid rgba(0,255,65,0.08);
+  border-radius: 16px;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-left .logo {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.header-left .title {
+  font-family: var(--font-heading);
+}
+.header-left .title div:first-child {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.header-left .title div:last-child {
+  font-size: 22px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ff41, #00cc33, #00ff41);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 4s ease-in-out infinite alternate;
+  letter-spacing: 1px;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-adaptive {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, #00ff41, #00cc33);
+  color: #000;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0,255,65,0.15);
+}
+
+.btn-adaptive:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(0,255,65,0.25);
+}
+
+.btn-adaptive:active {
+  transform: scale(0.96);
+}
+
+.btn-adaptive.ghost {
+  background: transparent;
+  border: 2px solid rgba(0,255,65,0.15);
+  color: var(--muted);
+  box-shadow: none;
+}
+
+.btn-adaptive.ghost:hover {
+  border-color: #00ff41;
+  color: #fff;
+  background: rgba(0,255,65,0.06);
+  box-shadow: 0 0 24px rgba(0,255,65,0.05);
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,65,0.04);
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.filter-select {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1.5px solid rgba(255,255,255,0.06) !important;
+  padding: 7px 12px;
+  border-radius: 8px;
+  color: #e6e6f0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 120px;
+}
+
+.filter-select:hover {
+  border-color: #00ff41 !important;
+  background: rgba(0,255,65,0.06) !important;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #00ff41;
+}
+
+.filter-select option {
+  background: #12121a;
+  color: #e6e6f0;
+}
+
+.toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 4px 10px 4px 6px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.02);
+  border: 1.5px solid rgba(255,255,255,0.04);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.toggle-switch:hover {
+  border-color: rgba(0,255,65,0.2);
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 38px;
+  height: 20px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: linear-gradient(90deg, #00ff41, #00cc33);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(18px);
+}
+
+.toggle-label {
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+
+/* ===== APP LAYOUT ===== */
+.app {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 16px;
+  padding: 16px;
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(0,255,65,0.04);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  height: fit-content;
+  max-height: calc(100vh - 180px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.sidebar .search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.sidebar .search input {
+  background: transparent;
+  border: none;
+  color: inherit;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+}
+
+.sidebar .search input::placeholder {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.sidebar .list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+  padding-right: 4px;
+}
+
+.sidebar-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 4px 0;
+}
+
+.can-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid transparent;
+}
+
+.can-item:hover {
+  background: rgba(0,255,65,0.04);
+  transform: translateX(4px);
+}
+
+.can-item.active {
+  background: rgba(0,255,65,0.08);
+  border-left-color: #00ff41;
+}
+
+.can-item .thumb {
+  width: 36px;
+  height: 48px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+  border: 1px solid rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+
+.can-item .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.can-item .info {
+  flex: 1;
+  min-width: 0;
+}
+
+.can-item .info .name {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.can-item .info .sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.can-item .progress {
+  font-size: 12px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.can-item .badge-limited {
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0 4px;
+  margin-left: 4px;
+}
+
+/* ===== PANEL MAIN ===== */
+.panel {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* LOCKER VIEW - ora sempre flex per tenere i pannelli affiancati */
+#locker-view {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.left-panel {
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0,255,65,0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.can-art {
+  width: 280px;
+  height: 320px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0,255,65,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.can-art img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 16px;
+}
+
+/* BADGE RARITÀ più grande e in alto a sinistra */
+.can-art .rarity-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.can-art .limited-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 28px;
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.3));
+  z-index: 2;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.right-panel {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0,255,65,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.right-panel .can-name {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.progress-row .percent {
+  font-weight: 800;
+  font-size: 18px;
+  flex-shrink: 0;
+  color: #00ff41;
+}
+
+.progress-row .bar {
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+
+.progress-row .bar .fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff41, #00cc33);
+  transition: width 0.5s var(--ease);
+}
+
+/* ===== VARIANTS (senza checkbox) ===== */
+.variants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.variant-btn {
+  min-width: 70px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+  color: inherit;
+  font-weight: 700;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.variant-btn:hover {
+  background: rgba(0,255,65,0.06);
+  border-color: rgba(0,255,65,0.15);
+  transform: translateY(-2px);
+}
+
+.variant-btn.owned {
+  background: rgba(0,255,65,0.12);
+  border-color: rgba(0,255,65,0.25);
+}
+
+.variant-btn.owned.limited {
+  border-color: rgba(255,215,0,0.3);
+}
+
+.variant-btn .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.2s;
+}
+.variant-btn.owned .dot {
+  background: #00ff41;
+}
+
+/* ===== RATING STARS ===== */
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.rating-stars .star {
+  font-size: 22px;
+  color: #444;
+  transition: color 0.15s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+.rating-stars .star.active {
+  color: #ffd166;
+}
+
+.rating-stars .star.half {
+  color: #ffd166;
+  position: relative;
+}
+.rating-stars .star.half::after {
+  content: '★';
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #ffd166;
+}
+
+.rating-stars .star:hover {
+  transform: scale(1.15);
+}
+
+.rating-label {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+/* ===== DETAILS ===== */
+.details-box {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.details-box .label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #00ff41;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-box .label .edit-btn {
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  font-weight: 600;
+}
+.details-box .label .edit-btn:hover {
+  color: #fff;
+}
+
+.details-box .value {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 20px;
+}
+
+.details-box .value[contenteditable="true"] {
+  background: rgba(0,255,65,0.04);
+  border: 1px solid rgba(0,255,65,0.1);
+  border-radius: 6px;
+  padding: 4px 8px;
+  color: #fff;
+  outline: none;
+}
+
+.details-box .value[contenteditable="true"]:focus {
+  border-color: #00ff41;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ===== GRID VIEW (SCAFFALE) ===== */
+.grid-view {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px 16px;
+  width: 100%;
+  padding: 20px 0;
+  background-image: url('assets/ui/shelf.jpg'); /* Sfondo scaffale se disponibile */
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  position: relative;
+}
+
+/* Fallback scaffale CSS se non c'è l'immagine */
+.grid-view::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 130px,
+      rgba(0,0,0,0.15) 130px,
+      rgba(0,0,0,0.15) 132px,
+      transparent 132px,
+      transparent 160px
+    );
+  pointer-events: none;
+  border-radius: 12px;
+  z-index: 0;
+}
+
+.grid-view.active {
+  display: grid;
+}
+
+.grid-card {
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(0,255,65,0.05);
+  text-align: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(0,255,65,0.2);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+
+.grid-card .grid-image {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.grid-card .grid-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.grid-card .grid-name {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.grid-card .grid-series {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.grid-card .grid-progress {
+  margin-top: 6px;
+  height: 4px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.grid-card .grid-progress .fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff41, #00cc33);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.grid-card .grid-limited {
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,255,65,0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  flex-wrap: wrap;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.footer a {
+  color: #00ff41;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer a:hover {
+  color: #fff;
+}
+
+/* ===== MODAL ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: linear-gradient(180deg, #14141f, #0a0a0f);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,255,65,0.06);
+  max-width: 92vw;
+  width: 440px;
+  color: #e6e6f0;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal .row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.modal .option {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(255,255,255,0.03);
+  border: 1.5px solid rgba(255,255,255,0.05);
+  color: #e6e6f0;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.modal .option:hover {
+  background: rgba(0,255,65,0.08);
+  border-color: rgba(0,255,65,0.2);
+  transform: translateY(-2px);
+}
+
+/* ===== CONFIRM ===== */
+.confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.confirm-modal {
+  background: linear-gradient(180deg, #14141f, #0a0a0f);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.04);
+  max-width: 400px;
+  width: 90%;
+  color: #e6e6f0;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,65,0.08);
+  color: #e6e6f0;
+  z-index: 10000;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  .sidebar {
+    max-height: 50vh;
+    display: none;
+  }
+  .sidebar.open {
+    display: flex;
+  }
+  #sidebar-toggle {
+    display: inline-flex !important;
+  }
+  .left-panel {
+    flex: 1;
+    width: 100%;
+  }
+  .can-art {
+    width: 220px;
+    height: 260px;
+  }
+  .right-panel {
+    width: 100%;
+  }
+}
+
+#sidebar-toggle {
+  display: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,255,65,0.1); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,255,65,0.2); }
+
+/* Rarity colors */
+.rarity-common { border-left-color: #6b7280; }
+.rarity-uncommon { border-left-color: #4FC3FF; }
+.rarity-rare { border-left-color: #A855F7; }
+.rarity-epic { border-left-color: #FF6B3D; }
+.rarity-legendary { border-left-color: #FFD34D; }
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* CENTRA TUTTO */
+  gap: 10px;
+  padding: 8px 14px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,65,0.04);
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center; /* CENTRA I PULSANTI */
+  width: 100%; /* OCCUPA TUTTA LA LARGHEZZA */
+}
+
+/* Sfondo immagini - attivato dal toggle */
+body.image-bg-on .thumb {
+  background-image: url('assets/ui/bg-monster.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #0a0a0f; /* fallback */
+}
+
+body.image-bg-on .grid-image {
+  background-image: url('assets/ui/bg-monster.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #0a0a0f;
+  border-radius: 8px;
+}
+
+/* Per l'immagine principale nella vista locker */
+body.image-bg-on .can-art {
+  background-image: url('assets/ui/bg-monster.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #0a0a0f;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== AUDIO SFX ===== -->
+<audio id="click-sound" preload="auto">
+  <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mp3">
+</audio>
+
+<!-- ===== MUSICA DI SOTTOFONDO ===== -->
+<audio id="bg-music" loop preload="auto">
+  <source src="assets/audios/music.mp3" type="audio/mp3">
+  <!-- Fallback: se non hai il file, usa una traccia di esempio -->
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<!-- ===== GIF MUSICA ===== -->
+<div id="music-gif" style="display:none; position:fixed; inset:0; z-index:9998; pointer-events:none; opacity:0; transition: opacity 0.8s ease;">
+  <img src="assets/ui/greenflame.gif" alt="Music" style="width:100%; height:100%; object-fit:cover;">
+</div>
+
+<!-- ===== MODAL ===== -->
+<div id="modal-backdrop" class="modal-backdrop">
+  <div class="modal">
+    <div id="modal-title" style="font-weight:800;font-size:20px;">📋 Menu</div>
+    <div id="modal-description" style="font-size:13px;color:var(--muted);margin-top:6px;">Gestisci la tua collezione di Monster</div>
+    <div id="modal-content">
+      <div style="margin-top:12px;font-weight:800;">💾 Dati</div>
+      <div class="row">
+        <div class="option" data-action="export-json">📤 Esporta JSON</div>
+        <div class="option" data-action="import-json">📥 Importa JSON</div>
+      </div>
+      <div style="margin-top:12px;font-weight:800;">🖼️ Esporta Immagine</div>
+      <div class="row">
+        <div class="option" data-action="all">📁 Tutta la collezione</div>
+        <div class="option" data-action="current">🎯 Lattina corrente</div>
+      </div>
+      <div style="margin-top:12px;font-weight:800;">🔧 Azioni</div>
+      <div class="row">
+        <div class="option" data-action="reset">🔄 Resetta tutto</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;display:flex;justify-content:flex-end;">
+      <button id="modal-close" class="btn-adaptive ghost">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONFIRM ===== -->
+<div id="confirm-backdrop" class="confirm-backdrop">
+  <div class="confirm-modal">
+    <div id="confirm-title" style="font-weight:800;">Conferma</div>
+    <div id="confirm-message" style="margin-top:8px;color:var(--muted);"></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px;">
+      <button id="confirm-cancel" class="btn-adaptive ghost">Annulla</button>
+      <button id="confirm-ok" class="btn-adaptive">Conferma</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <img src="assets/icons/logo-extended.png" alt="Monster Logo" class="logo" id="site-logo">
+      <div class="title">
+        <div>La mia collezione</div>
+        <div>MONSTER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+	
+    <select id="filter-rarity" class="filter-select">
+      <option value="all">Tutte le rarità</option>
+      <option value="common">Comune</option>
+      <option value="uncommon">Non comune</option>
+      <option value="rare">Epico</option>
+      <option value="epic">Leggendario</option>
+      <option value="legendary">Mitico</option>
+    </select>
+    <select id="filter-series" class="filter-select">
+      <option value="all">Tutte le serie</option>
+      <option value="classic">Classic</option>
+      <option value="ultra">Ultra</option>
+      <option value="juice">Juice</option>
+      <option value="java">Java (Caffè)</option>
+      <option value="rehab">Rehab</option>
+      <option value="reserve">Reserve</option>
+      <option value="special">Special Edition</option>
+      <option value="hydro">Hydro</option>
+      <option value="muscle">Muscle</option>
+      <option value="beast">Beast Unleashed</option>
+      <option value="dragon">Dragon Tea</option>
+    </select>
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-owned">
+      <span class="toggle-slider"></span>
+      <span class="toggle-label">Solo posseduti</span>
+    </label>
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-limited">
+      <span class="toggle-slider"></span>
+      <span class="toggle-label">⭐ Limited</span>
+    </label>
+	
+	<label class="toggle-switch">
+	  <input type="checkbox" id="toggle-image-bg">
+	  <span class="toggle-slider"></span>
+	  <span class="toggle-label">🖼️ Sfondo immagini</span>
+	</label>
+	
+	<div class="header-controls">
+      <button class="btn-adaptive ghost" id="btn-grid-toggle">📦 Scaffale</button>
+      <button class="btn-adaptive ghost" id="btn-menu">⚙️ Menu</button>
+      <button class="btn-adaptive ghost" id="btn-stats">📊 Stats</button>
+      <button class="btn-adaptive ghost" id="btn-music">🔇 Musica</button>
+      <button class="btn-adaptive" id="sidebar-toggle">☰ Lista</button>
+    </div>
+  </div>
+  
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="search">
+	  <span>🔍</span>
+	  <input id="search-input" placeholder="Cerca lattina ..." />
+	  <span id="search-clear" style="display:none; cursor:pointer; color:var(--muted); font-size:16px; padding:0 4px;">✕</span>
+	</div>
+    <div class="sidebar-stats">
+      <span id="sidebar-count">0 / 0</span>
+      <span id="sidebar-limited">⭐ 0</span>
+    </div>
+    <div class="list" id="sidebar-list"></div>
+  </aside>
+
+  <!-- PANEL -->
+  <section class="panel" id="main-panel">
+    <!-- VISTA LOCKER (default) -->
+    <div id="locker-view">
+      <div class="left-panel">
+        <div class="can-art" id="main-art">
+          <img id="main-image" src="assets/monster/classic.png" alt="Monster">
+          <span class="rarity-tag" id="main-rarity">LEGGENDARIO</span>
+          <span class="limited-badge" id="main-limited" style="display:none;">⭐</span>
+        </div>
+        <div class="nav-buttons">
+          <button class="btn-adaptive ghost" id="prev">◀ Prev</button>
+          <button class="btn-adaptive ghost" id="next">Next ▶</button>
+        </div>
+      </div>
+
+	<div class="right-panel">
+	  <div class="can-name" id="main-name">🥤 Monster</div>
+
+	  <div class="progress-row">
+		<div class="percent" id="main-percent">0%</div>
+		<div class="bar"><div class="fill" id="main-fill"></div></div>
+		<div style="width:80px;text-align:right;color:var(--muted)" id="main-count">0 / 0</div>
+	  </div>
+
+	  <!-- VALUTAZIONE -->
+	  <div class="rating-container">
+		<span class="rating-label" id="rating-label">⭐ Valutazione</span>
+		<div class="rating-stars" id="rating-stars">
+		  <span class="star" data-value="1">☆</span>
+		  <span class="star" data-value="2">☆</span>
+		  <span class="star" data-value="3">☆</span>
+		  <span class="star" data-value="4">☆</span>
+		  <span class="star" data-value="5">☆</span>
+		</div>
+		<span id="rating-text" style="font-size:13px;color:#fff;min-width:40px;">—</span>
+	  </div>
+
+	  <!-- NOTE (MODIFICABILE DALL'UTENTE) -->
+	  <div class="details-box">
+		<div class="label">
+		  Note
+		  <button class="edit-btn" id="edit-notes-btn">✏️ Modifica</button>
+		</div>
+		<div class="value" id="main-notes" contenteditable="false">—</div>
+	  </div>
+
+	  <!-- VARIANTI -->
+	  <div>
+		<div style="font-size:11px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:0.5px;">Varianti</div>
+		<div class="variants-grid" id="variants-grid"></div>
+	  </div>
+
+	  <!-- SERIE -->
+	  <div class="details-box">
+		<div class="label">
+		  Serie
+		  <span style="font-size:11px;color:#fff;font-weight:400;text-transform:none;" id="main-series-label">classic</span>
+		</div>
+	  </div>
+
+	  <!-- DESCRIZIONE (FISSA, NON MODIFICABILE) -->
+	  <div class="details-box">
+		<div class="label">Descrizione</div>
+		<div class="value" id="main-desc">—</div>
+	  </div>
+
+	  <div class="action-row">
+		<button class="btn-adaptive" id="acquire-all">Acquisisci tutte</button>
+		<button class="btn-adaptive ghost" id="clear-all">🗑 Cancella tutto</button>
+	  </div>
+	</div>
+
+    <!-- 5. GRIGLIA / SCAFFALE -->
+    <div class="grid-view" id="grid-view"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span id="footer-stats">Lattine: 0 • Varianti: 0</span>
+    <span id="footer-limited">⭐ Limited: 0</span>
+    <a href="#" target="_blank">📂 GitHub</a>
+  </div>
+</div>
+
+<input type="file" id="file-import" accept="application/json" style="display:none">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+// ============================================================
+//  DATABASE COMPLETO MONSTER ENERGY - TUTTE LE VARIANTI
+// ============================================================
+
+const CANS = [
+  // ============ CLASSIC ============
+  {
+    id: 'monster_classic',
+    name: 'Monster Original',
+    image: 'assets/monster/classic/original.webp',
+    series: 'classic',
+    rarity: 'common',
+    limited: false,
+    description: 'La Monster originale, il gusto che ha iniziato tutto.',
+    variants: ['Original', 'Call of Duty']
+  },
+  {
+    id: 'monster_zero_sugar',
+    name: 'Monster Zero Sugar',
+    image: 'assets/monster/classic/zero-sugar.webp',
+    series: 'classic',
+    rarity: 'common',
+    limited: false,
+    description: 'Tutto il gusto Monster, zero zuccheri.',
+    variants: ['Zero Sugar', 'Call of Duty']
+  },
+  {
+    id: 'monster_lo_carb',
+    name: 'Monster Lo-Carb',
+    image: 'assets/monster/classic/lo-carb.webp',
+    series: 'classic',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'La versione a basso contenuto di carboidrati.',
+    variants: ['Lo-Carb']
+  },
+  {
+    id: 'monster_assault',
+    name: 'Monster Assault',
+    image: 'assets/monster/classic/assault.png',
+    series: 'classic',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Gusto cola con una carica extra di energia.',
+    variants: ['Original', 'Black']
+  },
+  {
+    id: 'monster_nitro',
+    name: 'Monster Nitro Super Dry',
+    image: 'assets/monster/classic/nitro.webp',
+    series: 'classic',
+    rarity: 'rare',
+    limited: false,
+    description: 'Super Carbonated, Super Dry. Un\'esperienza unica.',
+    variants: ['Super Dry', 'Cosmic Peach', 'Blue Flash'],
+	variantImages: {
+		'Cosmic Peach': 'assets/monster/classic/nitro-cosmic-peach.webp',
+		'Blue Flash': 'assets/monster/classic/nitro-blue-flash.webp'
+	}
+  },
+  {
+    id: 'monster_import',
+    name: 'Monster Import',
+    image: 'assets/monster/classic/import.webp',
+    series: 'classic',
+    rarity: 'rare',
+    limited: true,
+    description: 'Versione import con design europeo e gusto potenziato.',
+    variants: ['Import']
+  },
+  {
+	  id: 'monster_strawberry_shot',
+	  name: 'Monster Strawberry Shot',
+	  image: 'assets/monster/classic/strawberry-shot.webp',
+	  series: 'classic',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Nuovo gusto fragola lanciato nel 2025.',
+	  variants: ['Strawberry Shot', 'Zero Sugar Strawberry Shot'],
+	  variantImages: {
+		'Zero Sugar Strawberry Shot': 'assets/monster/classic/strawberry-shot-zero-sugar.webp'
+	  }
+  },
+  {
+	  id: 'monster_electric_blue',
+	  name: 'Monster Electric Blue',
+	  image: 'assets/monster/classic/electric-blue.webp',
+	  series: 'classic',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Nuovo gusto blu elettrico lanciato nel 2025.',
+	  variants: ['Electric Blue']
+  },
+  {
+	  id: 'monster_export',
+	  name: 'Monster Export',
+	  image: 'assets/monster/classic/export.webp',
+	  series: 'classic',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Versione export con gusto internazionale.',
+	  variants: ['Export']
+  },
+  {
+	  id: 'monster_m3',
+	  name: 'Monster M3',
+	  image: 'assets/monster/classic/m3.webp',
+	  series: 'classic',
+	  rarity: 'epic',
+	  limited: true,
+	  description: 'Edizione giapponese, molto rara.',
+	  variants: ['M3']
+  },
+  {
+	  id: 'monster_zero_sugar_full_throttle',
+	  name: 'Monster Zero Sugar Full Throttle',
+	  image: 'assets/monster/classic/full-throttle.png',
+	  series: 'classic',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Versione zero zuccheri, disponibile in UK/Europa.',
+	  variants: ['Zero Sugar Full Throttle']
+  },
+  {
+	  id: 'monster_top_speed_zero_sugar',
+	  name: 'Monster Top Speed Zero Sugar',
+	  image: 'assets/monster/classic/top-speed.png',
+	  series: 'classic',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Disponibile in Francia/Europa.',
+	  variants: ['Top Speed Zero Sugar']
+  },
+  {
+	  id: 'monster_mule_non_alcoholic',
+	  name: 'Monster Mule (Non-Alcoholic)',
+	  image: 'assets/monster/classic/mule.webp',
+	  series: 'classic',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Versione non alcolica del Monster Mule, UK/Europa.',
+	  variants: ['Mule']
+  },
+
+  // ============ ULTRA ============
+  {
+    id: 'monster_ultra_white',
+    name: 'Monster Ultra White',
+    image: 'assets/monster/ultra/white.png',
+    series: 'ultra',
+    rarity: 'common',
+    limited: false,
+    description: 'La famosa "White Monster". Zero zuccheri, gusto fresco.',
+    variants: ['Ultra White', 'Call of Duty']
+  },
+  {
+    id: 'monster_ultra_red',
+    name: 'Monster Ultra Red',
+    image: 'assets/monster/ultra/red.png',
+    series: 'ultra',
+    rarity: 'common',
+    limited: false,
+    description: 'Zero zuccheri, gusto frutti di bosco.',
+    variants: ['Ultra Red']
+  },
+  {
+    id: 'monster_ultra_blue',
+    name: 'Monster Ultra Blue',
+    image: 'assets/monster/ultra/blue.png',
+    series: 'ultra',
+    rarity: 'common',
+    limited: false,
+    description: 'Zero zuccheri, gusto tropicale blu.',
+    variants: ['Ultra Blue']
+  },
+  {
+    id: 'monster_ultra_violet',
+    name: 'Monster Ultra Violet',
+    image: 'assets/monster/ultra/violet.png',
+    series: 'ultra',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Zero zuccheri, gusto fruttato e misterioso.',
+    variants: ['Ultra Violet']
+  },
+  {
+    id: 'monster_ultra_paradise',
+    name: 'Monster Ultra Paradise',
+    image: 'assets/monster/ultra/paradise.png',
+    series: 'ultra',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Gusto kiwi-lime, zero zuccheri. Esplosione di freschezza.',
+    variants: ['Ultra Paradise']
+  },
+  {
+    id: 'monster_ultra_sunrise',
+    name: 'Monster Ultra Sunrise',
+    image: 'assets/monster/ultra/sunrise.png',
+    series: 'ultra',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Gusto arancia, zero zuccheri. Per iniziare la giornata.',
+    variants: ['Ultra Sunrise']
+  },
+  {
+    id: 'monster_ultra_fiesta',
+    name: 'Monster Ultra Fiesta Mango',
+    image: 'assets/monster/ultra/fiesta.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata con gusto mango, zero zuccheri.',
+    variants: ['Ultra Fiesta Mango']
+  },
+  {
+    id: 'monster_ultra_watermelon',
+    name: 'Monster Ultra Watermelon',
+    image: 'assets/monster/ultra/watermelon.png',
+    series: 'ultra',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Gusto cocomero, zero zuccheri. Fresca e dissetante.',
+    variants: ['Ultra Watermelon']
+  },
+  {
+    id: 'monster_ultra_rosa',
+    name: 'Monster Ultra Rosá',
+    image: 'assets/monster/ultra/rosa.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto frutti di bosco rosa, zero zuccheri.',
+    variants: ['Ultra Rosá']
+  },
+  {
+    id: 'monster_ultra_gold',
+    name: 'Monster Ultra Gold',
+    image: 'assets/monster/ultra/gold.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata dorata, gusto tropicale premium.',
+    variants: ['Ultra Gold']
+  },
+  {
+    id: 'monster_ultra_peachy',
+    name: 'Monster Ultra Peachy Keen',
+    image: 'assets/monster/ultra/peachy.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto pesca, zero zuccheri.',
+    variants: ['Ultra Peachy Keen']
+  },
+  {
+    id: 'monster_ultra_strawberry',
+    name: 'Monster Ultra Strawberry Dreams',
+    image: 'assets/monster/ultra/strawberry.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto fragola e crema, zero zuccheri.',
+    variants: ['Ultra Strawberry Dreams']
+  },
+  {
+    id: 'monster_ultra_ruby',
+    name: 'Monster Ultra Fantasy Ruby Red',
+    image: 'assets/monster/ultra/ruby.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto rubino fruttato, zero zuccheri.',
+    variants: ['Ultra Fantasy Ruby Red']
+  },
+  {
+    id: 'monster_ultra_black',
+    name: 'Monster Ultra Black',
+    image: 'assets/monster/ultra/black.png',
+    series: 'ultra',
+    rarity: 'epic',
+    limited: true,
+    description: 'Edizione limitata nera, gusto ciliegia scura, zero zuccheri.',
+    variants: ['Ultra Black']
+  },
+  {
+    id: 'monster_ultra_guava',
+    name: 'Monster Ultra Guava Vice',
+    image: 'assets/monster/ultra/guava.png',
+    series: 'ultra',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto guava, zero zuccheri. Tropicale.',
+    variants: ['Ultra Guava Vice']
+  },
+  {
+    id: 'monster_ultra_pineapple',
+    name: 'Monster Ultra Pineapple',
+    image: 'assets/monster/ultra/pineapple.png',
+    series: 'ultra',
+    rarity: 'epic',
+    limited: true,
+    description: 'Edizione limitata all\'ananas, zero zuccheri.',
+    variants: ['Ultra Pineapple']
+  },
+  {
+	  id: 'monster_ultra_blue_hawaiian',
+	  name: 'Monster Ultra Blue Hawaiian',
+	  image: 'assets/monster/ultra/blue-hawaiian.png',
+	  series: 'ultra',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Gusto tropicale hawaiano, zero zuccheri.',
+	  variants: ['Ultra Blue Hawaiian']
+  },
+  {
+	  id: 'monster_ultra_punk_punch',
+	  name: 'Monster Ultra Punk Punch',
+	  image: 'assets/monster/ultra/punk-punch.png',
+	  series: 'ultra',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Gusto punch punk, zero zuccheri.',
+	  variants: ['Ultra Punk Punch']
+  },
+  {
+	  id: 'monster_ultra_red_white_blue_razz',
+	  name: 'Monster Ultra Red White & Blue Razz',
+	  image: 'assets/monster/ultra/red-white-blue-razz.png',
+	  series: 'ultra',
+	  rarity: 'rare',
+	  limited: true,
+	  description: 'Edizione limitata con gusto lampone.',
+	  variants: ['Ultra Red White & Blue Razz']
+  },
+  {
+	  id: 'monster_ultra_wild_passion',
+	  name: 'Monster Ultra Wild Passion',
+	  image: 'assets/monster/ultra/wild-passion.png',
+	  series: 'ultra',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Gusto passion fruit e agrumi, zero zuccheri.',
+	  variants: ['Ultra Wild Passion']
+  },
+
+  // ============ JUICE ============
+  {
+    id: 'monster_juice_mango',
+    name: 'Monster Mango Loco',
+    image: 'assets/monster/juice/mango-loco.png',
+    series: 'juice',
+    rarity: 'common',
+    limited: false,
+    description: 'Succo di mango con una carica di energia.',
+    variants: ['Mango Loco', 'Call of Duty']
+  },
+  {
+    id: 'monster_juice_pacific',
+    name: 'Monster Pacific Punch',
+    image: 'assets/monster/juice/pacific-punch.png',
+    series: 'juice',
+    rarity: 'common',
+    limited: false,
+    description: 'Gusto punch tropicale, come un viaggio nel Pacifico.',
+    variants: ['Pacific Punch']
+  },
+  {
+    id: 'monster_juice_pipeline',
+    name: 'Monster Pipeline Punch',
+    image: 'assets/monster/juice/pipeline-punch.png',
+    series: 'juice',
+    rarity: 'common',
+    limited: false,
+    description: 'Il gusto delle Hawaii, frutta tropicale e energia.',
+    variants: ['Pipeline Punch']
+  },
+  {
+    id: 'monster_juice_khaotic',
+    name: 'Monster Khaotic',
+    image: 'assets/monster/juice/khaotic.png',
+    series: 'juice',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Gusto arancia, passione e frutta tropicale.',
+    variants: ['Khaotic']
+  },
+  {
+    id: 'monster_juice_papillon',
+    name: 'Monster Papillon (Monarch)',
+    image: 'assets/monster/juice/papillon.png',
+    series: 'juice',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata farfalla. Gusto fruttato esotico.',
+    variants: ['Papillon']
+  },
+  {
+    id: 'monster_juice_aussie',
+    name: 'Monster Aussie Lemonade',
+    image: 'assets/monster/juice/aussie-lemonade.png',
+    series: 'juice',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Limonata australiana con una carica di energia.',
+    variants: ['Aussie Lemonade']
+  },
+  {
+    id: 'monster_juice_bad_apple',
+    name: 'Monster Bad Apple',
+    image: 'assets/monster/juice/bad-apple.png',
+    series: 'juice',
+    rarity: 'rare',
+    limited: true,
+    description: 'Gusto mela asprigna, edizione limitata.',
+    variants: ['Bad Apple']
+  },
+  {
+    id: 'monster_juice_rio',
+    name: 'Monster Rio Punch',
+    image: 'assets/monster/juice/rio-punch.png',
+    series: 'juice',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto punch ispirato a Rio de Janeiro.',
+    variants: ['Rio Punch']
+  },
+  {
+    id: 'monster_juice_viking',
+    name: 'Monster Viking Berry',
+    image: 'assets/monster/juice/viking-berry.png',
+    series: 'juice',
+    rarity: 'rare',
+    limited: false,
+    description: 'Gusto frutti di bosco nordici, ispirato ai vichinghi.',
+    variants: ['Viking Berry']
+  },
+  {
+    id: 'monster_juice_mariposa',
+    name: 'Monster Mariposa',
+    image: 'assets/monster/juice/mariposa.png',
+    series: 'juice',
+    rarity: 'epic',
+    limited: true,
+    description: 'Edizione limitata farfalla, gusto fruttato esotico.',
+    variants: ['Mariposa']
+  },
+  {
+	  id: 'monster_juice_strawberry_lemonade',
+	  name: 'Monster Strawberry Lemonade',
+	  image: 'assets/monster/juice/strawberry-lemonade.png',
+	  series: 'juice',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Limonata alla fragola con una carica di energia.',
+	  variants: ['Strawberry Lemonade']
+  },
+  {
+	  id: 'monster_juice_voodoo_grape',
+	  name: 'Monster Voodoo Grape',
+	  image: 'assets/monster/juice/voodoo-grape.png',
+	  series: 'juice',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Gusto uva voodoo, fresco e fruttato.',
+	  variants: ['Voodoo Grape']
+  },
+  {
+	  id: 'monster_juice_mixxd_punch',
+	  name: 'Monster Mixxd Punch',
+	  image: 'assets/monster/juice/mixxd-punch.png',
+	  series: 'juice',
+	  rarity: 'common',
+	  limited: false,
+	  description: 'Punch fruttato, molto popolare in Europa.',
+	  variants: ['Mixxd Punch']
+  },
+  {
+	  id: 'monster_juice_ripper',
+	  name: 'Monster Ripper',
+	  image: 'assets/monster/juice/ripper.png',
+	  series: 'juice',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Gusto tropicale esplosivo.',
+	  variants: ['Ripper']
+  },
+
+  // ============ JAVA ============
+  {
+    id: 'monster_java_mean_bean',
+    name: 'Monster Java Mean Bean',
+    image: 'assets/monster/java/mean-bean.png',
+    series: 'java',
+    rarity: 'common',
+    limited: false,
+    description: 'Caffè e latte, la combinazione perfetta per la mattina.',
+    variants: ['Mean Bean']
+  },
+  {
+    id: 'monster_java_loca_moca',
+    name: 'Monster Java Loca Moca',
+    image: 'assets/monster/java/loca-moca.png',
+    series: 'java',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Caffè con cioccolato e latte.',
+    variants: ['Loca Moca']
+  },
+  {
+    id: 'monster_java_salted',
+    name: 'Monster Java Salted Caramel',
+    image: 'assets/monster/java/salted-caramel.png',
+    series: 'java',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Caffè con caramello salato e latte.',
+    variants: ['Salted Caramel']
+  },
+  {
+    id: 'monster_java_irish',
+    name: 'Monster Java Irish Crème',
+    image: 'assets/monster/java/irish-creme.png',
+    series: 'java',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata, caffè con crema irlandese.',
+    variants: ['Irish Crème']
+  },
+  {
+    id: 'monster_java_kona',
+    name: 'Monster Java Kona Blend',
+    image: 'assets/monster/java/kona-blend.png',
+    series: 'java',
+    rarity: 'rare',
+    limited: false,
+    description: 'Miscela di caffè Kona hawaiano.',
+    variants: ['Kona Blend']
+  },
+  {
+	  id: 'monster_java_french_vanilla_300',
+	  name: 'Java Monster 300 French Vanilla',
+	  image: 'assets/monster/java/french-vanilla-300.png',
+	  series: 'java',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Caffè francese vaniglia con 300mg di caffeina.',
+	  variants: ['French Vanilla 300']
+  },
+  {
+	  id: 'monster_java_cafe_latte',
+	  name: 'Java Monster Café Latte',
+	  image: 'assets/monster/java/cafe-latte.png',
+	  series: 'java',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Caffè latte cremoso e energizzante.',
+	  variants: ['Café Latte']
+  },
+
+  // ============ REHAB ============
+  {
+    id: 'monster_rehab_lemonade',
+    name: 'Monster Rehab Lemonade',
+    image: 'assets/monster/rehab/lemonade.png',
+    series: 'rehab',
+    rarity: 'common',
+    limited: false,
+    description: 'Limonata con elettroliti e tè verde.',
+    variants: ['Lemonade']
+  },
+  {
+    id: 'monster_rehab_peach',
+    name: 'Monster Rehab Peach Tea',
+    image: 'assets/monster/rehab/peach-tea.png',
+    series: 'rehab',
+    rarity: 'common',
+    limited: false,
+    description: 'Tè alla pesca con elettroliti.',
+    variants: ['Peach Tea']
+  },
+  {
+    id: 'monster_rehab_green',
+    name: 'Monster Rehab Green Tea',
+    image: 'assets/monster/rehab/green-tea.png',
+    series: 'rehab',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Tè verde con elettroliti, leggero e dissetante.',
+    variants: ['Green Tea']
+  },
+  {
+    id: 'monster_rehab_berry',
+    name: 'Monster Rehab Wild Berry Tea',
+    image: 'assets/monster/rehab/wild-berry.png',
+    series: 'rehab',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata, tè ai frutti di bosco.',
+    variants: ['Wild Berry Tea']
+  },
+
+  // ============ RESERVE ============
+  {
+    id: 'monster_reserve_white_pineapple',
+    name: 'Monster White Pineapple',
+    image: 'assets/monster/reserve/white-pineapple.png',
+    series: 'reserve',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata all\'ananas bianco. Fresca e tropicale.',
+    variants: ['White Pineapple']
+  },
+  {
+    id: 'monster_reserve_watermelon',
+    name: 'Monster Reserve Watermelon',
+    image: 'assets/monster/reserve/watermelon.png',
+    series: 'reserve',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata al cocomero. Estiva e rinfrescante.',
+    variants: ['Watermelon']
+  },
+  {
+    id: 'monster_reserve_orange',
+    name: 'Monster Reserve Orange Dreamsicle',
+    image: 'assets/monster/reserve/orange.png',
+    series: 'reserve',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata, gusto arancia e crema.',
+    variants: ['Orange Dreamsicle']
+  },
+  {
+    id: 'monster_reserve_peaches',
+    name: 'Monster Reserve Peaches n\' Crème',
+    image: 'assets/monster/reserve/peaches-creme.png',
+    series: 'reserve',
+    rarity: 'epic',
+    limited: true,
+    description: 'Edizione limitata, pesca e crema. Dolce e cremosa.',
+    variants: ['Peaches n\' Crème']
+  },
+  {
+	  id: 'monster_reserve_kiwi_strawberry',
+	  name: 'Monster Reserve Kiwi Strawberry',
+	  image: 'assets/monster/reserve/kiwi-strawberry.png',
+	  series: 'reserve',
+	  rarity: 'rare',
+	  limited: true,
+	  description: 'Edizione limitata kiwi e fragola.',
+	  variants: ['Kiwi Strawberry']
+  },
+
+  // ============ SPECIAL / SPONSOR ============
+  {
+    id: 'monster_vr46',
+    name: 'Monster VR46 The Doctor',
+    image: 'assets/monster/special/vr46.png',
+    series: 'special',
+    rarity: 'legendary',
+    limited: true,
+    description: 'Edizione celebrativa del pilota Valentino Rossi.',
+    variants: ['VR46', 'VR46 Zero Sugar']
+  },
+  {
+    id: 'monster_lando',
+    name: 'Monster Lando Norris',
+    image: 'assets/monster/special/lando.webp',
+    series: 'special',
+    rarity: 'legendary',
+    limited: true,
+    description: 'Edizione dedicata al pilota di F1 Lando Norris.',
+    variants: ['Lando Norris', 'Lando Norris Gold Edition']
+  },
+  {
+    id: 'monster_lewis',
+    name: 'Monster Lewis Hamilton',
+    image: 'assets/monster/special/lewis.png',
+    series: 'special',
+    rarity: 'legendary',
+    limited: true,
+    description: 'Edizione UK dedicata a Lewis Hamilton. Gusto esclusivo.',
+    variants: ['Lewis Hamilton']
+  },
+  {
+    id: 'monster_pink',
+    name: 'Monster Pink',
+    image: 'assets/monster/special/pink.png',
+    series: 'special',
+    rarity: 'legendary',
+    limited: true,
+    description: 'Edizione limitata rosa, gusto fragola e crema. Molto rara!',
+    variants: ['Pink']
+  },
+  {
+    id: 'monster_gold',
+    name: 'Monster Gold',
+    image: 'assets/monster/special/gold.png',
+    series: 'special',
+    rarity: 'legendary',
+    limited: true,
+    description: 'Lattina dorata, edizione celebrativa. Gusto tropicale premium.',
+    variants: ['Gold']
+  },
+  {
+    id: 'monster_blue',
+    name: 'Monster Blue Ice',
+    image: 'assets/monster/special/blue.png',
+    series: 'special',
+    rarity: 'epic',
+    limited: true,
+    description: 'Lattina blu, gusto mirtillo e frutti di bosco.',
+    variants: ['Blue Ice']
+  },
+  {
+	  id: 'monster_vr46_zero_sugar',
+	  name: 'Monster VR46 Zero Sugar',
+	  image: 'assets/monster/special/vr46-zero-sugar.png',
+	  series: 'special',
+	  rarity: 'legendary',
+	  limited: true,
+	  description: 'Edizione Valentino Rossi, zero zuccheri.',
+	  variants: ['VR46 Zero Sugar']
+  },
+  {
+	  id: 'monster_lando_gold',
+	  name: 'Monster Lando Norris Zero Sugar Gold Edition',
+	  image: 'assets/monster/special/lando-gold.png',
+	  series: 'special',
+	  rarity: 'legendary',
+	  limited: true,
+	  description: 'Edizione limitata Lando Norris in lattina dorata.',
+	  variants: ['Lando Norris Gold']
+  },
+  {
+	  id: 'monster_oscar_piastri',
+	  name: 'Monster Oscar Piastri',
+	  image: 'assets/monster/special/oscar-piastri.png',
+	  series: 'special',
+	  rarity: 'legendary',
+	  limited: true,
+	  description: 'NUOVO 2026! Edizione limitata per Oscar Piastri.',
+	  variants: ['Oscar Piastri']
+  },
+  
+  // ============ HYDRO ============
+  {
+	  id: 'monster_hydro_blue_ice',
+	  name: 'Monster Hydro Blue Ice',
+	  image: 'assets/monster/hydro/blue-ice.png',
+	  series: 'hydro',
+	  rarity: 'common',
+	  limited: false,
+	  description: 'Acqua con elettroliti e gusto ghiaccio blu.',
+	  variants: ['Blue Ice']
+  },
+  {
+	  id: 'monster_hydro_watermelon',
+	  name: 'Monster Hydro Watermelon',
+	  image: 'assets/monster/hydro/watermelon.png',
+	  series: 'hydro',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Acqua con elettroliti e gusto cocomero.',
+	  variants: ['Watermelon']
+  },
+  {
+	  id: 'monster_hydro_purple_passion',
+	  name: 'Monster Hydro Purple Passion',
+	  image: 'assets/monster/hydro/purple-passion.png',
+	  series: 'hydro',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Acqua con elettroliti e passione viola.',
+	  variants: ['Purple Passion']
+  },
+  {
+	  id: 'monster_hydro_tropical_thunder',
+	  name: 'Monster Hydro Tropical Thunder',
+	  image: 'assets/monster/hydro/tropical-thunder.png',
+	  series: 'hydro',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Acqua con elettroliti e gusto tropicale.',
+	  variants: ['Tropical Thunder']
+  },
+  {
+	  id: 'monster_hydro_zero_sugar',
+	  name: 'Monster Hydro Zero Sugar',
+	  image: 'assets/monster/hydro/zero-sugar.png',
+	  series: 'hydro',
+	  rarity: 'common',
+	  limited: false,
+	  description: 'Acqua con elettroliti, zero zuccheri.',
+	  variants: ['Zero Sugar']
+  },
+  {
+	  id: 'monster_hydro_blue_streak',
+	  name: 'Monster Hydro Blue Streak',
+	  image: 'assets/monster/hydro/blue-streak.png',
+	  series: 'hydro',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Acqua con elettroliti e gusto lampone.',
+	  variants: ['Blue Streak']
+  },
+  {
+	  id: 'monster_hydro_killer_kiwi',
+	  name: 'Monster Hydro Killer Kiwi',
+	  image: 'assets/monster/hydro/killer-kiwi.png',
+	  series: 'hydro',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Acqua con elettroliti e gusto kiwi.',
+	  variants: ['Killer Kiwi']
+  },
+  {
+	  id: 'monster_hydro_macho_mango',
+	  name: 'Monster Hydro Macho Mango',
+	  image: 'assets/monster/hydro/macho-mango.png',
+	  series: 'hydro',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Acqua con elettroliti e gusto mango.',
+	  variants: ['Macho Mango']
+  },
+  {
+	  id: 'monster_hydro_red_dawg',
+	  name: 'Monster Hydro Red Dawg',
+	  image: 'assets/monster/hydro/red-dawg.png',
+	  series: 'hydro',
+	  rarity: 'epic',
+	  limited: true,
+	  description: 'Edizione limitata, gusto frutti rossi.',
+	  variants: ['Red Dawg']
+  },
+
+  // ============ MUSCLE ============
+  {
+    id: 'monster_muscle_chocolate',
+    name: 'Monster Muscle Chocolate',
+    image: 'assets/monster/muscle/chocolate.png',
+    series: 'muscle',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Shake proteico al cioccolato con caffeina.',
+    variants: ['Chocolate']
+  },
+  {
+    id: 'monster_muscle_vanilla',
+    name: 'Monster Muscle Vanilla',
+    image: 'assets/monster/muscle/vanilla.png',
+    series: 'muscle',
+    rarity: 'uncommon',
+    limited: false,
+    description: 'Shake proteico alla vaniglia con caffeina.',
+    variants: ['Vanilla']
+  },
+  {
+    id: 'monster_muscle_strawberry',
+    name: 'Monster Muscle Strawberry',
+    image: 'assets/monster/muscle/strawberry.png',
+    series: 'muscle',
+    rarity: 'rare',
+    limited: true,
+    description: 'Edizione limitata, shake proteico alla fragola.',
+    variants: ['Strawberry']
+  },
+
+  // ============ BEAST UNLEASHED ============
+  {
+	  id: 'monster_beast_mean_green',
+	  name: 'Beast Unleashed Mean Green',
+	  image: 'assets/monster/beast/mean-green.png',
+	  series: 'beast',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto mela verde.',
+	  variants: ['Mean Green']
+  },
+  {
+	  id: 'monster_beast_white_haze',
+	  name: 'Beast Unleashed White Haze',
+	  image: 'assets/monster/beast/white-haze.png',
+	  series: 'beast',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto agrumi bianco.',
+	  variants: ['White Haze']
+  },
+  {
+	  id: 'monster_beast_peach_perfect',
+	  name: 'Beast Unleashed Peach Perfect',
+	  image: 'assets/monster/beast/peach-perfect.png',
+	  series: 'beast',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto pesca perfetta.',
+	  variants: ['Peach Perfect']
+  },
+  {
+	  id: 'monster_beast_scary_berries',
+	  name: 'Beast Unleashed Scary Berries',
+	  image: 'assets/monster/beast/scary-berries.png',
+	  series: 'beast',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto frutti di bosco.',
+	  variants: ['Scary Berries']
+  },
+  {
+	  id: 'monster_beast_killer_sunrise',
+	  name: 'Beast Unleashed Killer Sunrise',
+	  image: 'assets/monster/beast/killer-sunrise.png',
+	  series: 'beast',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto alba tropicale.',
+	  variants: ['Killer Sunrise']
+  },
+  {
+	  id: 'monster_beast_pink_poison',
+	  name: 'Beast Unleashed Pink Poison',
+	  image: 'assets/monster/beast/pink-poison.png',
+	  series: 'beast',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto rosa velenoso.',
+	  variants: ['Pink Poison']
+  },
+  {
+	  id: 'monster_beast_gnarly_grape',
+	  name: 'Beast Unleashed Gnarly Grape',
+	  image: 'assets/monster/beast/gnarly-grape.png',
+	  series: 'beast',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Beast Unleashed al gusto uva.',
+	  variants: ['Gnarly Grape']
+  },
+
+	// ============ NASTY BEAST ============
+  {
+	  id: 'monster_nasty_original',
+	  name: 'Nasty Beast Original',
+	  image: 'assets/monster/beast/nasty-original.png',
+	  series: 'beast',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Nasty Beast, versione alcolica originale.',
+	  variants: ['Original']
+  },
+  {
+	  id: 'monster_nasty_tea_lemonade',
+	  name: 'Nasty Beast Tea + Lemonade',
+	  image: 'assets/monster/beast/nasty-tea-lemonade.png',
+	  series: 'beast',
+	  rarity: 'uncommon',
+	  limited: false,
+	  description: 'Nasty Beast al tè e limonata.',
+	  variants: ['Tea + Lemonade']
+  },
+  {
+	  id: 'monster_nasty_peach',
+	  name: 'Nasty Beast Peach',
+	  image: 'assets/monster/beast/nasty-peach.png',
+	  series: 'beast',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Nasty Beast al gusto pesca.',
+	  variants: ['Peach']
+  },
+  {
+	  id: 'monster_nasty_green_tea',
+	  name: 'Nasty Beast Green Tea',
+	  image: 'assets/monster/beast/nasty-green-tea.png',
+	  series: 'beast',
+	  rarity: 'rare',
+	  limited: false,
+	  description: 'Nasty Beast al tè verde.',
+	  variants: ['Green Tea']
+  },
+
+  // ============ DRAGON TEA (DISCONTINUED - fuori produzione) ============
+  {
+	  id: 'monster_dragon_green',
+	  name: 'Monster Dragon Tea Green',
+	  image: 'assets/monster/dragon/green.png',
+	  series: 'dragon',
+	  rarity: 'epic',
+	  limited: true,
+	  description: 'Tè verde con Dragon Fruit. FUORI PRODUZIONE (marchio cancellato 2025).',
+	  variants: ['Green Tea']
+  },
+  {
+	  id: 'monster_dragon_white',
+	  name: 'Monster Dragon Tea White',
+	  image: 'assets/monster/dragon/white.png',
+	  series: 'dragon',
+	  rarity: 'epic',
+	  limited: true,
+	  description: 'Tè bianco con Dragon Fruit. FUORI PRODUZIONE (marchio cancellato 2025).',
+	  variants: ['White Tea']
+  }
+];
+
+// ============================================================
+//  STORAGE E STATO
+// ============================================================
+
+const STORAGE_KEY = 'monster_tracker_v2';
+
+function defaultState() {
+  const s = {};
+  CANS.forEach(can => {
+    s[can.id] = {
+      variants: can.variants.reduce((a, v) => { 
+        a[v] = { owned: false, rating: 0, notes: '' }; 
+        return a; 
+      }, {}),
+      lastUpdated: null
+    };
+  });
+  return s;
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    const parsed = JSON.parse(raw);
+    const base = defaultState();
+    Object.keys(base).forEach(id => {
+	  if (!parsed[id]) parsed[id] = { variants: {}, lastUpdated: null };
+	  const baseVariants = base[id].variants;
+	  Object.keys(baseVariants).forEach(v => {
+		if (!parsed[id].variants[v] || typeof parsed[id].variants[v] !== 'object') {
+		  parsed[id].variants[v] = { owned: false, rating: 0, notes: '' };
+		}
+        // Assicura i campi
+        if (typeof parsed[id].variants[v].owned !== 'boolean') parsed[id].variants[v].owned = false;
+        if (typeof parsed[id].variants[v].rating !== 'number') parsed[id].variants[v].rating = 0;
+        if (typeof parsed[id].variants[v].notes !== 'string') parsed[id].variants[v].notes = '';
+      });
+    });
+    return parsed;
+  } catch {
+    return defaultState();
+  }
+}
+
+function saveState(s) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+}
+
+let state = loadState();
+
+// ===== MIGRAZIONE DATI VECCHI =====
+function migrateOldState() {
+  let changed = false;
+  CANS.forEach(can => {
+    const st = state[can.id];
+    if (!st) return;
+    // Se le varianti sono booleani invece di oggetti, convertile
+    can.variants.forEach(variant => {
+      if (typeof st.variants[variant] === 'boolean') {
+        const oldValue = st.variants[variant];
+        st.variants[variant] = { owned: oldValue, rating: 0, notes: '' };
+        changed = true;
+      }
+      // Se è un oggetto ma manca owned, aggiungilo
+      else if (typeof st.variants[variant] === 'object' && st.variants[variant] !== null) {
+        if (typeof st.variants[variant].owned !== 'boolean') {
+          st.variants[variant].owned = false;
+          changed = true;
+        }
+        if (typeof st.variants[variant].rating !== 'number') {
+          st.variants[variant].rating = 0;
+          changed = true;
+        }
+        if (typeof st.variants[variant].notes !== 'string') {
+          st.variants[variant].notes = '';
+          changed = true;
+        }
+      }
+    });
+  });
+  if (changed) {
+    saveState(state);
+    console.log('🔄 Migrazione completata! I dati vecchi sono stati convertiti.');
+  }
+  return state;
+}
+
+// Esegui la migrazione
+migrateOldState();
+
+// ============================================================
+//  UI HELPERS
+// ============================================================
+
+function showToast(msg) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; }, 1800);
+  setTimeout(() => t.remove(), 2200);
+}
+
+function showConfirm(message) {
+  return new Promise(resolve => {
+    const backdrop = document.getElementById('confirm-backdrop');
+    const msg = document.getElementById('confirm-message');
+    const ok = document.getElementById('confirm-ok');
+    const cancel = document.getElementById('confirm-cancel');
+    msg.textContent = message;
+    backdrop.style.display = 'flex';
+    function cleanup(result) {
+      backdrop.style.display = 'none';
+      ok.removeEventListener('click', onOk);
+      cancel.removeEventListener('click', onCancel);
+      resolve(result);
+    }
+    function onOk() { cleanup(true); }
+    function onCancel() { cleanup(false); }
+    ok.addEventListener('click', onOk);
+    cancel.addEventListener('click', onCancel);
+  });
+}
+
+function getVariantCount(can) {
+  const st = state[can.id];
+  if (!st) return { owned: 0, total: can.variants.length };
+  const owned = can.variants.filter(v => st.variants[v] && st.variants[v].owned).length;
+  return { owned, total: can.variants.length };
+}
+
+function getLimitedCount() {
+  return CANS.filter(c => c.limited).length;
+}
+
+function getOwnedLimited() {
+  return CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => state[c.id].variants[v])).length;
+}
+
+// ============================================================
+//  RENDER SIDEBAR
+// ============================================================
+
+function renderSidebar() {
+  const list = document.getElementById('sidebar-list');
+  const search = document.getElementById('search-input').value.toLowerCase();
+  const rarity = document.getElementById('filter-rarity').value;
+  const series = document.getElementById('filter-series').value;
+  const onlyOwned = document.getElementById('toggle-owned').checked;
+  const onlyLimited = document.getElementById('toggle-limited').checked;
+
+  let filtered = CANS.filter(can => {
+    if (search && !can.name.toLowerCase().includes(search) && !can.id.toLowerCase().includes(search)) return false;
+    if (rarity !== 'all' && can.rarity !== rarity) return false;
+    if (series !== 'all' && can.series !== series) return false;
+    if (onlyOwned) {
+	  const st = state[can.id];
+	  if (!st || !can.variants.some(v => st.variants[v] && st.variants[v].owned)) return false;
+	}
+    if (onlyLimited && !can.limited) return false;
+    return true;
+  });
+
+  list.innerHTML = '';
+  let totalOwned = 0, totalVariants = 0;
+
+  filtered.forEach(can => {
+    const { owned, total } = getVariantCount(can);
+    totalOwned += owned;
+    totalVariants += total;
+    const idx = CANS.indexOf(can);
+    const item = document.createElement('div');
+    item.className = 'can-item';
+    if (idx === currentIndex) item.classList.add('active');
+    item.classList.add(`rarity-${can.rarity}`);
+
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    const img = document.createElement('img');
+	img.src = can.image || 'assets/monster/classic.png';
+	img.onerror = function() {
+	  // Fallback con un'immagine placeholder
+	  this.src = 'assets/monster/classic.png';
+	};
+	thumb.appendChild(img);
+
+    const info = document.createElement('div');
+    info.className = 'info';
+    const name = document.createElement('div');
+    name.className = 'name';
+    name.textContent = can.name;
+    if (can.limited) {
+      const badge = document.createElement('span');
+      badge.className = 'badge-limited';
+      badge.textContent = '⭐';
+      name.appendChild(badge);
+    }
+    const sub = document.createElement('div');
+    sub.className = 'sub';
+    sub.textContent = `${can.variants.length} varianti · ${can.series}`;
+
+    const prog = document.createElement('div');
+    prog.className = 'progress';
+    prog.textContent = `${owned}/${total}`;
+
+    info.appendChild(name);
+    info.appendChild(sub);
+    item.appendChild(thumb);
+    item.appendChild(info);
+    item.appendChild(prog);
+
+    item.addEventListener('click', () => {
+      selectIndex(idx);
+    });
+
+    list.appendChild(item);
+  });
+
+  document.getElementById('sidebar-count').textContent = `${totalOwned} / ${totalVariants}`;
+  const limitedOwned = CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => state[c.id].variants[v])).length;
+  document.getElementById('sidebar-limited').textContent = `⭐ ${limitedOwned}`;
+  document.getElementById('footer-stats').textContent = `Lattine: ${filtered.length} • Varianti: ${totalVariants}`;
+  document.getElementById('footer-limited').textContent = `⭐ Limited: ${limitedOwned}`;
+}
+
+// ============================================================
+//  SELECT INDEX
+// ============================================================
+
+let currentIndex = 0;
+
+function selectIndex(idx) {
+  currentIndex = (idx + CANS.length) % CANS.length;
+  const can = CANS[currentIndex];
+  const st = state[can.id];
+
+  // Aggiorna sidebar
+  document.querySelectorAll('.can-item').forEach(el => el.classList.remove('active'));
+  const items = document.querySelectorAll('.can-item');
+  if (items[currentIndex]) items[currentIndex].classList.add('active');
+
+  // Nome
+  document.getElementById('main-name').textContent = can.name;
+  if (can.limited) {
+    document.getElementById('main-limited').style.display = 'block';
+  } else {
+    document.getElementById('main-limited').style.display = 'none';
+  }
+
+  // Immagine
+  const mainImg = document.getElementById('main-image');
+  mainImg.src = can.image || 'assets/monster/classic.png';
+  mainImg.onerror = () => { mainImg.src = 'assets/monster/classic.png'; };
+
+  // Rarità (badge più evidente)
+  const rarityMap = {
+    common: 'Comune',
+    uncommon: 'Non comune',
+    rare: 'Epico',
+    epic: 'Leggendario',
+    legendary: 'Mitico'
+  };
+  const tag = document.getElementById('main-rarity');
+  tag.textContent = rarityMap[can.rarity] || can.rarity.toUpperCase();
+  const colors = {
+    common: '#6b7280',
+    uncommon: '#4FC3FF',
+    rare: '#A855F7',
+    epic: '#FF6B3D',
+    legendary: '#FFD34D'
+  };
+  tag.style.borderColor = colors[can.rarity] || '#fff';
+  tag.style.color = colors[can.rarity] || '#fff';
+  tag.style.boxShadow = `0 4px 16px ${colors[can.rarity]}44`;
+
+  // Progresso
+  const { owned, total } = getVariantCount(can);
+  const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
+  document.getElementById('main-percent').textContent = percent + '%';
+  document.getElementById('main-fill').style.width = percent + '%';
+  document.getElementById('main-count').textContent = `${owned} / ${total}`;
+
+  // Serie
+  const seriesLabels = {
+    classic: 'Classic',
+    ultra: 'Ultra',
+    juice: 'Juice',
+    java: 'Java (Caffè)',
+    rehab: 'Rehab',
+    reserve: 'Reserve',
+    special: 'Special Edition',
+    hydro: 'Hydro',
+    muscle: 'Muscle',
+    beast: 'Beast Unleashed',
+    dragon: 'Dragon Tea'
+  };
+  document.getElementById('main-series-label').textContent = seriesLabels[can.series] || can.series;
+	
+  // Note
+  const notesEl = document.getElementById('main-notes');
+
+  // Usa la variante selezionata corrente (se non esiste, usa la prima)
+  let currentVariant = window.selectedVariant || can.variants[0];
+  notesEl.textContent = st.variants[currentVariant]?.notes || '';
+
+   // Descrizione
+   const descEl = document.getElementById('main-desc');
+	descEl.textContent = can.description || '—';
+
+	// Valutazione
+	updateRatingDisplay(currentVariant);
+	
+	// Varianti
+	renderVariants(can);
+}
+
+// ============================================================
+//  RATING STARS
+// ============================================================
+
+function updateRatingDisplay(variant) {
+  const can = CANS[currentIndex];
+  const st = state[can.id];
+  const rating = st.variants[variant]?.rating || 0;
+  const stars = document.querySelectorAll('#rating-stars .star');
+  stars.forEach((star, index) => {
+    const value = index + 1;
+    if (rating >= value) {
+      star.textContent = '★';
+      star.classList.add('active');
+      star.classList.remove('half');
+    } else if (rating >= value - 0.5) {
+      star.textContent = '★';
+      star.classList.add('half');
+      star.classList.remove('active');
+    } else {
+      star.textContent = '☆';
+      star.classList.remove('active', 'half');
+    }
+  });
+  document.getElementById('rating-text').textContent = rating > 0 ? rating.toFixed(1) : '—';
+}
+
+function setRating(variant, value) {
+  const can = CANS[currentIndex];
+  const st = state[can.id];
+  if (st.variants[variant].rating === value) {
+    st.variants[variant].rating = 0;
+  } else {
+    st.variants[variant].rating = value;
+  }
+  saveState(state);
+  updateRatingDisplay(variant);
+  if (document.getElementById('grid-view').classList.contains('active')) buildGridView();
+}
+
+document.querySelectorAll('#rating-stars .star').forEach(star => {
+  star.addEventListener('click', () => {
+    const val = parseFloat(star.dataset.value);
+    const can = CANS[currentIndex];
+    if (!can) return;
+    const variant = window.selectedVariant || can.variants[0];
+    setRating(variant, val);
+    playClickSound();
+  });
+
+  star.addEventListener('mouseenter', () => {
+    const val = parseFloat(star.dataset.value);
+    const stars = document.querySelectorAll('#rating-stars .star');
+    stars.forEach((s, i) => {
+      if (i < val) {
+        s.textContent = '★';
+        s.style.color = '#ffd166';
+      } else {
+        s.textContent = '☆';
+        s.style.color = '#444';
+      }
+    });
+  });
+
+  star.addEventListener('mouseleave', () => {
+    const can = CANS[currentIndex];
+    if (!can) return;
+    const variant = window.selectedVariant || can.variants[0];
+    updateRatingDisplay(variant);
+  });
+});
+
+let notesEditing = false;
+
+document.getElementById('edit-notes-btn').addEventListener('click', () => {
+  const notes = document.getElementById('main-notes');
+  notesEditing = !notesEditing;
+  if (notesEditing) {
+    notes.contentEditable = 'true';
+    notes.focus();
+    document.getElementById('edit-notes-btn').textContent = '💾 Salva';
+    document.getElementById('edit-notes-btn').style.color = '#00ff41';
+  } else {
+    notes.contentEditable = 'false';
+    const can = CANS[currentIndex];
+    const variant = window.selectedVariant || can?.variants[0];
+    if (can && variant) {
+      state[can.id].variants[variant].notes = notes.textContent;
+      saveState(state);
+    }
+    document.getElementById('edit-notes-btn').textContent = '✏️ Modifica';
+    document.getElementById('edit-notes-btn').style.color = '';
+    showToast('✅ Note salvate!');
+  }
+});
+
+document.getElementById('main-notes').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && notesEditing) {
+    e.preventDefault();
+    document.getElementById('edit-notes-btn').click();
+  }
+});
+
+// ============================================================
+//  RENDER VARIANTS (con HOVER per cambiare immagine)
+// ============================================================
+
+function renderVariants(can) {
+  const grid = document.getElementById('variants-grid');
+  grid.innerHTML = '';
+  const st = state[can.id];
+  const mainImg = document.getElementById('main-image');
+
+  function getVariantImage(variant) {
+    if (can.variantImages && can.variantImages[variant]) {
+      return can.variantImages[variant];
+    }
+    const base = can.image.replace(/\.(png|webp|jpg|jpeg)$/, '');
+    let suffix = variant.toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+    const specialMap = {
+      'call-of-duty': 'call-of-duty',
+      'zero-sugar': 'zero-sugar',
+      'ultra-white': 'ultra-white',
+      'mango-loco': 'mango-loco',
+      'vr46-zero-sugar': 'vr46-zero-sugar',
+      'lando-norris-gold-edition': 'lando-gold'
+    };
+    suffix = specialMap[suffix] || suffix;
+    const ext = can.image.includes('.webp') ? 'webp' : 'png';
+    return `${base}-${suffix}.${ext}`;
+  }
+
+  // Variabile globale per la variante selezionata (se non esiste, la creiamo)
+  if (typeof window.selectedVariant === 'undefined') {
+    window.selectedVariant = 'basic';
+  }
+
+  can.variants.forEach(variant => {
+    // ORA VARIANTI SONO OGGETTI
+    const variantData = st.variants[variant] || { owned: false, rating: 0, notes: '' };
+    const owned = variantData.owned;
+
+    const btn = document.createElement('button');
+    btn.className = `variant-btn${owned ? ' owned' : ''}`;
+    if (can.limited && owned) btn.classList.add('limited');
+
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+
+    const label = document.createElement('span');
+    label.textContent = variant;
+
+    btn.appendChild(dot);
+    btn.appendChild(label);
+
+    // HOVER
+    btn.addEventListener('mouseenter', () => {
+      const variantImg = getVariantImage(variant);
+      const testImg = new Image();
+      testImg.onload = () => { mainImg.src = variantImg; };
+      testImg.onerror = () => {};
+      testImg.src = variantImg;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      mainImg.src = can.image;
+    });
+
+    // CLICK
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Toggle owned
+      st.variants[variant].owned = !st.variants[variant].owned;
+      saveState(state);
+      playClickSound();
+
+      // Se è stata acquisita, selezionala; altrimenti scegli la prima posseduta
+      if (st.variants[variant].owned) {
+        window.selectedVariant = variant;
+        saveSelectedVariant(can.id, variant);
+        const variantImg = getVariantImage(variant);
+        mainImg.src = variantImg;
+        // Aggiorna note e rating per la variante selezionata
+        const notesEl = document.getElementById('main-notes');
+        notesEl.textContent = st.variants[variant].notes || '';
+        updateRatingDisplay(variant);
+      } else {
+        // Trova la prima variante posseduta
+        let fallback = 'basic';
+        for (const v of can.variants) {
+          if (st.variants[v] && st.variants[v].owned) { fallback = v; break; }
+        }
+        window.selectedVariant = fallback;
+        saveSelectedVariant(can.id, fallback);
+        const variantImg = getVariantImage(fallback);
+        mainImg.src = variantImg;
+        const notesEl = document.getElementById('main-notes');
+        notesEl.textContent = st.variants[fallback]?.notes || '';
+        updateRatingDisplay(fallback);
+      }
+
+      // Ricarica UI
+      selectIndex(currentIndex);
+      renderSidebar();
+      if (document.getElementById('grid-view').classList.contains('active')) {
+        buildGridView();
+      }
+    });
+
+    grid.appendChild(btn);
+  });
+}
+
+// ============================================================
+//  NAVIGATION
+// ============================================================
+
+document.getElementById('prev').addEventListener('click', () => {
+  const filtered = getFilteredCans();
+  if (filtered.length === 0) return;
+  const currentCan = CANS[currentIndex];
+  const idx = filtered.findIndex(c => c.id === currentCan.id);
+  if (idx > 0) {
+    selectIndex(CANS.indexOf(filtered[idx - 1]));
+  } else {
+    selectIndex(CANS.indexOf(filtered[filtered.length - 1]));
+  }
+});
+
+document.getElementById('next').addEventListener('click', () => {
+  const filtered = getFilteredCans();
+  if (filtered.length === 0) return;
+  const currentCan = CANS[currentIndex];
+  const idx = filtered.findIndex(c => c.id === currentCan.id);
+  if (idx < filtered.length - 1) {
+    selectIndex(CANS.indexOf(filtered[idx + 1]));
+  } else {
+    selectIndex(CANS.indexOf(filtered[0]));
+  }
+});
+
+function getFilteredCans() {
+  const search = document.getElementById('search-input').value.toLowerCase();
+  const rarity = document.getElementById('filter-rarity').value;
+  const series = document.getElementById('filter-series').value;
+  const onlyOwned = document.getElementById('toggle-owned').checked;
+  const onlyLimited = document.getElementById('toggle-limited').checked;
+
+  return CANS.filter(can => {
+    if (search && !can.name.toLowerCase().includes(search) && !can.id.toLowerCase().includes(search)) return false;
+    if (rarity !== 'all' && can.rarity !== rarity) return false;
+    if (series !== 'all' && can.series !== series) return false;
+    if (onlyOwned) {
+      const st = state[can.id];
+      if (!st || !can.variants.some(v => st.variants[v])) return false;
+    }
+    if (onlyLimited && !can.limited) return false;
+    return true;
+  });
+}
+
+// ============================================================
+//  FILTERS
+// ============================================================
+
+document.getElementById('search-input').addEventListener('input', () => {
+  renderSidebar();
+  const filtered = getFilteredCans();
+  if (filtered.length > 0) {
+    const currentInFilter = filtered.some(c => c.id === CANS[currentIndex].id);
+    if (!currentInFilter) {
+      selectIndex(CANS.indexOf(filtered[0]));
+    }
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+});
+
+document.getElementById('filter-rarity').addEventListener('change', () => {
+  renderSidebar();
+  const filtered = getFilteredCans();
+  if (filtered.length > 0 && !filtered.some(c => c.id === CANS[currentIndex].id)) {
+    selectIndex(CANS.indexOf(filtered[0]));
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+});
+
+document.getElementById('filter-series').addEventListener('change', () => {
+  renderSidebar();
+  const filtered = getFilteredCans();
+  if (filtered.length > 0 && !filtered.some(c => c.id === CANS[currentIndex].id)) {
+    selectIndex(CANS.indexOf(filtered[0]));
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+});
+
+document.getElementById('toggle-owned').addEventListener('change', () => {
+  renderSidebar();
+  const filtered = getFilteredCans();
+  if (filtered.length > 0 && !filtered.some(c => c.id === CANS[currentIndex].id)) {
+    selectIndex(CANS.indexOf(filtered[0]));
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+});
+
+document.getElementById('toggle-limited').addEventListener('change', () => {
+  renderSidebar();
+  const filtered = getFilteredCans();
+  if (filtered.length > 0 && !filtered.some(c => c.id === CANS[currentIndex].id)) {
+    selectIndex(CANS.indexOf(filtered[0]));
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+});
+
+// ===== TOGGLE SFONDO IMMAGINI =====
+const toggleImageBg = document.getElementById('toggle-image-bg');
+const IMAGE_BG_KEY = 'monster_image_bg';
+
+// Carica lo stato salvato
+const savedImageBg = localStorage.getItem(IMAGE_BG_KEY);
+if (savedImageBg === 'true') {
+  toggleImageBg.checked = true;
+  document.body.classList.add('image-bg-on');
+}
+
+toggleImageBg.addEventListener('change', function() {
+  if (this.checked) {
+    document.body.classList.add('image-bg-on');
+    localStorage.setItem(IMAGE_BG_KEY, 'true');
+  } else {
+    document.body.classList.remove('image-bg-on');
+    localStorage.setItem(IMAGE_BG_KEY, 'false');
+  }
+});
+
+// ============================================================
+//  ACTIONS
+// ============================================================
+
+document.getElementById('acquire-all').addEventListener('click', () => {
+  const can = CANS[currentIndex];
+  const st = state[can.id];
+  can.variants.forEach(v => { st.variants[v] = true; });
+  saveState(state);
+  playClickSound();
+  selectIndex(currentIndex);
+  renderSidebar();
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+  showToast(`✅ Tutte le varianti di ${can.name} acquisite!`);
+});
+
+document.getElementById('clear-all').addEventListener('click', async () => {
+  const can = CANS[currentIndex];
+  const ok = await showConfirm(`Cancellare tutte le varianti di ${can.name}?`);
+  if (!ok) return;
+  const st = state[can.id];
+  can.variants.forEach(v => { st.variants[v] = false; });
+  saveState(state);
+  selectIndex(currentIndex);
+  renderSidebar();
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+  showToast(`🗑️ Varianti di ${can.name} cancellate`);
+});
+
+// ============================================================
+//  SOUND & MUSIC
+// ============================================================
+
+function playClickSound() {
+  const audio = document.getElementById('click-sound');
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
+
+// Gestione musica
+const musicAudio = document.getElementById('bg-music');
+let musicPlaying = false;
+const musicBtn = document.getElementById('btn-music');
+
+musicBtn.addEventListener('click', () => {
+  const gif = document.getElementById('music-gif');
+  if (musicPlaying) {
+    musicAudio.pause();
+    musicPlaying = false;
+    musicBtn.textContent = '🔇 Musica';
+    gif.style.opacity = '0';
+    setTimeout(() => gif.style.display = 'none', 800);
+  } else {
+    musicAudio.play().then(() => {
+      musicPlaying = true;
+      musicBtn.textContent = '🔊 Musica';
+      gif.style.display = 'block';
+      setTimeout(() => gif.style.opacity = '0.3', 50); // 0.3 per non coprire troppo
+    }).catch(() => {
+      showToast('❌ Impossibile riprodurre la musica');
+    });
+  }
+});
+
+// Tasto M per musica
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'm' || e.key === 'M') {
+    if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+      musicBtn.click();
+      e.preventDefault();
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const searchClear = document.getElementById('search-clear');
+
+  if (searchInput && searchClear) {
+    searchInput.addEventListener('input', () => {
+      searchClear.style.display = searchInput.value.length > 0 ? 'inline' : 'none';
+    });
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.focus();
+      renderSidebar();
+      if (document.getElementById('grid-view').classList.contains('active')) {
+        buildGridView();
+      }
+    });
+  }
+});
+
+// ============================================================
+//  GRID VIEW / SCAFFALE
+// ============================================================
+
+let gridMode = false;
+
+document.getElementById('btn-grid-toggle').addEventListener('click', function() {
+  const locker = document.getElementById('locker-view');
+  const grid = document.getElementById('grid-view');
+  
+  // Toggle modalità
+  gridMode = !gridMode;
+  
+  if (gridMode) {
+    // Mostra griglia, nascondi locker
+    locker.style.display = 'none';
+    buildGridView(); // <-- RICOSTRUISCE LA GRIGLIA
+    grid.style.display = 'grid'; // <-- FORZA LA VISUALIZZAZIONE
+    grid.classList.add('active');
+    this.textContent = '📋 Locker';
+    showToast('📦 Vista scaffale');
+  } else {
+    // Mostra locker, nascondi griglia
+    locker.style.display = 'flex';
+    grid.style.display = 'none';
+    grid.classList.remove('active');
+    this.textContent = '📦 Scaffale';
+    showToast('📋 Vista locker');
+    // Ricarica la vista corrente
+    selectIndex(currentIndex);
+  }
+});
+
+function buildGridView() {
+  const grid = document.getElementById('grid-view');
+  grid.innerHTML = '';
+  
+  // USA TUTTE LE LATTINE, SENZA FILTRI
+  const filtered = CANS; // <-- IGNORA I FILTRI PER ORA
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Nessuna lattina trovata</div>`;
+    grid.classList.add('active');
+    return;
+  }
+
+  filtered.forEach(can => {
+    const st = state[can.id] || { variants: {} };
+    const { owned, total } = getVariantCount(can);
+    const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
+
+    const card = document.createElement('div');
+    card.className = 'grid-card';
+
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'grid-image';
+    const img = document.createElement('img');
+    img.src = can.image || 'assets/monster/classic.png';
+    img.onerror = function() {
+      this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"%3E%3Crect width="36" height="48" fill="%230a0a0f" rx="4"/%3E%3Ctext x="18" y="28" font-size="20" text-anchor="middle" fill="%2300ff41" font-family="monospace"%3E🥤%3C/text%3E%3C/svg%3E';
+    };
+    imgDiv.appendChild(img);
+
+    const name = document.createElement('div');
+    name.className = 'grid-name';
+    name.textContent = can.name;
+    if (can.limited) {
+      const badge = document.createElement('span');
+      badge.className = 'grid-limited';
+      badge.textContent = '⭐';
+      name.appendChild(badge);
+    }
+
+    const series = document.createElement('div');
+    series.className = 'grid-series';
+    const seriesLabels = {
+      classic: 'Classic',
+      ultra: 'Ultra',
+      juice: 'Juice',
+      java: 'Java',
+      rehab: 'Rehab',
+      reserve: 'Reserve',
+      special: 'Special',
+      hydro: 'Hydro',
+      muscle: 'Muscle',
+      beast: 'Beast',
+      dragon: 'Dragon'
+    };
+    series.textContent = seriesLabels[can.series] || can.series;
+
+    const prog = document.createElement('div');
+    prog.className = 'grid-progress';
+    const fill = document.createElement('div');
+    fill.className = 'fill';
+    fill.style.width = percent + '%';
+    prog.appendChild(fill);
+
+    // Valutazione (semplice, solo se esiste)
+    const firstVariant = can.variants[0];
+    const rating = st.variants[firstVariant]?.rating || 0;
+    const ratingDiv = document.createElement('div');
+    ratingDiv.style.cssText = 'margin-top:4px;font-size:12px;color:var(--gold);';
+    if (rating > 0) {
+      let stars = '';
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) stars += '★';
+        else if (i - 0.5 <= rating) stars += '★';
+        else stars += '☆';
+      }
+      ratingDiv.textContent = stars + ' ' + rating.toFixed(1);
+    } else {
+      ratingDiv.textContent = '☆☆☆☆☆';
+      ratingDiv.style.color = '#444';
+    }
+
+    card.appendChild(imgDiv);
+    card.appendChild(name);
+    card.appendChild(series);
+    card.appendChild(prog);
+    card.appendChild(ratingDiv);
+
+    card.addEventListener('click', () => {
+      if (gridMode) {
+        gridMode = false;
+        document.getElementById('btn-grid-toggle').click();
+      }
+      selectIndex(CANS.indexOf(can));
+    });
+
+    grid.appendChild(card);
+  });
+
+  grid.classList.add('active');
+}
+
+// ============================================================
+//  STATS
+// ============================================================
+
+document.getElementById('btn-stats').addEventListener('click', () => {
+  const modal = document.getElementById('modal-backdrop');
+  const title = document.getElementById('modal-title');
+  const desc = document.getElementById('modal-description');
+  const content = document.getElementById('modal-content');
+
+  title.textContent = '📊 Statistiche';
+  desc.textContent = 'La tua collezione di Monster Energy';
+
+  let totalCans = CANS.length;
+  let totalVariants = 0;
+  let ownedVariants = 0;
+  let limitedTotal = 0;
+  let ownedLimited = 0;
+  const rarityStats = { common: 0, uncommon: 0, rare: 0, epic: 0, legendary: 0 };
+  const ownedRarity = { common: 0, uncommon: 0, rare: 0, epic: 0, legendary: 0 };
+
+  CANS.forEach(can => {
+    const st = state[can.id];
+    can.variants.forEach(v => {
+      totalVariants++;
+      if (st && st.variants[v]) {
+        ownedVariants++;
+        ownedRarity[can.rarity]++;
+      }
+    });
+    rarityStats[can.rarity]++;
+    if (can.limited) {
+      limitedTotal++;
+      if (can.variants.some(v => st && st.variants[v])) ownedLimited++;
+    }
+  });
+
+  const percent = totalVariants === 0 ? 0 : Math.round((ownedVariants / totalVariants) * 100);
+
+  content.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+      <div style="background:rgba(0,255,65,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(0,255,65,0.04);">
+        <div style="font-size:28px;font-weight:900;color:#00ff41;">${ownedVariants}</div>
+        <div style="color:var(--muted);font-size:13px;">Varianti possedute</div>
+        <div style="color:var(--muted);font-size:11px;">su ${totalVariants} totali</div>
+      </div>
+      <div style="background:rgba(255,215,0,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,215,0,0.04);grid-column:1/2;">
+        <div style="font-size:28px;font-weight:900;color:var(--gold);">${ownedLimited} / ${limitedTotal}</div>
+        <div style="color:var(--muted);font-size:13px;">⭐ Limited Edition</div>
+      </div>
+      <div style="background:rgba(255,215,0,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,215,0,0.04);">
+        <div style="font-size:28px;font-weight:900;color:var(--gold);">${percent}%</div>
+        <div style="color:var(--muted);font-size:13px;">Completamento</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;">
+      <div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px;">Rarità</div>
+      ${['common','uncommon','rare','epic','legendary'].map(r => {
+        const total = rarityStats[r] || 0;
+        const owned = ownedRarity[r] || 0;
+        const p = total === 0 ? 0 : Math.round((owned / total) * 100);
+        const colors = { common:'#6b7280', uncommon:'#4FC3FF', rare:'#A855F7', epic:'#FF6B3D', legendary:'#FFD34D' };
+        const labels = { common:'Comune', uncommon:'Non comune', rare:'Raro', epic:'Epico', legendary:'Leggendario' };
+        return `
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.03);">
+            <span style="width:80px;font-size:12px;color:${colors[r]};font-weight:700;">${labels[r]}</span>
+            <div style="flex:1;height:6px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;">
+              <div style="height:100%;width:${p}%;background:${colors[r]};border-radius:999px;transition:width 0.5s ease;"></div>
+            </div>
+            <span style="font-size:12px;font-weight:700;color:var(--muted);">${owned}/${total}</span>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+  document.getElementById('modal-close').textContent = 'Chiudi';
+  document.getElementById('modal-close').onclick = () => { modal.style.display = 'none'; };
+});
+
+// ============================================================
+//  MENU / EXPORT
+// ============================================================
+
+document.getElementById('btn-menu').addEventListener('click', () => {
+  const modal = document.getElementById('modal-backdrop');
+  document.getElementById('modal-title').textContent = '📋 Menu';
+  document.getElementById('modal-description').textContent = 'Gestisci la tua collezione di Monster';
+  document.getElementById('modal-content').innerHTML = `
+    <div style="margin-top:12px;font-weight:800;">💾 Dati</div>
+    <div class="row">
+      <div class="option" data-action="export-json">📤 Esporta JSON</div>
+      <div class="option" data-action="import-json">📥 Importa JSON</div>
+    </div>
+    <div style="margin-top:12px;font-weight:800;">🖼️ Esporta Immagine</div>
+    <div class="row">
+      <div class="option" data-action="all">📁 Tutta la collezione</div>
+      <div class="option" data-action="current">🎯 Lattina corrente</div>
+    </div>
+    <div style="margin-top:12px;font-weight:800;">🔧 Azioni</div>
+    <div class="row">
+      <div class="option" data-action="reset">🔄 Resetta tutto</div>
+    </div>
+  `;
+  modal.style.display = 'flex';
+
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.onclick = async () => {
+      const action = opt.dataset.action;
+      if (action === 'export-json') exportJSON();
+      else if (action === 'import-json') document.getElementById('file-import').click();
+      else if (action === 'reset') {
+        const ok = await showConfirm('Resettare TUTTA la collezione?');
+        if (ok) {
+          state = defaultState();
+          saveState(state);
+          selectIndex(0);
+          renderSidebar();
+          if (document.getElementById('grid-view').classList.contains('active')) {
+            buildGridView();
+          }
+          showToast('🔄 Collezione resettata');
+          modal.style.display = 'none';
+        }
+      } else if (action === 'all') exportCollectionImage();
+      else if (action === 'current') exportCurrentImage();
+    };
+  });
+
+  document.getElementById('modal-close').textContent = 'Chiudi';
+  document.getElementById('modal-close').onclick = () => { modal.style.display = 'none'; };
+});
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'monster_collection.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  showToast('📤 JSON esportato');
+}
+
+document.getElementById('file-import').addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try {
+      const parsed = JSON.parse(ev.target.result);
+      const base = defaultState();
+      const keys = Object.keys(base);
+      const parsedKeys = Object.keys(parsed);
+      if (!parsedKeys.some(k => keys.includes(k))) {
+        showToast('❌ File JSON non valido');
+        return;
+      }
+      saveState(parsed);
+      state = loadState();
+      selectIndex(0);
+      renderSidebar();
+      if (document.getElementById('grid-view').classList.contains('active')) {
+        buildGridView();
+      }
+      showToast('✅ Import completato');
+    } catch {
+      showToast('❌ Errore parsing JSON');
+    }
+  };
+  r.readAsText(f);
+  e.target.value = '';
+});
+
+// ============================================================
+//  EXPORT IMAGE
+// ============================================================
+
+async function exportCollectionImage() {
+  showToast('📸 Generazione immagine...');
+  const container = document.createElement('div');
+  container.style.cssText = `
+    padding: 24px;
+    background: #0a0a0f;
+    color: #e6e6f0;
+    font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  `;
+
+  const title = document.createElement('div');
+  title.style.cssText = 'font-size:28px;font-weight:900;color:#00ff41;text-align:center;margin-bottom:20px;';
+  title.textContent = '🥤 Monster Collection';
+
+  const grid = document.createElement('div');
+  grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;';
+
+  CANS.forEach(can => {
+    const st = state[can.id];
+    const owned = can.variants.filter(v => st && st.variants[v]).length;
+    const total = can.variants.length;
+    const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
+    const rating = st?.rating || 0;
+
+    const card = document.createElement('div');
+    card.style.cssText = `
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.04);
+    `;
+
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) starsHtml += '★';
+      else if (i - 0.5 <= rating) starsHtml += '★';
+      else starsHtml += '☆';
+    }
+
+    card.innerHTML = `
+      <div style="height:80px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+        <img src="${can.image || 'assets/monster/classic.png'}" style="max-height:100%;max-width:100%;object-fit:contain;" onerror="this.src='assets/monster/classic.png'">
+      </div>
+      <div style="font-weight:700;font-size:13px;">${can.name}${can.limited ? ' ⭐' : ''}</div>
+      <div style="color:var(--muted);font-size:10px;">${can.series}</div>
+      <div style="margin-top:6px;height:4px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;">
+        <div style="height:100%;width:${percent}%;background:#00ff41;border-radius:999px;"></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px;">${owned}/${total}</div>
+      <div style="font-size:12px;color:#ffd166;margin-top:2px;">${starsHtml}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  container.appendChild(title);
+  container.appendChild(grid);
+  document.body.appendChild(container);
+
+  try {
+    const canvas = await html2canvas(container, {
+      scale: 2,
+      backgroundColor: '#0a0a0f',
+      useCORS: true
+    });
+    const link = document.createElement('a');
+    link.download = 'monster_collection.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showToast('🖼️ Immagine esportata');
+  } catch (e) {
+    showToast('❌ Errore esportazione');
+    console.error(e);
+  }
+  container.remove();
+}
+
+async function exportCurrentImage() {
+  showToast('📸 Generazione immagine...');
+  const can = CANS[currentIndex];
+  const st = state[can.id];
+  const owned = can.variants.filter(v => st && st.variants[v]).length;
+  const total = can.variants.length;
+  const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
+  const rating = st?.rating || 0;
+
+  let starsHtml = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= rating) starsHtml += '★';
+    else if (i - 0.5 <= rating) starsHtml += '★';
+    else starsHtml += '☆';
+  }
+
+  const container = document.createElement('div');
+  container.style.cssText = `
+    padding: 32px;
+    background: #0a0a0f;
+    color: #e6e6f0;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    border-radius: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid #00ff41;
+  `;
+
+  container.innerHTML = `
+    <div style="height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">
+      <img src="${can.image || 'assets/monster/classic.png'}" style="max-height:100%;max-width:100%;object-fit:contain;" onerror="this.src='assets/monster/classic.png'">
+    </div>
+    <div style="font-size:24px;font-weight:900;color:#fff;">${can.name}</div>
+    <div style="color:var(--muted);font-size:13px;">${can.series} ${can.limited ? '⭐ Limited' : ''}</div>
+    <div style="margin:12px 0;height:6px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;">
+      <div style="height:100%;width:${percent}%;background:#00ff41;border-radius:999px;"></div>
+    </div>
+    <div style="font-size:16px;color:#00ff41;">${owned} / ${total} varianti</div>
+    <div style="font-size:18px;color:#ffd166;margin-top:4px;">${starsHtml}</div>
+    <div style="margin-top:8px;font-size:12px;color:var(--muted);">${st?.description || can.description || '—'}</div>
+    <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;">
+      ${can.variants.map(v => `
+        <span style="background:${st && st.variants[v] ? 'rgba(0,255,65,0.15)' : 'rgba(255,255,255,0.03)'};padding:4px 10px;border-radius:6px;font-size:11px;border:1px solid ${st && st.variants[v] ? 'rgba(0,255,65,0.2)' : 'rgba(255,255,255,0.04)'};">${v}</span>
+      `).join('')}
+    </div>
+  `;
+
+  document.body.appendChild(container);
+
+  try {
+    const canvas = await html2canvas(container, {
+      scale: 2,
+      backgroundColor: '#0a0a0f',
+      useCORS: true
+    });
+    const link = document.createElement('a');
+    link.download = `${can.id}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showToast('🖼️ Immagine esportata');
+  } catch (e) {
+    showToast('❌ Errore esportazione');
+    console.error(e);
+  }
+  container.remove();
+}
+
+// ============================================================
+//  SIDEBAR TOGGLE (mobile)
+// ============================================================
+
+document.getElementById('sidebar-toggle').addEventListener('click', () => {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+  document.getElementById('sidebar-toggle').textContent = sidebar.classList.contains('open') ? '✕' : '☰ Lista';
+});
+
+// ============================================================
+//  KEYBOARD SHORTCUTS
+// ============================================================
+
+document.addEventListener('keydown', (e) => {
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+    if (e.key === 'Escape') document.activeElement.blur();
+    return;
+  }
+
+  if (e.key === 'ArrowLeft') {
+    document.getElementById('prev').click();
+    e.preventDefault();
+  }
+  if (e.key === 'ArrowRight') {
+    document.getElementById('next').click();
+    e.preventDefault();
+  }
+  if (e.key === ' ' || e.key === 'Space') {
+    e.preventDefault();
+    const can = CANS[currentIndex];
+    const st = state[can.id];
+    const firstUnowned = can.variants.find(v => !st.variants[v]);
+    if (firstUnowned) {
+      st.variants[firstUnowned] = true;
+      saveState(state);
+      playClickSound();
+      selectIndex(currentIndex);
+      renderSidebar();
+      if (document.getElementById('grid-view').classList.contains('active')) {
+        buildGridView();
+      }
+      showToast(`✅ ${firstUnowned} acquisita`);
+    } else {
+      showToast('✅ Tutte le varianti sono già possedute!');
+    }
+  }
+  if (e.key === 'm' || e.key === 'M') {
+    musicBtn.click();
+    e.preventDefault();
+  }
+  if (e.key === 'g' || e.key === 'G') {
+    document.getElementById('btn-grid-toggle').click();
+    e.preventDefault();
+  }
+});
+
+// ============================================================
+//  INIT
+// ============================================================
+
+selectIndex(0);
+renderSidebar();
+
+setInterval(() => {
+  renderSidebar();
+}, 5000);
+
+console.log('🥤 Monster Energy Tracker loaded!');
+console.log(`📊 ${CANS.length} lattine totali`);
+
+// ============================================================
+//  FUNZIONI
+// ============================================================
+
+function getReleasedVariants(sp) {
+  // Restituisce tutte le varianti (per ora tutte)
+  return sp.variants;
+}
+
+function saveSelectedVariant(spriteId, variant) {
+  localStorage.setItem('selected_variant_' + spriteId, variant);
+}
+
+function loadSelectedVariant(spriteId) {
+  return localStorage.getItem('selected_variant_' + spriteId) || null;
+}
+
+function updateLevelControl(spriteId, variant) {
+  // Se serve, puoi implementare la logica per il livello
+  // Per ora, non fa nulla
+}
+</script>
+</body>
+</html>
