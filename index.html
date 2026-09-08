@@ -438,7 +438,7 @@ body {
   padding: 16px;
 }
 
-/* BADGE RARITÀ più grande e in alto a sinistra */
+/* BADGE RARITA piu grande e in alto a sinistra */
 .can-art .rarity-tag {
   position: absolute;
   top: 12px;
@@ -530,6 +530,24 @@ body {
   margin-top: 4px;
 }
 
+.selected-variant-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.selected-variant-row label {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.selected-variant-row .filter-select {
+  min-width: 180px;
+  flex: 1;
+}
+
 .variant-btn {
   min-width: 70px;
   padding: 6px 12px;
@@ -609,7 +627,7 @@ body {
   position: relative;
 }
 .rating-stars .star.half::after {
-  content: '★';
+  content: '';
   position: absolute;
   left: 0;
   width: 50%;
@@ -702,7 +720,7 @@ body {
   position: relative;
 }
 
-/* Fallback scaffale CSS se non c'è l'immagine */
+/* Fallback scaffale CSS se non c'e l'immagine */
 .grid-view::before {
   content: '';
   position: absolute;
@@ -1038,22 +1056,22 @@ body.image-bg-on .can-art {
 <!-- ===== MODAL ===== -->
 <div id="modal-backdrop" class="modal-backdrop">
   <div class="modal">
-    <div id="modal-title" style="font-weight:800;font-size:20px;">📋 Menu</div>
+    <div id="modal-title" style="font-weight:800;font-size:20px;"> Menu</div>
     <div id="modal-description" style="font-size:13px;color:var(--muted);margin-top:6px;">Gestisci la tua collezione di Monster</div>
     <div id="modal-content">
-      <div style="margin-top:12px;font-weight:800;">💾 Dati</div>
+      <div style="margin-top:12px;font-weight:800;"> Dati</div>
       <div class="row">
-        <div class="option" data-action="export-json">📤 Esporta JSON</div>
-        <div class="option" data-action="import-json">📥 Importa JSON</div>
+        <div class="option" data-action="export-json"> Esporta JSON</div>
+        <div class="option" data-action="import-json"> Importa JSON</div>
       </div>
-      <div style="margin-top:12px;font-weight:800;">🖼️ Esporta Immagine</div>
+      <div style="margin-top:12px;font-weight:800;"> Esporta Immagine</div>
       <div class="row">
-        <div class="option" data-action="all">📁 Tutta la collezione</div>
-        <div class="option" data-action="current">🎯 Lattina corrente</div>
+        <div class="option" data-action="all"> Tutta la collezione</div>
+        <div class="option" data-action="current"> Lattina corrente</div>
       </div>
-      <div style="margin-top:12px;font-weight:800;">🔧 Azioni</div>
+      <div style="margin-top:12px;font-weight:800;"> Azioni</div>
       <div class="row">
-        <div class="option" data-action="reset">🔄 Resetta tutto</div>
+        <div class="option" data-action="reset"> Resetta tutto</div>
       </div>
     </div>
     <div style="margin-top:14px;display:flex;justify-content:flex-end;">
@@ -1092,7 +1110,7 @@ body.image-bg-on .can-art {
   <div class="filter-bar">
 	
     <select id="filter-rarity" class="filter-select">
-      <option value="all">Tutte le rarità</option>
+      <option value="all">Tutte le rarita</option>
       <option value="common">Comune</option>
       <option value="uncommon">Non comune</option>
       <option value="rare">Epico</option>
@@ -1104,7 +1122,7 @@ body.image-bg-on .can-art {
       <option value="classic">Classic</option>
       <option value="ultra">Ultra</option>
       <option value="juice">Juice</option>
-      <option value="java">Java (Caffè)</option>
+      <option value="java">Java (Caffe)</option>
       <option value="rehab">Rehab</option>
       <option value="reserve">Reserve</option>
       <option value="special">Special Edition</option>
@@ -1127,7 +1145,7 @@ body.image-bg-on .can-art {
 	<label class="toggle-switch">
 	  <input type="checkbox" id="toggle-image-bg">
 	  <span class="toggle-slider"></span>
-	  <span class="toggle-label">🖼️ Sfondo immagini</span>
+    <span class="toggle-label">🖼️ Sfondo immagini</span>
 	</label>
 	
 	<div class="header-controls">
@@ -1143,9 +1161,9 @@ body.image-bg-on .can-art {
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="search">
-	  <span>🔍</span>
+  	  <span>🔍</span>
 	  <input id="search-input" placeholder="Cerca lattina ..." />
-	  <span id="search-clear" style="display:none; cursor:pointer; color:var(--muted); font-size:16px; padding:0 4px;">✕</span>
+	  <span id="search-clear" style="display:none; cursor:pointer; color:var(--muted); font-size:16px; padding:0 4px;"></span>
 	</div>
     <div class="sidebar-stats">
       <span id="sidebar-count">0 / 0</span>
@@ -1171,7 +1189,7 @@ body.image-bg-on .can-art {
       </div>
 
 	<div class="right-panel">
-	  <div class="can-name" id="main-name">🥤 Monster</div>
+    <div class="can-name" id="main-name">🥤 Monster</div>
 
 	  <div class="progress-row">
 		<div class="percent" id="main-percent">0%</div>
@@ -1181,29 +1199,33 @@ body.image-bg-on .can-art {
 
 	  <!-- VALUTAZIONE -->
 	  <div class="rating-container">
-		<span class="rating-label" id="rating-label">⭐ Valutazione</span>
+    <span class="rating-label" id="rating-label">⭐ Valutazione</span>
 		<div class="rating-stars" id="rating-stars">
-		  <span class="star" data-value="1">☆</span>
-		  <span class="star" data-value="2">☆</span>
-		  <span class="star" data-value="3">☆</span>
-		  <span class="star" data-value="4">☆</span>
-		  <span class="star" data-value="5">☆</span>
+      <span class="star" data-value="1">☆</span>
+      <span class="star" data-value="2">☆</span>
+      <span class="star" data-value="3">☆</span>
+      <span class="star" data-value="4">☆</span>
+      <span class="star" data-value="5">☆</span>
 		</div>
-		<span id="rating-text" style="font-size:13px;color:#fff;min-width:40px;">—</span>
+    <span id="rating-text" style="font-size:13px;color:#fff;min-width:40px;">—</span>
 	  </div>
 
 	  <!-- NOTE (MODIFICABILE DALL'UTENTE) -->
 	  <div class="details-box">
 		<div class="label">
 		  Note
-		  <button class="edit-btn" id="edit-notes-btn">✏️ Modifica</button>
+      <button class="edit-btn" id="edit-notes-btn">✏️ Modifica</button>
 		</div>
-		<div class="value" id="main-notes" contenteditable="false">—</div>
+		<div class="value" id="main-notes" contenteditable="false"></div>
 	  </div>
 
 	  <!-- VARIANTI -->
 	  <div>
 		<div style="font-size:11px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:0.5px;">Varianti</div>
+    <div class="selected-variant-row">
+      <label for="selected-variant">Variante visualizzata</label>
+      <select id="selected-variant" class="filter-select"></select>
+    </div>
 		<div class="variants-grid" id="variants-grid"></div>
 	  </div>
 
@@ -1218,12 +1240,12 @@ body.image-bg-on .can-art {
 	  <!-- DESCRIZIONE (FISSA, NON MODIFICABILE) -->
 	  <div class="details-box">
 		<div class="label">Descrizione</div>
-		<div class="value" id="main-desc">—</div>
+		<div class="value" id="main-desc"></div>
 	  </div>
 
 	  <div class="action-row">
 		<button class="btn-adaptive" id="acquire-all">Acquisisci tutte</button>
-		<button class="btn-adaptive ghost" id="clear-all">🗑 Cancella tutto</button>
+    <button class="btn-adaptive ghost" id="clear-all">🗑 Cancella tutto</button>
 	  </div>
 	</div>
 	</div>
@@ -1234,1023 +1256,26 @@ body.image-bg-on .can-art {
 
   <!-- FOOTER -->
   <div class="footer">
-    <span id="footer-stats">Lattine: 0 • Varianti: 0</span>
+    <span id="footer-stats">Lattine: 0  Varianti: 0</span>
     <span id="footer-limited">⭐ Limited: 0</span>
     <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
   </div>
 </div>
 
 <input type="file" id="file-import" accept="application/json" style="display:none">
+<input type="file" id="catalog-file-import" accept="application/json" style="display:none">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="catalog.js"></script>
+<script src="catalog-manager.js"></script>
 
 <script>
 // ============================================================
 //  DATABASE COMPLETO MONSTER ENERGY - TUTTE LE VARIANTI
 // ============================================================
 
-const CANS = [
-  // ============ CLASSIC ============
-  {
-    id: 'monster_classic',
-    name: 'Monster Original',
-    image: 'assets/monster/classic/original.webp',
-    series: 'classic',
-    rarity: 'common',
-    limited: false,
-    description: 'La Monster originale, il gusto che ha iniziato tutto.',
-    variants: ['Original', 'Call of Duty']
-  },
-  {
-    id: 'monster_zero_sugar',
-    name: 'Monster Zero Sugar',
-    image: 'assets/monster/classic/zero-sugar.webp',
-    series: 'classic',
-    rarity: 'common',
-    limited: false,
-    description: 'Tutto il gusto Monster, zero zuccheri.',
-    variants: ['Zero Sugar', 'Call of Duty']
-  },
-  {
-    id: 'monster_lo_carb',
-    name: 'Monster Lo-Carb',
-    image: 'assets/monster/classic/lo-carb.webp',
-    series: 'classic',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'La versione a basso contenuto di carboidrati.',
-    variants: ['Lo-Carb']
-  },
-  {
-    id: 'monster_assault',
-    name: 'Monster Assault',
-    image: 'assets/monster/classic/assault.png',
-    series: 'classic',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Gusto cola con una carica extra di energia.',
-    variants: ['Original', 'Black']
-  },
-  {
-    id: 'monster_nitro',
-    name: 'Monster Nitro Super Dry',
-    image: 'assets/monster/classic/nitro.webp',
-    series: 'classic',
-    rarity: 'rare',
-    limited: false,
-    description: 'Super Carbonated, Super Dry. Un\'esperienza unica.',
-    variants: ['Super Dry', 'Cosmic Peach', 'Blue Flash'],
-	variantImages: {
-		'Cosmic Peach': 'assets/monster/classic/nitro-cosmic-peach.webp',
-		'Blue Flash': 'assets/monster/classic/nitro-blue-flash.webp'
-	}
-  },
-  {
-    id: 'monster_import',
-    name: 'Monster Import',
-    image: 'assets/monster/classic/import.webp',
-    series: 'classic',
-    rarity: 'rare',
-    limited: true,
-    description: 'Versione import con design europeo e gusto potenziato.',
-    variants: ['Import']
-  },
-  {
-	  id: 'monster_strawberry_shot',
-	  name: 'Monster Strawberry Shot',
-	  image: 'assets/monster/classic/strawberry-shot.webp',
-	  series: 'classic',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Nuovo gusto fragola lanciato nel 2025.',
-	  variants: ['Strawberry Shot', 'Zero Sugar Strawberry Shot'],
-	  variantImages: {
-		'Zero Sugar Strawberry Shot': 'assets/monster/classic/strawberry-shot-zero-sugar.webp'
-	  }
-  },
-  {
-	  id: 'monster_electric_blue',
-	  name: 'Monster Electric Blue',
-	  image: 'assets/monster/classic/electric-blue.webp',
-	  series: 'classic',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Nuovo gusto blu elettrico lanciato nel 2025.',
-	  variants: ['Electric Blue']
-  },
-  {
-	  id: 'monster_export',
-	  name: 'Monster Export',
-	  image: 'assets/monster/classic/export.webp',
-	  series: 'classic',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Versione export con gusto internazionale.',
-	  variants: ['Export']
-  },
-  {
-	  id: 'monster_m3',
-	  name: 'Monster M3',
-	  image: 'assets/monster/classic/m3.webp',
-	  series: 'classic',
-	  rarity: 'epic',
-	  limited: true,
-	  description: 'Edizione giapponese, molto rara.',
-	  variants: ['M3']
-  },
-  {
-	  id: 'monster_zero_sugar_full_throttle',
-	  name: 'Monster Zero Sugar Full Throttle',
-	  image: 'assets/monster/classic/full-throttle.png',
-	  series: 'classic',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Versione zero zuccheri, disponibile in UK/Europa.',
-	  variants: ['Zero Sugar Full Throttle']
-  },
-  {
-	  id: 'monster_top_speed_zero_sugar',
-	  name: 'Monster Top Speed Zero Sugar',
-	  image: 'assets/monster/classic/top-speed.png',
-	  series: 'classic',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Disponibile in Francia/Europa.',
-	  variants: ['Top Speed Zero Sugar']
-  },
-  {
-	  id: 'monster_mule_non_alcoholic',
-	  name: 'Monster Mule (Non-Alcoholic)',
-	  image: 'assets/monster/classic/mule.webp',
-	  series: 'classic',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Versione non alcolica del Monster Mule, UK/Europa.',
-	  variants: ['Mule']
-  },
-
-  // ============ ULTRA ============
-  {
-    id: 'monster_ultra_white',
-    name: 'Monster Ultra White',
-    image: 'assets/monster/ultra/white.png',
-    series: 'ultra',
-    rarity: 'common',
-    limited: false,
-    description: 'La famosa "White Monster". Zero zuccheri, gusto fresco.',
-    variants: ['Ultra White', 'Call of Duty']
-  },
-  {
-    id: 'monster_ultra_red',
-    name: 'Monster Ultra Red',
-    image: 'assets/monster/ultra/red.png',
-    series: 'ultra',
-    rarity: 'common',
-    limited: false,
-    description: 'Zero zuccheri, gusto frutti di bosco.',
-    variants: ['Ultra Red']
-  },
-  {
-    id: 'monster_ultra_blue',
-    name: 'Monster Ultra Blue',
-    image: 'assets/monster/ultra/blue.png',
-    series: 'ultra',
-    rarity: 'common',
-    limited: false,
-    description: 'Zero zuccheri, gusto tropicale blu.',
-    variants: ['Ultra Blue']
-  },
-  {
-    id: 'monster_ultra_violet',
-    name: 'Monster Ultra Violet',
-    image: 'assets/monster/ultra/violet.png',
-    series: 'ultra',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Zero zuccheri, gusto fruttato e misterioso.',
-    variants: ['Ultra Violet']
-  },
-  {
-    id: 'monster_ultra_paradise',
-    name: 'Monster Ultra Paradise',
-    image: 'assets/monster/ultra/paradise.png',
-    series: 'ultra',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Gusto kiwi-lime, zero zuccheri. Esplosione di freschezza.',
-    variants: ['Ultra Paradise']
-  },
-  {
-    id: 'monster_ultra_sunrise',
-    name: 'Monster Ultra Sunrise',
-    image: 'assets/monster/ultra/sunrise.png',
-    series: 'ultra',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Gusto arancia, zero zuccheri. Per iniziare la giornata.',
-    variants: ['Ultra Sunrise']
-  },
-  {
-    id: 'monster_ultra_fiesta',
-    name: 'Monster Ultra Fiesta Mango',
-    image: 'assets/monster/ultra/fiesta.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata con gusto mango, zero zuccheri.',
-    variants: ['Ultra Fiesta Mango']
-  },
-  {
-    id: 'monster_ultra_watermelon',
-    name: 'Monster Ultra Watermelon',
-    image: 'assets/monster/ultra/watermelon.png',
-    series: 'ultra',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Gusto cocomero, zero zuccheri. Fresca e dissetante.',
-    variants: ['Ultra Watermelon']
-  },
-  {
-    id: 'monster_ultra_rosa',
-    name: 'Monster Ultra Rosá',
-    image: 'assets/monster/ultra/rosa.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto frutti di bosco rosa, zero zuccheri.',
-    variants: ['Ultra Rosá']
-  },
-  {
-    id: 'monster_ultra_gold',
-    name: 'Monster Ultra Gold',
-    image: 'assets/monster/ultra/gold.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata dorata, gusto tropicale premium.',
-    variants: ['Ultra Gold']
-  },
-  {
-    id: 'monster_ultra_peachy',
-    name: 'Monster Ultra Peachy Keen',
-    image: 'assets/monster/ultra/peachy.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto pesca, zero zuccheri.',
-    variants: ['Ultra Peachy Keen']
-  },
-  {
-    id: 'monster_ultra_strawberry',
-    name: 'Monster Ultra Strawberry Dreams',
-    image: 'assets/monster/ultra/strawberry.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto fragola e crema, zero zuccheri.',
-    variants: ['Ultra Strawberry Dreams']
-  },
-  {
-    id: 'monster_ultra_ruby',
-    name: 'Monster Ultra Fantasy Ruby Red',
-    image: 'assets/monster/ultra/ruby.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto rubino fruttato, zero zuccheri.',
-    variants: ['Ultra Fantasy Ruby Red']
-  },
-  {
-    id: 'monster_ultra_black',
-    name: 'Monster Ultra Black',
-    image: 'assets/monster/ultra/black.png',
-    series: 'ultra',
-    rarity: 'epic',
-    limited: true,
-    description: 'Edizione limitata nera, gusto ciliegia scura, zero zuccheri.',
-    variants: ['Ultra Black']
-  },
-  {
-    id: 'monster_ultra_guava',
-    name: 'Monster Ultra Guava Vice',
-    image: 'assets/monster/ultra/guava.png',
-    series: 'ultra',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto guava, zero zuccheri. Tropicale.',
-    variants: ['Ultra Guava Vice']
-  },
-  {
-    id: 'monster_ultra_pineapple',
-    name: 'Monster Ultra Pineapple',
-    image: 'assets/monster/ultra/pineapple.png',
-    series: 'ultra',
-    rarity: 'epic',
-    limited: true,
-    description: 'Edizione limitata all\'ananas, zero zuccheri.',
-    variants: ['Ultra Pineapple']
-  },
-  {
-	  id: 'monster_ultra_blue_hawaiian',
-	  name: 'Monster Ultra Blue Hawaiian',
-	  image: 'assets/monster/ultra/blue-hawaiian.png',
-	  series: 'ultra',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Gusto tropicale hawaiano, zero zuccheri.',
-	  variants: ['Ultra Blue Hawaiian']
-  },
-  {
-	  id: 'monster_ultra_punk_punch',
-	  name: 'Monster Ultra Punk Punch',
-	  image: 'assets/monster/ultra/punk-punch.png',
-	  series: 'ultra',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Gusto punch punk, zero zuccheri.',
-	  variants: ['Ultra Punk Punch']
-  },
-  {
-	  id: 'monster_ultra_red_white_blue_razz',
-	  name: 'Monster Ultra Red White & Blue Razz',
-	  image: 'assets/monster/ultra/red-white-blue-razz.png',
-	  series: 'ultra',
-	  rarity: 'rare',
-	  limited: true,
-	  description: 'Edizione limitata con gusto lampone.',
-	  variants: ['Ultra Red White & Blue Razz']
-  },
-  {
-	  id: 'monster_ultra_wild_passion',
-	  name: 'Monster Ultra Wild Passion',
-	  image: 'assets/monster/ultra/wild-passion.png',
-	  series: 'ultra',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Gusto passion fruit e agrumi, zero zuccheri.',
-	  variants: ['Ultra Wild Passion']
-  },
-
-  // ============ JUICE ============
-  {
-    id: 'monster_juice_mango',
-    name: 'Monster Mango Loco',
-    image: 'assets/monster/juice/mango-loco.png',
-    series: 'juice',
-    rarity: 'common',
-    limited: false,
-    description: 'Succo di mango con una carica di energia.',
-    variants: ['Mango Loco', 'Call of Duty']
-  },
-  {
-    id: 'monster_juice_pacific',
-    name: 'Monster Pacific Punch',
-    image: 'assets/monster/juice/pacific-punch.png',
-    series: 'juice',
-    rarity: 'common',
-    limited: false,
-    description: 'Gusto punch tropicale, come un viaggio nel Pacifico.',
-    variants: ['Pacific Punch']
-  },
-  {
-    id: 'monster_juice_pipeline',
-    name: 'Monster Pipeline Punch',
-    image: 'assets/monster/juice/pipeline-punch.png',
-    series: 'juice',
-    rarity: 'common',
-    limited: false,
-    description: 'Il gusto delle Hawaii, frutta tropicale e energia.',
-    variants: ['Pipeline Punch']
-  },
-  {
-    id: 'monster_juice_khaotic',
-    name: 'Monster Khaotic',
-    image: 'assets/monster/juice/khaotic.png',
-    series: 'juice',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Gusto arancia, passione e frutta tropicale.',
-    variants: ['Khaotic']
-  },
-  {
-    id: 'monster_juice_papillon',
-    name: 'Monster Papillon (Monarch)',
-    image: 'assets/monster/juice/papillon.png',
-    series: 'juice',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata farfalla. Gusto fruttato esotico.',
-    variants: ['Papillon']
-  },
-  {
-    id: 'monster_juice_aussie',
-    name: 'Monster Aussie Lemonade',
-    image: 'assets/monster/juice/aussie-lemonade.png',
-    series: 'juice',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Limonata australiana con una carica di energia.',
-    variants: ['Aussie Lemonade']
-  },
-  {
-    id: 'monster_juice_bad_apple',
-    name: 'Monster Bad Apple',
-    image: 'assets/monster/juice/bad-apple.png',
-    series: 'juice',
-    rarity: 'rare',
-    limited: true,
-    description: 'Gusto mela asprigna, edizione limitata.',
-    variants: ['Bad Apple']
-  },
-  {
-    id: 'monster_juice_rio',
-    name: 'Monster Rio Punch',
-    image: 'assets/monster/juice/rio-punch.png',
-    series: 'juice',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto punch ispirato a Rio de Janeiro.',
-    variants: ['Rio Punch']
-  },
-  {
-    id: 'monster_juice_viking',
-    name: 'Monster Viking Berry',
-    image: 'assets/monster/juice/viking-berry.png',
-    series: 'juice',
-    rarity: 'rare',
-    limited: false,
-    description: 'Gusto frutti di bosco nordici, ispirato ai vichinghi.',
-    variants: ['Viking Berry']
-  },
-  {
-    id: 'monster_juice_mariposa',
-    name: 'Monster Mariposa',
-    image: 'assets/monster/juice/mariposa.png',
-    series: 'juice',
-    rarity: 'epic',
-    limited: true,
-    description: 'Edizione limitata farfalla, gusto fruttato esotico.',
-    variants: ['Mariposa']
-  },
-  {
-	  id: 'monster_juice_strawberry_lemonade',
-	  name: 'Monster Strawberry Lemonade',
-	  image: 'assets/monster/juice/strawberry-lemonade.png',
-	  series: 'juice',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Limonata alla fragola con una carica di energia.',
-	  variants: ['Strawberry Lemonade']
-  },
-  {
-	  id: 'monster_juice_voodoo_grape',
-	  name: 'Monster Voodoo Grape',
-	  image: 'assets/monster/juice/voodoo-grape.png',
-	  series: 'juice',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Gusto uva voodoo, fresco e fruttato.',
-	  variants: ['Voodoo Grape']
-  },
-  {
-	  id: 'monster_juice_mixxd_punch',
-	  name: 'Monster Mixxd Punch',
-	  image: 'assets/monster/juice/mixxd-punch.png',
-	  series: 'juice',
-	  rarity: 'common',
-	  limited: false,
-	  description: 'Punch fruttato, molto popolare in Europa.',
-	  variants: ['Mixxd Punch']
-  },
-  {
-	  id: 'monster_juice_ripper',
-	  name: 'Monster Ripper',
-	  image: 'assets/monster/juice/ripper.png',
-	  series: 'juice',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Gusto tropicale esplosivo.',
-	  variants: ['Ripper']
-  },
-
-  // ============ JAVA ============
-  {
-    id: 'monster_java_mean_bean',
-    name: 'Monster Java Mean Bean',
-    image: 'assets/monster/java/mean-bean.png',
-    series: 'java',
-    rarity: 'common',
-    limited: false,
-    description: 'Caffè e latte, la combinazione perfetta per la mattina.',
-    variants: ['Mean Bean']
-  },
-  {
-    id: 'monster_java_loca_moca',
-    name: 'Monster Java Loca Moca',
-    image: 'assets/monster/java/loca-moca.png',
-    series: 'java',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Caffè con cioccolato e latte.',
-    variants: ['Loca Moca']
-  },
-  {
-    id: 'monster_java_salted',
-    name: 'Monster Java Salted Caramel',
-    image: 'assets/monster/java/salted-caramel.png',
-    series: 'java',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Caffè con caramello salato e latte.',
-    variants: ['Salted Caramel']
-  },
-  {
-    id: 'monster_java_irish',
-    name: 'Monster Java Irish Crème',
-    image: 'assets/monster/java/irish-creme.png',
-    series: 'java',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata, caffè con crema irlandese.',
-    variants: ['Irish Crème']
-  },
-  {
-    id: 'monster_java_kona',
-    name: 'Monster Java Kona Blend',
-    image: 'assets/monster/java/kona-blend.png',
-    series: 'java',
-    rarity: 'rare',
-    limited: false,
-    description: 'Miscela di caffè Kona hawaiano.',
-    variants: ['Kona Blend']
-  },
-  {
-	  id: 'monster_java_french_vanilla_300',
-	  name: 'Java Monster 300 French Vanilla',
-	  image: 'assets/monster/java/french-vanilla-300.png',
-	  series: 'java',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Caffè francese vaniglia con 300mg di caffeina.',
-	  variants: ['French Vanilla 300']
-  },
-  {
-	  id: 'monster_java_cafe_latte',
-	  name: 'Java Monster Café Latte',
-	  image: 'assets/monster/java/cafe-latte.png',
-	  series: 'java',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Caffè latte cremoso e energizzante.',
-	  variants: ['Café Latte']
-  },
-
-  // ============ REHAB ============
-  {
-    id: 'monster_rehab_lemonade',
-    name: 'Monster Rehab Lemonade',
-    image: 'assets/monster/rehab/lemonade.png',
-    series: 'rehab',
-    rarity: 'common',
-    limited: false,
-    description: 'Limonata con elettroliti e tè verde.',
-    variants: ['Lemonade']
-  },
-  {
-    id: 'monster_rehab_peach',
-    name: 'Monster Rehab Peach Tea',
-    image: 'assets/monster/rehab/peach-tea.png',
-    series: 'rehab',
-    rarity: 'common',
-    limited: false,
-    description: 'Tè alla pesca con elettroliti.',
-    variants: ['Peach Tea']
-  },
-  {
-    id: 'monster_rehab_green',
-    name: 'Monster Rehab Green Tea',
-    image: 'assets/monster/rehab/green-tea.png',
-    series: 'rehab',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Tè verde con elettroliti, leggero e dissetante.',
-    variants: ['Green Tea']
-  },
-  {
-    id: 'monster_rehab_berry',
-    name: 'Monster Rehab Wild Berry Tea',
-    image: 'assets/monster/rehab/wild-berry.png',
-    series: 'rehab',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata, tè ai frutti di bosco.',
-    variants: ['Wild Berry Tea']
-  },
-
-  // ============ RESERVE ============
-  {
-    id: 'monster_reserve_white_pineapple',
-    name: 'Monster White Pineapple',
-    image: 'assets/monster/reserve/white-pineapple.png',
-    series: 'reserve',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata all\'ananas bianco. Fresca e tropicale.',
-    variants: ['White Pineapple']
-  },
-  {
-    id: 'monster_reserve_watermelon',
-    name: 'Monster Reserve Watermelon',
-    image: 'assets/monster/reserve/watermelon.png',
-    series: 'reserve',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata al cocomero. Estiva e rinfrescante.',
-    variants: ['Watermelon']
-  },
-  {
-    id: 'monster_reserve_orange',
-    name: 'Monster Reserve Orange Dreamsicle',
-    image: 'assets/monster/reserve/orange.png',
-    series: 'reserve',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata, gusto arancia e crema.',
-    variants: ['Orange Dreamsicle']
-  },
-  {
-    id: 'monster_reserve_peaches',
-    name: 'Monster Reserve Peaches n\' Crème',
-    image: 'assets/monster/reserve/peaches-creme.png',
-    series: 'reserve',
-    rarity: 'epic',
-    limited: true,
-    description: 'Edizione limitata, pesca e crema. Dolce e cremosa.',
-    variants: ['Peaches n\' Crème']
-  },
-  {
-	  id: 'monster_reserve_kiwi_strawberry',
-	  name: 'Monster Reserve Kiwi Strawberry',
-	  image: 'assets/monster/reserve/kiwi-strawberry.png',
-	  series: 'reserve',
-	  rarity: 'rare',
-	  limited: true,
-	  description: 'Edizione limitata kiwi e fragola.',
-	  variants: ['Kiwi Strawberry']
-  },
-
-  // ============ SPECIAL / SPONSOR ============
-  {
-    id: 'monster_vr46',
-    name: 'Monster VR46 The Doctor',
-    image: 'assets/monster/special/vr46.png',
-    series: 'special',
-    rarity: 'legendary',
-    limited: true,
-    description: 'Edizione celebrativa del pilota Valentino Rossi.',
-    variants: ['VR46', 'VR46 Zero Sugar']
-  },
-  {
-    id: 'monster_lando',
-    name: 'Monster Lando Norris',
-    image: 'assets/monster/special/lando.webp',
-    series: 'special',
-    rarity: 'legendary',
-    limited: true,
-    description: 'Edizione dedicata al pilota di F1 Lando Norris.',
-    variants: ['Lando Norris', 'Lando Norris Gold Edition']
-  },
-  {
-    id: 'monster_lewis',
-    name: 'Monster Lewis Hamilton',
-    image: 'assets/monster/special/lewis.png',
-    series: 'special',
-    rarity: 'legendary',
-    limited: true,
-    description: 'Edizione UK dedicata a Lewis Hamilton. Gusto esclusivo.',
-    variants: ['Lewis Hamilton']
-  },
-  {
-    id: 'monster_pink',
-    name: 'Monster Pink',
-    image: 'assets/monster/special/pink.png',
-    series: 'special',
-    rarity: 'legendary',
-    limited: true,
-    description: 'Edizione limitata rosa, gusto fragola e crema. Molto rara!',
-    variants: ['Pink']
-  },
-  {
-    id: 'monster_gold',
-    name: 'Monster Gold',
-    image: 'assets/monster/special/gold.png',
-    series: 'special',
-    rarity: 'legendary',
-    limited: true,
-    description: 'Lattina dorata, edizione celebrativa. Gusto tropicale premium.',
-    variants: ['Gold']
-  },
-  {
-    id: 'monster_blue',
-    name: 'Monster Blue Ice',
-    image: 'assets/monster/special/blue.png',
-    series: 'special',
-    rarity: 'epic',
-    limited: true,
-    description: 'Lattina blu, gusto mirtillo e frutti di bosco.',
-    variants: ['Blue Ice']
-  },
-  {
-	  id: 'monster_vr46_zero_sugar',
-	  name: 'Monster VR46 Zero Sugar',
-	  image: 'assets/monster/special/vr46-zero-sugar.png',
-	  series: 'special',
-	  rarity: 'legendary',
-	  limited: true,
-	  description: 'Edizione Valentino Rossi, zero zuccheri.',
-	  variants: ['VR46 Zero Sugar']
-  },
-  {
-	  id: 'monster_lando_gold',
-	  name: 'Monster Lando Norris Zero Sugar Gold Edition',
-	  image: 'assets/monster/special/lando-gold.png',
-	  series: 'special',
-	  rarity: 'legendary',
-	  limited: true,
-	  description: 'Edizione limitata Lando Norris in lattina dorata.',
-	  variants: ['Lando Norris Gold']
-  },
-  {
-	  id: 'monster_oscar_piastri',
-	  name: 'Monster Oscar Piastri',
-	  image: 'assets/monster/special/oscar-piastri.png',
-	  series: 'special',
-	  rarity: 'legendary',
-	  limited: true,
-	  description: 'NUOVO 2026! Edizione limitata per Oscar Piastri.',
-	  variants: ['Oscar Piastri']
-  },
-  
-  // ============ HYDRO ============
-  {
-	  id: 'monster_hydro_blue_ice',
-	  name: 'Monster Hydro Blue Ice',
-	  image: 'assets/monster/hydro/blue-ice.png',
-	  series: 'hydro',
-	  rarity: 'common',
-	  limited: false,
-	  description: 'Acqua con elettroliti e gusto ghiaccio blu.',
-	  variants: ['Blue Ice']
-  },
-  {
-	  id: 'monster_hydro_watermelon',
-	  name: 'Monster Hydro Watermelon',
-	  image: 'assets/monster/hydro/watermelon.png',
-	  series: 'hydro',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Acqua con elettroliti e gusto cocomero.',
-	  variants: ['Watermelon']
-  },
-  {
-	  id: 'monster_hydro_purple_passion',
-	  name: 'Monster Hydro Purple Passion',
-	  image: 'assets/monster/hydro/purple-passion.png',
-	  series: 'hydro',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Acqua con elettroliti e passione viola.',
-	  variants: ['Purple Passion']
-  },
-  {
-	  id: 'monster_hydro_tropical_thunder',
-	  name: 'Monster Hydro Tropical Thunder',
-	  image: 'assets/monster/hydro/tropical-thunder.png',
-	  series: 'hydro',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Acqua con elettroliti e gusto tropicale.',
-	  variants: ['Tropical Thunder']
-  },
-  {
-	  id: 'monster_hydro_zero_sugar',
-	  name: 'Monster Hydro Zero Sugar',
-	  image: 'assets/monster/hydro/zero-sugar.png',
-	  series: 'hydro',
-	  rarity: 'common',
-	  limited: false,
-	  description: 'Acqua con elettroliti, zero zuccheri.',
-	  variants: ['Zero Sugar']
-  },
-  {
-	  id: 'monster_hydro_blue_streak',
-	  name: 'Monster Hydro Blue Streak',
-	  image: 'assets/monster/hydro/blue-streak.png',
-	  series: 'hydro',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Acqua con elettroliti e gusto lampone.',
-	  variants: ['Blue Streak']
-  },
-  {
-	  id: 'monster_hydro_killer_kiwi',
-	  name: 'Monster Hydro Killer Kiwi',
-	  image: 'assets/monster/hydro/killer-kiwi.png',
-	  series: 'hydro',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Acqua con elettroliti e gusto kiwi.',
-	  variants: ['Killer Kiwi']
-  },
-  {
-	  id: 'monster_hydro_macho_mango',
-	  name: 'Monster Hydro Macho Mango',
-	  image: 'assets/monster/hydro/macho-mango.png',
-	  series: 'hydro',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Acqua con elettroliti e gusto mango.',
-	  variants: ['Macho Mango']
-  },
-  {
-	  id: 'monster_hydro_red_dawg',
-	  name: 'Monster Hydro Red Dawg',
-	  image: 'assets/monster/hydro/red-dawg.png',
-	  series: 'hydro',
-	  rarity: 'epic',
-	  limited: true,
-	  description: 'Edizione limitata, gusto frutti rossi.',
-	  variants: ['Red Dawg']
-  },
-
-  // ============ MUSCLE ============
-  {
-    id: 'monster_muscle_chocolate',
-    name: 'Monster Muscle Chocolate',
-    image: 'assets/monster/muscle/chocolate.png',
-    series: 'muscle',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Shake proteico al cioccolato con caffeina.',
-    variants: ['Chocolate']
-  },
-  {
-    id: 'monster_muscle_vanilla',
-    name: 'Monster Muscle Vanilla',
-    image: 'assets/monster/muscle/vanilla.png',
-    series: 'muscle',
-    rarity: 'uncommon',
-    limited: false,
-    description: 'Shake proteico alla vaniglia con caffeina.',
-    variants: ['Vanilla']
-  },
-  {
-    id: 'monster_muscle_strawberry',
-    name: 'Monster Muscle Strawberry',
-    image: 'assets/monster/muscle/strawberry.png',
-    series: 'muscle',
-    rarity: 'rare',
-    limited: true,
-    description: 'Edizione limitata, shake proteico alla fragola.',
-    variants: ['Strawberry']
-  },
-
-  // ============ BEAST UNLEASHED ============
-  {
-	  id: 'monster_beast_mean_green',
-	  name: 'Beast Unleashed Mean Green',
-	  image: 'assets/monster/beast/mean-green.png',
-	  series: 'beast',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto mela verde.',
-	  variants: ['Mean Green']
-  },
-  {
-	  id: 'monster_beast_white_haze',
-	  name: 'Beast Unleashed White Haze',
-	  image: 'assets/monster/beast/white-haze.png',
-	  series: 'beast',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto agrumi bianco.',
-	  variants: ['White Haze']
-  },
-  {
-	  id: 'monster_beast_peach_perfect',
-	  name: 'Beast Unleashed Peach Perfect',
-	  image: 'assets/monster/beast/peach-perfect.png',
-	  series: 'beast',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto pesca perfetta.',
-	  variants: ['Peach Perfect']
-  },
-  {
-	  id: 'monster_beast_scary_berries',
-	  name: 'Beast Unleashed Scary Berries',
-	  image: 'assets/monster/beast/scary-berries.png',
-	  series: 'beast',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto frutti di bosco.',
-	  variants: ['Scary Berries']
-  },
-  {
-	  id: 'monster_beast_killer_sunrise',
-	  name: 'Beast Unleashed Killer Sunrise',
-	  image: 'assets/monster/beast/killer-sunrise.png',
-	  series: 'beast',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto alba tropicale.',
-	  variants: ['Killer Sunrise']
-  },
-  {
-	  id: 'monster_beast_pink_poison',
-	  name: 'Beast Unleashed Pink Poison',
-	  image: 'assets/monster/beast/pink-poison.png',
-	  series: 'beast',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto rosa velenoso.',
-	  variants: ['Pink Poison']
-  },
-  {
-	  id: 'monster_beast_gnarly_grape',
-	  name: 'Beast Unleashed Gnarly Grape',
-	  image: 'assets/monster/beast/gnarly-grape.png',
-	  series: 'beast',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Beast Unleashed al gusto uva.',
-	  variants: ['Gnarly Grape']
-  },
-
-	// ============ NASTY BEAST ============
-  {
-	  id: 'monster_nasty_original',
-	  name: 'Nasty Beast Original',
-	  image: 'assets/monster/beast/nasty-original.png',
-	  series: 'beast',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Nasty Beast, versione alcolica originale.',
-	  variants: ['Original']
-  },
-  {
-	  id: 'monster_nasty_tea_lemonade',
-	  name: 'Nasty Beast Tea + Lemonade',
-	  image: 'assets/monster/beast/nasty-tea-lemonade.png',
-	  series: 'beast',
-	  rarity: 'uncommon',
-	  limited: false,
-	  description: 'Nasty Beast al tè e limonata.',
-	  variants: ['Tea + Lemonade']
-  },
-  {
-	  id: 'monster_nasty_peach',
-	  name: 'Nasty Beast Peach',
-	  image: 'assets/monster/beast/nasty-peach.png',
-	  series: 'beast',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Nasty Beast al gusto pesca.',
-	  variants: ['Peach']
-  },
-  {
-	  id: 'monster_nasty_green_tea',
-	  name: 'Nasty Beast Green Tea',
-	  image: 'assets/monster/beast/nasty-green-tea.png',
-	  series: 'beast',
-	  rarity: 'rare',
-	  limited: false,
-	  description: 'Nasty Beast al tè verde.',
-	  variants: ['Green Tea']
-  },
-
-  // ============ DRAGON TEA (DISCONTINUED - fuori produzione) ============
-  {
-	  id: 'monster_dragon_green',
-	  name: 'Monster Dragon Tea Green',
-	  image: 'assets/monster/dragon/green.png',
-	  series: 'dragon',
-	  rarity: 'epic',
-	  limited: true,
-	  description: 'Tè verde con Dragon Fruit. FUORI PRODUZIONE (marchio cancellato 2025).',
-	  variants: ['Green Tea']
-  },
-  {
-	  id: 'monster_dragon_white',
-	  name: 'Monster Dragon Tea White',
-	  image: 'assets/monster/dragon/white.png',
-	  series: 'dragon',
-	  rarity: 'epic',
-	  limited: true,
-	  description: 'Tè bianco con Dragon Fruit. FUORI PRODUZIONE (marchio cancellato 2025).',
-	  variants: ['White Tea']
-  }
-];
+const CANS = window.MONSTER_CATALOG_DATA;
+MonsterCatalog.set(CANS);
 
 // ============================================================
 //  STORAGE E STATO
@@ -2276,104 +1301,6 @@ function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
 
-// Varianti del catalogo JSON che non avevano ancora una scheda con nome esatto.
-const CATALOG_ONLY_VARIANTS = [
-  { name: 'Ultra Citron', series: 'ultra', image: 'assets/monster/ultra/ultra-citron.jpg' },
-  { name: 'Ultra Fiesta', series: 'ultra', image: 'assets/monster/ultra/ultra-fiesta.jpg' },
-  { name: 'Ultra Rosa', series: 'ultra', image: 'assets/monster/ultra/ultra-rosa.jpg' },
-  { name: 'Ultra Vice Guava', series: 'ultra', image: 'assets/monster/ultra/ultra-vice-guava.jpg' },
-  { name: 'Monster Java Mean Bean', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Loca Moca', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Lo-Ball', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Nut-Up', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Big Black', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Chai Hai', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Russian', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Toffee', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Irish Blend', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Vanilla Light', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Kona Blend', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Java Cappuccino', series: 'java', image: 'assets/monster/java/d.png' },
-  { name: 'Juiced Mango Loco', series: 'juice', image: 'assets/monster/juice/juiced-mango-loco.jpg' },
-  { name: 'Juiced Monarch', series: 'juice', image: 'assets/monster/juice/juiced-monarch.jpg' },
-  { name: 'Juiced Khaotic', series: 'juice', image: 'assets/monster/juice/juiced-khaotic.jpg' },
-  { name: 'Juiced Tropical Thunder', series: 'juice', image: 'assets/monster/juice/d.png' },
-  { name: 'Juiced Bad Apple', series: 'juice', image: 'assets/monster/juice/juiced-bad-apple.jpg' },
-  { name: 'Juiced Aussie Lemonade', series: 'juice', image: 'assets/monster/juice/juiced-aussie-lemonade.jpg' },
-  { name: 'Juiced Ripper', series: 'juice', image: 'assets/monster/juice/juiced-ripper.jpg' },
-  { name: 'Fury Punch', series: 'juice', image: 'assets/monster/juice/d.png' },
-  { name: 'Fruit Punch', series: 'juice', image: 'assets/monster/juice/d.png' },
-  { name: 'Rehab Lemonade Tea', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Peach Tea', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Green Tea', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Strawberry', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Watermelon', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Wild Berry Tea', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Orangeade', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Protean', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Lemonade', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Rehab Rojo Tea', series: 'rehab', image: 'assets/monster/rehab/e.png' },
-  { name: 'Dragon Tea Green Tea', series: 'dragon', image: 'assets/monster/dragon/b.png' },
-  { name: 'Dragon Tea Yerba Tea', series: 'dragon', image: 'assets/monster/dragon/b.png' },
-  { name: 'Dragon Tea White Tea', series: 'dragon', image: 'assets/monster/dragon/b.png' },
-  { name: 'Dragon Tea Ice Tea Lemon', series: 'dragon', image: 'assets/monster/dragon/b.png' },
-  { name: 'Muscle Shake Coffee', series: 'muscle', image: 'assets/monster/muscle/e.png' },
-  { name: 'Muscle Shake Strawberry', series: 'muscle', image: 'assets/monster/muscle/e.png' },
-  { name: 'Muscle Shake Chocolate', series: 'muscle', image: 'assets/monster/muscle/e.png' },
-  { name: 'Muscle Shake Vanilla', series: 'muscle', image: 'assets/monster/muscle/e.png' },
-  { name: 'Muscle Shake Vanilla Bottle', series: 'muscle', image: 'assets/monster/muscle/e.png' },
-  { name: 'Nitro Super Dry', series: 'classic', image: 'assets/monster/classic/nitro.webp' },
-  { name: 'Nitro Cosmic Peach', series: 'classic', image: 'assets/monster/classic/nitro-cosmic-peach.png' },
-  { name: 'Maxx Super Dry', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Maxx Eclipse', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Maxx Solaris', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Maxx Zero Sugar', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Maxx Zero Sugar Rad Red', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Extra Strength Super Dry', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Extra Strength Anti gravity', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Extra Strength Black Ice', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Extra Strength Killer-B', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Nitrous Super Dry', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Nitrous Killer-B', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Hydro Tropical Thunder', series: 'hydro', image: 'assets/monster/hydro/c.png' },
-  { name: 'Hydro Manic Melon', series: 'hydro', image: 'assets/monster/hydro/hydro-manic-melon.jpg' },
-  { name: 'Hydro Blue Ice', series: 'hydro', image: 'assets/monster/hydro/hydro-blue-ice.jpg' },
-  { name: 'Hydro Purple Passion', series: 'hydro', image: 'assets/monster/hydro/c.png' },
-  { name: 'Hydro Zero Sugar', series: 'hydro', image: 'assets/monster/hydro/c.png' },
-  { name: 'Super Fuel Red Dawg', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Super Fuel Blue Streak', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Mutant Original green', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Mutant Red Dawn', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Mutant White Lightning', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Beast Unleashed Mean Green', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Beast Unleashed White Haze', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Beast Unleashed Peach Perfect', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Beast Unleashed Scary Berries', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Beast Unleashed Killer Sunrise', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Beast Unleashed Gnarly Grape', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Beast Unleashed Pink Poison', series: 'beast', image: 'assets/monster/beast/a.png' },
-  { name: 'Lo Carb', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Absolute Zero', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'M-80', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Cuba-Lima', series: 'special', image: 'assets/monster/special/cuba-lima.jpg' },
-  { name: 'The Doctor', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Full Throttle', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Mucho Loco', series: 'special', image: 'assets/monster/special/g.png' },
-  { name: 'Monster Mule Ginger Brew', series: 'special', image: 'assets/monster/special/monster-mule-ginger-brew.jpg' }
-];
-
-CATALOG_ONLY_VARIANTS.forEach((variant, index) => {
-  CANS.push({
-    id: `catalog_${variant.series}_${index}`,
-    name: variant.name,
-    image: variant.image,
-    series: variant.series,
-    rarity: 'catalog',
-    limited: false,
-    description: 'Variante presente nel catalogo Monster Energy allegato.',
-    variants: [variant.name]
-  });
-});
     if (!raw) return defaultState();
     const parsed = JSON.parse(raw);
     const base = defaultState();
@@ -2415,7 +1342,7 @@ function migrateOldState() {
         st.variants[variant] = { owned: oldValue, rating: 0, notes: '' };
         changed = true;
       }
-      // Se è un oggetto ma manca owned, aggiungilo
+      // Se e un oggetto ma manca owned, aggiungilo
       else if (typeof st.variants[variant] === 'object' && st.variants[variant] !== null) {
         if (typeof st.variants[variant].owned !== 'boolean') {
           st.variants[variant].owned = false;
@@ -2434,7 +1361,7 @@ function migrateOldState() {
   });
   if (changed) {
     saveState(state);
-    console.log('🔄 Migrazione completata! I dati vecchi sono stati convertiti.');
+    console.log(' Migrazione completata! I dati vecchi sono stati convertiti.');
   }
   return state;
 }
@@ -2491,6 +1418,10 @@ function getLimitedCount() {
 
 function getOwnedLimited() {
   return CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => state[c.id].variants[v]?.owned)).length;
+}
+
+function isVariantOwned(value) {
+  return value === true || (value && value.owned === true);
 }
 
 // ============================================================
@@ -2573,9 +1504,9 @@ function renderSidebar() {
   });
 
   document.getElementById('sidebar-count').textContent = `${totalOwned} / ${totalVariants}`;
-  const limitedOwned = CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => state[c.id].variants[v])).length;
+  const limitedOwned = CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => isVariantOwned(state[c.id].variants[v]))).length;
   document.getElementById('sidebar-limited').textContent = `⭐ ${limitedOwned}`;
-  document.getElementById('footer-stats').textContent = `Lattine: ${filtered.length} • Varianti: ${totalVariants}`;
+  document.getElementById('footer-stats').textContent = `Lattine: ${filtered.length} · Varianti: ${totalVariants}`;
   document.getElementById('footer-limited').textContent = `⭐ Limited: ${limitedOwned}`;
 }
 
@@ -2589,6 +1520,10 @@ function selectIndex(idx) {
   currentIndex = (idx + CANS.length) % CANS.length;
   const can = CANS[currentIndex];
   const st = state[can.id];
+  let currentVariant = loadSelectedVariant(can.id);
+  if (!currentVariant || !can.variants.includes(currentVariant)) {
+    currentVariant = can.variants[0];
+  }
 
   // Aggiorna sidebar
   document.querySelectorAll('.can-item').forEach(el => el.classList.remove('active'));
@@ -2605,10 +1540,10 @@ function selectIndex(idx) {
 
   // Immagine
   const mainImg = document.getElementById('main-image');
-  mainImg.src = can.image || 'assets/monster/classic.png';
+  mainImg.src = getVariantImageForCan(can, currentVariant);
   mainImg.onerror = () => { mainImg.src = 'assets/monster/classic.png'; };
 
-  // Rarità (badge più evidente)
+  // Rarita (badge piu evidente)
   const rarityMap = {
     common: 'Comune',
     uncommon: 'Non comune',
@@ -2641,7 +1576,7 @@ function selectIndex(idx) {
     classic: 'Classic',
     ultra: 'Ultra',
     juice: 'Juice',
-    java: 'Java (Caffè)',
+    java: 'Java (Caffe)',
     rehab: 'Rehab',
     reserve: 'Reserve',
     special: 'Special Edition',
@@ -2656,11 +1591,10 @@ function selectIndex(idx) {
   const notesEl = document.getElementById('main-notes');
 
   // Usa la variante selezionata corrente (se non esiste, usa la prima)
-  let currentVariant = loadSelectedVariant(can.id);
-  if (!currentVariant || !can.variants.includes(currentVariant)) {
-    currentVariant = can.variants[0];
-  }
   window.selectedVariant = currentVariant;
+  const variantSelect = document.getElementById('selected-variant');
+  variantSelect.innerHTML = can.variants.map(variant => `<option value="${variant.replace(/"/g, '&quot;')}">${variant}</option>`).join('');
+  variantSelect.value = currentVariant;
   notesEl.textContent = st.variants[currentVariant]?.notes || '';
   notesEditing = false;
   notesEl.contentEditable = 'false';
@@ -2669,7 +1603,7 @@ function selectIndex(idx) {
 
    // Descrizione
    const descEl = document.getElementById('main-desc');
-	descEl.textContent = can.description || '—';
+	descEl.textContent = can.description || '';
 
 	// Valutazione
 	updateRatingDisplay(currentVariant);
@@ -2708,6 +1642,7 @@ function updateRatingDisplay(variant) {
 function setRating(variant, value) {
   const can = CANS[currentIndex];
   const st = state[can.id];
+  st.variants[variant] = st.variants[variant] || { owned: false, rating: 0, notes: '' };
   if (st.variants[variant].rating === value) {
     st.variants[variant].rating = 0;
   } else {
@@ -2716,6 +1651,27 @@ function setRating(variant, value) {
   saveState(state);
   updateRatingDisplay(variant);
   if (document.getElementById('grid-view').classList.contains('active')) buildGridView();
+}
+
+function getVariantImageForCan(can, variant) {
+  if (can.variantImages && can.variantImages[variant]) {
+    return can.variantImages[variant];
+  }
+  const base = (can.image || 'assets/monster/classic.png').replace(/\.(png|webp|jpg|jpeg)$/, '');
+  let suffix = variant.toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+  const specialMap = {
+    'call-of-duty': 'call-of-duty',
+    'zero-sugar': 'zero-sugar',
+    'ultra-white': 'ultra-white',
+    'mango-loco': 'mango-loco',
+    'vr46-zero-sugar': 'vr46-zero-sugar',
+    'lando-norris-gold-edition': 'lando-gold'
+  };
+  suffix = specialMap[suffix] || suffix;
+  const ext = can.image && can.image.includes('.webp') ? 'webp' : 'png';
+  return `${base}-${suffix}.${ext}`;
 }
 
 document.querySelectorAll('#rating-stars .star').forEach(star => {
@@ -2781,6 +1737,13 @@ document.getElementById('main-notes').addEventListener('keydown', (e) => {
   }
 });
 
+document.getElementById('selected-variant').addEventListener('change', (e) => {
+  const can = CANS[currentIndex];
+  window.selectedVariant = e.target.value;
+  saveSelectedVariant(can.id, window.selectedVariant);
+  selectIndex(currentIndex);
+});
+
 // ============================================================
 //  RENDER VARIANTS (con HOVER per cambiare immagine)
 // ============================================================
@@ -2790,27 +1753,6 @@ function renderVariants(can) {
   grid.innerHTML = '';
   const st = state[can.id];
   const mainImg = document.getElementById('main-image');
-
-  function getVariantImage(variant) {
-    if (can.variantImages && can.variantImages[variant]) {
-      return can.variantImages[variant];
-    }
-    const base = can.image.replace(/\.(png|webp|jpg|jpeg)$/, '');
-    let suffix = variant.toLowerCase()
-      .replace(/ /g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-    const specialMap = {
-      'call-of-duty': 'call-of-duty',
-      'zero-sugar': 'zero-sugar',
-      'ultra-white': 'ultra-white',
-      'mango-loco': 'mango-loco',
-      'vr46-zero-sugar': 'vr46-zero-sugar',
-      'lando-norris-gold-edition': 'lando-gold'
-    };
-    suffix = specialMap[suffix] || suffix;
-    const ext = can.image.includes('.webp') ? 'webp' : 'png';
-    return `${base}-${suffix}.${ext}`;
-  }
 
   can.variants.forEach(variant => {
     // ORA VARIANTI SONO OGGETTI
@@ -2847,7 +1789,7 @@ function renderVariants(can) {
 
     // HOVER
     btn.addEventListener('mouseenter', () => {
-      const variantImg = getVariantImage(variant);
+      const variantImg = getVariantImageForCan(can, variant);
       const testImg = new Image();
       testImg.onload = () => { mainImg.src = variantImg; };
       testImg.onerror = () => {};
@@ -2863,8 +1805,9 @@ function renderVariants(can) {
       e.stopPropagation();
       window.selectedVariant = variant;
       saveSelectedVariant(can.id, variant);
-      mainImg.src = can.variantImages?.[variant] || can.image;
+      mainImg.src = getVariantImageForCan(can, variant);
       mainImg.onerror = () => { mainImg.src = can.image; };
+      document.getElementById('selected-variant').value = variant;
       document.getElementById('main-notes').textContent = st.variants[variant]?.notes || '';
       updateRatingDisplay(variant);
       renderVariants(can);
@@ -3165,7 +2108,7 @@ function buildGridView() {
     const img = document.createElement('img');
     img.src = can.image || 'assets/monster/classic.png';
     img.onerror = function() {
-      this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"%3E%3Crect width="36" height="48" fill="%230a0a0f" rx="4"/%3E%3Ctext x="18" y="28" font-size="20" text-anchor="middle" fill="%2300ff41" font-family="monospace"%3E🥤%3C/text%3E%3C/svg%3E';
+      this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"%3E%3Crect width="36" height="48" fill="%230a0a0f" rx="4"/%3E%3Ctext x="18" y="28" font-size="20" text-anchor="middle" fill="%2300ff41" font-family="monospace"%3E%3C/text%3E%3C/svg%3E';
     };
     imgDiv.appendChild(img);
 
@@ -3265,15 +2208,15 @@ document.getElementById('btn-stats').addEventListener('click', () => {
     const st = state[can.id];
     can.variants.forEach(v => {
       totalVariants++;
-      if (st && st.variants[v]) {
+      if (st && isVariantOwned(st.variants[v])) {
         ownedVariants++;
         ownedRarity[can.rarity]++;
       }
+      rarityStats[can.rarity]++;
     });
-    rarityStats[can.rarity]++;
     if (can.limited) {
       limitedTotal++;
-      if (can.variants.some(v => st && st.variants[v])) ownedLimited++;
+      if (can.variants.some(v => st && isVariantOwned(st.variants[v]))) ownedLimited++;
     }
   });
 
@@ -3288,7 +2231,7 @@ document.getElementById('btn-stats').addEventListener('click', () => {
       </div>
       <div style="background:rgba(255,215,0,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,215,0,0.04);grid-column:1/2;">
         <div style="font-size:28px;font-weight:900;color:var(--gold);">${ownedLimited} / ${limitedTotal}</div>
-        <div style="color:var(--muted);font-size:13px;">⭐ Limited Edition</div>
+        <div style="color:var(--muted);font-size:13px;"> Limited Edition</div>
       </div>
       <div style="background:rgba(255,215,0,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,215,0,0.04);">
         <div style="font-size:28px;font-weight:900;color:var(--gold);">${percent}%</div>
@@ -3296,7 +2239,7 @@ document.getElementById('btn-stats').addEventListener('click', () => {
       </div>
     </div>
     <div style="margin-top:12px;">
-      <div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px;">Rarità</div>
+      <div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px;">Rarita</div>
       ${['common','uncommon','rare','epic','legendary'].map(r => {
         const total = rarityStats[r] || 0;
         const owned = ownedRarity[r] || 0;
@@ -3330,19 +2273,21 @@ document.getElementById('btn-menu').addEventListener('click', () => {
   document.getElementById('modal-title').textContent = '📋 Menu';
   document.getElementById('modal-description').textContent = 'Gestisci la tua collezione di Monster';
   document.getElementById('modal-content').innerHTML = `
-    <div style="margin-top:12px;font-weight:800;">💾 Dati</div>
+    <div style="margin-top:12px;font-weight:800;"> Dati</div>
     <div class="row">
-      <div class="option" data-action="export-json">📤 Esporta JSON</div>
-      <div class="option" data-action="import-json">📥 Importa JSON</div>
+      <div class="option" data-action="export-json"> Esporta JSON</div>
+      <div class="option" data-action="import-json"> Importa JSON</div>
+      <div class="option" data-action="export-catalog"> Esporta catalogo</div>
+      <div class="option" data-action="import-catalog"> Importa catalogo</div>
     </div>
-    <div style="margin-top:12px;font-weight:800;">🖼️ Esporta Immagine</div>
+    <div style="margin-top:12px;font-weight:800;"> Esporta Immagine</div>
     <div class="row">
-      <div class="option" data-action="all">📁 Tutta la collezione</div>
-      <div class="option" data-action="current">🎯 Lattina corrente</div>
+      <div class="option" data-action="all"> Tutta la collezione</div>
+      <div class="option" data-action="current"> Lattina corrente</div>
     </div>
-    <div style="margin-top:12px;font-weight:800;">🔧 Azioni</div>
+    <div style="margin-top:12px;font-weight:800;"> Azioni</div>
     <div class="row">
-      <div class="option" data-action="reset">🔄 Resetta tutto</div>
+      <div class="option" data-action="reset"> Resetta tutto</div>
     </div>
   `;
   modal.style.display = 'flex';
@@ -3352,6 +2297,8 @@ document.getElementById('btn-menu').addEventListener('click', () => {
       const action = opt.dataset.action;
       if (action === 'export-json') exportJSON();
       else if (action === 'import-json') document.getElementById('file-import').click();
+      else if (action === 'export-catalog') MonsterCatalog.download();
+      else if (action === 'import-catalog') document.getElementById('catalog-file-import').click();
       else if (action === 'reset') {
         const ok = await showConfirm('Resettare TUTTA la collezione?');
         if (ok) {
@@ -3417,6 +2364,23 @@ document.getElementById('file-import').addEventListener('change', e => {
   e.target.value = '';
 });
 
+document.getElementById('catalog-file-import').addEventListener('change', async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const items = await MonsterCatalog.importFile(file);
+    CANS.splice(0, CANS.length, ...items);
+    MonsterCatalog.set(CANS);
+    state = loadState();
+    selectIndex(0);
+    renderSidebar();
+    showToast('✅ Catalogo importato');
+  } catch (error) {
+    showToast(`❌ ${error.message}`);
+  }
+  e.target.value = '';
+});
+
 // ============================================================
 //  EXPORT IMAGE
 // ============================================================
@@ -3442,7 +2406,7 @@ async function exportCollectionImage() {
 
   CANS.forEach(can => {
     const st = state[can.id];
-    const owned = can.variants.filter(v => st && st.variants[v]).length;
+    const owned = can.variants.filter(v => st && isVariantOwned(st.variants[v])).length;
     const total = can.variants.length;
     const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
     const rating = st?.rating || 0;
@@ -3458,16 +2422,16 @@ async function exportCollectionImage() {
 
     let starsHtml = '';
     for (let i = 1; i <= 5; i++) {
-      if (i <= rating) starsHtml += '★';
-      else if (i - 0.5 <= rating) starsHtml += '★';
-      else starsHtml += '☆';
+      if (i <= rating) starsHtml += '';
+      else if (i - 0.5 <= rating) starsHtml += '';
+      else starsHtml += '';
     }
 
     card.innerHTML = `
       <div style="height:80px;display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
         <img src="${can.image || 'assets/monster/classic.png'}" style="max-height:100%;max-width:100%;object-fit:contain;" onerror="this.src='assets/monster/classic.png'">
       </div>
-      <div style="font-weight:700;font-size:13px;">${can.name}${can.limited ? ' ⭐' : ''}</div>
+      <div style="font-weight:700;font-size:13px;">${can.name}${can.limited ? ' ' : ''}</div>
       <div style="color:var(--muted);font-size:10px;">${can.series}</div>
       <div style="margin-top:6px;height:4px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;">
         <div style="height:100%;width:${percent}%;background:#00ff41;border-radius:999px;"></div>
@@ -3504,16 +2468,16 @@ async function exportCurrentImage() {
   showToast('📸 Generazione immagine...');
   const can = CANS[currentIndex];
   const st = state[can.id];
-  const owned = can.variants.filter(v => st && st.variants[v]).length;
+  const owned = can.variants.filter(v => st && isVariantOwned(st.variants[v])).length;
   const total = can.variants.length;
   const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
   const rating = st?.rating || 0;
 
   let starsHtml = '';
   for (let i = 1; i <= 5; i++) {
-    if (i <= rating) starsHtml += '★';
-    else if (i - 0.5 <= rating) starsHtml += '★';
-    else starsHtml += '☆';
+    if (i <= rating) starsHtml += '';
+    else if (i - 0.5 <= rating) starsHtml += '';
+    else starsHtml += '';
   }
 
   const container = document.createElement('div');
@@ -3534,16 +2498,16 @@ async function exportCurrentImage() {
       <img src="${can.image || 'assets/monster/classic.png'}" style="max-height:100%;max-width:100%;object-fit:contain;" onerror="this.src='assets/monster/classic.png'">
     </div>
     <div style="font-size:24px;font-weight:900;color:#fff;">${can.name}</div>
-    <div style="color:var(--muted);font-size:13px;">${can.series} ${can.limited ? '⭐ Limited' : ''}</div>
+    <div style="color:var(--muted);font-size:13px;">${can.series} ${can.limited ? ' Limited' : ''}</div>
     <div style="margin:12px 0;height:6px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;">
       <div style="height:100%;width:${percent}%;background:#00ff41;border-radius:999px;"></div>
     </div>
     <div style="font-size:16px;color:#00ff41;">${owned} / ${total} varianti</div>
     <div style="font-size:18px;color:#ffd166;margin-top:4px;">${starsHtml}</div>
-    <div style="margin-top:8px;font-size:12px;color:var(--muted);">${st?.description || can.description || '—'}</div>
+    <div style="margin-top:8px;font-size:12px;color:var(--muted);">${st?.description || can.description || ''}</div>
     <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;">
       ${can.variants.map(v => `
-        <span style="background:${st && st.variants[v] ? 'rgba(0,255,65,0.15)' : 'rgba(255,255,255,0.03)'};padding:4px 10px;border-radius:6px;font-size:11px;border:1px solid ${st && st.variants[v] ? 'rgba(0,255,65,0.2)' : 'rgba(255,255,255,0.04)'};">${v}</span>
+        <span style="background:${st && isVariantOwned(st.variants[v]) ? 'rgba(0,255,65,0.15)' : 'rgba(255,255,255,0.03)'};padding:4px 10px;border-radius:6px;font-size:11px;border:1px solid ${st && isVariantOwned(st.variants[v]) ? 'rgba(0,255,65,0.2)' : 'rgba(255,255,255,0.04)'};">${v}</span>
       `).join('')}
     </div>
   `;
@@ -3575,7 +2539,7 @@ async function exportCurrentImage() {
 document.getElementById('sidebar-toggle').addEventListener('click', () => {
   const sidebar = document.getElementById('sidebar');
   sidebar.classList.toggle('open');
-  document.getElementById('sidebar-toggle').textContent = sidebar.classList.contains('open') ? '✕' : '☰ Lista';
+  document.getElementById('sidebar-toggle').textContent = sidebar.classList.contains('open') ? '' : ' Lista';
 });
 
 // ============================================================
@@ -3583,7 +2547,7 @@ document.getElementById('sidebar-toggle').addEventListener('click', () => {
 // ============================================================
 
 document.addEventListener('keydown', (e) => {
-  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) || document.activeElement.isContentEditable) {
     if (e.key === 'Escape') document.activeElement.blur();
     return;
   }
@@ -3600,9 +2564,16 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
     const can = CANS[currentIndex];
     const st = state[can.id];
-    const firstUnowned = can.variants.find(v => !st.variants[v]);
-    if (firstUnowned) {
-      st.variants[firstUnowned] = true;
+    const hasUnowned = can.variants.some(v => !isVariantOwned(st.variants[v]));
+    if (hasUnowned) {
+      can.variants.forEach(variant => {
+        st.variants[variant] = {
+          ...(st.variants[variant] || {}),
+          owned: true,
+          rating: st.variants[variant]?.rating || 0,
+          notes: st.variants[variant]?.notes || ''
+        };
+      });
       saveState(state);
       playClickSound();
       selectIndex(currentIndex);
@@ -3610,9 +2581,9 @@ document.addEventListener('keydown', (e) => {
       if (document.getElementById('grid-view').classList.contains('active')) {
         buildGridView();
       }
-      showToast(`✅ ${firstUnowned} acquisita`);
+      showToast(`✅ Tutte le varianti di ${can.name} acquisite`);
     } else {
-      showToast('✅ Tutte le varianti sono già possedute!');
+      showToast('✅ Tutte le varianti sono gia possedute!');
     }
   }
   if (e.key === 'g' || e.key === 'G') {
@@ -3632,8 +2603,8 @@ setInterval(() => {
   renderSidebar();
 }, 5000);
 
-console.log('🥤 Monster Energy Tracker loaded!');
-console.log(`📊 ${CANS.length} lattine totali`);
+console.log(' Monster Energy Tracker loaded!');
+console.log(` ${CANS.length} lattine totali`);
 
 // ============================================================
 //  FUNZIONI
