@@ -1139,14 +1139,8 @@ body.image-bg-on .can-art {
     <label class="toggle-switch">
       <input type="checkbox" id="toggle-limited">
       <span class="toggle-slider"></span>
-      <span class="toggle-label">⭐ Limited</span>
+      <span class="toggle-label">Limited Edition</span>
     </label>
-	
-	<label class="toggle-switch">
-	  <input type="checkbox" id="toggle-image-bg">
-	  <span class="toggle-slider"></span>
-    <span class="toggle-label">🖼️ Sfondo immagini</span>
-	</label>
 	
 	<div class="header-controls">
       <button class="btn-adaptive ghost" id="btn-grid-toggle">📦 Scaffale</button>
@@ -1583,12 +1577,37 @@ function selectIndex(idx) {
     document.getElementById('main-limited').style.display = 'none';
   }
 
-  // Immagine - usa SEMPRE la variante selezionata
-  const mainImg = document.getElementById('main-image');
-  const variantToShow = currentVariant || can.variants[0];
-  const variantImgPath = getVariantImageForCan(can, variantToShow);
-  mainImg.src = variantImgPath + '?' + Date.now(); // Forza il refresh
-  mainImg.onerror = () => { mainImg.src = 'assets/monster/classic.png'; };
+  // Immagine - usa SEMPRE la variante selezionata con fallback
+	const mainImg = document.getElementById('main-image');
+	const variantToShow = currentVariant || can.variants[0];
+	const variantImgPath = getVariantImageForCan(can, variantToShow);
+
+	// Funzione per caricare con fallback
+	function loadImageWithFallback(imgElement, primaryPath, fallbackPath) {
+	  const testImg = new Image();
+	  testImg.onload = function() {
+		imgElement.src = primaryPath + '?' + Date.now();
+	  };
+	  testImg.onerror = function() {
+		// Prova con l'immagine base della lattina
+		if (can.image && can.image !== primaryPath) {
+		  const testImg2 = new Image();
+		  testImg2.onload = function() {
+			imgElement.src = can.image + '?' + Date.now();
+		  };
+		  testImg2.onerror = function() {
+			// Fallback finale a classic.png
+			imgElement.src = 'assets/monster/classic.png?' + Date.now();
+		  };
+		  testImg2.src = can.image;
+		} else {
+		  imgElement.src = 'assets/monster/classic.png?' + Date.now();
+		}
+	  };
+	  testImg.src = primaryPath;
+	}
+
+	loadImageWithFallback(mainImg, variantImgPath, can.image || 'assets/monster/classic.png');
 
   // Rarita (badge piu evidente)
   const rarityMap = {
@@ -1727,24 +1746,62 @@ function setRating(variant, value) {
 }
 
 function getVariantImageForCan(can, variant) {
+  // Prima controlla se ci sono immagini specifiche per le varianti nel catalogo
   if (can.variantImages && can.variantImages[variant]) {
     return can.variantImages[variant];
   }
-  const base = (can.image || 'assets/monster/classic.png').replace(/\.(png|webp|jpg|jpeg)$/, '');
+  
+  // Se l'immagine base è classic.png, prova a costruire il percorso della variante
+  const baseImage = can.image || 'assets/monster/classic.png';
+  
+  // Se l'immagine base è già un percorso specifico (non classic.png), usala
+  if (baseImage !== 'assets/monster/classic.png' && !baseImage.includes('classic')) {
+    return baseImage;
+  }
+  
+  // Costruisci il percorso per la variante
+  const basePath = baseImage.replace(/\.(png|webp|jpg|jpeg)$/, '');
+  
+  // Pulisci il nome della variante per usarlo come filename
   let suffix = variant.toLowerCase()
     .replace(/ /g, '-')
     .replace(/[^a-z0-9-]/g, '');
+  
+  // Mappa per varianti speciali
   const specialMap = {
     'call-of-duty': 'call-of-duty',
     'zero-sugar': 'zero-sugar',
     'ultra-white': 'ultra-white',
     'mango-loco': 'mango-loco',
     'vr46-zero-sugar': 'vr46-zero-sugar',
-    'lando-norris-gold-edition': 'lando-gold'
+    'lando-norris-gold-edition': 'lando-gold',
+    'original': 'classic',
+    'classic': 'classic'
   };
   suffix = specialMap[suffix] || suffix;
-  const ext = can.image && can.image.includes('.webp') ? 'webp' : 'png';
-  return `${base}-${suffix}.${ext}`;
+  
+  // Estensione
+  const ext = baseImage.includes('.webp') ? 'webp' : 'png';
+  
+  // Percorso finale
+  const finalPath = `${basePath}-${suffix}.${ext}`;
+  
+  // Se il percorso è identico a quello base, usa direttamente l'immagine base
+  if (finalPath === baseImage) {
+    return baseImage;
+  }
+  
+  return finalPath;
+}
+
+function preloadVariantImage(can, variant) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const path = getVariantImageForCan(can, variant);
+    img.onload = () => resolve(path);
+    img.onerror = () => resolve(can.image || 'assets/monster/classic.png');
+    img.src = path;
+  });
 }
 
 document.querySelectorAll('#rating-stars .star').forEach(star => {
@@ -1860,34 +1917,42 @@ function renderVariants(can) {
       playClickSound();
     });
 
-    // HOVER
-    btn.addEventListener('mouseenter', () => {
-      const variantImg = getVariantImageForCan(can, variant);
-      const testImg = new Image();
-      testImg.onload = () => { mainImg.src = variantImg; };
-      testImg.onerror = () => {};
-      testImg.src = variantImg;
-    });
-
-    btn.addEventListener('mouseleave', () => {
-      mainImg.src = can.image;
-    });
-
-    // Seleziona la variante per modificarne immagine, note e rating.
-    // CLICK sul pulsante INTERO
-	btn.addEventListener('click', (e) => {
-	  e.stopPropagation();
-	  // Toggle owned
-	  st.variants[variant] = {
-		...(st.variants[variant] || {}),
-		owned: !owned,
-		rating: st.variants[variant]?.rating || 0,
-		notes: st.variants[variant]?.notes || ''
+    // HOVER - cambia l'immagine al passaggio del mouse
+	btn.addEventListener('mouseenter', () => {
+	  const variantImg = getVariantImageForCan(can, variant);
+	  // Prova a caricare l'immagine della variante
+	  const testImg = new Image();
+	  testImg.onload = () => { 
+		mainImg.src = variantImg + '?' + Date.now(); 
 	  };
-	  saveState(state);
-	  renderSidebar();
-	  selectIndex(currentIndex);
-	  playClickSound();
+	  testImg.onerror = () => {
+		// Se non trova l'immagine della variante, usa l'immagine base
+		if (can.image) {
+		  mainImg.src = can.image + '?' + Date.now();
+		} else {
+		  mainImg.src = 'assets/monster/classic.png';
+		}
+	  };
+	  testImg.src = variantImg;
+	});
+
+	btn.addEventListener('mouseleave', () => {
+	  // Torna all'immagine della variante selezionata
+	  const currentVariant = window.selectedVariant || can.variants[0];
+	  const currentImg = getVariantImageForCan(can, currentVariant);
+	  // Verifica che l'immagine esista prima di impostarla
+	  const testImg = new Image();
+	  testImg.onload = () => {
+		mainImg.src = currentImg + '?' + Date.now();
+	  };
+	  testImg.onerror = () => {
+		if (can.image) {
+		  mainImg.src = can.image + '?' + Date.now();
+		} else {
+		  mainImg.src = 'assets/monster/classic.png';
+		}
+	  };
+	  testImg.src = currentImg;
 	});
 
     grid.appendChild(btn);
@@ -2004,26 +2069,6 @@ document.getElementById('toggle-limited').addEventListener('change', () => {
   }
 });
 
-// ===== TOGGLE SFONDO IMMAGINI =====
-const toggleImageBg = document.getElementById('toggle-image-bg');
-const IMAGE_BG_KEY = 'monster_image_bg';
-
-// Carica lo stato salvato
-const savedImageBg = localStorage.getItem(IMAGE_BG_KEY);
-if (savedImageBg === 'true') {
-  toggleImageBg.checked = true;
-  document.body.classList.add('image-bg-on');
-}
-
-toggleImageBg.addEventListener('change', function() {
-  if (this.checked) {
-    document.body.classList.add('image-bg-on');
-    localStorage.setItem(IMAGE_BG_KEY, 'true');
-  } else {
-    document.body.classList.remove('image-bg-on');
-    localStorage.setItem(IMAGE_BG_KEY, 'false');
-  }
-});
 
 // ============================================================
 //  ACTIONS
