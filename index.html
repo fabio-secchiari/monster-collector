@@ -1271,12 +1271,39 @@ body.image-bg-on .can-art {
       </div>
 
 	<div class="right-panel">
+    <!-- SERIE -->
+	  <div class="details-box">
+		<div class="label">
+		  Serie
+		  <span style="font-size:11px;color:#fff;font-weight:400;text-transform:none;" id="main-series-label">classic</span>
+		</div>
+	  </div>
+
     <div class="can-name" id="main-name">🥤 Monster</div>
 
 	  <div class="progress-row">
 		<div class="percent" id="main-percent">0%</div>
 		<div class="bar"><div class="fill" id="main-fill"></div></div>
 		<div style="width:80px;text-align:right;color:var(--muted)" id="main-count">0 / 0</div>
+	  </div>
+
+	  <!-- VARIANTI -->
+	  <div>
+		<div style="font-size:11px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:0.5px;">Varianti</div>
+    <div class="selected-variant-row">
+      <label for="selected-variant">Variante visualizzata</label>
+      <select id="selected-variant" class="filter-select"></select>
+    </div>
+		<div class="variants-grid" id="variants-grid"></div>
+	  </div>
+
+	  <!-- NOTE (MODIFICABILE DALL'UTENTE) -->
+	  <div class="details-box">
+		<div class="label">
+		  Note
+      <button class="edit-btn" id="edit-notes-btn">✏️ Modifica</button>
+		</div>
+		<div class="value" id="main-notes" contenteditable="false"></div>
 	  </div>
 
 	  <!-- VALUTAZIONE -->
@@ -1290,33 +1317,6 @@ body.image-bg-on .can-art {
       <span class="star" data-value="5">☆</span>
 		</div>
     <span id="rating-text" style="font-size:13px;color:#fff;min-width:40px;">—</span>
-	  </div>
-
-	  <!-- NOTE (MODIFICABILE DALL'UTENTE) -->
-	  <div class="details-box">
-		<div class="label">
-		  Note
-      <button class="edit-btn" id="edit-notes-btn">✏️ Modifica</button>
-		</div>
-		<div class="value" id="main-notes" contenteditable="false"></div>
-	  </div>
-
-	  <!-- VARIANTI -->
-	  <div>
-		<div style="font-size:11px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:0.5px;">Varianti</div>
-    <div class="selected-variant-row">
-      <label for="selected-variant">Variante visualizzata</label>
-      <select id="selected-variant" class="filter-select"></select>
-    </div>
-		<div class="variants-grid" id="variants-grid"></div>
-	  </div>
-
-	  <!-- SERIE -->
-	  <div class="details-box">
-		<div class="label">
-		  Serie
-		  <span style="font-size:11px;color:#fff;font-weight:400;text-transform:none;" id="main-series-label">classic</span>
-		</div>
 	  </div>
 
 	  <!-- DESCRIZIONE (FISSA, NON MODIFICABILE) -->

@@ -249,13 +249,25 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_ultra_fiesta",
         "name":  "Fiesta Mango",
-        "image":  "assets/monster/ultra/ultra-fiesta.jpg",
+        "image":  "assets/monster/ultra/ultra-fiesta-mango.webp",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  true,
         "description":  "Edizione limitata con gusto mango, zero zuccheri.",
         "variants":  [
                          "Ultra Fiesta Mango"
+                     ]
+    },
+    {
+        "id":  "catalog_ultra_1",
+        "name":  "Fiesta",
+        "image":  "assets/monster/ultra/ultra-fiesta.jpg",
+        "series":  "ultra",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
+        "variants":  [
+                            "Ultra Fiesta"
                      ]
     },
     {
@@ -292,6 +304,18 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Edizione limitata dorata, gusto tropicale premium.",
         "variants":  [
                          "Ultra Gold"
+                     ]
+    },
+    {
+        "id":  "catalog_ultra_0",
+        "name":  "Citron",
+        "image":  "assets/monster/ultra/ultra-citron.jpg",
+        "series":  "ultra",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Edizione limitata Ultra al gusto citron (limone). Discontinued.",
+        "variants":  [
+                         "Ultra Citron"
                      ]
     },
     {
@@ -425,6 +449,18 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Mango Loco",
                          "Call of Duty"
+                     ]
+    },
+    {
+        "id":  "catalog_juice_17",
+        "name":  "Juiced Monarch",
+        "image":  "assets/monster/juice/juiced-monarch.jpg",
+        "series":  "juice",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Juiced Monarch (Papillon), edizione farfalla. Gusto esotico.",
+        "variants":  [
+                         "Juiced Monarch"
                      ]
     },
     {
@@ -1186,30 +1222,6 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "catalog_ultra_0",
-        "name":  "Ultra Citron",
-        "image":  "assets/monster/ultra/ultra-citron.jpg",
-        "series":  "ultra",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Edizione limitata Ultra al gusto citron (limone). Discontinued.",
-        "variants":  [
-                         "Ultra Citron"
-                     ]
-    },
-    {
-        "id":  "catalog_ultra_1",
-        "name":  "Ultra Fiesta",
-        "image":  "assets/monster/ultra/ultra-fiesta.jpg",
-        "series":  "ultra",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
-        "variants":  [
-                         "Ultra Fiesta"
-                     ]
-    },
-    {
         "id":  "catalog_java_6",
         "name":  "Java Lo-Ball",
         "image":  "assets/monster/java/d.png",
@@ -1315,18 +1327,6 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Java Cappuccino, gusto cappuccino. Discontinued.",
         "variants":  [
                          "Java Cappuccino"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_17",
-        "name":  "Juiced Monarch",
-        "image":  "assets/monster/juice/juiced-monarch.jpg",
-        "series":  "juice",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Juiced Monarch (Papillon), edizione farfalla. Gusto esotico.",
-        "variants":  [
-                         "Juiced Monarch"
                      ]
     },
     {
