@@ -1,7 +1,7 @@
 window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_classic",
-        "name":  "Monster Original",
+        "name":  "Original Green 'OG'",
         "image":  "assets/monster/classic/original.webp",
         "series":  "classic",
         "rarity":  "common",
@@ -9,25 +9,15 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La Monster originale, il gusto che ha iniziato tutto.",
         "variants":  [
                          "Original",
-                         "Call of Duty"
-                     ]
-    },
-    {
-        "id":  "monster_zero_sugar",
-        "name":  "Monster Zero Sugar",
-        "image":  "assets/monster/classic/zero-sugar.webp",
-        "series":  "classic",
-        "rarity":  "common",
-        "limited":  false,
-        "description":  "Tutto il gusto Monster, zero zuccheri.",
-        "variants":  [
-                         "Zero Sugar",
-                         "Call of Duty"
-                     ]
+						 "Zero Sugar",
+                     ],
+					 "variantImages":  {
+                              "Zero Sugar":  "assets/monster/classic/original-zero-sugar.webp"
+                          }
     },
     {
         "id":  "monster_lo_carb",
-        "name":  "Monster Lo-Carb",
+        "name":  "Lo-Carb",
         "image":  "assets/monster/classic/lo-carb.webp",
         "series":  "classic",
         "rarity":  "uncommon",
@@ -39,7 +29,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_assault",
-        "name":  "Monster Assault",
+        "name":  "Assault",
         "image":  "assets/monster/classic/assault.png",
         "series":  "classic",
         "rarity":  "uncommon",
@@ -48,11 +38,14 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original",
                          "Black"
-                     ]
+                     ],
+					 "variantImages":  {
+                              "Black":  "assets/monster/classic/assault-black.webp"
+                          }
     },
     {
         "id":  "monster_nitro",
-        "name":  "Monster Nitro Super Dry",
+        "name":  "Nitro Super Dry",
         "image":  "assets/monster/classic/nitro.webp",
         "series":  "classic",
         "rarity":  "rare",
@@ -64,13 +57,13 @@ window.MONSTER_CATALOG_DATA = [
                          "Blue Flash"
                      ],
         "variantImages":  {
-                              "Cosmic Peach":  "assets/monster/classic/nitro-cosmic-peach.webp",
-                              "Blue Flash":  "assets/monster/classic/nitro-blue-flash.webp"
+                              "Cosmic Peach":  "assets/monster/classic/nitro-cosmic-peach.png",
+                              "Blue Flash":  "assets/monster/classic/nitro-blue-flash.png"
                           }
     },
     {
         "id":  "monster_import",
-        "name":  "Monster Import",
+        "name":  "Import",
         "image":  "assets/monster/classic/import.webp",
         "series":  "classic",
         "rarity":  "rare",
@@ -82,23 +75,23 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_strawberry_shot",
-        "name":  "Monster Strawberry Shot",
+        "name":  "Strawberry Shot",
         "image":  "assets/monster/classic/strawberry-shot.webp",
         "series":  "classic",
         "rarity":  "uncommon",
         "limited":  false,
         "description":  "Nuovo gusto fragola lanciato nel 2025.",
         "variants":  [
-                         "Strawberry Shot",
-                         "Zero Sugar Strawberry Shot"
+                         "Original",
+                         "Zero Sugar"
                      ],
         "variantImages":  {
-                              "Zero Sugar Strawberry Shot":  "assets/monster/classic/strawberry-shot-zero-sugar.webp"
+                              "Zero Sugar":  "assets/monster/classic/strawberry-shot-zero-sugar.webp"
                           }
     },
     {
         "id":  "monster_electric_blue",
-        "name":  "Monster Electric Blue",
+        "name":  "Electric Blue",
         "image":  "assets/monster/classic/electric-blue.webp",
         "series":  "classic",
         "rarity":  "rare",
@@ -108,9 +101,21 @@ window.MONSTER_CATALOG_DATA = [
                          "Electric Blue"
                      ]
     },
+	{
+        "id":  "monster_orange_dreamsicle",
+        "name":  "Orange Dreamsicle",
+        "image":  "assets/monster/classic/orange-dreamsicle.webp",
+        "series":  "classic",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Edizione limitata, gusto arancia e crema.",
+        "variants":  [
+                         "Orange Dreamsicle"
+                     ]
+    },
     {
         "id":  "monster_export",
-        "name":  "Monster Export",
+        "name":  "Export",
         "image":  "assets/monster/classic/export.webp",
         "series":  "classic",
         "rarity":  "rare",
@@ -122,7 +127,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_m3",
-        "name":  "Monster M3",
+        "name":  "M3",
         "image":  "assets/monster/classic/m3.webp",
         "series":  "classic",
         "rarity":  "epic",
@@ -134,7 +139,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_zero_sugar_full_throttle",
-        "name":  "Monster Zero Sugar Full Throttle",
+        "name":  "Zero Sugar Full Throttle",
         "image":  "assets/monster/classic/full-throttle.png",
         "series":  "classic",
         "rarity":  "uncommon",
@@ -146,7 +151,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_top_speed_zero_sugar",
-        "name":  "Monster Top Speed Zero Sugar",
+        "name":  "Top Speed Zero Sugar",
         "image":  "assets/monster/classic/top-speed.png",
         "series":  "classic",
         "rarity":  "rare",
@@ -158,7 +163,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_mule_non_alcoholic",
-        "name":  "Monster Mule (Non-Alcoholic)",
+        "name":  "Mule (Non-Alcoholic)",
         "image":  "assets/monster/classic/mule.webp",
         "series":  "classic",
         "rarity":  "rare",
@@ -170,21 +175,21 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_white",
-        "name":  "Monster Ultra White",
-        "image":  "assets/monster/ultra/white.png",
+        "name":  "White",
+        "image":  "assets/monster/ultra/ultra-white.jpg",
         "series":  "ultra",
         "rarity":  "common",
         "limited":  false,
         "description":  "La famosa \"White Monster\". Zero zuccheri, gusto fresco.",
         "variants":  [
-                         "Ultra White",
+                         "Original",
                          "Call of Duty"
                      ]
     },
     {
         "id":  "monster_ultra_red",
-        "name":  "Monster Ultra Red",
-        "image":  "assets/monster/ultra/red.png",
+        "name":  "Red",
+        "image":  "assets/monster/ultra/ultra-red.jpg",
         "series":  "ultra",
         "rarity":  "common",
         "limited":  false,
@@ -195,8 +200,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_blue",
-        "name":  "Monster Ultra Blue",
-        "image":  "assets/monster/ultra/blue.png",
+        "name":  "Blue",
+        "image":  "assets/monster/ultra/ultra-blue.jpg",
         "series":  "ultra",
         "rarity":  "common",
         "limited":  false,
@@ -207,8 +212,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_violet",
-        "name":  "Monster Ultra Violet",
-        "image":  "assets/monster/ultra/violet.png",
+        "name":  "Violet",
+        "image":  "assets/monster/ultra/ultra-violet.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
         "limited":  false,
@@ -219,8 +224,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_paradise",
-        "name":  "Monster Ultra Paradise",
-        "image":  "assets/monster/ultra/paradise.png",
+        "name":  "Paradise",
+        "image":  "assets/monster/ultra/ultra-paradise.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
         "limited":  false,
@@ -231,8 +236,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_sunrise",
-        "name":  "Monster Ultra Sunrise",
-        "image":  "assets/monster/ultra/sunrise.png",
+        "name":  "Sunrise",
+        "image":  "assets/monster/ultra/ultra-sunrise.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
         "limited":  false,
@@ -243,8 +248,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_fiesta",
-        "name":  "Monster Ultra Fiesta Mango",
-        "image":  "assets/monster/ultra/fiesta.png",
+        "name":  "Fiesta Mango",
+        "image":  "assets/monster/ultra/ultra-fiesta.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  true,
@@ -255,8 +260,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_watermelon",
-        "name":  "Monster Ultra Watermelon",
-        "image":  "assets/monster/ultra/watermelon.png",
+        "name":  "Watermelon",
+        "image":  "assets/monster/ultra/ultra-watermelon.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
         "limited":  false,
@@ -267,8 +272,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_rosa",
-        "name":  "Monster Ultra Rosa",
-        "image":  "assets/monster/ultra/rosa.png",
+        "name":  "Rosa",
+        "image":  "assets/monster/ultra/ultra-rosa.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -279,8 +284,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_gold",
-        "name":  "Monster Ultra Gold",
-        "image":  "assets/monster/ultra/gold.png",
+        "name":  "Gold",
+        "image":  "assets/monster/ultra/ultra-gold.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  true,
@@ -291,8 +296,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_peachy",
-        "name":  "Monster Ultra Peachy Keen",
-        "image":  "assets/monster/ultra/peachy.png",
+        "name":  "Peachy Keen",
+        "image":  "assets/monster/ultra/ultra-peachy-keen.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -303,8 +308,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_strawberry",
-        "name":  "Monster Ultra Strawberry Dreams",
-        "image":  "assets/monster/ultra/strawberry.png",
+        "name":  "Strawberry Dreams",
+        "image":  "assets/monster/ultra/ultra-strawberry-dreams.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -315,8 +320,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_ruby",
-        "name":  "Monster Ultra Fantasy Ruby Red",
-        "image":  "assets/monster/ultra/ruby.png",
+        "name":  "Fantasy Ruby Red",
+        "image":  "assets/monster/ultra/ultra-fantasy-ruby-red.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -327,8 +332,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_black",
-        "name":  "Monster Ultra Black",
-        "image":  "assets/monster/ultra/black.png",
+        "name":  "Black",
+        "image":  "assets/monster/ultra/ultra-black.jpg",
         "series":  "ultra",
         "rarity":  "epic",
         "limited":  true,
@@ -339,8 +344,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_guava",
-        "name":  "Monster Ultra Guava Vice",
-        "image":  "assets/monster/ultra/guava.png",
+        "name":  "Vice Guava",
+        "image":  "assets/monster/ultra/ultra-vice-guava.jpg",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -351,8 +356,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_pineapple",
-        "name":  "Monster Ultra Pineapple",
-        "image":  "assets/monster/ultra/pineapple.png",
+        "name":  "Pineapple",
+        "image":  "assets/monster/ultra/ultra-pineapple.webp",
         "series":  "ultra",
         "rarity":  "epic",
         "limited":  true,
@@ -363,8 +368,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_blue_hawaiian",
-        "name":  "Monster Ultra Blue Hawaiian",
-        "image":  "assets/monster/ultra/blue-hawaiian.png",
+        "name":  "Blue Hawaiian",
+        "image":  "assets/monster/ultra/ultra-blue-hawaiian.webp",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -375,8 +380,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_punk_punch",
-        "name":  "Monster Ultra Punk Punch",
-        "image":  "assets/monster/ultra/punk-punch.png",
+        "name":  "Punk Punch",
+        "image":  "assets/monster/ultra/ultra-punk-punch.webp",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -387,8 +392,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_red_white_blue_razz",
-        "name":  "Monster Ultra Red White \u0026 Blue Razz",
-        "image":  "assets/monster/ultra/red-white-blue-razz.png",
+        "name":  "Red White \u0026 Blue Razz",
+        "image":  "assets/monster/ultra/ultra-red-white-blue-razz.webp",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  true,
@@ -399,8 +404,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_wild_passion",
-        "name":  "Monster Ultra Wild Passion",
-        "image":  "assets/monster/ultra/wild-passion.png",
+        "name":  "Wild Passion",
+        "image":  "assets/monster/ultra/ultra-wild-passion.webp",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  false,
@@ -1706,30 +1711,6 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Variante presente nel catalogo Monster Energy allegato.",
         "variants":  [
                          "Muscle Shake Vanilla Bottle"
-                     ]
-    },
-    {
-        "id":  "catalog_classic_44",
-        "name":  "Nitro Super Dry",
-        "image":  "assets/monster/classic/nitro.webp",
-        "series":  "classic",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Nitro Super Dry"
-                     ]
-    },
-    {
-        "id":  "catalog_classic_45",
-        "name":  "Nitro Cosmic Peach",
-        "image":  "assets/monster/classic/nitro-cosmic-peach.png",
-        "series":  "classic",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Nitro Cosmic Peach"
                      ]
     },
     {
