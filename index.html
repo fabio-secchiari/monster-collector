@@ -400,6 +400,10 @@ body {
   width: 100%;
 }
 
+#locker-view.is-hidden {
+  display: none;
+}
+
 .left-panel {
   flex: 0 0 340px;
   display: flex;
@@ -3112,39 +3116,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let gridMode = false;
 
-document.getElementById('btn-grid-toggle').addEventListener('click', function() {
+function setGridMode(enabled) {
   const locker = document.getElementById('locker-view');
   const grid = document.getElementById('grid-view');
-  
-  // Toggle modalità
-  gridMode = !gridMode;
-  
+
+  gridMode = enabled;
+  locker.classList.toggle('is-hidden', gridMode);
+  grid.classList.toggle('active', gridMode);
+
   if (gridMode) {
-    // Mostra griglia, nascondi locker
-    locker.style.display = 'none';
-    buildGridView(); // <-- RICOSTRUISCE LA GRIGLIA
-    grid.style.display = 'grid'; // <-- FORZA LA VISUALIZZAZIONE
-    grid.classList.add('active');
-    this.textContent = '📋 Locker';
+    buildGridView();
+    grid.removeAttribute('hidden');
+    document.getElementById('btn-grid-toggle').textContent = '📋 Locker';
     showToast('📦 Vista scaffale');
   } else {
-    // Mostra locker, nascondi griglia
-    locker.style.display = 'flex';
-    grid.style.display = 'none';
-    grid.classList.remove('active');
-    this.textContent = '📦 Scaffale';
-    showToast('📋 Vista locker');
-    // Ricarica la vista corrente
+    grid.setAttribute('hidden', '');
+    document.getElementById('btn-grid-toggle').textContent = '📦 Scaffale';
     selectIndex(currentIndex);
+    showToast('📋 Vista locker');
   }
+}
+
+document.getElementById('btn-grid-toggle').addEventListener('click', function() {
+  setGridMode(!gridMode);
 });
 
 function buildGridView() {
   const grid = document.getElementById('grid-view');
   grid.innerHTML = '';
-  
+
   // USA TUTTE LE LATTINE, SENZA FILTRI
-  const filtered = CANS; // <-- IGNORA I FILTRI PER ORA
+  const filtered = CANS;
 
   if (filtered.length === 0) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Nessuna lattina trovata</div>`;
@@ -3229,8 +3231,7 @@ function buildGridView() {
 
     card.addEventListener('click', () => {
       if (gridMode) {
-        gridMode = false;
-        document.getElementById('btn-grid-toggle').click();
+        setGridMode(false);
       }
       selectIndex(CANS.indexOf(can));
     });
