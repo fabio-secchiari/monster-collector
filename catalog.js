@@ -1232,7 +1232,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "catalog_java_6",
         "name":  "Java Vanilla Light",
-        "image":  "assets/monster/java/lo-ball.webp",
+        "image":  "assets/monster/java/vanilla-light.webp",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1244,7 +1244,7 @@ window.MONSTER_CATALOG_DATA = [
 	{
         "id":  "catalog_java_7",
         "name":  "Java Lo-Ball",
-        "image":  "assets/monster/java/Lo-Ball.webp",
+        "image":  "assets/monster/java/lo-ball.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
