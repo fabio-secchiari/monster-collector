@@ -175,7 +175,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_white",
-        "name":  "White",
+        "name":  "Ultra White",
         "image":  "assets/monster/ultra/ultra-white.jpg",
         "series":  "ultra",
         "rarity":  "common",
@@ -188,7 +188,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_red",
-        "name":  "Red",
+        "name":  "Ultra Red",
         "image":  "assets/monster/ultra/ultra-red.jpg",
         "series":  "ultra",
         "rarity":  "common",
@@ -200,7 +200,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_blue",
-        "name":  "Blue",
+        "name":  "Ultra Blue",
         "image":  "assets/monster/ultra/ultra-blue.jpg",
         "series":  "ultra",
         "rarity":  "common",
@@ -212,7 +212,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_violet",
-        "name":  "Violet",
+        "name":  "Ultra Violet",
         "image":  "assets/monster/ultra/ultra-violet.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -224,7 +224,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_paradise",
-        "name":  "Paradise",
+        "name":  "Ultra Paradise",
         "image":  "assets/monster/ultra/ultra-paradise.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -236,7 +236,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_sunrise",
-        "name":  "Sunrise",
+        "name":  "Ultra Sunrise",
         "image":  "assets/monster/ultra/ultra-sunrise.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -248,7 +248,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_fiesta",
-        "name":  "Fiesta Mango",
+        "name":  "Ultra Fiesta Mango",
         "image":  "assets/monster/ultra/ultra-fiesta-mango.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -260,7 +260,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_ultra_1",
-        "name":  "Fiesta",
+        "name":  "Ultra Fiesta",
         "image":  "assets/monster/ultra/ultra-fiesta.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -272,7 +272,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_watermelon",
-        "name":  "Watermelon",
+        "name":  "Ultra Watermelon",
         "image":  "assets/monster/ultra/ultra-watermelon.jpg",
         "series":  "ultra",
         "rarity":  "uncommon",
@@ -284,7 +284,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_rosa",
-        "name":  "Rosa",
+        "name":  "Ultra Rosa",
         "image":  "assets/monster/ultra/ultra-rosa.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -296,7 +296,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_gold",
-        "name":  "Gold",
+        "name":  "Ultra Gold",
         "image":  "assets/monster/ultra/ultra-gold.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -308,7 +308,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_ultra_0",
-        "name":  "Citron",
+        "name":  "Ultra Citron",
         "image":  "assets/monster/ultra/ultra-citron.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -320,7 +320,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_peachy",
-        "name":  "Peachy Keen",
+        "name":  "Ultra Peachy Keen",
         "image":  "assets/monster/ultra/ultra-peachy-keen.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -332,7 +332,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_strawberry",
-        "name":  "Strawberry Dreams",
+        "name":  "Ultra Strawberry Dreams",
         "image":  "assets/monster/ultra/ultra-strawberry-dreams.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -344,7 +344,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_ruby",
-        "name":  "Fantasy Ruby Red",
+        "name":  "Ultra Fantasy Ruby Red",
         "image":  "assets/monster/ultra/ultra-fantasy-ruby-red.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -356,7 +356,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_black",
-        "name":  "Black",
+        "name":  "Ultra Black",
         "image":  "assets/monster/ultra/ultra-black.jpg",
         "series":  "ultra",
         "rarity":  "epic",
@@ -368,7 +368,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_guava",
-        "name":  "Vice Guava",
+        "name":  "Ultra Vice Guava",
         "image":  "assets/monster/ultra/ultra-vice-guava.jpg",
         "series":  "ultra",
         "rarity":  "rare",
@@ -380,7 +380,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_pineapple",
-        "name":  "Pineapple",
+        "name":  "Ultra Pineapple",
         "image":  "assets/monster/ultra/ultra-pineapple.webp",
         "series":  "ultra",
         "rarity":  "epic",
@@ -392,7 +392,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_blue_hawaiian",
-        "name":  "Blue Hawaiian",
+        "name":  "Ultra Blue Hawaiian",
         "image":  "assets/monster/ultra/ultra-blue-hawaiian.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -404,7 +404,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_punk_punch",
-        "name":  "Punk Punch",
+        "name":  "Ultra Punk Punch",
         "image":  "assets/monster/ultra/ultra-punk-punch.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -416,7 +416,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_red_white_blue_razz",
-        "name":  "Red White & Blue Razz",
+        "name":  "Ultra Red White & Blue Razz",
         "image":  "assets/monster/ultra/ultra-red-white-blue-razz.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -428,7 +428,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_wild_passion",
-        "name":  "Wild Passion",
+        "name":  "Ultra Wild Passion",
         "image":  "assets/monster/ultra/ultra-wild-passion.webp",
         "series":  "ultra",
         "rarity":  "rare",
@@ -440,7 +440,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_mango",
-        "name":  "Mango Loco",
+        "name":  "Juice Mango Loco",
         "image":  "assets/monster/juice/juiced-mango-loco.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -453,7 +453,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_juice_17",
-        "name":  "Monarch",
+        "name":  "Juice Monarch",
         "image":  "assets/monster/juice/juiced-monarch.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -465,7 +465,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_pacific",
-        "name":  "Pacific Punch",
+        "name":  "Juice Pacific Punch",
         "image":  "assets/monster/juice/pacific-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -477,7 +477,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_pipeline",
-        "name":  "Pipeline Punch",
+        "name":  "Juice Pipeline Punch",
         "image":  "assets/monster/juice/pipeline-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -489,7 +489,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_khaotic",
-        "name":  "Khaotic",
+        "name":  "Juice Khaotic",
         "image":  "assets/monster/juice/juiced-khaotic.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -501,7 +501,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_papillon",
-        "name":  "Papillon (Monarch)",
+        "name":  "Juice Papillon",
         "image":  "assets/monster/juice/juiced-papillon.webp",
         "series":  "juice",
         "rarity":  "rare",
@@ -513,7 +513,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_aussie",
-        "name":  "Aussie Lemonade",
+        "name":  "Juice Aussie Lemonade",
         "image":  "assets/monster/juice/juiced-aussie-lemonade.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -525,7 +525,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_bad_apple",
-        "name":  "Bad Apple",
+        "name":  "Juice Bad Apple",
         "image":  "assets/monster/juice/juiced-bad-apple.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -537,7 +537,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_rio",
-        "name":  "Rio Punch",
+        "name":  "Juice Rio Punch",
         "image":  "assets/monster/juice/rio-punch.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -549,7 +549,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_viking",
-        "name":  "Viking Berry",
+        "name":  "Juice Viking Berry",
         "image":  "assets/monster/juice/viking-berry.webp",
         "series":  "juice",
         "rarity":  "rare",
@@ -561,7 +561,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_strawberry_lemonade",
-        "name":  "Strawberry Lemonade",
+        "name":  "Juice Strawberry Lemonade",
         "image":  "assets/monster/juice/strawberry-lemonade.webp",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -573,7 +573,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_voodoo_grape",
-        "name":  "Voodoo Grape",
+        "name":  "Juice Voodoo Grape",
         "image":  "assets/monster/juice/voodoo-grape.webp",
         "series":  "juice",
         "rarity":  "rare",
@@ -585,7 +585,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_mixxd_punch",
-        "name":  "Mixxd Punch",
+        "name":  "Juice Mixxd Punch",
         "image":  "assets/monster/juice/mixxd-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
@@ -597,7 +597,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_ripper",
-        "name":  "Ripper",
+        "name":  "Juice Ripper",
         "image":  "assets/monster/juice/juiced-ripper.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
@@ -609,7 +609,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_mean_bean",
-        "name":  "Mean Bean",
+        "name":  "Java Mean Bean",
         "image":  "assets/monster/java/java-mean-bean.webp",
         "series":  "java",
         "rarity":  "common",
@@ -621,7 +621,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_loca_moca",
-        "name":  "Loca Moca",
+        "name":  "Java Loca Moca",
         "image":  "assets/monster/java/java-loca-moca.webp",
         "series":  "java",
         "rarity":  "uncommon",
@@ -633,7 +633,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_salted",
-        "name":  "Salted Caramel",
+        "name":  "Java Salted Caramel",
         "image":  "assets/monster/java/java-salted-caramel.webp",
         "series":  "java",
         "rarity":  "uncommon",
@@ -645,7 +645,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_irish",
-        "name":  "Irish Creme",
+        "name":  "Java Irish Creme",
         "image":  "assets/monster/java/java-irish-creme.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -657,7 +657,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_kona",
-        "name":  "Kona Blend",
+        "name":  "Java Kona Blend",
         "image":  "assets/monster/java/kona-blend.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -669,7 +669,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_french_vanilla_300",
-        "name":  "300 French Vanilla",
+        "name":  "Java 300 French Vanilla",
         "image":  "assets/monster/java/french-vanilla.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -681,7 +681,7 @@ window.MONSTER_CATALOG_DATA = [
     },
 	{
         "id":  "monster_java_mocha_300",
-        "name":  "300 Mocha",
+        "name":  "Java 300 Mocha",
         "image":  "assets/monster/java/mocha-300.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -693,7 +693,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_cafe_latte",
-        "name":  "Cafe Latte",
+        "name":  "Java Cafe Latte",
         "image":  "assets/monster/java/java-cafe-latte.webp",
         "series":  "java",
         "rarity":  "uncommon",
@@ -959,7 +959,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_hydro_tropical_thunder",
-        "name":  "Tropical Thunder",
+        "name":  "Hydro Tropical Thunder",
         "image":  "assets/monster/hydro/hydro-tropical-thunder.png",
         "series":  "hydro",
         "rarity":  "rare",
@@ -1231,7 +1231,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_6",
-        "name":  "Vanilla Light",
+        "name":  "Java Vanilla Light",
         "image":  "assets/monster/java/lo-ball.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -1243,7 +1243,7 @@ window.MONSTER_CATALOG_DATA = [
     },
 	{
         "id":  "catalog_java_7",
-        "name":  "Lo-Ball",
+        "name":  "Java Lo-Ball",
         "image":  "assets/monster/java/Lo-Ball.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -1255,7 +1255,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_8",
-        "name":  "Big Black",
+        "name":  "Java Big Black",
         "image":  "assets/monster/java/big-black.png",
         "series":  "java",
         "rarity":  "rare",
@@ -1267,7 +1267,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_9",
-        "name":  "Chai Hai",
+        "name":  "Java Chai Hai",
         "image":  "assets/monster/java/java-chai-hai.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -1279,7 +1279,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_10",
-        "name":  "Russian",
+        "name":  "Java Russian",
         "image":  "assets/monster/java/java-russian.png",
         "series":  "java",
         "rarity":  "rare",
@@ -1291,7 +1291,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_11",
-        "name":  "Toffee",
+        "name":  "Java Toffee",
         "image":  "assets/monster/java/java-toffee.png",
         "series":  "java",
         "rarity":  "rare",
@@ -1303,7 +1303,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_12",
-        "name":  "Irish Blend",
+        "name":  "Java Irish Blend",
         "image":  "assets/monster/java/irish-blend.png",
         "series":  "java",
         "rarity":  "rare",
