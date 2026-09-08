@@ -440,8 +440,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_mango",
-        "name":  "Monster Mango Loco",
-        "image":  "assets/monster/juice/mango-loco.png",
+        "name":  "Mango Loco",
+        "image":  "assets/monster/juice/juiced-mango-loco.jpg",
         "series":  "juice",
         "rarity":  "common",
         "limited":  false,
@@ -453,7 +453,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_juice_17",
-        "name":  "Juiced Monarch",
+        "name":  "Monarch",
         "image":  "assets/monster/juice/juiced-monarch.jpg",
         "series":  "juice",
         "rarity":  "rare",
@@ -465,8 +465,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_pacific",
-        "name":  "Monster Pacific Punch",
-        "image":  "assets/monster/juice/pacific-punch.png",
+        "name":  "Pacific Punch",
+        "image":  "assets/monster/juice/pacific-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
         "limited":  false,
@@ -477,8 +477,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_pipeline",
-        "name":  "Monster Pipeline Punch",
-        "image":  "assets/monster/juice/pipeline-punch.png",
+        "name":  "Pipeline Punch",
+        "image":  "assets/monster/juice/pipeline-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
         "limited":  false,
@@ -489,8 +489,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_khaotic",
-        "name":  "Monster Khaotic",
-        "image":  "assets/monster/juice/khaotic.png",
+        "name":  "Khaotic",
+        "image":  "assets/monster/juice/juiced-khaotic.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
         "limited":  false,
@@ -501,8 +501,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_papillon",
-        "name":  "Monster Papillon (Monarch)",
-        "image":  "assets/monster/juice/papillon.png",
+        "name":  "Papillon (Monarch)",
+        "image":  "assets/monster/juice/juiced-papillon.webp",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  true,
@@ -513,8 +513,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_aussie",
-        "name":  "Monster Aussie Lemonade",
-        "image":  "assets/monster/juice/aussie-lemonade.png",
+        "name":  "Aussie Lemonade",
+        "image":  "assets/monster/juice/juiced-aussie-lemonade.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
         "limited":  false,
@@ -525,8 +525,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_bad_apple",
-        "name":  "Monster Bad Apple",
-        "image":  "assets/monster/juice/bad-apple.png",
+        "name":  "Bad Apple",
+        "image":  "assets/monster/juice/juiced-bad-apple.jpg",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  true,
@@ -537,8 +537,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_rio",
-        "name":  "Monster Rio Punch",
-        "image":  "assets/monster/juice/rio-punch.png",
+        "name":  "Rio Punch",
+        "image":  "assets/monster/juice/rio-punch.jpg",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  false,
@@ -549,8 +549,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_viking",
-        "name":  "Monster Viking Berry",
-        "image":  "assets/monster/juice/viking-berry.png",
+        "name":  "Viking Berry",
+        "image":  "assets/monster/juice/viking-berry.webp",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  false,
@@ -560,21 +560,9 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_juice_mariposa",
-        "name":  "Monster Mariposa",
-        "image":  "assets/monster/juice/mariposa.png",
-        "series":  "juice",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Edizione limitata farfalla, gusto fruttato esotico.",
-        "variants":  [
-                         "Mariposa"
-                     ]
-    },
-    {
         "id":  "monster_juice_strawberry_lemonade",
-        "name":  "Monster Strawberry Lemonade",
-        "image":  "assets/monster/juice/strawberry-lemonade.png",
+        "name":  "Strawberry Lemonade",
+        "image":  "assets/monster/juice/strawberry-lemonade.webp",
         "series":  "juice",
         "rarity":  "uncommon",
         "limited":  false,
@@ -585,8 +573,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_voodoo_grape",
-        "name":  "Monster Voodoo Grape",
-        "image":  "assets/monster/juice/voodoo-grape.png",
+        "name":  "Voodoo Grape",
+        "image":  "assets/monster/juice/voodoo-grape.webp",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  false,
@@ -597,8 +585,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_mixxd_punch",
-        "name":  "Monster Mixxd Punch",
-        "image":  "assets/monster/juice/mixxd-punch.png",
+        "name":  "Mixxd Punch",
+        "image":  "assets/monster/juice/mixxd-punch.jpg",
         "series":  "juice",
         "rarity":  "common",
         "limited":  false,
@@ -609,8 +597,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_juice_ripper",
-        "name":  "Monster Ripper",
-        "image":  "assets/monster/juice/ripper.png",
+        "name":  "Ripper",
+        "image":  "assets/monster/juice/juiced-ripper.jpg",
         "series":  "juice",
         "rarity":  "uncommon",
         "limited":  false,
@@ -621,8 +609,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_mean_bean",
-        "name":  "Monster Java Mean Bean",
-        "image":  "assets/monster/java/mean-bean.png",
+        "name":  "Mean Bean",
+        "image":  "assets/monster/java/java-mean-bean.webp",
         "series":  "java",
         "rarity":  "common",
         "limited":  false,
@@ -633,8 +621,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_loca_moca",
-        "name":  "Monster Java Loca Moca",
-        "image":  "assets/monster/java/loca-moca.png",
+        "name":  "Loca Moca",
+        "image":  "assets/monster/java/java-loca-moca.webp",
         "series":  "java",
         "rarity":  "uncommon",
         "limited":  false,
@@ -645,8 +633,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_salted",
-        "name":  "Monster Java Salted Caramel",
-        "image":  "assets/monster/java/salted-caramel.png",
+        "name":  "Salted Caramel",
+        "image":  "assets/monster/java/java-salted-caramel.webp",
         "series":  "java",
         "rarity":  "uncommon",
         "limited":  false,
@@ -657,8 +645,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_irish",
-        "name":  "Monster Java Irish Creme",
-        "image":  "assets/monster/java/irish-creme.png",
+        "name":  "Irish Creme",
+        "image":  "assets/monster/java/java-irish-creme.webp",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -669,8 +657,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_kona",
-        "name":  "Monster Java Kona Blend",
-        "image":  "assets/monster/java/kona-blend.png",
+        "name":  "Kona Blend",
+        "image":  "assets/monster/java/kona-blend.webp",
         "series":  "java",
         "rarity":  "rare",
         "limited":  false,
@@ -681,8 +669,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_french_vanilla_300",
-        "name":  "Java Monster 300 French Vanilla",
-        "image":  "assets/monster/java/french-vanilla-300.png",
+        "name":  "300 French Vanilla",
+        "image":  "assets/monster/java/french-vanilla.webp",
         "series":  "java",
         "rarity":  "rare",
         "limited":  false,
@@ -691,10 +679,22 @@ window.MONSTER_CATALOG_DATA = [
                          "French Vanilla 300"
                      ]
     },
+	{
+        "id":  "monster_java_mocha_300",
+        "name":  "300 Mocha",
+        "image":  "assets/monster/java/mocha-300.webp",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Caffe mocha con 300mg di caffeina.",
+        "variants":  [
+                         "Mocha 300"
+                     ]
+    },
     {
         "id":  "monster_java_cafe_latte",
-        "name":  "Java Monster Cafe Latte",
-        "image":  "assets/monster/java/cafe-latte.png",
+        "name":  "Cafe Latte",
+        "image":  "assets/monster/java/java-cafe-latte.webp",
         "series":  "java",
         "rarity":  "uncommon",
         "limited":  false,
@@ -705,8 +705,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_lemonade",
-        "name":  "Monster Rehab Lemonade",
-        "image":  "assets/monster/rehab/lemonade.png",
+        "name":  "Lemonade",
+        "image":  "assets/monster/rehab/rehab-lemonade.webp",
         "series":  "rehab",
         "rarity":  "common",
         "limited":  false,
@@ -717,8 +717,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_peach",
-        "name":  "Monster Rehab Peach Tea",
-        "image":  "assets/monster/rehab/peach-tea.png",
+        "name":  "Peach Tea",
+        "image":  "assets/monster/rehab/rehab-peach-tea.webp",
         "series":  "rehab",
         "rarity":  "common",
         "limited":  false,
@@ -729,8 +729,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_green",
-        "name":  "Monster Rehab Green Tea",
-        "image":  "assets/monster/rehab/green-tea.png",
+        "name":  "Green Tea",
+        "image":  "assets/monster/rehab/rehab-green-tea.webp",
         "series":  "rehab",
         "rarity":  "uncommon",
         "limited":  false,
@@ -741,8 +741,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_rehab_berry",
-        "name":  "Monster Rehab Wild Berry Tea",
-        "image":  "assets/monster/rehab/wild-berry.png",
+        "name":  "Wild Berry Tea",
+        "image":  "assets/monster/rehab/rehab-wild-berry.webp",
         "series":  "rehab",
         "rarity":  "rare",
         "limited":  true,
@@ -753,8 +753,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_white_pineapple",
-        "name":  "Monster White Pineapple",
-        "image":  "assets/monster/reserve/white-pineapple.png",
+        "name":  "White Pineapple",
+        "image":  "assets/monster/reserve/reserve-white-pineapple.png",
         "series":  "reserve",
         "rarity":  "rare",
         "limited":  true,
@@ -765,8 +765,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_watermelon",
-        "name":  "Monster Reserve Watermelon",
-        "image":  "assets/monster/reserve/watermelon.png",
+        "name":  "Watermelon",
+        "image":  "assets/monster/reserve/reserve-watermelon.png",
         "series":  "reserve",
         "rarity":  "rare",
         "limited":  true,
@@ -777,8 +777,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_orange",
-        "name":  "Monster Reserve Orange Dreamsicle",
-        "image":  "assets/monster/reserve/orange.png",
+        "name":  "Orange Dreamsicle",
+        "image":  "assets/monster/reserve/reserve-orange-dreamsicle.png",
         "series":  "reserve",
         "rarity":  "rare",
         "limited":  true,
@@ -789,8 +789,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_peaches",
-        "name":  "Monster Reserve Peaches n' Creme",
-        "image":  "assets/monster/reserve/peaches-creme.png",
+        "name":  "Peaches n' Creme",
+        "image":  "assets/monster/reserve/reserve-peach-n-creme.png",
         "series":  "reserve",
         "rarity":  "epic",
         "limited":  true,
@@ -801,8 +801,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_kiwi_strawberry",
-        "name":  "Monster Reserve Kiwi Strawberry",
-        "image":  "assets/monster/reserve/kiwi-strawberry.png",
+        "name":  "Kiwi Strawberry",
+        "image":  "assets/monster/reserve/reserve-kiwi-strawberry.png",
         "series":  "reserve",
         "rarity":  "rare",
         "limited":  true,
@@ -1223,32 +1223,20 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_6",
-        "name":  "Java Lo-Ball",
-        "image":  "assets/monster/java/java-lo-ball.jpg",
+        "name":  "Vanilla Light",
+        "image":  "assets/monster/java/lo-ball.webp",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
-        "description":  "Java Monster Lo-Ball, caffe a basso contenuto. Discontinued.",
+        "description":  "Java Monster Vanilla Light, caffe a basso contenuto. Discontinued.",
         "variants":  [
-                         "Java Lo-Ball"
-                     ]
-    },
-    {
-        "id":  "catalog_java_7",
-        "name":  "Java Nut-Up",
-        "image":  "assets/monster/java/d.png",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Java Nut-Up, gusto nocciola. Discontinued.",
-        "variants":  [
-                         "Java Nut-Up"
+                         "Java Vanilla Light"
                      ]
     },
     {
         "id":  "catalog_java_8",
-        "name":  "Java Big Black",
-        "image":  "assets/monster/java/d.png",
+        "name":  "Big Black",
+        "image":  "assets/monster/java/big-black.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1259,8 +1247,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_9",
-        "name":  "Java Chai Hai",
-        "image":  "assets/monster/java/d.png",
+        "name":  "Chai Hai",
+        "image":  "assets/monster/java/java-chai-hai.webp",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1271,8 +1259,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_10",
-        "name":  "Java Russian",
-        "image":  "assets/monster/java/d.png",
+        "name":  "Russian",
+        "image":  "assets/monster/java/java-russian.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1283,8 +1271,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_11",
-        "name":  "Java Toffee",
-        "image":  "assets/monster/java/d.png",
+        "name":  "Toffee",
+        "image":  "assets/monster/java/java-toffee.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1295,8 +1283,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_12",
-        "name":  "Java Irish Blend",
-        "image":  "assets/monster/java/d.png",
+        "name":  "Irish Blend",
+        "image":  "assets/monster/java/irish-blend.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1306,21 +1294,9 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "catalog_java_13",
-        "name":  "Java Vanilla Light",
-        "image":  "assets/monster/java/d.png",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Java Vanilla Light, vaniglia leggera. Discontinued.",
-        "variants":  [
-                         "Java Vanilla Light"
-                     ]
-    },
-    {
         "id":  "catalog_java_15",
         "name":  "Java Cappuccino",
-        "image":  "assets/monster/java/d.png",
+        "image":  "assets/monster/java/java-capucino.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
@@ -1330,45 +1306,9 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "catalog_juice_19",
-        "name":  "Juiced Tropical Thunder",
-        "image":  "assets/monster/juice/d.png",
-        "series":  "juice",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Juiced Tropical Thunder. Discontinued.",
-        "variants":  [
-                         "Juiced Tropical Thunder"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_23",
-        "name":  "Fury Punch",
-        "image":  "assets/monster/juice/d.png",
-        "series":  "juice",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Fury Punch, punch fruttato. Discontinued.",
-        "variants":  [
-                         "Fury Punch"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_24",
-        "name":  "Fruit Punch",
-        "image":  "assets/monster/juice/d.png",
-        "series":  "juice",
-        "rarity":  "uncommon",
-        "limited":  false,
-        "description":  "Fruit Punch classico. Variante del catalogo.",
-        "variants":  [
-                         "Fruit Punch"
-                     ]
-    },
-    {
         "id":  "catalog_rehab_28",
-        "name":  "Rehab Strawberry",
-        "image":  "assets/monster/rehab/e.png",
+        "name":  "Strawberry",
+        "image":  "assets/monster/rehab/rehab-strawberry.png",
         "series":  "rehab",
         "rarity":  "rare",
         "limited":  true,
@@ -1379,8 +1319,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_29",
-        "name":  "Rehab Watermelon",
-        "image":  "assets/monster/rehab/e.png",
+        "name":  "Watermelon",
+        "image":  "assets/monster/rehab/rehab-watermelon.png",
         "series":  "rehab",
         "rarity":  "rare",
         "limited":  true,
@@ -1391,8 +1331,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_31",
-        "name":  "Rehab Orangeade",
-        "image":  "assets/monster/rehab/e.png",
+        "name":  "Orangeade",
+        "image":  "assets/monster/rehab/rehab-orangeade.webp",
         "series":  "rehab",
         "rarity":  "rare",
         "limited":  true,
@@ -1403,8 +1343,8 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_rehab_32",
-        "name":  "Rehab Protean",
-        "image":  "assets/monster/rehab/e.png",
+        "name":  "Protean",
+        "image":  "assets/monster/rehab/rehab-protean.png",
         "series":  "rehab",
         "rarity":  "epic",
         "limited":  true,
@@ -1416,7 +1356,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "catalog_rehab_34",
         "name":  "Rehab Rojo Tea",
-        "image":  "assets/monster/rehab/e.png",
+        "image":  "assets/monster/rehab/rehab-rojo-tea.png",
         "series":  "rehab",
         "rarity":  "rare",
         "limited":  true,
