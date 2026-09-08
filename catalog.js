@@ -609,7 +609,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_mean_bean",
-        "name":  "Mean Bean",
+        "name":  "Java Mean Bean",
         "image":  "assets/monster/java/java-mean-bean.webp",
         "series":  "java",
         "rarity":  "common",
@@ -621,7 +621,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_loca_moca",
-        "name":  "Loca Moca",
+        "name":  "Java Loca Moca",
         "image":  "assets/monster/java/java-loca-moca.webp",
         "series":  "java",
         "rarity":  "uncommon",
@@ -633,7 +633,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_salted",
-        "name":  "Salted Caramel",
+        "name":  "Java Salted Caramel",
         "image":  "assets/monster/java/java-salted-caramel.webp",
         "series":  "java",
         "rarity":  "uncommon",
@@ -645,7 +645,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_irish",
-        "name":  "Irish Creme",
+        "name":  "Java Irish Creme",
         "image":  "assets/monster/java/java-irish-creme.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -657,7 +657,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_kona",
-        "name":  "Kona Blend",
+        "name":  "Java Kona Blend",
         "image":  "assets/monster/java/kona-blend.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -669,7 +669,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_french_vanilla_300",
-        "name":  "300 French Vanilla",
+        "name":  "Java 300 French Vanilla",
         "image":  "assets/monster/java/french-vanilla.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -681,7 +681,7 @@ window.MONSTER_CATALOG_DATA = [
     },
 	{
         "id":  "monster_java_mocha_300",
-        "name":  "300 Mocha",
+        "name":  "Java 300 Mocha",
         "image":  "assets/monster/java/mocha-300.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -693,7 +693,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_java_cafe_latte",
-        "name":  "Cafe Latte",
+        "name":  "Java Cafe Latte",
         "image":  "assets/monster/java/java-cafe-latte.webp",
         "series":  "java",
         "rarity":  "uncommon",
@@ -1223,7 +1223,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_6",
-        "name":  "Vanilla Light",
+        "name":  "Java Vanilla Light",
         "image":  "assets/monster/java/lo-ball.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -1235,7 +1235,7 @@ window.MONSTER_CATALOG_DATA = [
     },
 	{
         "id":  "catalog_java_7",
-        "name":  "Lo-Ball",
+        "name":  "Java Lo-Ball",
         "image":  "assets/monster/java/Lo-Ball.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -1247,7 +1247,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_8",
-        "name":  "Big Black",
+        "name":  "Java Big Black",
         "image":  "assets/monster/java/big-black.png",
         "series":  "java",
         "rarity":  "rare",
@@ -1259,7 +1259,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_9",
-        "name":  "Chai Hai",
+        "name":  "Java Chai Hai",
         "image":  "assets/monster/java/java-chai-hai.webp",
         "series":  "java",
         "rarity":  "rare",
@@ -1271,7 +1271,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_10",
-        "name":  "Russian",
+        "name":  "Java Russian",
         "image":  "assets/monster/java/java-russian.png",
         "series":  "java",
         "rarity":  "rare",
@@ -1283,7 +1283,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_11",
-        "name":  "Toffee",
+        "name":  "Java Toffee",
         "image":  "assets/monster/java/java-toffee.png",
         "series":  "java",
         "rarity":  "rare",
@@ -1295,7 +1295,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_java_12",
-        "name":  "Irish Blend",
+        "name":  "Java Irish Blend",
         "image":  "assets/monster/java/irish-blend.png",
         "series":  "java",
         "rarity":  "rare",
