@@ -9,7 +9,7 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La Monster originale, il gusto che ha iniziato tutto.",
         "variants":  [
                          "Original",
-						 "Zero Sugar",
+                         "Zero Sugar"
                      ],
 					 "variantImages":  {
                               "Zero Sugar":  "assets/monster/classic/original-zero-sugar.webp"
@@ -50,13 +50,13 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "classic",
         "rarity":  "rare",
         "limited":  false,
-        "description":  "Super Carbonated, Super Dry. Un\u0027esperienza unica.",
+        "description":  "Super Carbonated, Super Dry. Un'esperienza unica.",
         "variants":  [
                          "Super Dry",
                          "Cosmic Peach",
                          "Blue Flash"
                      ],
-        "variantImages":  {
+					 "variantImages":  {
                               "Cosmic Peach":  "assets/monster/classic/nitro-cosmic-peach.png",
                               "Blue Flash":  "assets/monster/classic/nitro-blue-flash.png"
                           }
@@ -85,7 +85,7 @@ window.MONSTER_CATALOG_DATA = [
                          "Original",
                          "Zero Sugar"
                      ],
-        "variantImages":  {
+					 "variantImages":  {
                               "Zero Sugar":  "assets/monster/classic/strawberry-shot-zero-sugar.webp"
                           }
     },
@@ -101,7 +101,7 @@ window.MONSTER_CATALOG_DATA = [
                          "Electric Blue"
                      ]
     },
-	{
+    {
         "id":  "monster_orange_dreamsicle",
         "name":  "Orange Dreamsicle",
         "image":  "assets/monster/classic/orange-dreamsicle.webp",
@@ -361,7 +361,7 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "ultra",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Edizione limitata all\u0027ananas, zero zuccheri.",
+        "description":  "Edizione limitata all'ananas, zero zuccheri.",
         "variants":  [
                          "Ultra Pineapple"
                      ]
@@ -392,14 +392,14 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_ultra_red_white_blue_razz",
-        "name":  "Red White \u0026 Blue Razz",
+        "name":  "Red White & Blue Razz",
         "image":  "assets/monster/ultra/ultra-red-white-blue-razz.webp",
         "series":  "ultra",
         "rarity":  "rare",
         "limited":  true,
         "description":  "Edizione limitata con gusto lampone.",
         "variants":  [
-                         "Ultra Red White \u0026 Blue Razz"
+                         "Ultra Red White & Blue Razz"
                      ]
     },
     {
@@ -722,7 +722,7 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "reserve",
         "rarity":  "rare",
         "limited":  true,
-        "description":  "Edizione limitata all\u0027ananas bianco. Fresca e tropicale.",
+        "description":  "Edizione limitata all'ananas bianco. Fresca e tropicale.",
         "variants":  [
                          "White Pineapple"
                      ]
@@ -753,14 +753,14 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_reserve_peaches",
-        "name":  "Monster Reserve Peaches n\u0027 Creme",
+        "name":  "Monster Reserve Peaches n' Creme",
         "image":  "assets/monster/reserve/peaches-creme.png",
         "series":  "reserve",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Edizione limitata, pesca e crema. Dolce e cremosa.",
         "variants":  [
-                         "Peaches n\u0027 Creme"
+                         "Peaches n' Creme"
                      ]
     },
     {
@@ -1190,9 +1190,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Ultra Citron",
         "image":  "assets/monster/ultra/ultra-citron.jpg",
         "series":  "ultra",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Edizione limitata Ultra al gusto citron (limone). Discontinued.",
         "variants":  [
                          "Ultra Citron"
                      ]
@@ -1202,59 +1202,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Ultra Fiesta",
         "image":  "assets/monster/ultra/ultra-fiesta.jpg",
         "series":  "ultra",
-        "rarity":  "catalog",
+        "rarity":  "rare",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
         "variants":  [
                          "Ultra Fiesta"
-                     ]
-    },
-    {
-        "id":  "catalog_ultra_2",
-        "name":  "Ultra Rosa",
-        "image":  "assets/monster/ultra/ultra-rosa.jpg",
-        "series":  "ultra",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Ultra Rosa"
-                     ]
-    },
-    {
-        "id":  "catalog_ultra_3",
-        "name":  "Ultra Vice Guava",
-        "image":  "assets/monster/ultra/ultra-vice-guava.jpg",
-        "series":  "ultra",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Ultra Vice Guava"
-                     ]
-    },
-    {
-        "id":  "catalog_java_4",
-        "name":  "Monster Java Mean Bean",
-        "image":  "assets/monster/java/d.png",
-        "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Monster Java Mean Bean"
-                     ]
-    },
-    {
-        "id":  "catalog_java_5",
-        "name":  "Java Loca Moca",
-        "image":  "assets/monster/java/d.png",
-        "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Java Loca Moca"
                      ]
     },
     {
@@ -1262,9 +1214,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Lo-Ball",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Monster Lo-Ball, caffe a basso contenuto. Discontinued.",
         "variants":  [
                          "Java Lo-Ball"
                      ]
@@ -1274,9 +1226,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Nut-Up",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Nut-Up, gusto nocciola. Discontinued.",
         "variants":  [
                          "Java Nut-Up"
                      ]
@@ -1286,9 +1238,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Big Black",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Big Black, caffe forte. Discontinued.",
         "variants":  [
                          "Java Big Black"
                      ]
@@ -1298,9 +1250,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Chai Hai",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Chai Hai, gusto chai. Discontinued.",
         "variants":  [
                          "Java Chai Hai"
                      ]
@@ -1310,9 +1262,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Russian",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Russian, gusto russo. Discontinued.",
         "variants":  [
                          "Java Russian"
                      ]
@@ -1322,9 +1274,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Toffee",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Toffee, gusto toffee. Discontinued.",
         "variants":  [
                          "Java Toffee"
                      ]
@@ -1334,9 +1286,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Irish Blend",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Irish Blend, miscela irlandese. Discontinued.",
         "variants":  [
                          "Java Irish Blend"
                      ]
@@ -1346,23 +1298,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Vanilla Light",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Vanilla Light, vaniglia leggera. Discontinued.",
         "variants":  [
                          "Java Vanilla Light"
-                     ]
-    },
-    {
-        "id":  "catalog_java_14",
-        "name":  "Java Kona Blend",
-        "image":  "assets/monster/java/d.png",
-        "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Java Kona Blend"
                      ]
     },
     {
@@ -1370,23 +1310,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Java Cappuccino",
         "image":  "assets/monster/java/d.png",
         "series":  "java",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Cappuccino, gusto cappuccino. Discontinued.",
         "variants":  [
                          "Java Cappuccino"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_16",
-        "name":  "Juiced Mango Loco",
-        "image":  "assets/monster/juice/juiced-mango-loco.jpg",
-        "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Juiced Mango Loco"
                      ]
     },
     {
@@ -1394,23 +1322,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Juiced Monarch",
         "image":  "assets/monster/juice/juiced-monarch.jpg",
         "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Juiced Monarch (Papillon), edizione farfalla. Gusto esotico.",
         "variants":  [
                          "Juiced Monarch"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_18",
-        "name":  "Juiced Khaotic",
-        "image":  "assets/monster/juice/juiced-khaotic.jpg",
-        "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Juiced Khaotic"
                      ]
     },
     {
@@ -1418,47 +1334,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Juiced Tropical Thunder",
         "image":  "assets/monster/juice/d.png",
         "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Juiced Tropical Thunder. Discontinued.",
         "variants":  [
                          "Juiced Tropical Thunder"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_20",
-        "name":  "Juiced Bad Apple",
-        "image":  "assets/monster/juice/juiced-bad-apple.jpg",
-        "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Juiced Bad Apple"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_21",
-        "name":  "Juiced Aussie Lemonade",
-        "image":  "assets/monster/juice/juiced-aussie-lemonade.jpg",
-        "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Juiced Aussie Lemonade"
-                     ]
-    },
-    {
-        "id":  "catalog_juice_22",
-        "name":  "Juiced Ripper",
-        "image":  "assets/monster/juice/juiced-ripper.jpg",
-        "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Juiced Ripper"
                      ]
     },
     {
@@ -1466,9 +1346,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Fury Punch",
         "image":  "assets/monster/juice/d.png",
         "series":  "juice",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Fury Punch, punch fruttato. Discontinued.",
         "variants":  [
                          "Fury Punch"
                      ]
@@ -1478,47 +1358,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Fruit Punch",
         "image":  "assets/monster/juice/d.png",
         "series":  "juice",
-        "rarity":  "catalog",
+        "rarity":  "uncommon",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Fruit Punch classico. Variante del catalogo.",
         "variants":  [
                          "Fruit Punch"
-                     ]
-    },
-    {
-        "id":  "catalog_rehab_25",
-        "name":  "Rehab Lemonade Tea",
-        "image":  "assets/monster/rehab/e.png",
-        "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Rehab Lemonade Tea"
-                     ]
-    },
-    {
-        "id":  "catalog_rehab_26",
-        "name":  "Rehab Peach Tea",
-        "image":  "assets/monster/rehab/e.png",
-        "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Rehab Peach Tea"
-                     ]
-    },
-    {
-        "id":  "catalog_rehab_27",
-        "name":  "Rehab Green Tea",
-        "image":  "assets/monster/rehab/e.png",
-        "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Rehab Green Tea"
                      ]
     },
     {
@@ -1526,9 +1370,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Rehab Strawberry",
         "image":  "assets/monster/rehab/e.png",
         "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Strawberry, te alla fragola. Discontinued.",
         "variants":  [
                          "Rehab Strawberry"
                      ]
@@ -1538,23 +1382,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Rehab Watermelon",
         "image":  "assets/monster/rehab/e.png",
         "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Watermelon, te al cocomero. Discontinued.",
         "variants":  [
                          "Rehab Watermelon"
-                     ]
-    },
-    {
-        "id":  "catalog_rehab_30",
-        "name":  "Rehab Wild Berry Tea",
-        "image":  "assets/monster/rehab/e.png",
-        "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Rehab Wild Berry Tea"
                      ]
     },
     {
@@ -1562,9 +1394,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Rehab Orangeade",
         "image":  "assets/monster/rehab/e.png",
         "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Orangeade. Discontinued.",
         "variants":  [
                          "Rehab Orangeade"
                      ]
@@ -1574,23 +1406,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Rehab Protean",
         "image":  "assets/monster/rehab/e.png",
         "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Rehab Protean, versione proteica. Molto rara, discontinued.",
         "variants":  [
                          "Rehab Protean"
-                     ]
-    },
-    {
-        "id":  "catalog_rehab_33",
-        "name":  "Rehab Lemonade",
-        "image":  "assets/monster/rehab/e.png",
-        "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Rehab Lemonade"
                      ]
     },
     {
@@ -1598,23 +1418,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Rehab Rojo Tea",
         "image":  "assets/monster/rehab/e.png",
         "series":  "rehab",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Rojo Tea. Discontinued.",
         "variants":  [
                          "Rehab Rojo Tea"
-                     ]
-    },
-    {
-        "id":  "catalog_dragon_35",
-        "name":  "Dragon Tea Green Tea",
-        "image":  "assets/monster/dragon/b.png",
-        "series":  "dragon",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Dragon Tea Green Tea"
                      ]
     },
     {
@@ -1622,23 +1430,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Dragon Tea Yerba Tea",
         "image":  "assets/monster/dragon/b.png",
         "series":  "dragon",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Dragon Tea Yerba. FUORI PRODUZIONE (marchio cancellato 2025).",
         "variants":  [
                          "Dragon Tea Yerba Tea"
-                     ]
-    },
-    {
-        "id":  "catalog_dragon_37",
-        "name":  "Dragon Tea White Tea",
-        "image":  "assets/monster/dragon/b.png",
-        "series":  "dragon",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Dragon Tea White Tea"
                      ]
     },
     {
@@ -1646,9 +1442,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Dragon Tea Ice Tea Lemon",
         "image":  "assets/monster/dragon/b.png",
         "series":  "dragon",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Dragon Tea Ice Tea Lemon. FUORI PRODUZIONE.",
         "variants":  [
                          "Dragon Tea Ice Tea Lemon"
                      ]
@@ -1658,9 +1454,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Muscle Shake Coffee",
         "image":  "assets/monster/muscle/e.png",
         "series":  "muscle",
-        "rarity":  "catalog",
+        "rarity":  "uncommon",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Muscle Shake al caffe.",
         "variants":  [
                          "Muscle Shake Coffee"
                      ]
@@ -1670,9 +1466,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Muscle Shake Strawberry",
         "image":  "assets/monster/muscle/e.png",
         "series":  "muscle",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Muscle Shake alla fragola. Edizione limitata.",
         "variants":  [
                          "Muscle Shake Strawberry"
                      ]
@@ -1682,9 +1478,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Muscle Shake Chocolate",
         "image":  "assets/monster/muscle/e.png",
         "series":  "muscle",
-        "rarity":  "catalog",
+        "rarity":  "uncommon",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Muscle Shake al cioccolato.",
         "variants":  [
                          "Muscle Shake Chocolate"
                      ]
@@ -1694,9 +1490,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Muscle Shake Vanilla",
         "image":  "assets/monster/muscle/e.png",
         "series":  "muscle",
-        "rarity":  "catalog",
+        "rarity":  "uncommon",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Muscle Shake alla vaniglia.",
         "variants":  [
                          "Muscle Shake Vanilla"
                      ]
@@ -1706,9 +1502,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Muscle Shake Vanilla Bottle",
         "image":  "assets/monster/muscle/e.png",
         "series":  "muscle",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Muscle Shake Vanilla in bottiglia. Rara.",
         "variants":  [
                          "Muscle Shake Vanilla Bottle"
                      ]
@@ -1718,9 +1514,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Maxx Super Dry",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Maxx Super Dry. Linea Maxx discontinued.",
         "variants":  [
                          "Maxx Super Dry"
                      ]
@@ -1730,9 +1526,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Maxx Eclipse",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Maxx Eclipse. Linea Maxx discontinued.",
         "variants":  [
                          "Maxx Eclipse"
                      ]
@@ -1742,9 +1538,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Maxx Solaris",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Maxx Solaris. Linea Maxx discontinued.",
         "variants":  [
                          "Maxx Solaris"
                      ]
@@ -1754,9 +1550,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Maxx Zero Sugar",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Maxx Zero Sugar. Linea Maxx discontinued.",
         "variants":  [
                          "Maxx Zero Sugar"
                      ]
@@ -1766,9 +1562,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Maxx Zero Sugar Rad Red",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Maxx Zero Sugar Rad Red. Linea Maxx discontinued.",
         "variants":  [
                          "Maxx Zero Sugar Rad Red"
                      ]
@@ -1778,9 +1574,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Extra Strength Super Dry",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Extra Strength Super Dry. Linea Extra Strength discontinued.",
         "variants":  [
                          "Extra Strength Super Dry"
                      ]
@@ -1790,9 +1586,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Extra Strength Anti gravity",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Extra Strength Anti-Gravity. Linea Extra Strength discontinued.",
         "variants":  [
                          "Extra Strength Anti gravity"
                      ]
@@ -1802,9 +1598,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Extra Strength Black Ice",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Extra Strength Black Ice. Linea Extra Strength discontinued.",
         "variants":  [
                          "Extra Strength Black Ice"
                      ]
@@ -1814,9 +1610,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Extra Strength Killer-B",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Extra Strength Killer-B. Linea Extra Strength discontinued.",
         "variants":  [
                          "Extra Strength Killer-B"
                      ]
@@ -1826,9 +1622,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Nitrous Super Dry",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Nitrous Super Dry. Linea Nitrous discontinued.",
         "variants":  [
                          "Nitrous Super Dry"
                      ]
@@ -1838,23 +1634,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Nitrous Killer-B",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Nitrous Killer-B. Linea Nitrous discontinued.",
         "variants":  [
                          "Nitrous Killer-B"
-                     ]
-    },
-    {
-        "id":  "catalog_hydro_57",
-        "name":  "Hydro Tropical Thunder",
-        "image":  "assets/monster/hydro/c.png",
-        "series":  "hydro",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Hydro Tropical Thunder"
                      ]
     },
     {
@@ -1862,47 +1646,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Hydro Manic Melon",
         "image":  "assets/monster/hydro/hydro-manic-melon.jpg",
         "series":  "hydro",
-        "rarity":  "catalog",
+        "rarity":  "rare",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Hydro Manic Melon, gusto melone.",
         "variants":  [
                          "Hydro Manic Melon"
-                     ]
-    },
-    {
-        "id":  "catalog_hydro_59",
-        "name":  "Hydro Blue Ice",
-        "image":  "assets/monster/hydro/hydro-blue-ice.jpg",
-        "series":  "hydro",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Hydro Blue Ice"
-                     ]
-    },
-    {
-        "id":  "catalog_hydro_60",
-        "name":  "Hydro Purple Passion",
-        "image":  "assets/monster/hydro/c.png",
-        "series":  "hydro",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Hydro Purple Passion"
-                     ]
-    },
-    {
-        "id":  "catalog_hydro_61",
-        "name":  "Hydro Zero Sugar",
-        "image":  "assets/monster/hydro/c.png",
-        "series":  "hydro",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Hydro Zero Sugar"
                      ]
     },
     {
@@ -1910,9 +1658,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Super Fuel Red Dawg",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Super Fuel Red Dawg. Linea Super Fuel discontinued.",
         "variants":  [
                          "Super Fuel Red Dawg"
                      ]
@@ -1922,9 +1670,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Super Fuel Blue Streak",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Super Fuel Blue Streak. Linea Super Fuel discontinued.",
         "variants":  [
                          "Super Fuel Blue Streak"
                      ]
@@ -1934,9 +1682,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Mutant Original green",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "legendary",
+        "limited":  true,
+        "description":  "Mutant Original Green. Linea Mutant molto rara, discontinued.",
         "variants":  [
                          "Mutant Original green"
                      ]
@@ -1946,9 +1694,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Mutant Red Dawn",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "legendary",
+        "limited":  true,
+        "description":  "Mutant Red Dawn. Linea Mutant discontinued.",
         "variants":  [
                          "Mutant Red Dawn"
                      ]
@@ -1958,107 +1706,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Mutant White Lightning",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "legendary",
+        "limited":  true,
+        "description":  "Mutant White Lightning. Linea Mutant discontinued.",
         "variants":  [
                          "Mutant White Lightning"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_67",
-        "name":  "Beast Unleashed Mean Green",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed Mean Green"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_68",
-        "name":  "Beast Unleashed White Haze",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed White Haze"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_69",
-        "name":  "Beast Unleashed Peach Perfect",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed Peach Perfect"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_70",
-        "name":  "Beast Unleashed Scary Berries",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed Scary Berries"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_71",
-        "name":  "Beast Unleashed Killer Sunrise",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed Killer Sunrise"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_72",
-        "name":  "Beast Unleashed Gnarly Grape",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed Gnarly Grape"
-                     ]
-    },
-    {
-        "id":  "catalog_beast_73",
-        "name":  "Beast Unleashed Pink Poison",
-        "image":  "assets/monster/beast/a.png",
-        "series":  "beast",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Beast Unleashed Pink Poison"
-                     ]
-    },
-    {
-        "id":  "catalog_special_74",
-        "name":  "Lo Carb",
-        "image":  "assets/monster/special/g.png",
-        "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Lo Carb"
                      ]
     },
     {
@@ -2066,9 +1718,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Absolute Zero",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
+        "rarity":  "rare",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Absolute Zero, versione zero zuccheri classica.",
         "variants":  [
                          "Absolute Zero"
                      ]
@@ -2078,9 +1730,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "M-80",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "M-80, edizione speciale discontinued.",
         "variants":  [
                          "M-80"
                      ]
@@ -2090,35 +1742,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Cuba-Lima",
         "image":  "assets/monster/special/cuba-lima.jpg",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Cuba-Lima, gusto lime e cubano. Edizione limitata.",
         "variants":  [
                          "Cuba-Lima"
-                     ]
-    },
-    {
-        "id":  "catalog_special_78",
-        "name":  "The Doctor",
-        "image":  "assets/monster/special/g.png",
-        "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "The Doctor"
-                     ]
-    },
-    {
-        "id":  "catalog_special_79",
-        "name":  "Full Throttle",
-        "image":  "assets/monster/special/g.png",
-        "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
-        "variants":  [
-                         "Full Throttle"
                      ]
     },
     {
@@ -2126,9 +1754,9 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Mucho Loco",
         "image":  "assets/monster/special/g.png",
         "series":  "special",
-        "rarity":  "catalog",
-        "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Mucho Loco, gusto molto intenso. Discontinued.",
         "variants":  [
                          "Mucho Loco"
                      ]
@@ -2138,12 +1766,11 @@ window.MONSTER_CATALOG_DATA = [
         "name":  "Monster Mule Ginger Brew",
         "image":  "assets/monster/special/monster-mule-ginger-brew.jpg",
         "series":  "special",
-        "rarity":  "catalog",
+        "rarity":  "rare",
         "limited":  false,
-        "description":  "Variante presente nel catalogo Monster Energy allegato.",
+        "description":  "Monster Mule Ginger Brew, ginger brew non alcolico.",
         "variants":  [
                          "Monster Mule Ginger Brew"
                      ]
     }
 ];
-
