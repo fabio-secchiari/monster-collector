@@ -959,7 +959,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_hydro_tropical_thunder",
-        "name":  "Tropical Thunder",
+        "name":  "Hydro Tropical Thunder",
         "image":  "assets/monster/hydro/hydro-tropical-thunder.png",
         "series":  "hydro",
         "rarity":  "rare",
