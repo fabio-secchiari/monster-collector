@@ -1183,9 +1183,13 @@ body.image-bg-on .can-art {
           <span class="limited-badge" id="main-limited" style="display:none;">⭐</span>
         </div>
         <div class="nav-buttons">
-          <button class="btn-adaptive ghost" id="prev">◀ Prev</button>
-          <button class="btn-adaptive ghost" id="next">Next ▶</button>
-        </div>
+		  <button class="btn-adaptive ghost" id="prev">
+			<img src="assets/ui/prev.png" alt="Prev" style="width:24px; height:24px;">
+		  </button>
+		  <button class="btn-adaptive ghost" id="next">
+			<img src="assets/ui/next.png" alt="Next" style="width:24px; height:24px;">
+		  </button>
+		</div>
       </div>
 
 	<div class="right-panel">
@@ -1276,6 +1280,47 @@ body.image-bg-on .can-art {
 
 const CANS = window.MONSTER_CATALOG_DATA;
 MonsterCatalog.set(CANS);
+
+// ============================================================
+//  SFONDI PER CATEGORIA
+// ============================================================
+
+const CATEGORY_BG_MAP = {
+  classic: 'assets/ui/bg-classic.jpg',
+  ultra: 'assets/ui/bg-ultra.jpg',
+  juice: 'assets/ui/bg-juice.jpg',
+  java: 'assets/ui/bg-java.jpeg',
+  rehab: 'assets/ui/bg-rehab.jpeg',
+};
+
+function updateCategoryBackground(category) {
+  const art = document.getElementById('main-art');
+  const bgImage = CATEGORY_BG_MAP[category] || 'assets/ui/bg-classic.jpg';
+  art.style.backgroundImage = `url('${bgImage}')`;
+  art.style.backgroundSize = 'cover';
+  art.style.backgroundPosition = 'center';
+}
+
+// ============================================================
+//  LOGHI PER CATEGORIA
+// ============================================================
+
+const CATEGORY_LOGO_MAP = {
+  classic: 'assets/icons/logo-classic.png',
+  ultra: 'assets/icons/logo-ultra.webp',
+  juice: 'assets/icons/logo-juice.webp',
+  java: 'assets/icons/logo-java.webp',
+  rehab: 'assets/icons/logo-rehab.webp',
+};
+
+function updateCategoryLogo(category) {
+  const logo = document.getElementById('site-logo');
+  const logoPath = CATEGORY_LOGO_MAP[category] || 'assets/icons/logo-extended.png';
+  logo.src = logoPath + '?' + Date.now(); // Forza il refresh
+  logo.onerror = () => { 
+    logo.src = 'assets/icons/logo-extended.png'; 
+  };
+}
 
 // ============================================================
 //  STORAGE E STATO
@@ -1538,9 +1583,11 @@ function selectIndex(idx) {
     document.getElementById('main-limited').style.display = 'none';
   }
 
-  // Immagine
+  // Immagine - usa SEMPRE la variante selezionata
   const mainImg = document.getElementById('main-image');
-  mainImg.src = getVariantImageForCan(can, currentVariant);
+  const variantToShow = currentVariant || can.variants[0];
+  const variantImgPath = getVariantImageForCan(can, variantToShow);
+  mainImg.src = variantImgPath + '?' + Date.now(); // Forza il refresh
   mainImg.onerror = () => { mainImg.src = 'assets/monster/classic.png'; };
 
   // Rarita (badge piu evidente)
@@ -1587,6 +1634,11 @@ function selectIndex(idx) {
   };
   document.getElementById('main-series-label').textContent = seriesLabels[can.series] || can.series;
 	
+  updateCategoryBackground(can.series);
+  
+  // Aggiorna logo in base alla categoria
+  updateCategoryLogo(can.series);
+  
   // Note
   const notesEl = document.getElementById('main-notes');
 
@@ -1611,6 +1663,27 @@ function selectIndex(idx) {
 	// Varianti
 	renderVariants(can);
 }
+
+document.getElementById('filter-series').addEventListener('change', () => {
+  renderSidebar();
+  const filtered = getFilteredCans();
+  if (filtered.length > 0 && !filtered.some(c => c.id === CANS[currentIndex].id)) {
+    selectIndex(CANS.indexOf(filtered[0]));
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+  
+  // Aggiorna il logo in base al filtro selezionato
+  const selectedSeries = document.getElementById('filter-series').value;
+  if (selectedSeries !== 'all') {
+    updateCategoryLogo(selectedSeries);
+  } else {
+    // Se è "all", usa il logo della lattina corrente
+    const can = CANS[currentIndex];
+    if (can) updateCategoryLogo(can.series);
+  }
+});
 
 // ============================================================
 //  RATING STARS
@@ -1801,18 +1874,21 @@ function renderVariants(can) {
     });
 
     // Seleziona la variante per modificarne immagine, note e rating.
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      window.selectedVariant = variant;
-      saveSelectedVariant(can.id, variant);
-      mainImg.src = getVariantImageForCan(can, variant);
-      mainImg.onerror = () => { mainImg.src = can.image; };
-      document.getElementById('selected-variant').value = variant;
-      document.getElementById('main-notes').textContent = st.variants[variant]?.notes || '';
-      updateRatingDisplay(variant);
-      renderVariants(can);
-      playClickSound();
-    });
+    // CLICK sul pulsante INTERO
+	btn.addEventListener('click', (e) => {
+	  e.stopPropagation();
+	  // Toggle owned
+	  st.variants[variant] = {
+		...(st.variants[variant] || {}),
+		owned: !owned,
+		rating: st.variants[variant]?.rating || 0,
+		notes: st.variants[variant]?.notes || ''
+	  };
+	  saveState(state);
+	  renderSidebar();
+	  selectIndex(currentIndex);
+	  playClickSound();
+	});
 
     grid.appendChild(btn);
   });
@@ -2102,15 +2178,27 @@ function buildGridView() {
 
     const card = document.createElement('div');
     card.className = 'grid-card';
+	card.setAttribute('data-series', can.series);
 
     const imgDiv = document.createElement('div');
-    imgDiv.className = 'grid-image';
-    const img = document.createElement('img');
-    img.src = can.image || 'assets/monster/classic.png';
-    img.onerror = function() {
-      this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"%3E%3Crect width="36" height="48" fill="%230a0a0f" rx="4"/%3E%3Ctext x="18" y="28" font-size="20" text-anchor="middle" fill="%2300ff41" font-family="monospace"%3E%3C/text%3E%3C/svg%3E';
-    };
-    imgDiv.appendChild(img);
+	imgDiv.className = 'grid-image';
+	// Aggiungi lo sfondo basato sulla serie
+	const seriesBgMap = {
+	  classic: 'assets/ui/bg-classic.jpg',
+	  ultra: 'assets/ui/bg-ultra.jpg',
+	  juice: 'assets/ui/bg-juice.jpg',
+	  java: 'assets/ui/bg-java.jpeg',
+	  rehab: 'assets/ui/bg-rehab.jpeg'
+	};
+	imgDiv.style.backgroundImage = `url('${seriesBgMap[can.series] || 'assets/ui/bg-classic.jpg'}')`;
+	imgDiv.style.backgroundSize = 'cover';
+	imgDiv.style.backgroundPosition = 'center';
+	const img = document.createElement('img');
+	img.src = can.image || 'assets/monster/classic.png';
+	img.onerror = function() {
+	  this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"%3E%3Crect width="36" height="48" fill="%230a0a0f" rx="4"/%3E%3Ctext x="18" y="28" font-size="20" text-anchor="middle" fill="%2300ff41" font-family="monospace"%3E%3C/text%3E%3C/svg%3E';
+	};
+	imgDiv.appendChild(img);
 
     const name = document.createElement('div');
     name.className = 'grid-name';
@@ -2171,11 +2259,12 @@ function buildGridView() {
     card.appendChild(ratingDiv);
 
     card.addEventListener('click', () => {
-      if (gridMode) {
-        setGridMode(false);
-      }
-      selectIndex(CANS.indexOf(can));
-    });
+	  if (gridMode) {
+		setGridMode(false);
+	  }
+	  // Usa selectIndex che ora gestisce correttamente l'immagine
+	  selectIndex(CANS.indexOf(can));
+	});
 
     grid.appendChild(card);
   });
