@@ -1224,7 +1224,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "catalog_java_6",
         "name":  "Java Lo-Ball",
-        "image":  "assets/monster/java/d.png",
+        "image":  "assets/monster/java/java-lo-ball.jpg",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
