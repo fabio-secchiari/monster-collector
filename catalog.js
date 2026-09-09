@@ -1617,16 +1617,4 @@ window.MONSTER_CATALOG_DATA = [
                          "Mucho Loco"
                      ]
     },
-    {
-        "id":  "catalog_special_81",
-        "name":  "Monster Mule Ginger Brew",
-        "image":  "assets/monster/special/monster-mule-ginger-brew.jpg",
-        "series":  "special",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Monster Mule Ginger Brew, ginger brew non alcolico.",
-        "variants":  [
-                         "Monster Mule Ginger Brew"
-                     ]
-    }
 ];
