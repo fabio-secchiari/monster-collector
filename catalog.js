@@ -1561,15 +1561,19 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_special_75",
-        "name":  "Absolute Zero",
-        "image":  "assets/monster/special/absolute-zero.png",
-        "series":  "special",
+        "name":  "Absolutely Zero",
+        "image":  "assets/monster/classic/absolutely-zero.png",
+        "series":  "classic",
         "rarity":  "rare",
         "limited":  false,
-        "description":  "Absolute Zero, versione zero zuccheri classica.",
+        "description":  "Absolutely Zero, versione zero zuccheri classica.",
         "variants":  [
-                         "Absolute Zero"
-                     ]
+                         "Absolutely Zero",
+                         "Absolutely Zero (2010)"
+                     ],
+					 "variantImages":  {
+                              "Absolutely Zero (2010)":  "assets/monster/classic/absolute-zero.png"
+                          }
     },
     {
         "id":  "catalog_special_76",
@@ -1598,7 +1602,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "catalog_special_80",
         "name":  "Mucho Loco",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/mucho-loco.webp",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
