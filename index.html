@@ -175,19 +175,6 @@ body {
   color: #e6e6f0;
 }
 
-/* ===== SIDEBAR PIÙ ALTA ===== */
-.sidebar {
-  max-height: calc(100vh - 120px) !important; /* aumenta lo spazio disponibile */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.sidebar .list {
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
-}
-
 /* ===== FILTER BAR ===== */
 .filter-bar {
   display: flex;
@@ -314,10 +301,16 @@ body {
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
-  height: fit-content;
-  max-height: calc(100vh - 180px);
+  height: 100%;
+  max-height: calc(100vh - 120px);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+.sidebar .list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .sidebar .search {
@@ -344,14 +337,6 @@ body {
   opacity: 0.5;
 }
 
-.sidebar .list {
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex: 1;
-  min-height: 0;
-  padding-right: 4px;
-}
-
 .sidebar-stats {
   display: flex;
   justify-content: space-between;
@@ -371,6 +356,8 @@ body {
   margin-bottom: 4px;
   background: rgba(255,255,255,0.02);
   border-left: 3px solid transparent;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .can-item:hover {
@@ -479,24 +466,6 @@ body {
   max-height: 100%;
   object-fit: contain;
   padding: 16px;
-}
-
-/* BADGE RARITA piu grande e in alto a sinistra */
-.can-art .rarity-tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  padding: 6px 18px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  background: rgba(0,0,0,0.8);
-  color: #fff;
-  border: 2px solid rgba(255,255,255,0.15);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-  z-index: 2;
 }
 
 .can-art .limited-badge {
@@ -1021,13 +990,6 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(0,255,65,0.1); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,255,65,0.2); }
 
-/* Rarity colors */
-.rarity-common { border-left-color: #6b7280; }
-.rarity-uncommon { border-left-color: #4FC3FF; }
-.rarity-rare { border-left-color: #A855F7; }
-.rarity-epic { border-left-color: #FF6B3D; }
-.rarity-legendary { border-left-color: #FFD34D; }
-
 .filter-bar {
   display: flex;
   align-items: center;
@@ -1168,13 +1130,6 @@ body.image-bg-on .can-art {
   transform: translateX(4px) scale(1.01);
   transition: all 0.2s ease;
 }
-
-/* Colore del bordo in base alla rarità (sovrascrive il verde) */
-.can-item.active.rarity-common { box-shadow: 0 0 0 2px #6b7280, 0 0 0 4px rgba(0,255,65,0.15); }
-.can-item.active.rarity-uncommon { box-shadow: 0 0 0 2px #4FC3FF, 0 0 0 4px rgba(0,255,65,0.15); }
-.can-item.active.rarity-rare { box-shadow: 0 0 0 2px #A855F7, 0 0 0 4px rgba(0,255,65,0.15); }
-.can-item.active.rarity-epic { box-shadow: 0 0 0 2px #FF6B3D, 0 0 0 4px rgba(0,255,65,0.15); }
-.can-item.active.rarity-legendary { box-shadow: 0 0 0 2px #FFD34D, 0 0 0 4px rgba(0,255,65,0.15); }
 
 /* Intestazione serie nella sidebar */
 .series-header {
@@ -1399,21 +1354,9 @@ body.image-bg-on .can-art {
 	  <option value="name-desc">Nome Z-A</option>
 	  <option value="completion-asc">Completamento ↑</option>
 	  <option value="completion-desc">Completamento ↓</option>
-	  <option value="rarity-asc">Rarità ↑</option>
-	  <option value="rarity-desc">Rarità ↓</option>
 	  <option value="rating-asc">Valutazione ↑</option>
 	  <option value="rating-desc">Valutazione ↓</option>
 	</select>
-	
-	<!-- Rarità -->
-	<select id="filter-rarity" class="filter-select">
-      <option value="all">Tutte le rarita</option>
-      <option value="common">Comune</option>
-      <option value="uncommon">Non comune</option>
-      <option value="rare">Epico</option>
-      <option value="epic">Leggendario</option>
-      <option value="legendary">Mitico</option>
-    </select>
 	
 	<!-- Toggle raggruppamento per serie -->
 	<label class="toggle-switch">
@@ -1468,7 +1411,6 @@ body.image-bg-on .can-art {
       <div class="left-panel">
         <div class="can-art" id="main-art">
           <img id="main-image" src="assets/monster/classic.png" alt="Monster">
-          <span class="rarity-tag" id="main-rarity">LEGGENDARIO</span>
           <span class="limited-badge" id="main-limited" style="display:none;">⭐</span>
         </div>
         <div class="nav-buttons">
@@ -1563,6 +1505,9 @@ body.image-bg-on .can-art {
 <script src="catalog-manager.js"></script>
 
 <script>
+
+let _loadingUI = false;
+
 // ============================================================
 //  DATABASE COMPLETO MONSTER ENERGY - TUTTE LE VARIANTI
 // ============================================================
@@ -1628,6 +1573,7 @@ function updateCategoryLogo(category) {
 // ============================================================
 
 const STORAGE_KEY = 'monster_tracker_v2';
+const UI_STATE_KEY = 'monster_tracker_ui';
 
 function defaultState() {
   const s = {};
@@ -1843,7 +1789,6 @@ function createCanItem(can) {
   const item = document.createElement('div');
   item.className = 'can-item';
   if (idx === currentIndex) item.classList.add('active');
-  item.classList.add(`rarity-${can.rarity}`);
 
   const thumb = document.createElement('div');
   thumb.className = 'thumb';
@@ -1942,28 +1887,7 @@ function selectIndex(idx) {
   }
 
   loadImageWithFallback(mainImg, variantImgPath, can.image || 'assets/monster/classic.png');
-
-  // Rarita (badge piu evidente)
-  const rarityMap = {
-    common: 'Comune',
-    uncommon: 'Non comune',
-    rare: 'Epico',
-    epic: 'Leggendario',
-    legendary: 'Mitico'
-  };
-  const tag = document.getElementById('main-rarity');
-  tag.textContent = rarityMap[can.rarity] || can.rarity.toUpperCase();
-  const colors = {
-    common: '#6b7280',
-    uncommon: '#4FC3FF',
-    rare: '#A855F7',
-    epic: '#FF6B3D',
-    legendary: '#FFD34D'
-  };
-  tag.style.borderColor = colors[can.rarity] || '#fff';
-  tag.style.color = colors[can.rarity] || '#fff';
-  tag.style.boxShadow = `0 4px 16px ${colors[can.rarity]}44`;
-
+  
   // Progresso
   const { owned, total } = getVariantCount(can);
   const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
@@ -2015,6 +1939,10 @@ function selectIndex(idx) {
 	
 	// Varianti
 	renderVariants(can);
+  
+  renderSidebar();
+  saveUIState();
+  pushHistoryState();
 }
 
 document.getElementById('filter-series').addEventListener('change', () => {
@@ -2026,6 +1954,7 @@ document.getElementById('filter-series').addEventListener('change', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
+  saveUIState();
   
   // Aggiorna il logo in base al filtro selezionato
   const selectedSeries = document.getElementById('filter-series').value;
@@ -2036,6 +1965,7 @@ document.getElementById('filter-series').addEventListener('change', () => {
     const can = CANS[currentIndex];
     if (can) updateCategoryLogo(can.series);
   }
+  saveUIState();
 });
 
 // ============================================================
@@ -2375,7 +2305,6 @@ document.getElementById('next').addEventListener('click', () => {
 
 function getSortedAndFilteredCans() {
   const search = document.getElementById('search-input').value.toLowerCase();
-  const rarity = document.getElementById('filter-rarity').value;
   const series = document.getElementById('filter-series').value;
   const onlyOwned = document.getElementById('toggle-owned').checked;
   const onlyLimited = document.getElementById('toggle-limited').checked;
@@ -2383,7 +2312,6 @@ function getSortedAndFilteredCans() {
 
   let filtered = CANS.filter(can => {
     if (search && !can.name.toLowerCase().includes(search) && !can.id.toLowerCase().includes(search)) return false;
-    if (rarity !== 'all' && can.rarity !== rarity) return false;
     if (series !== 'all' && can.series !== series) return false;
     if (onlyOwned) {
       const st = state[can.id];
@@ -2408,24 +2336,16 @@ function getSortedAndFilteredCans() {
       const p2 = getVariantCount(b).owned / getVariantCount(b).total || 0;
       return p2 - p1;
     },
-    'rarity-asc': (a,b) => {
-      const order = { common: 1, uncommon: 2, rare: 3, epic: 4, legendary: 5 };
-      return (order[a.rarity] || 0) - (order[b.rarity] || 0);
-    },
-    'rarity-desc': (a,b) => {
-      const order = { common: 1, uncommon: 2, rare: 3, epic: 4, legendary: 5 };
-      return (order[b.rarity] || 0) - (order[a.rarity] || 0);
-    },
-	'rating-asc': (a,b) => {
-	  const r1 = state[a.id]?.variants?.[a.variants[0]]?.rating || 0;
-	  const r2 = state[b.id]?.variants?.[b.variants[0]]?.rating || 0;
-	  return r1 - r2;
-	},
-	'rating-desc': (a,b) => {
-	  const r1 = state[a.id]?.variants?.[a.variants[0]]?.rating || 0;
-	  const r2 = state[b.id]?.variants?.[b.variants[0]]?.rating || 0;
-	  return r2 - r1;
-	}
+	  'rating-asc': (a,b) => {
+	    const r1 = state[a.id]?.variants?.[a.variants[0]]?.rating || 0;
+	    const r2 = state[b.id]?.variants?.[b.variants[0]]?.rating || 0;
+	    return r1 - r2;
+	  },
+	  'rating-desc': (a,b) => {
+	    const r1 = state[a.id]?.variants?.[a.variants[0]]?.rating || 0;
+	    const r2 = state[b.id]?.variants?.[b.variants[0]]?.rating || 0;
+	    return r2 - r1;
+	  }
   };
   const sortFn = sortFunctions[sortOrder] || sortFunctions['default'];
   filtered.sort(sortFn);
@@ -2451,17 +2371,6 @@ document.getElementById('search-input').addEventListener('input', () => {
   }
 });
 
-document.getElementById('filter-rarity').addEventListener('change', () => {
-  renderSidebar();
-  const filtered = getSortedAndFilteredCans();
-  if (filtered.length > 0 && !filtered.some(c => c.id === CANS[currentIndex].id)) {
-    selectIndex(CANS.indexOf(filtered[0]));
-  }
-  if (document.getElementById('grid-view').classList.contains('active')) {
-    buildGridView();
-  }
-});
-
 document.getElementById('filter-series').addEventListener('change', () => {
   renderSidebar();
   const filtered = getSortedAndFilteredCans();
@@ -2471,6 +2380,7 @@ document.getElementById('filter-series').addEventListener('change', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
+  saveUIState();
 });
 
 document.getElementById('toggle-owned').addEventListener('change', () => {
@@ -2482,6 +2392,7 @@ document.getElementById('toggle-owned').addEventListener('change', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
+  saveUIState();
 });
 
 document.getElementById('toggle-limited').addEventListener('change', () => {
@@ -2493,6 +2404,7 @@ document.getElementById('toggle-limited').addEventListener('change', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
+  saveUIState();
 });
 
 document.getElementById('sort-order').addEventListener('change', () => {
@@ -2500,12 +2412,14 @@ document.getElementById('sort-order').addEventListener('change', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
+  saveUIState();
 });
 document.getElementById('toggle-group-series').addEventListener('change', () => {
   renderSidebar();
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
+  saveUIState();
 });
 
 // ============================================================
@@ -2651,11 +2565,15 @@ function setGridMode(enabled) {
     grid.removeAttribute('hidden');
     document.getElementById('btn-grid-toggle').textContent = '📋 Locker';
     showToast('📦 Vista scaffale');
+    saveUIState();
+    pushHistoryState();
   } else {
     grid.setAttribute('hidden', '');
     document.getElementById('btn-grid-toggle').textContent = '📦 Scaffale';
     selectIndex(currentIndex);
     showToast('📋 Vista locker');
+    saveUIState();
+    pushHistoryState();
   }
 }
 
@@ -2676,14 +2594,18 @@ function buildGridView() {
     return;
   }
 
-  function renderCard(can) {
+  function renderCard(can, variant) {
     const st = state[can.id] || { variants: {} };
-    const { owned, total } = getVariantCount(can);
-    const percent = total === 0 ? 0 : Math.round((owned / total) * 100);
+    const variantData = st.variants[variant] || { owned: false, rating: 0, notes: '' };
+    const owned = variantData.owned;
+    // Calcola progresso totale delle varianti della lattina (per il contatore)
+    const { owned: totalOwned, total: totalVariants } = getVariantCount(can);
+    const percent = totalVariants === 0 ? 0 : Math.round((totalOwned / totalVariants) * 100);
 
     const card = document.createElement('div');
     card.className = 'grid-card';
     card.setAttribute('data-series', can.series);
+    card.setAttribute('data-variant', variant);
 
     const imgDiv = document.createElement('div');
     imgDiv.className = 'grid-image';
@@ -2705,9 +2627,7 @@ function buildGridView() {
     imgDiv.style.backgroundPosition = 'center';
 
     const img = document.createElement('img');
-    // Nella grid view usa SEMPRE la prima variante (immagine base)
-    const baseVariant = can.variants[0];
-    const variantImg = getVariantImageForCan(can, baseVariant);
+    const variantImg = getVariantImageForCan(can, variant);
     const testImg = new Image();
     testImg.onload = function() { img.src = variantImg; };
     testImg.onerror = function() {
@@ -2726,40 +2646,25 @@ function buildGridView() {
 
     const name = document.createElement('div');
     name.className = 'grid-name';
-    name.textContent = can.name;
-    if (can.limited) {
-      const badge = document.createElement('span');
-      badge.className = 'grid-limited';
-      badge.textContent = '⭐';
-      name.appendChild(badge);
-    }
+    name.textContent = variant; // Mostra il nome della variante
 
-    const series = document.createElement('div');
-    series.className = 'grid-series';
-    const seriesLabels = {
-      classic: 'Classic',
-      ultra: 'Ultra',
-      juice: 'Juice',
-      java: 'Java',
-      rehab: 'Rehab',
-      reserve: 'Reserve',
-      special: 'Special',
-      hydro: 'Hydro',
-      muscle: 'Muscle',
-      beast: 'Beast',
-      dragon: 'Dragon'
-    };
-    series.textContent = seriesLabels[can.series] || can.series;
+    const sub = document.createElement('div');
+    sub.className = 'grid-series';
+    sub.textContent = can.name; // Mostra il nome della lattina base
 
+    // Contatore progresso
     const prog = document.createElement('div');
     prog.className = 'grid-progress';
     const fill = document.createElement('div');
     fill.className = 'fill';
     fill.style.width = percent + '%';
     prog.appendChild(fill);
+    const progText = document.createElement('div');
+    progText.style.cssText = 'font-size:10px;color:var(--muted);margin-top:2px;';
+    progText.textContent = `${totalOwned}/${totalVariants}`;
 
-    const firstVariant = can.variants[0];
-    const rating = st.variants[firstVariant]?.rating || 0;
+    // Valutazione (specifica per questa variante)
+    const rating = variantData.rating || 0;
     const ratingDiv = document.createElement('div');
     ratingDiv.style.cssText = 'margin-top:4px;font-size:12px;color:var(--gold);';
     if (rating > 0) {
@@ -2777,61 +2682,58 @@ function buildGridView() {
 
     card.appendChild(imgDiv);
     card.appendChild(name);
-    card.appendChild(series);
+    card.appendChild(sub);
     card.appendChild(prog);
+    card.appendChild(progText);
     card.appendChild(ratingDiv);
 
     card.addEventListener('click', () => {
       if (gridMode) {
         setGridMode(false);
       }
+      // Seleziona la lattina base e poi imposta la variante selezionata
       selectIndex(CANS.indexOf(can));
+      window.selectedVariant = variant;
+      saveSelectedVariant(can.id, variant);
+      // Forza il refresh dell'immagine e dei dati
+      selectIndex(CANS.indexOf(can)); // chiamata di nuovo per aggiornare
     });
 
     return card;
   }
 
   if (groupBySeries) {
+    // Raggruppa per serie (gruppi di varianti)
     const groups = {};
     filtered.forEach(can => {
-      const key = can.series;
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(can);
+      can.variants.forEach(variant => {
+        const key = can.series;
+        if (!groups[key]) groups[key] = [];
+        groups[key].push({ can, variant });
+      });
     });
-    const seriesLabels = {
-      classic: 'Classic',
-      ultra: 'Ultra',
-      juice: 'Juice',
-      java: 'Java',
-      rehab: 'Rehab',
-      reserve: 'Reserve',
-      special: 'Special',
-      hydro: 'Hydro',
-      muscle: 'Muscle',
-      beast: 'Beast',
-      dragon: 'Dragon'
-    };
-    for (const [series, cans] of Object.entries(groups)) {
-      // Crea un contenitore per la serie
+    const seriesLabels = { /* ... */ };
+    for (const [series, items] of Object.entries(groups)) {
       const groupContainer = document.createElement('div');
-      groupContainer.style.cssText = 'grid-column:1/-1;display:contents;'; // per mantenere il layout a griglia
-      // Intestazione
+      groupContainer.style.cssText = 'grid-column:1/-1;display:contents;';
       const header = document.createElement('div');
       header.className = 'series-header';
       header.textContent = seriesLabels[series] || series;
       header.style.cssText = 'grid-column:1/-1;font-size:14px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:1px;padding:12px 0 6px 0;border-bottom:2px solid rgba(0,255,65,0.1);margin-top:12px;';
       groupContainer.appendChild(header);
-      // Card
-      cans.forEach(can => {
-        const card = renderCard(can);
+      items.forEach(({ can, variant }) => {
+        const card = renderCard(can, variant);
         groupContainer.appendChild(card);
       });
       grid.appendChild(groupContainer);
     }
   } else {
+    // Lista piatta di varianti
     filtered.forEach(can => {
-      const card = renderCard(can);
-      grid.appendChild(card);
+      can.variants.forEach(variant => {
+        const card = renderCard(can, variant);
+        grid.appendChild(card);
+      });
     });
   }
 
@@ -2856,18 +2758,14 @@ document.getElementById('btn-stats').addEventListener('click', () => {
   let ownedVariants = 0;
   let limitedTotal = 0;
   let ownedLimited = 0;
-  const rarityStats = { common: 0, uncommon: 0, rare: 0, epic: 0, legendary: 0 };
-  const ownedRarity = { common: 0, uncommon: 0, rare: 0, epic: 0, legendary: 0 };
-
+  
   CANS.forEach(can => {
     const st = state[can.id];
     can.variants.forEach(v => {
       totalVariants++;
       if (st && isVariantOwned(st.variants[v])) {
         ownedVariants++;
-        ownedRarity[can.rarity]++;
       }
-      rarityStats[can.rarity]++;
     });
     if (can.limited) {
       limitedTotal++;
@@ -2878,44 +2776,21 @@ document.getElementById('btn-stats').addEventListener('click', () => {
   const percent = totalVariants === 0 ? 0 : Math.round((ownedVariants / totalVariants) * 100);
 
   content.innerHTML = `
-	 <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:16px;margin-top:12px;">
-		<!-- Varianti possedute -->
-		<div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
-		  <div style="font-size:32px;font-weight:900;color:#00ff41;">${ownedVariants}</div>
-		  <div style="color:var(--muted);font-size:13px;margin-top:4px;">Varianti possedute</div>
-		  <div style="color:var(--muted);font-size:11px;">su ${totalVariants} totali</div>
-		</div>
-		<!-- Limited Edition -->
-		<div class="stats-box stats-box-gold" style="background:rgba(255,215,0,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,215,0,0.08);">
-		  <div style="font-size:26px;font-weight:900;color:var(--gold);white-space:nowrap;">${ownedLimited} / ${limitedTotal}</div>
-		  <div style="color:var(--muted);font-size:13px;margin-top:4px;">Limited Edition</div>
-		</div>
-		<!-- Completamento -->
-		<div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
-		  <div style="font-size:32px;font-weight:900;color:#00ff41;">${percent}%</div>
-		  <div style="color:var(--muted);font-size:13px;margin-top:4px;">Completamento</div>
-		</div>
-	  </div>
-	  <!-- Rarità (invariato) -->
-	  <div style="margin-top:20px;">
-		<div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">📊 Rarità</div>
-		${['common','uncommon','rare','epic','legendary'].map(r => {
-		  const total = rarityStats[r] || 0;
-		  const owned = ownedRarity[r] || 0;
-		  const p = total === 0 ? 0 : Math.round((owned / total) * 100);
-		  const colors = { common:'#6b7280', uncommon:'#4FC3FF', rare:'#A855F7', epic:'#FF6B3D', legendary:'#FFD34D' };
-		  const labels = { common:'Comune', uncommon:'Non comune', rare:'Epico', epic:'Leggendario', legendary:'Mitico' };
-		  return `
-			<div style="display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);">
-			  <span style="width:90px;font-size:12px;color:${colors[r]};font-weight:700;">${labels[r]}</span>
-			  <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:999px;overflow:hidden;">
-				<div style="height:100%;width:${p}%;background:${colors[r]};border-radius:999px;transition:width 0.6s ease;"></div>
-			  </div>
-			  <span style="font-size:12px;font-weight:700;color:var(--muted);min-width:50px;text-align:right;">${owned}/${total}</span>
-			</div>
-		  `;
-		}).join('')}
-	  </div>
+    <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:16px;margin-top:12px;">
+      <div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
+        <div style="font-size:32px;font-weight:900;color:#00ff41;">${ownedVariants}</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px;">Varianti possedute</div>
+        <div style="color:var(--muted);font-size:11px;">su ${totalVariants} totali</div>
+      </div>
+      <div class="stats-box stats-box-gold" style="background:rgba(255,215,0,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,215,0,0.08);">
+        <div style="font-size:26px;font-weight:900;color:var(--gold);white-space:nowrap;">${ownedLimited} / ${limitedTotal}</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px;">Limited Edition</div>
+      </div>
+      <div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
+        <div style="font-size:32px;font-weight:900;color:#00ff41;">${percent}%</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px;">Completamento</div>
+      </div>
+    </div>
   `;
 
   modal.style.display = 'flex';
@@ -3160,6 +3035,27 @@ document.addEventListener('keydown', (e) => {
     document.getElementById('next').click();
     e.preventDefault();
   }
+  
+  if (e.key === 'ArrowUp') {
+	  e.preventDefault();
+	  const variantSelect = document.getElementById('selected-variant');
+	  const options = variantSelect.options;
+	  let idx = variantSelect.selectedIndex;
+	  idx = (idx + 1) % options.length;
+	  variantSelect.selectedIndex = idx;
+	  variantSelect.dispatchEvent(new Event('change'));
+  }
+  
+  if (e.key === 'ArrowDown') {
+	  e.preventDefault();
+	  const variantSelect = document.getElementById('selected-variant');
+	  const options = variantSelect.options;
+	  let idx = variantSelect.selectedIndex;
+	  idx = (idx - 1 + options.length) % options.length;
+	  variantSelect.selectedIndex = idx;
+	  variantSelect.dispatchEvent(new Event('change'));
+  }
+	
   if (e.key === ' ' || e.key === 'Space') {
     e.preventDefault();
     const can = CANS[currentIndex];
@@ -3225,6 +3121,7 @@ document.addEventListener('keydown', (e) => {
 
 selectIndex(0);
 renderSidebar();
+loadUIState();
 
 setInterval(() => {
   renderSidebar();
@@ -3275,6 +3172,98 @@ function playSpecialSound(audioId) {
   specialAudio.currentTime = 0;
   specialAudio.play().catch(() => {});
 }
+
+function saveUIState() {
+  if (_loadingUI) return;
+  const state = {
+    series: document.getElementById('filter-series').value,
+    sortOrder: document.getElementById('sort-order').value,
+    owned: document.getElementById('toggle-owned').checked,
+    limited: document.getElementById('toggle-limited').checked,
+    groupSeries: document.getElementById('toggle-group-series').checked,
+    gridMode: gridMode,
+    currentIndex: currentIndex,
+    selectedVariant: window.selectedVariant || null
+  };
+  localStorage.setItem(UI_STATE_KEY, JSON.stringify(state));
+}
+
+function loadUIState() {
+  _loadingUI = true;
+  const raw = localStorage.getItem(UI_STATE_KEY);
+  if (!raw) { _loadingUI = false; return; }
+  try {
+    const state = JSON.parse(raw);
+    document.getElementById('filter-series').value = state.series || 'all';
+    document.getElementById('sort-order').value = state.sortOrder || 'default';
+    document.getElementById('toggle-owned').checked = state.owned || false;
+    document.getElementById('toggle-limited').checked = state.limited || false;
+    document.getElementById('toggle-group-series').checked = state.groupSeries || false;
+    // Imposta gridMode e poi seleziona l'indice
+    if (state.gridMode) {
+      setGridMode(true);
+    } else {
+      setGridMode(false);
+    }
+    if (state.currentIndex !== undefined && state.currentIndex < CANS.length) {
+      currentIndex = state.currentIndex;
+      if (state.selectedVariant) {
+        window.selectedVariant = state.selectedVariant;
+        saveSelectedVariant(CANS[currentIndex].id, state.selectedVariant);
+      }
+      selectIndex(currentIndex);
+    }
+  } catch (e) {
+    console.warn('Errore caricamento UI state:', e);
+  }
+  _loadingUI = false;
+}
+
+function pushHistoryState() {
+  const state = {
+    index: currentIndex,
+    variant: window.selectedVariant || null,
+    grid: gridMode
+  };
+  const url = new URL(window.location);
+  url.searchParams.set('index', currentIndex);
+  if (window.selectedVariant) url.searchParams.set('variant', window.selectedVariant);
+  if (gridMode) url.searchParams.set('view', 'grid');
+  window.history.pushState(state, '', url);
+}
+
+window.addEventListener('popstate', function(e) {
+  if (e.state) {
+    const { index, variant, grid } = e.state;
+    if (index !== undefined && index < CANS.length) {
+      currentIndex = index;
+      if (variant) {
+        window.selectedVariant = variant;
+        saveSelectedVariant(CANS[currentIndex].id, variant);
+      }
+      // Non chiamare setGridMode qui per non innescare un altro pushState
+      if (grid !== undefined) {
+        if (grid !== gridMode) {
+          // Cambia modalità senza salvare
+          const locker = document.getElementById('locker-view');
+          const gridView = document.getElementById('grid-view');
+          gridMode = grid;
+          locker.classList.toggle('is-hidden', gridMode);
+          gridView.classList.toggle('active', gridMode);
+          if (gridMode) {
+            buildGridView();
+            gridView.removeAttribute('hidden');
+            document.getElementById('btn-grid-toggle').textContent = '📋 Locker';
+          } else {
+            gridView.setAttribute('hidden', '');
+            document.getElementById('btn-grid-toggle').textContent = '📦 Scaffale';
+          }
+        }
+      }
+      selectIndex(index);
+    }
+  }
+});
 </script>
 </body>
 </html>
