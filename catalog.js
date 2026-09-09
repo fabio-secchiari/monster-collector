@@ -10,14 +10,62 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original",
 						 "Original CoD",
-                         "Zero Sugar",
-						 "Zero Sugar CoD"
                      ],
 					 "variantImages":  {
 						      "Original CoD": "assets/monster/classic/original-cod.png",
-                              "Zero Sugar":  "assets/monster/classic/original-zero-sugar.webp",
-							  "Zero Sugar CoD": "assets/monster/classic/original-zero-sugar-cod.png"
                           }
+    },
+    {
+        "id":  "monster_zero_sugar",
+        "name":  "Original Zero Sugar",
+        "image":  "assets/monster/classic/original-zero-sugar.webp",
+        "series":  "classic",
+        "rarity":  "common",
+        "limited":  false,
+        "description":  "La Monster originale, ma senza zuccheri.",
+        "variants":  [
+                         "Zero Sugar",
+						 "Zero Sugar CoD",
+                         "Zero Sugar (EU)",
+                         "Zero Sugar (JPN)"
+                     ],
+					 "variantImages":  {
+							  "Zero Sugar CoD": "assets/monster/classic/original-zero-sugar-cod.png",
+                              "Zero Sugar (EU)": "assets/monster/classic/zero-sugar-blue.png",
+                              "Zero Sugar (JPN)": "assets/monster/classic/zero-sugar-japan.png"
+                          }
+    },
+    {
+        "id":  "catalog_special_75",
+        "name":  "Absolutely Zero",
+        "image":  "assets/monster/classic/absolutely-zero.png",
+        "series":  "classic",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Absolutely Zero, versione zero zuccheri classica.",
+        "variants":  [
+                         "Absolutely Zero",
+                         "Absolutely Zero (2010)"
+                     ],
+					 "variantImages":  {
+                              "Absolutely Zero (2010)":  "assets/monster/classic/absolute-zero.png"
+                          }
+    },
+    {
+        "id":  "monster_zero_sugar_full_throttle",
+        "name":  "Zero Sugar Full Throttle",
+        "image":  "assets/monster/classic/full-throttle.png",
+        "series":  "classic",
+        "rarity":  "uncommon",
+        "limited":  false,
+        "description":  "Versione zero zuccheri, disponibile in UK/Europa.",
+        "variants":  [
+                         "Full Throttle",
+						 "Top Speed"
+                     ],
+					 "variantImages": {
+						"Top Speed": "assets/monster/classic/top-speed.png"
+					  }
     },
     {
         "id":  "monster_lo_carb",
@@ -40,11 +88,13 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto cola con una carica extra di energia.",
         "variants":  [
-                         "Original",
-                         "Black"
+                         "Assault",
+                         "Black",
+                         "Fury"
                      ],
 					 "variantImages":  {
-                              "Black":  "assets/monster/classic/assault-black.webp"
+                              "Black":  "assets/monster/classic/assault-black.webp",
+                              "Fury": "assets/monster/classic/fury.png"
                           }
     },
     {
@@ -160,22 +210,6 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_zero_sugar_full_throttle",
-        "name":  "Zero Sugar Full Throttle",
-        "image":  "assets/monster/classic/full-throttle.png",
-        "series":  "classic",
-        "rarity":  "uncommon",
-        "limited":  false,
-        "description":  "Versione zero zuccheri, disponibile in UK/Europa.",
-        "variants":  [
-                         "Full Throttle",
-						 "Top Speed"
-                     ],
-					 "variantImages": {
-						"Top Speed": "assets/monster/classic/top-speed.png"
-					  }
-    },
-    {
         "id":  "monster_mule_non_alcoholic",
         "name":  "Mule (Non-Alcoholic)",
         "image":  "assets/monster/classic/mule.webp",
@@ -248,8 +282,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto kiwi-lime, zero zuccheri. Esplosione di freschezza.",
         "variants":  [
-                         "Ultra Paradise"
-                     ]
+                         "Ultra Paradise",
+                         "Ultra Tropical Island Punch"
+                     ],
+                     "variantImages":  {
+                              "Ultra Tropical Island Punch":  "assets/monster/ultra/ultra-tropical-island.png"
+                          }
     },
     {
         "id":  "monster_ultra_sunrise",
@@ -273,10 +311,10 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
         "variants":  [
                             "Fiesta",
-							"Mango"
+							"Fiesta Mango"
                      ],
 					 "variantImages": {
-						 "Mango": "assets/monster/ultra/ultra-fiesta-mango.webp"
+						 "Fiesta Mango": "assets/monster/ultra/ultra-fiesta-mango.webp"
 					 }
     },
     {
@@ -312,8 +350,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata dorata, gusto tropicale premium.",
         "variants":  [
-                         "Gold"
-                     ]
+                         "Gold",
+                         "Golden Pineapple"
+                     ],
+					 "variantImages": {
+						 "Golden Pineapple": "assets/monster/ultra/ultra-pineapple.webp"
+					 }
     },
     {
         "id":  "catalog_ultra_0",
@@ -324,8 +366,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata Ultra al gusto citron (limone). Discontinued.",
         "variants":  [
-                         "Citron"
-                     ]
+                         "Citron",
+                         "Citra"
+                     ],
+                     "variantImages":  {
+                              "Citra":  "assets/monster/ultra/ultra-citra.png"
+                          }
     },
     {
         "id":  "monster_ultra_peachy",
@@ -388,18 +434,6 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_ultra_pineapple",
-        "name":  "Ultra Pineapple",
-        "image":  "assets/monster/ultra/ultra-pineapple.webp",
-        "series":  "ultra",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Edizione limitata all'ananas, zero zuccheri.",
-        "variants":  [
-                         "Pineapple"
-                     ]
-    },
-    {
         "id":  "monster_ultra_blue_hawaiian",
         "name":  "Ultra Blue Hawaiian",
         "image":  "assets/monster/ultra/ultra-blue-hawaiian.webp",
@@ -457,9 +491,11 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Succo di mango con una carica di energia.",
         "variants":  [
                          "Mango Loco",
+                         "Mango Loco (US)",
 						 "Call of Duty"
                      ],
 					 "variantImages": {
+                         "Mango Loco (US)": "assets/monster/juice/juice-mango-loco.webp",
 						 "Call of Duty": "assets/monster/juice/mango-loco-cod.png"
 					 }
     },
@@ -490,8 +526,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto punch tropicale, come un viaggio nel Pacifico.",
         "variants":  [
-                         "Pacific Punch"
-                     ]
+                         "Pacific Punch",
+                         "Pacific Punch (US)"
+                     ],
+					 "variantImages": {
+						 "Pacific Punch (US)": "assets/monster/juice/juice-pacific-punch.png"
+					 }
     },
     {
         "id":  "monster_juice_pipeline",
@@ -502,8 +542,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Il gusto delle Hawaii, frutta tropicale e energia.",
         "variants":  [
-                         "Pipeline Punch"
-                     ]
+                         "Pipeline Punch",
+                         "Pipeline Punch (US)"
+                     ],
+					 "variantImages": {
+						 "Pipeline Punch (US)": "assets/monster/juice/juice-pipeline-punch.png",
+					 }
     },
     {
         "id":  "monster_juice_khaotic",
@@ -514,20 +558,30 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto arancia, passione e frutta tropicale.",
         "variants":  [
-                         "Khaotic"
-                     ]
+                         "Khaotic",
+                         "Khaotic (UK)",
+                         "Khaotic (US)"
+                     ],
+					 "variantImages": {
+						 "Khaotic (UK)": "assets/monster/juice/juiced-khaotic.png",
+						 "Khaotic (US)": "assets/monster/juice/juice-khaotic.png"
+					 }
     },
     {
         "id":  "monster_juice_aussie",
         "name":  "Juice Aussie Lemonade",
-        "image":  "assets/monster/juice/juiced-aussie-lemonade.jpg",
+        "image":  "assets/monster/juice/juiced-aussie-lemonade.webp",
         "series":  "juice",
         "rarity":  "uncommon",
         "limited":  false,
         "description":  "Limonata australiana con una carica di energia.",
         "variants":  [
-                         "Aussie Lemonade"
-                     ]
+                         "Aussie Lemonade",
+                         "Aussie Lemonade (US)"
+                     ],
+					 "variantImages": {
+						 "Aussie Lemonade (US)": "assets/monster/juice/juice-aussie-lemonade.jpg"
+                     }
     },
     {
         "id":  "monster_juice_bad_apple",
@@ -538,32 +592,44 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Gusto mela asprigna, edizione limitata.",
         "variants":  [
-                         "Bad Apple"
-                     ]
+                         "Bad Apple",
+                         "Bad Apple (US)",
+                     ],
+					 "variantImages": {
+						 "Bad Apple (US)": "assets/monster/juice/juice-bad-apple.png"
+                     }
     },
     {
         "id":  "monster_juice_rio",
         "name":  "Juice Rio Punch",
-        "image":  "assets/monster/juice/rio-punch.jpg",
+        "image":  "assets/monster/juice/punch-rio-punch.webp",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  false,
         "description":  "Gusto punch ispirato a Rio de Janeiro.",
         "variants":  [
-                         "Rio Punch"
-                     ]
+                         "Rio Punch",
+                         "Rio Punch (US)"
+                     ],
+					 "variantImages": {
+						 "Rio Punch (US)": "assets/monster/juice/rio-punch.jpg"
+					 }
     },
     {
         "id":  "monster_juice_viking",
         "name":  "Juice Viking Berry",
-        "image":  "assets/monster/juice/viking-berry.webp",
+        "image":  "assets/monster/juice/juiced-viking-berry.png",
         "series":  "juice",
         "rarity":  "rare",
         "limited":  false,
         "description":  "Gusto frutti di bosco nordici, ispirato ai vichinghi.",
         "variants":  [
-                         "Viking Berry"
-                     ]
+                         "Viking Berry",
+                         "Viking Berry (US)"
+                     ],
+					 "variantImages": {
+						 "Viking Berry (US)": "assets/monster/juice/viking-berry.webp"
+					 }
     },
     {
         "id":  "monster_juice_strawberry_lemonade",
@@ -590,18 +656,6 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_juice_mixxd_punch",
-        "name":  "Juice Mixxd Punch",
-        "image":  "assets/monster/juice/mixxd-punch.jpg",
-        "series":  "juice",
-        "rarity":  "common",
-        "limited":  false,
-        "description":  "Punch fruttato, molto popolare in Europa.",
-        "variants":  [
-                         "Mixxd Punch"
-                     ]
-    },
-    {
         "id":  "monster_juice_ripper",
         "name":  "Juice Ripper",
         "image":  "assets/monster/juice/juiced-ripper.jpg",
@@ -610,8 +664,34 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto tropicale esplosivo.",
         "variants":  [
-                         "Ripper"
-                     ]
+                         "Ripper",
+                         "Ripper (US)",
+                         "Ripper (2014)",
+                         "Ripper (2010)"
+                     ],
+					 "variantImages": {
+						 "Ripper (US)": "assets/monster/juice/juice-ripper.png",
+						 "Ripper (2014)": "assets/monster/juice/juiced-ripper-black.png",
+                         "Ripper (2010)": "assets/monster/juice/juice-ripper-grey.png"
+					 }
+    },
+    {
+        "id":  "monster_juice_mixxd_punch",
+        "name":  "Punch Mixxd",
+        "image":  "assets/monster/juice/mixxd-punch.jpg",
+        "series":  "juice",
+        "rarity":  "common",
+        "limited":  false,
+        "description":  "Punch fruttato, molto popolare in Europa.",
+        "variants":  [
+                         "Mixxd Punch",
+                         "Mixxd Punch (2017)",
+                         "Mixxd Punch (2014)"
+                     ],
+					 "variantImages": {
+						 "Mixxd Punch (2017)": "assets/monster/juice/mixxd-punch-black.png",
+						 "Mixxd Punch (2014)": "assets/monster/juice/mixxd-punch-grape.png"
+					 }
     },
     {
         "id":  "monster_java_mean_bean",
@@ -718,8 +798,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Limonata con elettroliti e te verde.",
         "variants":  [
-                         "Lemonade"
-                     ]
+                         "Lemonade Recover",
+                         "Lemonade",
+                         "Lemonade (PL)"
+                     ],
+					 "variantImages": {
+						 "Lemonade": "assets/monster/rehab/rehab-lemonade-old.webp",
+                         "Lemonade (PL)": "assets/monster/rehab/rehab-lemonade-pl.png",
+					 }
     },
     {
         "id":  "monster_rehab_peach",
@@ -730,8 +816,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Te alla pesca con elettroliti.",
         "variants":  [
+                         "Peach Tea Recover",
                          "Peach Tea"
-                     ]
+                     ],
+					 "variantImages": {
+						 "Peach Tea": "assets/monster/rehab/rehab-peach-tea-old.png"
+					 }
     },
     {
         "id":  "monster_rehab_green",
@@ -742,8 +832,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Te verde con elettroliti, leggero e dissetante.",
         "variants":  [
+                         "Green Tea Recover",
                          "Green Tea"
-                     ]
+                     ],
+					 "variantImages": {
+						 "Green Tea": "assets/monster/rehab/rehab-green-tea-old.png"
+					 }
     },
     {
         "id":  "monster_rehab_berry",
@@ -754,7 +848,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata, te ai frutti di bosco.",
         "variants":  [
-                         "Wild Berry Tea"
+                         "Wild Berry Tea Recover"
                      ]
     },
     {
@@ -1286,7 +1380,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Strawberry, te alla fragola. Discontinued.",
         "variants":  [
-                         "Strawberry"
+                         "Strawberry Recover"
                      ]
     },
     {
@@ -1298,7 +1392,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Watermelon, te al cocomero. Discontinued.",
         "variants":  [
-                         "Watermelon"
+                         "Watermelon Recover"
                      ]
     },
     {
@@ -1310,8 +1404,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Orangeade. Discontinued.",
         "variants":  [
+                         "Orangeade Recover",
                          "Orangeade"
-                     ]
+                     ],
+					 "variantImages": {
+						 "Orangeade": "assets/monster/rehab/rehab-orangeade-old.png"
+					 }
     },
     {
         "id":  "catalog_rehab_32",
@@ -1430,7 +1528,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Maxx Mango Matic. Linea Maxx discontinued.",
         "variants":  [
-                         "Zero Sugar Mango Matic"
+                         "Mango Matic"
                      ]
     },
     {
@@ -1452,10 +1550,14 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Extra Strength Super Dry. Linea Extra Strength discontinued.",
+        "description":  "Extra Strength / Nitrous Super Dry. Linee discontinued.",
         "variants":  [
-                         "Super Dry"
-                     ]
+                         "Super Dry",
+                         "Nitrous Super Dry"
+                     ],
+					 "variantImages": {
+						 "Nitrous Super Dry": "assets/monster/special/nitrous-super-dry.png"
+					 }
     },
     {
         "id":  "catalog_special_52",
@@ -1464,10 +1566,15 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Extra Strength Anti-Gravity. Linea Extra Strength discontinued.",
+        "description":  "Extra Strength / Nitrous Anti-Gravity. Linee discontinued.",
         "variants":  [
-                         "Anti gravity"
-                     ]
+                         "Anti gravity",
+                         "Nitrous Anti gravity"
+
+                     ],
+					 "variantImages": {
+						 "Nitrous Anti gravity": "assets/monster/special/nitrous-anti-gravity.png"
+					 }
     },
     {
         "id":  "catalog_special_53",
@@ -1488,34 +1595,14 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Extra Strength Killer-B. Linea Extra Strength discontinued.",
+        "description":  "Extra Strength / Nitrous Killer-B. Linee discontinued.",
         "variants":  [
-                         "Killer-B"
-                     ]
-    },
-    {
-        "id":  "catalog_special_55",
-        "name":  "Nitrous Super Dry",
-        "image":  "assets/monster/special/nitrous-super-dry.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Nitrous Super Dry. Linea Nitrous discontinued.",
-        "variants":  [
-                         "Super Dry"
-                     ]
-    },
-    {
-        "id":  "catalog_special_56",
-        "name":  "Nitrous Killer-B",
-        "image":  "assets/monster/special/nitrous-killer-b.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Nitrous Killer-B. Linea Nitrous discontinued.",
-        "variants":  [
+                         "Killer-B",
                          "Nitrous Killer-B"
-                     ]
+                     ],
+					 "variantImages": {
+						 "Nitrous Killer-B": "assets/monster/special/nitrous-killer-b.png"
+					 }
     },
     {
         "id":  "catalog_hydro_58",
@@ -1531,7 +1618,7 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_special_64",
-        "name":  "Mutant Original green",
+        "name":  "Mutant Original Green",
         "image":  "assets/monster/special/mutant-original-green.png",
         "series":  "special",
         "rarity":  "legendary",
@@ -1554,6 +1641,18 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
+        "id":  "monster_mutant_gold_strike",
+        "name":  "Mutant Gold Strike",
+        "image":  "assets/monster/special/mutant-gold-strike.png",
+        "series":  "special",
+        "rarity":  "legendary",
+        "limited":  true,
+        "description":  "Mutant Gold Strike. Linea Mutant discontinued, versione oro.",
+        "variants":  [
+                         "Gold Strike"
+                     ]
+    },
+    {
         "id":  "catalog_special_66",
         "name":  "Mutant White Lightning",
         "image":  "assets/monster/special/mutant-white-lightning.png",
@@ -1564,22 +1663,6 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "White Lightning Bottle"
                      ]
-    },
-    {
-        "id":  "catalog_special_75",
-        "name":  "Absolutely Zero",
-        "image":  "assets/monster/classic/absolutely-zero.png",
-        "series":  "classic",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Absolutely Zero, versione zero zuccheri classica.",
-        "variants":  [
-                         "Absolutely Zero",
-                         "Absolutely Zero (2010)"
-                     ],
-					 "variantImages":  {
-                              "Absolutely Zero (2010)":  "assets/monster/classic/absolute-zero.png"
-                          }
     },
     {
         "id":  "catalog_special_76",
@@ -1600,21 +1683,327 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "special",
         "rarity":  "rare",
         "limited":  true,
-        "description":  "Cuba-Lima, gusto lime e cubano. Edizione limitata.",
+        "description":  "Cuba-Lima / Cuba Libre, gusto lime e cubano. Edizione limitata.",
         "variants":  [
-                         "Cuba-Lima"
-                     ]
+                         "Cuba-Lima",
+                         "Cuba Libre (JPN)"
+                     ],
+                     "variantImages":  {
+                              "Cuba Libre (JPN)":  "assets/monster/special/cuba-libre.png"
+                          }
     },
     {
         "id":  "catalog_special_80",
         "name":  "Mucho Loco",
-        "image":  "assets/monster/special/mucho-loco.webp",
-        "series":  "special",
+        "image":  "assets/monster/classic/mucho-loco.webp",
+        "series":  "classic",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Mucho Loco, gusto molto intenso. Discontinued.",
         "variants":  [
                          "Mucho Loco"
+                     ]
+    },
+    {
+        "id":  "monster_unleaded",
+        "name":  "Unleaded",
+        "image":  "assets/monster/classic/unleaded.png",
+        "series":  "classic",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Versione senza caffeina del classico Monster. Stesso gusto, zero stimolanti. Discontinued.",
+        "variants":  [
+                         "Unleaded"
+                     ]
+    },
+    {
+        "id":  "monster_heavy_metal",
+        "name":  "Heavy Metal",
+        "image":  "assets/monster/special/heavy-metal.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Edizione limitata Heavy Metal, gusto classico con design metallico. Discontinued.",
+        "variants":  [
+                         "Heavy Metal"
+                     ]
+    },
+    {
+        "id":  "monster_gronk",
+        "name":  "Gronk",
+        "image":  "assets/monster/special/gronk-silver.webp",
+        "series":  "special",
+        "rarity":  "legendary",
+        "limited":  true,
+        "description":  "Edizione celebrativa dedicata a Rob Gronkowski. Gusto classico con design Patriots.",
+        "variants":  [
+                         "Gronk",
+                         "Gronk Formula #87"
+                     ],
+                     "variantImages":  {
+                              "Gronk Formula #87":  "assets/monster/special/gronk-87.png"
+                          }
+    },
+    {
+        "id":  "monster_dub_mad_dog",
+        "name":  "Punch Mad Dog",
+        "image":  "assets/monster/juice/punch-mad-dog.png",
+        "series":  "juice",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Punch Mad Dog / DUB Edition Mad Dog. Gusto intenso, discontinued.",
+        "variants":  [
+                         "Punch Mad Dog",
+                         "DUB Edition Mad Dog"
+                     ],
+                     "variantImages":  {
+                              "DUB Edition Mad Dog":  "assets/monster/juice/dub-mad-dog.png"
+                          }
+    },
+    {
+        "id":  "monster_dub_ballers_blend",
+        "name":  "Punch Baller's Blend",
+        "image":  "assets/monster/juice/punch-ballers-blend.png",
+        "series":  "juice",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Punch Baller's Blend / DUB Edition Baller's Blend. Punch fruttato, discontinued.",
+        "variants":  [
+                         "Baller's Blend",
+                         "DUB Edition Baller's Blend"
+                     ],
+                     "variantImages":  {
+                              "DUB Edition Baller's Blend":  "assets/monster/juice/dub-ballers-blend.png"
+                          }
+    },
+    {
+        "id":  "monster_super_cola",
+        "name":  "Super Cola",
+        "image":  "assets/monster/classic/super-cola.png",
+        "series":  "classic",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Monster Super Cola. Gusto cola potenziato. Discontinued.",
+        "variants":  [
+                         "Super Cola",
+                         "Super Cola Bottle"
+                     ],
+                     "variantImages":  {
+                              "Super Cola Bottle":  "assets/monster/classic/super-cola-bottle.png"
+                          }
+    },
+    {
+        "id":  "monster_rehab_pink_lemonade",
+        "name":  "Rehab Pink Lemonade",
+        "image":  "assets/monster/rehab/rehab-pink-lemonade.png",
+        "series":  "rehab",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Pink Lemonade. Te e limonata rosa. Discontinued.",
+        "variants":  [
+                         "Pink Lemonade"
+                     ]
+    },
+    {
+        "id":  "monster_rehab_raspberry",
+        "name":  "Rehab Raspberry Tea",
+        "image":  "assets/monster/rehab/rehab-raspberry-recover.webp",
+        "series":  "rehab",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Raspberry Tea. Te al lampone. Discontinued.",
+        "variants":  [
+                         "Raspberry Tea Recover",
+                         "Raspberry Tea"
+                     ],
+                     "variantImages":  {
+                              "Raspberry Tea":  "assets/monster/rehab/rehab-raspberry.png"
+                          }
+    },
+    {
+        "id":  "monster_rehab_dragon_fruit",
+        "name":  "Rehab Dragon Fruit",
+        "image":  "assets/monster/rehab/rehab-dragon-fruit.png",
+        "series":  "rehab",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Rehab Dragon Fruit. Te al dragon fruit. Discontinued.",
+        "variants":  [
+                         "Dragon Fruit"
+                     ]
+    },
+    {
+        "id":  "monster_java_swiss_chocolate",
+        "name":  "Java Swiss Chocolate",
+        "image":  "assets/monster/java/java-swiss-chocolate.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Swiss Chocolate. Caffè al cioccolato svizzero. Discontinued.",
+        "variants":  [
+                         "Swiss Chocolate"
+                     ]
+    },
+    {
+        "id":  "monster_java_nut_up",
+        "name":  "Java Nut Up",
+        "image":  "assets/monster/java/java-nut-up.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Nut Up. Caffè con note di noci. Discontinued.",
+        "variants":  [
+                         "Nut Up"
+                     ]
+    },
+    {
+        "id":  "monster_java_cold_brew_latte",
+        "name":  "Java Cold Brew Latte",
+        "image":  "assets/monster/java/cold-brew-latte.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Cold Brew Latte. Caffè cold brew. Discontinued.",
+        "variants":  [
+                         "Cold Brew Latte"
+                     ]
+    },
+    {
+        "id":  "monster_java_cold_brew_sweet_black",
+        "name":  "Java Cold Brew Sweet Black",
+        "image":  "assets/monster/java/cold-brew-sweet-black.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Cold Brew Sweet Black. Caffè black cold brew. Discontinued.",
+        "variants":  [
+                         "Cold Brew Sweet Black"
+                     ]
+    },
+    {
+        "id":  "monster_java_farmers_oats",
+        "name":  "Java Farmer's Oats",
+        "image":  "assets/monster/java/java-farmers-oats.webp",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Java Farmer's Oats Vegan Coffee. Caffè con avena. Discontinued.",
+        "variants":  [
+                         "Farmer's Oats"
+                     ]
+    },
+    {
+        "id":  "monster_muscle_peanut_butter",
+        "name":  "Muscle Peanut Butter Cup",
+        "image":  "assets/monster/muscle/peanut-butter.png",
+        "series":  "muscle",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Muscle Peanut Butter Cup. Shake proteico al burro di arachidi. Discontinued.",
+        "variants":  [
+                         "Peanut Butter Cup"
+                     ]
+    },
+    {
+        "id":  "monster_muscle_banana",
+        "name":  "Muscle Banana",
+        "image":  "assets/monster/muscle/banana.png",
+        "series":  "muscle",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Muscle Banana. Shake proteico alla banana. Discontinued.",
+        "variants":  [
+                         "Banana"
+                     ]
+    },
+    {
+        "id":  "monster_xpresso_hammer",
+        "name":  "X-Presso Hammer",
+        "image":  "assets/monster/java/xpresso-hammer-yellow.png",
+        "series":  "java",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "X-Presso Hammer. Espresso concentrato ad alta caffeina. Discontinued.",
+        "variants":  [
+                         "Hammer",
+                         "Hammer (small)",
+                         "Hammer (NL)"
+                     ],
+                     "variantImages":  {
+                              "Hammer (small)":  "assets/monster/java/xpresso-hammer-black.png",
+                              "Hammer (NL)": "assets/monster/java/xpresso-hammer-wood.png"
+                          }
+    },
+    {
+        "id":  "monster_ubermonster",
+        "name":  "Übermonster",
+        "image":  "assets/monster/special/ubermonster.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Übermonster Brew. Versione stile birra tedesca non alcolica. Discontinued.",
+        "variants":  [
+                         "Übermonster"
+                     ]
+    },
+    {
+        "id":  "monster_hitman_original",
+        "name":  "Hitman Original",
+        "image":  "assets/monster/special/hitman-original.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Monster Hitman Original. Shot concentrato. Discontinued.",
+        "variants":  [
+                         "Original"
+                     ]
+    },
+    {
+        "id":  "monster_hitman_sniper",
+        "name":  "Hitman Sniper",
+        "image":  "assets/monster/special/hitman-sniper.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Monster Hitman Sniper. Shot ad alta caffeina. Discontinued.",
+        "variants":  [
+                         "Sniper"
+                     ]
+    },
+    {
+        "id":  "monster_hitman_lobo",
+        "name":  "Hitman Lobo",
+        "image":  "assets/monster/special/hitman-lobo.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Monster Hitman Lobo. Shot ad alta caffeina. Discontinued.",
+        "variants":  [
+                         "Lobo"
+                     ]
+    },
+    {
+        "id":  "monster_ghost_m100",
+        "name":  "Ghost M-100",
+        "image":  "assets/monster/special/ghost-m100.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Monster Ghost M-100. Edizione speciale 2015. Discontinued.",
+        "variants":  [
+                         "Ghost M-100"
+                     ]
+    },
+    {
+        "id":  "monster_phantom_m100",
+        "name":  "Phantom M-100",
+        "image":  "assets/monster/special/phantom-m100.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Monster Phantom M-100. Edizione speciale 2015. Discontinued.",
+        "variants":  [
+                         "Phantom M-100"
                      ]
     },
 ];
