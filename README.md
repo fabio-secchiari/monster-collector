@@ -40,7 +40,7 @@
 
 | Vista Locker | Vista Scaffale |
 |--------------|----------------|
-| ![Locker View](assets/ui/screenshot-locker.jpg) | ![Shelf View](assets/ui/screenshot-shelf.jpg) |
+| ![Locker View](assets/screenshots/locker-view.png) | ![Shelf View](assets/screenshots/grid-view.png) |
 
 ---
 
@@ -66,6 +66,7 @@ cd monster-collector
 monster-tracker/
 ├── index.html
 ├── README.md
+├── screenshots/
 ├── assets/
 │   ├── icons/
 │   │   ├── logo.png
