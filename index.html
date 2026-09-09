@@ -1364,11 +1364,11 @@ MonsterCatalog.set(CANS);
 // ============================================================
 
 const CATEGORY_BG_MAP = {
-  classic: 'assets/ui/bg-classic.jpg',
-  ultra: 'assets/ui/bg-ultra.jpg',
-  juice: 'assets/ui/bg-juice.jpg',
-  java: 'assets/ui/bg-java.jpeg',
-  rehab: 'assets/ui/bg-rehab.jpeg',
+  classic: 'assets/ui/bg-classic.png',
+  ultra: 'assets/ui/bg-ultra.png',
+  juice: 'assets/ui/bg-juice.png',
+  java: 'assets/ui/bg-java.png',
+  rehab: 'assets/ui/bg-rehab.png',
   reserve: 'assets/ui/bg-reserve.png',
   special: 'assets/ui/bg-special.png',
   hydro: 'assets/ui/bg-hydro.png',
@@ -2347,11 +2347,17 @@ function buildGridView() {
     
     // Aggiungi lo sfondo basato sulla serie
     const seriesBgMap = {
-      classic: 'assets/ui/bg-classic.jpg',
-      ultra: 'assets/ui/bg-ultra.jpg',
-      juice: 'assets/ui/bg-juice.jpg',
-      java: 'assets/ui/bg-java.jpeg',
-      rehab: 'assets/ui/bg-rehab.jpeg'
+        classic: 'assets/ui/bg-classic.png',
+		ultra: 'assets/ui/bg-ultra.png',
+		juice: 'assets/ui/bg-juice.png',
+		java: 'assets/ui/bg-java.png',
+		rehab: 'assets/ui/bg-rehab.png',
+		reserve: 'assets/ui/bg-reserve.png',
+		special: 'assets/ui/bg-special.png',
+		hydro: 'assets/ui/bg-hydro.png',
+		muscle: 'assets/ui/bg-muscle.png',
+		beast: 'assets/ui/bg-beast.png',
+		dragon: 'assets/ui/bg-dragon.png'
     };
     imgDiv.style.backgroundImage = `url('${seriesBgMap[can.series] || 'assets/ui/bg-classic.jpg'}')`;
     imgDiv.style.backgroundSize = 'cover';
