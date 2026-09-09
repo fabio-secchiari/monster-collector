@@ -118,13 +118,14 @@ body {
 }
 .btn-adaptive.ghost {
   background: rgba(255,255,255,0.05);
-  border: 2px solid rgba(0,255,65,0.2);
+  border: 1px solid rgba(0,255,65,0.2);
   color: #e6e6f0;
   box-shadow: none;
 }
 .btn-adaptive.ghost:hover {
   background: rgba(0,255,65,0.1);
   border-color: #00ff41;
+  border: 1.5px solid rgba(0,255,65,0.2);
   color: #fff;
   box-shadow: 0 0 25px rgba(0,255,65,0.1);
 }
@@ -1103,8 +1104,8 @@ body.image-bg-on .can-art {
   filter: drop-shadow(0 0 8px rgba(255,255,255,0.5)) !important;
 }
 
-#search-clear {
-  display: none !important; /* Nascondi di default */
+.search-clear {
+  display: none;
   cursor: pointer;
   color: #fff;
   font-size: 18px;
@@ -1114,11 +1115,11 @@ body.image-bg-on .can-art {
   line-height: 1;
 }
 
-#search-clear.visible {
+.search-clear.visible {
   display: inline-block !important;
 }
 
-#search-clear:hover {
+.search-clear:hover {
   color: #ff4444;
 }
 
@@ -1187,20 +1188,131 @@ body.image-bg-on .can-art {
   margin-top: 8px;
 }
 .series-header:first-child { margin-top: 0; }
+
+/* ===== PULSANTI MENU COLORATI ===== */
+.btn-grid {
+  border-color: #00ff41 !important;
+  color: #00ff41 !important;
+}
+.btn-grid:hover {
+  background: rgba(0,255,65,0.15) !important;
+  border-color: #00ff41 !important;
+  color: #00ff41 !important;
+}
+
+.btn-menu {
+  border-color: #A855F7 !important;
+  color: #A855F7 !important;
+}
+.btn-menu:hover {
+  background: rgba(168,85,247,0.15) !important;
+  border-color: #A855F7 !important;
+  color: #A855F7 !important;
+}
+
+.btn-stats {
+  border-color: #ffd166 !important;
+  color: #ffd166 !important;
+}
+.btn-stats:hover {
+  background: rgba(255,209,102,0.15) !important;
+  border-color: #ffd166 !important;
+  color: #ffd166 !important;
+}
+
+.btn-music {
+  border-color: #FF6B3D !important;
+  color: #FF6B3D !important;
+}
+.btn-music:hover {
+  background: rgba(255,107,61,0.15) !important;
+  border-color: #FF6B3D !important;
+  color: #FF6B3D !important;
+}
+
+/* ===== BOX STATISTICHE HOVER ===== */
+.stats-box {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+.stats-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.stats-box-green:hover {
+  border-color: #00ff41 !important;
+  background: rgba(0,255,65,0.08) !important;
+}
+.stats-box-gold:hover {
+  border-color: #ffd166 !important;
+  background: rgba(255,209,102,0.08) !important;
+}
+
+/* ===== OPZIONI MODAL MENU COLORATE ===== */
+
+.option-backup {
+  border-color: 2px #00ff41 !important;
+  color: #00ff41 !important;
+}
+.option-backup:hover {
+  background: rgba(0,255,65,0.12) !important;
+  border-color: #00ff41 !important;
+  color: #00ff41 !important;
+}
+
+.option-catalog {
+  border-color: 2px #4FC3FF !important;
+  color: #4FC3FF !important;
+}
+.option-catalog:hover {
+  background: rgba(79,195,255,0.12) !important;
+  border-color: #4FC3FF !important;
+  color: #4FC3FF !important;
+}
+
+.option-image {
+  border-color: 2px #ffd166 !important;
+  color: #ffd166 !important;
+}
+.option-image:hover {
+  background: rgba(255,209,102,0.12) !important;
+  border-color: #ffd166 !important;
+  color: #ffd166 !important;
+}
+
+.option-danger {
+  border-color: 2px #FF4444 !important;
+  color: #FF4444 !important;
+}
+.option-danger:hover {
+  background: rgba(255,68,68,0.12) !important;
+  border-color: #FF4444 !important;
+  color: #FF4444 !important;
+}
+
 </style>
 </head>
 <body>
 
-<!-- ===== AUDIO SFX ===== -->
+<!-- ===== AUDIO Effetti ===== -->
 <audio id="click-sound" preload="auto">
   <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mp3">
 </audio>
 
 <!-- ===== MUSICA DI SOTTOFONDO ===== -->
 <audio id="bg-music" loop preload="auto">
-  <source src="assets/audios/music.mp3" type="audio/mp3">
+  <source src="assets/audios/background.mp3" type="audio/mp3">
   <!-- Fallback: se non hai il file, usa una traccia di esempio -->
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+
+<!-- ===== SUONO SPECIALE PER LATTINA ===== -->
+<audio id="special-sound" preload="auto">
+  <source src="assets/audios/Ultra White.mp3" type="audio/mp3">
+</audio>
+
+<audio id="special-sound2" preload="auto">
+  <source src="assets/audios/Lo-Carb.mp3" type="audio/mp3">
 </audio>
 
 <!-- ===== GIF MUSICA ===== -->
@@ -1326,12 +1438,12 @@ body.image-bg-on .can-art {
 	
 	<!-- Pulsanti -->
 	<div class="header-controls">
-      <button class="btn-adaptive ghost" id="btn-grid-toggle">📦 Scaffale</button>
-      <button class="btn-adaptive ghost" id="btn-menu">⚙️ Menu</button>
-      <button class="btn-adaptive ghost" id="btn-stats">📊 Stats</button>
-      <button class="btn-adaptive ghost" id="btn-music">🔇 Musica</button>
-      <button class="btn-adaptive" id="sidebar-toggle">☰ Lista</button>
-    </div>
+	  <button class="btn-adaptive ghost btn-grid" id="btn-grid-toggle">📦 Scaffale</button>
+	  <button class="btn-adaptive ghost btn-menu" id="btn-menu">⚙️ Menu</button>
+	  <button class="btn-adaptive ghost btn-stats" id="btn-stats">📊 Statistiche</button>
+	  <button class="btn-adaptive ghost btn-music" id="btn-music">🔇 Effetti</button>
+	  <button class="btn-adaptive" id="sidebar-toggle">☰ Lista</button>
+	</div>
   </div>
   
 
@@ -1801,36 +1913,35 @@ function selectIndex(idx) {
   }
 
   // Immagine - usa SEMPRE la variante selezionata con fallback
-	const mainImg = document.getElementById('main-image');
-	const variantToShow = currentVariant || can.variants[0];
-	const variantImgPath = getVariantImageForCan(can, variantToShow);
+  const mainImg = document.getElementById('main-image');
+  const variantToShow = currentVariant || can.variants[0];
+  const variantImgPath = getVariantImageForCan(can, variantToShow);
 
-	// Funzione per caricare con fallback
-	function loadImageWithFallback(imgElement, primaryPath, fallbackPath) {
-	  const testImg = new Image();
-	  testImg.onload = function() {
-		imgElement.src = primaryPath + '?' + Date.now();
-	  };
-	  testImg.onerror = function() {
-		// Prova con l'immagine base della lattina
-		if (can.image && can.image !== primaryPath) {
-		  const testImg2 = new Image();
-		  testImg2.onload = function() {
-			imgElement.src = can.image + '?' + Date.now();
-		  };
-		  testImg2.onerror = function() {
-			// Fallback finale a classic.png
-			imgElement.src = 'assets/monster/classic.png?' + Date.now();
-		  };
-		  testImg2.src = can.image;
-		} else {
-		  imgElement.src = 'assets/monster/classic.png?' + Date.now();
-		}
-	  };
-	  testImg.src = primaryPath;
-	}
+  // Funzione per caricare con fallback (forza refresh con timestamp)
+  function loadImageWithFallback(imgElement, primaryPath, fallbackPath) {
+    imgElement.onerror = null; // reset
+    const testImg = new Image();
+    testImg.onload = function() {
+      imgElement.src = primaryPath + '?' + Date.now();
+    };
+    testImg.onerror = function() {
+      if (fallbackPath && fallbackPath !== primaryPath) {
+        const testImg2 = new Image();
+        testImg2.onload = function() {
+          imgElement.src = fallbackPath + '?' + Date.now();
+        };
+        testImg2.onerror = function() {
+          imgElement.src = 'assets/monster/classic.png?' + Date.now();
+        };
+        testImg2.src = fallbackPath;
+      } else {
+        imgElement.src = 'assets/monster/classic.png?' + Date.now();
+      }
+    };
+    testImg.src = primaryPath;
+  }
 
-	loadImageWithFallback(mainImg, variantImgPath, can.image || 'assets/monster/classic.png');
+  loadImageWithFallback(mainImg, variantImgPath, can.image || 'assets/monster/classic.png');
 
   // Rarita (badge piu evidente)
   const rarityMap = {
@@ -2133,6 +2244,8 @@ function renderVariants(can) {
 
     // CLICK sul pulsante INTERO - toggle owned
 	btn.addEventListener('click', (e) => {
+	  const SPECIAL_CAN_ID = 'monster_ultra_white';
+	  const SPECIAL_CAN_ID2 = 'monster_lo_carb';
 	  e.stopPropagation();
 	  const wasOwned = owned;
 	  
@@ -2164,6 +2277,19 @@ function renderVariants(can) {
 		// STAI AGGIUNGENDO → seleziona la variante appena acquisita
 		window.selectedVariant = variant;
 		saveSelectedVariant(can.id, variant);
+	  }
+	  
+	  // Riproduci il suono speciale SOLO se:
+	  // 1. La variante è stata appena acquisita (non rimossa)
+	  // 2. La lattina corrente è quella specifica
+	  // 3. Il pulsante "Effetti" (musica) è attivo
+	  if (!wasOwned && can.id === SPECIAL_CAN_ID) {
+		  playSpecialSound('special-sound');
+	  }
+
+		// E lo stesso per il secondo:
+	  if (!wasOwned && can.id === SPECIAL_CAN_ID2) {
+		  playSpecialSound('special-sound2');
 	  }
 	  
 	  renderSidebar();
@@ -2377,6 +2503,9 @@ document.getElementById('sort-order').addEventListener('change', () => {
 });
 document.getElementById('toggle-group-series').addEventListener('change', () => {
   renderSidebar();
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
 });
 
 // ============================================================
@@ -2436,24 +2565,26 @@ musicBtn.addEventListener('click', () => {
   if (musicPlaying) {
     musicAudio.pause();
     musicPlaying = false;
-    musicBtn.textContent = '🔇 Musica';
+    musicBtn.textContent = '🔇 Effetti';
     gif.style.opacity = '0';
-    setTimeout(() => gif.style.display = 'none', 800);
+    gif.style.display = 'none';
   } else {
     musicAudio.play().then(() => {
       musicPlaying = true;
-      musicBtn.textContent = '🔊 Musica';
+      musicBtn.textContent = '🔊 Effetti';
       gif.style.display = 'block';
-      setTimeout(() => gif.style.opacity = '0.3', 50); // 0.3 per non coprire troppo
+      // Forza il reflow per far partire la transizione
+      gif.offsetHeight; // trigger reflow
+      gif.style.opacity = '0.3';
     }).catch(() => {
       showToast('❌ Impossibile riprodurre la musica');
     });
   }
 });
 
-// Tasto M per musica
+// Tasto E per musica
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'm' || e.key === 'M') {
+  if (e.key === 'e' || e.key === 'E') {
     if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
       musicBtn.click();
       e.preventDefault();
@@ -2466,27 +2597,38 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchClear = document.getElementById('search-clear');
 
   if (searchInput && searchClear) {
-    searchInput.addEventListener('input', () => {
-      if (searchInput.value.length > 0) {
-        searchClear.classList.add('visible');
-        searchClear.style.display = 'inline';
-      } else {
-        searchClear.classList.remove('visible');
-        searchClear.style.display = 'none';
-      }
-    });
+    // Mostra/nascondi la X in base al testo
+    searchInput.addEventListener('input', function() {
+	  if (searchInput.value.length > 0) {
+		searchClear.classList.add('visible');
+	  } else {
+		searchClear.classList.remove('visible');
+	  }
+	});
 
-    searchClear.addEventListener('click', () => {
-      searchInput.value = '';
-      searchInput.dispatchEvent(new Event('input'));
-      searchInput.focus();
-      renderSidebar();
-      if (document.getElementById('grid-view').classList.contains('active')) {
-        buildGridView();
-      }
-      searchClear.classList.remove('visible');
-      searchClear.style.display = 'none';
-    });
+	searchClear.addEventListener('click', function() {
+	  searchInput.value = '';
+	  searchInput.dispatchEvent(new Event('input'));
+	  searchInput.focus();
+	  renderSidebar();
+	  if (document.getElementById('grid-view').classList.contains('active')) {
+		buildGridView();
+	  }
+	  searchClear.classList.remove('visible');
+	});
+  }
+});
+
+// ===== CHIUDI MODALE CLICCANDO FUORI =====
+document.getElementById('modal-backdrop').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.style.display = 'none';
+  }
+});
+
+document.getElementById('confirm-backdrop').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.style.display = 'none';
   }
 });
 
@@ -2736,40 +2878,44 @@ document.getElementById('btn-stats').addEventListener('click', () => {
   const percent = totalVariants === 0 ? 0 : Math.round((ownedVariants / totalVariants) * 100);
 
   content.innerHTML = `
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
-      <div style="background:rgba(0,255,65,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(0,255,65,0.04);">
-        <div style="font-size:28px;font-weight:900;color:#00ff41;">${ownedVariants}</div>
-        <div style="color:var(--muted);font-size:13px;">Varianti possedute</div>
-        <div style="color:var(--muted);font-size:11px;">su ${totalVariants} totali</div>
-      </div>
-      <div style="background:rgba(255,215,0,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,215,0,0.04);grid-column:1/2;">
-        <div style="font-size:28px;font-weight:900;color:var(--gold);">${ownedLimited} / ${limitedTotal}</div>
-        <div style="color:var(--muted);font-size:13px;"> Limited Edition</div>
-      </div>
-      <div style="background:rgba(255,215,0,0.04);border-radius:10px;padding:14px;text-align:center;border:1px solid rgba(255,215,0,0.04);">
-        <div style="font-size:28px;font-weight:900;color:var(--gold);">${percent}%</div>
-        <div style="color:var(--muted);font-size:13px;">Completamento</div>
-      </div>
-    </div>
-    <div style="margin-top:12px;">
-      <div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:6px;">Rarita</div>
-      ${['common','uncommon','rare','epic','legendary'].map(r => {
-        const total = rarityStats[r] || 0;
-        const owned = ownedRarity[r] || 0;
-        const p = total === 0 ? 0 : Math.round((owned / total) * 100);
-        const colors = { common:'#6b7280', uncommon:'#4FC3FF', rare:'#A855F7', epic:'#FF6B3D', legendary:'#FFD34D' };
-        const labels = { common:'Comune', uncommon:'Non comune', rare:'Epico', epic:'Leggendario', legendary:'Mitico' };
-        return `
-          <div style="display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.03);">
-            <span style="width:80px;font-size:12px;color:${colors[r]};font-weight:700;">${labels[r]}</span>
-            <div style="flex:1;height:6px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;">
-              <div style="height:100%;width:${p}%;background:${colors[r]};border-radius:999px;transition:width 0.5s ease;"></div>
-            </div>
-            <span style="font-size:12px;font-weight:700;color:var(--muted);">${owned}/${total}</span>
-          </div>
-        `;
-      }).join('')}
-    </div>
+	 <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:16px;margin-top:12px;">
+		<!-- Varianti possedute -->
+		<div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
+		  <div style="font-size:32px;font-weight:900;color:#00ff41;">${ownedVariants}</div>
+		  <div style="color:var(--muted);font-size:13px;margin-top:4px;">Varianti possedute</div>
+		  <div style="color:var(--muted);font-size:11px;">su ${totalVariants} totali</div>
+		</div>
+		<!-- Limited Edition -->
+		<div class="stats-box stats-box-gold" style="background:rgba(255,215,0,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,215,0,0.08);">
+		  <div style="font-size:26px;font-weight:900;color:var(--gold);white-space:nowrap;">${ownedLimited} / ${limitedTotal}</div>
+		  <div style="color:var(--muted);font-size:13px;margin-top:4px;">Limited Edition</div>
+		</div>
+		<!-- Completamento -->
+		<div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
+		  <div style="font-size:32px;font-weight:900;color:#00ff41;">${percent}%</div>
+		  <div style="color:var(--muted);font-size:13px;margin-top:4px;">Completamento</div>
+		</div>
+	  </div>
+	  <!-- Rarità (invariato) -->
+	  <div style="margin-top:20px;">
+		<div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">📊 Rarità</div>
+		${['common','uncommon','rare','epic','legendary'].map(r => {
+		  const total = rarityStats[r] || 0;
+		  const owned = ownedRarity[r] || 0;
+		  const p = total === 0 ? 0 : Math.round((owned / total) * 100);
+		  const colors = { common:'#6b7280', uncommon:'#4FC3FF', rare:'#A855F7', epic:'#FF6B3D', legendary:'#FFD34D' };
+		  const labels = { common:'Comune', uncommon:'Non comune', rare:'Epico', epic:'Leggendario', legendary:'Mitico' };
+		  return `
+			<div style="display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);">
+			  <span style="width:90px;font-size:12px;color:${colors[r]};font-weight:700;">${labels[r]}</span>
+			  <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:999px;overflow:hidden;">
+				<div style="height:100%;width:${p}%;background:${colors[r]};border-radius:999px;transition:width 0.6s ease;"></div>
+			  </div>
+			  <span style="font-size:12px;font-weight:700;color:var(--muted);min-width:50px;text-align:right;">${owned}/${total}</span>
+			</div>
+		  `;
+		}).join('')}
+	  </div>
   `;
 
   modal.style.display = 'flex';
@@ -2786,22 +2932,25 @@ document.getElementById('btn-menu').addEventListener('click', () => {
   document.getElementById('modal-title').textContent = '📋 Menu';
   document.getElementById('modal-description').textContent = 'Gestisci la tua collezione di Monster';
   document.getElementById('modal-content').innerHTML = `
-	  <div style="margin-top:12px;font-weight:800;"> Dati</div>
+	  <div style="margin-top:12px;font-weight:800;"> 💾 Backup e Ripristino</div>
 	  <div class="row">
-		<div class="option" data-action="export-json"> Esporta JSON</div>
-		<div class="option" data-action="import-json"> Importa JSON</div>
-		<div class="option" data-action="export-catalog"> Esporta catalogo</div>
-		<div class="option" data-action="import-catalog"> Importa catalogo</div>
+		<div class="option option-backup" data-action="export-json"> 📤 Esporta JSON (Progressi)</div>
+		<div class="option option-backup" data-action="import-json"> 📥 Importa JSON (Progressi)</div>
 	  </div>
-	  <div style="margin-top:12px;font-weight:800;"> Esporta Immagine</div>
+	  <div style="margin-top:12px;font-weight:800;"> 📚 Gestione Catalogo</div>
 	  <div class="row">
-		<div class="option" data-action="all"> Tutta la collezione</div>
-		<div class="option" data-action="missing"> Solo mancanti</div>
-		<div class="option" data-action="current"> Lattina corrente</div>
+		<div class="option option-catalog" data-action="export-catalog"> 📤 Esporta Catalogo (Lattine)</div>
+		<div class="option option-catalog" data-action="import-catalog"> 📥 Importa Catalogo (Lattine)</div>
 	  </div>
-	  <div style="margin-top:12px;font-weight:800;"> Azioni</div>
+	  <div style="margin-top:12px;font-weight:800;"> 🖼️ Esporta Immagine</div>
 	  <div class="row">
-		<div class="option" data-action="reset"> Resetta tutto</div>
+		<div class="option option-image" data-action="all"> 🖼️ Tutta la collezione</div>
+		<div class="option option-image" data-action="missing"> 🖼️ Solo mancanti</div>
+		<div class="option option-image" data-action="current"> 🖼️ Lattina corrente</div>
+	  </div>
+	  <div style="margin-top:12px;font-weight:800;"> ⚠️ Azioni</div>
+	  <div class="row">
+		<div class="option option-danger" data-action="reset"> 🗑️ Resetta tutto</div>
 	  </div>
   `;
   modal.style.display = 'flex';
@@ -3047,11 +3196,26 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
    }
   }
-  if (e.key === 'e' || e.key === 'E') {
+  if (e.key === 'm' || e.key === 'M') {
 	  if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
 		document.getElementById('btn-menu').click();
 		e.preventDefault();
 	  }
+  }
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('modal-backdrop');
+    if (modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      e.preventDefault();
+      return;
+    }
+    // Se hai altri modali (es. conferma), chiudi anche quelli
+    const confirmModal = document.getElementById('confirm-backdrop');
+    if (confirmModal && confirmModal.style.display === 'flex') {
+      confirmModal.style.display = 'none';
+      e.preventDefault();
+      return;
+    }
   }
 });
 
@@ -3089,6 +3253,27 @@ function loadSelectedVariant(spriteId) {
 function updateLevelControl(spriteId, variant) {
   // Se serve, puoi implementare la logica per il livello
   // Per ora, non fa nulla
+}
+
+// ===== SUONO SPECIALE CON PAUSA MUSICA =====
+function playSpecialSound(audioId) {
+  const specialAudio = document.getElementById(audioId);
+  if (!specialAudio) return;
+
+  // Se la musica è in riproduzione, mettila in pausa
+  if (musicPlaying) {
+    musicAudio.pause();
+    // Riprendi quando il suono finisce
+    specialAudio.onended = function() {
+      if (musicPlaying) {
+        musicAudio.play().catch(() => {});
+      }
+      specialAudio.onended = null; // pulisci il listener
+    };
+  }
+
+  specialAudio.currentTime = 0;
+  specialAudio.play().catch(() => {});
 }
 </script>
 </body>
