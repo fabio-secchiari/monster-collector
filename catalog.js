@@ -264,18 +264,6 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_ultra_fiesta",
-        "name":  "Ultra Fiesta Mango",
-        "image":  "assets/monster/ultra/ultra-fiesta-mango.webp",
-        "series":  "ultra",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Edizione limitata con gusto mango, zero zuccheri.",
-        "variants":  [
-                         "Fiesta Mango"
-                     ]
-    },
-    {
         "id":  "catalog_ultra_1",
         "name":  "Ultra Fiesta",
         "image":  "assets/monster/ultra/ultra-fiesta.jpg",
@@ -284,8 +272,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
         "variants":  [
-                            "Fiesta"
-                     ]
+                            "Fiesta",
+							"Mango"
+                     ],
+					 "variantImages": {
+						 "Mango": "assets/monster/ultra/ultra-fiesta-mango.webp"
+					 }
     },
     {
         "id":  "monster_ultra_watermelon",
@@ -464,8 +456,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Succo di mango con una carica di energia.",
         "variants":  [
-                         "Mango Loco"
-                     ]
+                         "Mango Loco",
+						 "Call of Duty"
+                     ],
+					 "variantImages": {
+						 "Call of Duty": "assets/monster/juice/mango-loco-cod.png"
+					 }
     },
     {
         "id":  "catalog_juice_17",

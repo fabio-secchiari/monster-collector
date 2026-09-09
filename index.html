@@ -2527,7 +2527,7 @@ document.getElementById('btn-stats').addEventListener('click', () => {
         const owned = ownedRarity[r] || 0;
         const p = total === 0 ? 0 : Math.round((owned / total) * 100);
         const colors = { common:'#6b7280', uncommon:'#4FC3FF', rare:'#A855F7', epic:'#FF6B3D', legendary:'#FFD34D' };
-        const labels = { common:'Comune', uncommon:'Non comune', rare:'Raro', epic:'Epico', legendary:'Leggendario' };
+        const labels = { common:'Comune', uncommon:'Non comune', rare:'Epico', epic:'Leggendario', legendary:'Mitico' };
         return `
           <div style="display:flex;align-items:center;gap:10px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.03);">
             <span style="width:80px;font-size:12px;color:${colors[r]};font-weight:700;">${labels[r]}</span>
