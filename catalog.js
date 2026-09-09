@@ -195,7 +195,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Zero zuccheri, gusto frutti di bosco.",
         "variants":  [
-                         "Ultra Red"
+                         "Red"
                      ]
     },
     {
@@ -207,7 +207,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Zero zuccheri, gusto tropicale blu.",
         "variants":  [
-                         "Ultra Blue"
+                         "Blue"
                      ]
     },
     {
@@ -219,7 +219,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Zero zuccheri, gusto fruttato e misterioso.",
         "variants":  [
-                         "Ultra Violet"
+                         "Violet"
                      ]
     },
     {
@@ -243,7 +243,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto arancia, zero zuccheri. Per iniziare la giornata.",
         "variants":  [
-                         "Ultra Sunrise"
+                         "Sunrise"
                      ]
     },
     {
@@ -255,7 +255,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata con gusto mango, zero zuccheri.",
         "variants":  [
-                         "Ultra Fiesta Mango"
+                         "Fiesta Mango"
                      ]
     },
     {
@@ -267,7 +267,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
         "variants":  [
-                            "Ultra Fiesta"
+                            "Fiesta"
                      ]
     },
     {
@@ -279,7 +279,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto cocomero, zero zuccheri. Fresca e dissetante.",
         "variants":  [
-                         "Ultra Watermelon"
+                         "Watermelon"
                      ]
     },
     {
@@ -291,7 +291,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto frutti di bosco rosa, zero zuccheri.",
         "variants":  [
-                         "Ultra Rosa"
+                         "Rosa"
                      ]
     },
     {
@@ -303,7 +303,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata dorata, gusto tropicale premium.",
         "variants":  [
-                         "Ultra Gold"
+                         "Gold"
                      ]
     },
     {
@@ -315,7 +315,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata Ultra al gusto citron (limone). Discontinued.",
         "variants":  [
-                         "Ultra Citron"
+                         "Citron"
                      ]
     },
     {
@@ -327,7 +327,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto pesca, zero zuccheri.",
         "variants":  [
-                         "Ultra Peachy Keen"
+                         "Peachy Keen"
                      ]
     },
     {
@@ -351,7 +351,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto rubino fruttato, zero zuccheri.",
         "variants":  [
-                         "Ultra Fantasy Ruby Red"
+                         "Fantasy Ruby Red"
                      ]
     },
     {
@@ -363,7 +363,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata nera, gusto ciliegia scura, zero zuccheri.",
         "variants":  [
-                         "Ultra Black"
+                         "Black"
                      ]
     },
     {
@@ -375,7 +375,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto guava, zero zuccheri. Tropicale.",
         "variants":  [
-                         "Ultra Guava Vice"
+                         "Vice Guava"
                      ]
     },
     {
@@ -387,7 +387,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata all'ananas, zero zuccheri.",
         "variants":  [
-                         "Ultra Pineapple"
+                         "Pineapple"
                      ]
     },
     {
@@ -399,7 +399,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto tropicale hawaiano, zero zuccheri.",
         "variants":  [
-                         "Ultra Blue Hawaiian"
+                         "Blue Hawaiian"
                      ]
     },
     {
@@ -411,7 +411,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto punch punk, zero zuccheri.",
         "variants":  [
-                         "Ultra Punk Punch"
+                         "Punk Punch"
                      ]
     },
     {
@@ -423,7 +423,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata con gusto lampone.",
         "variants":  [
-                         "Ultra Red White & Blue Razz"
+                         "Red White & Blue Razz"
                      ]
     },
     {
@@ -435,7 +435,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto passion fruit e agrumi, zero zuccheri.",
         "variants":  [
-                         "Ultra Wild Passion"
+                         "Wild Passion"
                      ]
     },
     {
@@ -460,7 +460,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Juiced Monarch (Papillon), edizione farfalla. Gusto esotico.",
         "variants":  [
-                         "Juiced Monarch"
+                         "Monarch"
                      ]
     },
     {
@@ -813,34 +813,40 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "monster_vr46",
-        "name":  "Monster VR46 The Doctor",
-        "image":  "assets/monster/special/vr46.png",
+        "name":  "VR46 The Doctor",
+        "image":  "assets/monster/special/vr46.webp",
         "series":  "special",
         "rarity":  "legendary",
         "limited":  true,
         "description":  "Edizione celebrativa del pilota Valentino Rossi.",
         "variants":  [
                          "VR46",
-                         "VR46 Zero Sugar"
-                     ]
+                         "Zero Sugar"
+                     ],
+					 "variantImages":  {
+                              "Zero Sugar":  "assets/monster/special/vr46-zero-sugar.png"
+                          }
     },
     {
         "id":  "monster_lando",
-        "name":  "Monster Lando Norris",
-        "image":  "assets/monster/special/lando.webp",
+        "name":  "Lando Norris",
+        "image":  "assets/monster/special/lando-norris.webp",
         "series":  "special",
         "rarity":  "legendary",
         "limited":  true,
         "description":  "Edizione dedicata al pilota di F1 Lando Norris.",
         "variants":  [
-                         "Lando Norris",
-                         "Lando Norris Gold Edition"
-                     ]
+                         "Zero Sugar",
+                         "Gold"
+                     ],
+					 "variantImages":  {
+                              "Gold":  "assets/monster/special/lando-norris-gold.png"
+                          }
     },
     {
         "id":  "monster_lewis",
-        "name":  "Monster Lewis Hamilton",
-        "image":  "assets/monster/special/lewis.png",
+        "name":  "Lewis Hamilton",
+        "image":  "assets/monster/special/lewis-hamilton.png",
         "series":  "special",
         "rarity":  "legendary",
         "limited":  true,
@@ -850,68 +856,8 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_pink",
-        "name":  "Monster Pink",
-        "image":  "assets/monster/special/pink.png",
-        "series":  "special",
-        "rarity":  "legendary",
-        "limited":  true,
-        "description":  "Edizione limitata rosa, gusto fragola e crema. Molto rara!",
-        "variants":  [
-                         "Pink"
-                     ]
-    },
-    {
-        "id":  "monster_gold",
-        "name":  "Monster Gold",
-        "image":  "assets/monster/special/gold.png",
-        "series":  "special",
-        "rarity":  "legendary",
-        "limited":  true,
-        "description":  "Lattina dorata, edizione celebrativa. Gusto tropicale premium.",
-        "variants":  [
-                         "Gold"
-                     ]
-    },
-    {
-        "id":  "monster_blue",
-        "name":  "Monster Blue Ice",
-        "image":  "assets/monster/special/blue.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Lattina blu, gusto mirtillo e frutti di bosco.",
-        "variants":  [
-                         "Blue Ice"
-                     ]
-    },
-    {
-        "id":  "monster_vr46_zero_sugar",
-        "name":  "Monster VR46 Zero Sugar",
-        "image":  "assets/monster/special/vr46-zero-sugar.png",
-        "series":  "special",
-        "rarity":  "legendary",
-        "limited":  true,
-        "description":  "Edizione Valentino Rossi, zero zuccheri.",
-        "variants":  [
-                         "VR46 Zero Sugar"
-                     ]
-    },
-    {
-        "id":  "monster_lando_gold",
-        "name":  "Monster Lando Norris Zero Sugar Gold Edition",
-        "image":  "assets/monster/special/lando-gold.png",
-        "series":  "special",
-        "rarity":  "legendary",
-        "limited":  true,
-        "description":  "Edizione limitata Lando Norris in lattina dorata.",
-        "variants":  [
-                         "Lando Norris Gold"
-                     ]
-    },
-    {
         "id":  "monster_oscar_piastri",
-        "name":  "Monster Oscar Piastri",
+        "name":  "Oscar Piastri",
         "image":  "assets/monster/special/oscar-piastri.png",
         "series":  "special",
         "rarity":  "legendary",
@@ -1238,7 +1184,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Monster Vanilla Light, caffe a basso contenuto. Discontinued.",
         "variants":  [
-                         "Java Vanilla Light"
+                         "Vanilla Light"
                      ]
     },
 	{
@@ -1250,7 +1196,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Monster Lo-Ball, caffe a basso contenuto. Discontinued.",
         "variants":  [
-                         "Java Vanilla Light"
+                         "Lo-Ball"
                      ]
     },
     {
@@ -1262,7 +1208,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Big Black, caffe forte. Discontinued.",
         "variants":  [
-                         "Java Big Black"
+                         "Big Black"
                      ]
     },
     {
@@ -1274,7 +1220,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Chai Hai, gusto chai. Discontinued.",
         "variants":  [
-                         "Java Chai Hai"
+                         "Chai Hai"
                      ]
     },
     {
@@ -1286,7 +1232,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Russian, gusto russo. Discontinued.",
         "variants":  [
-                         "Java Russian"
+                         "Russian"
                      ]
     },
     {
@@ -1298,7 +1244,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Toffee, gusto toffee. Discontinued.",
         "variants":  [
-                         "Java Toffee"
+                         "Toffee"
                      ]
     },
     {
@@ -1310,7 +1256,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Irish Blend, miscela irlandese. Discontinued.",
         "variants":  [
-                         "Java Irish Blend"
+                         "Irish Blend"
                      ]
     },
     {
@@ -1322,7 +1268,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Cappuccino, gusto cappuccino. Discontinued.",
         "variants":  [
-                         "Java Cappuccino"
+                         "Cappuccino"
                      ]
     },
     {
@@ -1334,7 +1280,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Strawberry, te alla fragola. Discontinued.",
         "variants":  [
-                         "Rehab Strawberry"
+                         "Strawberry"
                      ]
     },
     {
@@ -1346,7 +1292,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Watermelon, te al cocomero. Discontinued.",
         "variants":  [
-                         "Rehab Watermelon"
+                         "Watermelon"
                      ]
     },
     {
@@ -1358,7 +1304,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Orangeade. Discontinued.",
         "variants":  [
-                         "Rehab Orangeade"
+                         "Orangeade"
                      ]
     },
     {
@@ -1370,7 +1316,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Protean, versione proteica. Molto rara, discontinued.",
         "variants":  [
-                         "Rehab Protean"
+                         "Protean"
                      ]
     },
     {
@@ -1382,7 +1328,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Rehab Rojo Tea. Discontinued.",
         "variants":  [
-                         "Rehab Rojo Tea"
+                         "Rojo Tea"
                      ]
     },
     {
@@ -1394,7 +1340,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Dragon Tea Yerba Mate. FUORI PRODUZIONE (marchio cancellato 2025).",
         "variants":  [
-                         "Dragon Tea Yerba Mate"
+                         "Tea Yerba Mate"
                      ]
     },
     {
@@ -1406,7 +1352,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Dragon Ice Tea Lemon. FUORI PRODUZIONE.",
         "variants":  [
-                         "Dragon Ice Tea Lemon"
+                         "Ice Tea Lemon"
                      ]
     },
     {
@@ -1418,7 +1364,7 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Dragon Ice Tea Peach. FUORI PRODUZIONE.",
         "variants":  [
-                         "Dragon Ice Tea Peach"
+                         "Ice Tea Peach"
                      ]
     },
     {
@@ -1430,133 +1376,133 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Muscle Shake al caffe.",
         "variants":  [
-                         "Muscle Coffee"
+                         "Coffee"
                      ]
     },
     {
         "id":  "catalog_special_46",
         "name":  "Maxx Super Dry",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/maxx-super-dry.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Maxx Super Dry. Linea Maxx discontinued.",
         "variants":  [
-                         "Maxx Super Dry"
+                         "Super Dry"
                      ]
     },
     {
         "id":  "catalog_special_47",
         "name":  "Maxx Eclipse",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/maxx-eclipse.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Maxx Eclipse. Linea Maxx discontinued.",
         "variants":  [
-                         "Maxx Eclipse"
+                         "Eclipse"
                      ]
     },
     {
         "id":  "catalog_special_48",
         "name":  "Maxx Solaris",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/maxx-solaris.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Maxx Solaris. Linea Maxx discontinued.",
         "variants":  [
-                         "Maxx Solaris"
+                         "Solaris"
                      ]
     },
     {
         "id":  "catalog_special_49",
-        "name":  "Maxx Zero Sugar",
-        "image":  "assets/monster/special/g.png",
+        "name":  "Maxx Mango Matic",
+        "image":  "assets/monster/special/maxx-mango.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Maxx Zero Sugar. Linea Maxx discontinued.",
+        "description":  "Maxx Mango Matic. Linea Maxx discontinued.",
         "variants":  [
-                         "Maxx Zero Sugar"
+                         "Zero Sugar Mango Matic"
                      ]
     },
     {
         "id":  "catalog_special_50",
-        "name":  "Maxx Zero Sugar Rad Red",
-        "image":  "assets/monster/special/g.png",
+        "name":  "Maxx Rad Red",
+        "image":  "assets/monster/special/maxx-rad-red.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Maxx Zero Sugar Rad Red. Linea Maxx discontinued.",
         "variants":  [
-                         "Maxx Zero Sugar Rad Red"
+                         "Zero Sugar Rad Red"
                      ]
     },
     {
         "id":  "catalog_special_51",
         "name":  "Extra Strength Super Dry",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/extra-strenght-super-dry.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Extra Strength Super Dry. Linea Extra Strength discontinued.",
         "variants":  [
-                         "Extra Strength Super Dry"
+                         "Super Dry"
                      ]
     },
     {
         "id":  "catalog_special_52",
         "name":  "Extra Strength Anti gravity",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/extra-strenght-anti-gravity.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Extra Strength Anti-Gravity. Linea Extra Strength discontinued.",
         "variants":  [
-                         "Extra Strength Anti gravity"
+                         "Anti gravity"
                      ]
     },
     {
         "id":  "catalog_special_53",
         "name":  "Extra Strength Black Ice",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/extra-strenght-black-ice.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Extra Strength Black Ice. Linea Extra Strength discontinued.",
         "variants":  [
-                         "Extra Strength Black Ice"
+                         "Black Ice"
                      ]
     },
     {
         "id":  "catalog_special_54",
         "name":  "Extra Strength Killer-B",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/extra-strenght-killer-b.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Extra Strength Killer-B. Linea Extra Strength discontinued.",
         "variants":  [
-                         "Extra Strength Killer-B"
+                         "Killer-B"
                      ]
     },
     {
         "id":  "catalog_special_55",
         "name":  "Nitrous Super Dry",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/nitrous-super-dry.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Nitrous Super Dry. Linea Nitrous discontinued.",
         "variants":  [
-                         "Nitrous Super Dry"
+                         "Super Dry"
                      ]
     },
     {
         "id":  "catalog_special_56",
         "name":  "Nitrous Killer-B",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/nitrous-killer-b.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
@@ -1578,69 +1524,45 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "catalog_special_62",
-        "name":  "Super Fuel Red Dawg",
-        "image":  "assets/monster/special/g.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Super Fuel Red Dawg. Linea Super Fuel discontinued.",
-        "variants":  [
-                         "Super Fuel Red Dawg"
-                     ]
-    },
-    {
-        "id":  "catalog_special_63",
-        "name":  "Super Fuel Blue Streak",
-        "image":  "assets/monster/special/g.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Super Fuel Blue Streak. Linea Super Fuel discontinued.",
-        "variants":  [
-                         "Super Fuel Blue Streak"
-                     ]
-    },
-    {
         "id":  "catalog_special_64",
         "name":  "Mutant Original green",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/mutant-original-green.png",
         "series":  "special",
         "rarity":  "legendary",
         "limited":  true,
         "description":  "Mutant Original Green. Linea Mutant molto rara, discontinued.",
         "variants":  [
-                         "Mutant Original green"
+                         "Original green"
                      ]
     },
     {
         "id":  "catalog_special_65",
         "name":  "Mutant Red Dawn",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/mutant-red-dawn.png",
         "series":  "special",
         "rarity":  "legendary",
         "limited":  true,
         "description":  "Mutant Red Dawn. Linea Mutant discontinued.",
         "variants":  [
-                         "Mutant Red Dawn"
+                         "Red Dawn"
                      ]
     },
     {
         "id":  "catalog_special_66",
         "name":  "Mutant White Lightning",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/mutant-white-lightning.png",
         "series":  "special",
         "rarity":  "legendary",
         "limited":  true,
         "description":  "Mutant White Lightning. Linea Mutant discontinued.",
         "variants":  [
-                         "Mutant White Lightning"
+                         "White Lightning Bottle"
                      ]
     },
     {
         "id":  "catalog_special_75",
         "name":  "Absolute Zero",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/absolute-zero.png",
         "series":  "special",
         "rarity":  "rare",
         "limited":  false,
@@ -1652,7 +1574,7 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "catalog_special_76",
         "name":  "M-80",
-        "image":  "assets/monster/special/g.png",
+        "image":  "assets/monster/special/m80.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
