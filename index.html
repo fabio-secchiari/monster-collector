@@ -3116,9 +3116,20 @@ document.addEventListener('keydown', (e) => {
 //  INIT
 // ============================================================
 
-selectIndex(0);
-renderSidebar();
 loadUIState();
+
+// Se loadUIState() non ha impostato currentIndex (nessun dato salvato), seleziona il primo
+if (typeof currentIndex === 'undefined' || currentIndex === 0 && !localStorage.getItem(UI_STATE_KEY)) {
+  selectIndex(0);
+}
+renderSidebar();
+
+setInterval(() => {
+  renderSidebar();
+}, 5000);
+
+console.log(' Monster Energy Tracker loaded!');
+console.log(` ${CANS.length} lattine totali`);
 
 setInterval(() => {
   renderSidebar();
@@ -3188,30 +3199,38 @@ function saveUIState() {
 function loadUIState() {
   _loadingUI = true;
   const raw = localStorage.getItem(UI_STATE_KEY);
-  if (!raw) { _loadingUI = false; return; }
-  try {
-    const state = JSON.parse(raw);
-    document.getElementById('filter-series').value = state.series || 'all';
-    document.getElementById('sort-order').value = state.sortOrder || 'default';
-    document.getElementById('toggle-owned').checked = state.owned || false;
-    document.getElementById('toggle-limited').checked = state.limited || false;
-    document.getElementById('toggle-group-series').checked = state.groupSeries || false;
-    // Imposta gridMode e poi seleziona l'indice
-    if (state.gridMode) {
-      setGridMode(true);
-    } else {
-      setGridMode(false);
-    }
-    if (state.currentIndex !== undefined && state.currentIndex < CANS.length) {
-      currentIndex = state.currentIndex;
-      if (state.selectedVariant) {
-        window.selectedVariant = state.selectedVariant;
-        saveSelectedVariant(CANS[currentIndex].id, state.selectedVariant);
+  if (raw) {
+    try {
+      const state = JSON.parse(raw);
+      document.getElementById('filter-series').value = state.series || 'all';
+      document.getElementById('sort-order').value = state.sortOrder || 'default';
+      document.getElementById('toggle-owned').checked = state.owned || false;
+      document.getElementById('toggle-limited').checked = state.limited || false;
+      document.getElementById('toggle-group-series').checked = state.groupSeries || false;
+      
+      // Imposta gridMode e poi seleziona l'indice
+      if (state.gridMode) {
+        setGridMode(true);
+      } else {
+        setGridMode(false);
       }
-      selectIndex(currentIndex);
+      if (state.currentIndex !== undefined && state.currentIndex < CANS.length) {
+        currentIndex = state.currentIndex;
+        if (state.selectedVariant) {
+          window.selectedVariant = state.selectedVariant;
+          saveSelectedVariant(CANS[currentIndex].id, state.selectedVariant);
+        }
+        selectIndex(currentIndex);
+      } else {
+        selectIndex(0);
+      }
+    } catch (e) {
+      console.warn('Errore caricamento UI state:', e);
+      selectIndex(0);
     }
-  } catch (e) {
-    console.warn('Errore caricamento UI state:', e);
+  } else {
+    // Nessun dato salvato: seleziona il primo sprite
+    selectIndex(0);
   }
   _loadingUI = false;
 }
