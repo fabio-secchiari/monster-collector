@@ -1942,7 +1942,6 @@ function selectIndex(idx) {
   
   renderSidebar();
   saveUIState();
-  pushHistoryState();
 }
 
 document.getElementById('filter-series').addEventListener('change', () => {
@@ -1955,7 +1954,7 @@ document.getElementById('filter-series').addEventListener('change', () => {
     buildGridView();
   }
   saveUIState();
-  
+
   // Aggiorna il logo in base al filtro selezionato
   const selectedSeries = document.getElementById('filter-series').value;
   if (selectedSeries !== 'all') {
@@ -2566,14 +2565,12 @@ function setGridMode(enabled) {
     document.getElementById('btn-grid-toggle').textContent = '📋 Locker';
     showToast('📦 Vista scaffale');
     saveUIState();
-    pushHistoryState();
   } else {
     grid.setAttribute('hidden', '');
     document.getElementById('btn-grid-toggle').textContent = '📦 Scaffale';
     selectIndex(currentIndex);
     showToast('📋 Vista locker');
     saveUIState();
-    pushHistoryState();
   }
 }
 
@@ -3217,19 +3214,6 @@ function loadUIState() {
     console.warn('Errore caricamento UI state:', e);
   }
   _loadingUI = false;
-}
-
-function pushHistoryState() {
-  const state = {
-    index: currentIndex,
-    variant: window.selectedVariant || null,
-    grid: gridMode
-  };
-  const url = new URL(window.location);
-  url.searchParams.set('index', currentIndex);
-  if (window.selectedVariant) url.searchParams.set('variant', window.selectedVariant);
-  if (gridMode) url.searchParams.set('view', 'grid');
-  window.history.pushState(state, '', url);
 }
 
 window.addEventListener('popstate', function(e) {
