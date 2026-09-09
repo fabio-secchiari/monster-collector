@@ -10,9 +10,15 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original",
 						 "Original CoD",
+                         "Mega (US)",
+                         "Mega (EU)",
+                         "BFC",
                      ],
 					 "variantImages":  {
 						      "Original CoD": "assets/monster/classic/original-cod.png",
+                              "Mega (US)": "assets/monster/classic/original-mega-us.png",
+                              "Mega (EU)": "assets/monster/classic/original-mega-eu.png",
+                              "BFC": "assets/monster/classic/original-bfc.png",
                           }
     },
     {
@@ -27,12 +33,14 @@ window.MONSTER_CATALOG_DATA = [
                          "Zero Sugar",
 						 "Zero Sugar CoD",
                          "Zero Sugar (EU)",
-                         "Zero Sugar (JPN)"
+                         "Zero Sugar (JPN)",
+                         "Mega Zero Sugar (Canada)",
                      ],
 					 "variantImages":  {
 							  "Zero Sugar CoD": "assets/monster/classic/original-zero-sugar-cod.png",
                               "Zero Sugar (EU)": "assets/monster/classic/zero-sugar-blue.png",
-                              "Zero Sugar (JPN)": "assets/monster/classic/zero-sugar-japan.png"
+                              "Zero Sugar (JPN)": "assets/monster/classic/zero-sugar-japan.png",
+                              "Mega Zero Sugar (Canada)": "assets/monster/classic/zero-sugar-mega-canada.png",
                           }
     },
     {
@@ -76,8 +84,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "La versione a basso contenuto di carboidrati.",
         "variants":  [
-                         "Lo-Carb"
-                     ]
+                         "Lo-Carb",
+                         "Mega Lo-Carb (US)",
+                         "BFC Lo-Carb"
+                     ],
+                     "variantImages":  {
+                              "Mega Lo-Carb (US)": "assets/monster/classic/lo-carb-mega.png",
+                              "BFC Lo-Carb": "assets/monster/classic/lo-carb-bfc.png"
+                          }
     },
     {
         "id":  "monster_assault",
@@ -89,12 +103,14 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Gusto cola con una carica extra di energia.",
         "variants":  [
                          "Assault",
-                         "Black",
-                         "Fury"
+                         "Assault (2005)",
+                         "Assault (2006)",
+                         "Fury",
                      ],
 					 "variantImages":  {
-                              "Black":  "assets/monster/classic/assault-black.webp",
-                              "Fury": "assets/monster/classic/fury.png"
+                              "Assault (2005)": "assets/monster/classic/assault-2005.png",
+                              "Assault (2006)": "assets/monster/classic/assault-black.webp",
+                              "Fury": "assets/monster/classic/fury.png",
                           }
     },
     {
@@ -142,8 +158,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Versione import con design europeo e gusto potenziato.",
         "variants":  [
-                         "Import"
-                     ]
+                         "Import",
+                         "Import Light",
+                     ],
+                     "variantImages":  {
+                              "Import Light": "assets/monster/classic/import-light.png",
+                          }
     },
     {
         "id":  "monster_strawberry_shot",
@@ -204,10 +224,16 @@ window.MONSTER_CATALOG_DATA = [
         "series":  "classic",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Edizione giapponese, molto rara.",
+        "description":  "Edizione giapponese / Super Concentrated, molto rara.",
         "variants":  [
-                         "M3"
-                     ]
+                         "Extra Strength",
+                         "Super Concentrated",
+                         "Extra Strength Can",
+                     ],
+                     "variantImages":  {
+                              "M3 Super Concentrated": "assets/monster/classic/m3-super.png",
+                              "M3 Extra Strength Can": "assets/monster/classic/m3-extra-can.png",
+                          }
     },
     {
         "id":  "monster_mule_non_alcoholic",
@@ -231,10 +257,14 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La famosa \"White Monster\". Zero zuccheri, gusto fresco.",
         "variants":  [
                          "Original",
-                         "Call of Duty"
+                         "Call of Duty",
+                         "Mega Ultra (US)",
+                         "Mega Ultra (EU)"
                      ],
 					"variantImages": {
-						 "Call of Duty": "assets/monster/ultra/ultra-white-cod.png"
+						 "Call of Duty": "assets/monster/ultra/ultra-white-cod.png",
+                         "Mega Ultra (US)": "assets/monster/ultra/ultra-white-mega-us.png",
+                         "Mega Ultra (EU)": "assets/monster/ultra/ultra-white-mega-eu.png"
 					}
     },
     {
@@ -976,8 +1006,16 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Acqua con elettroliti e gusto ghiaccio blu.",
         "variants":  [
-                         "Blue Ice"
-                     ]
+                         "Blue Ice",
+                         "Blue Ice Energy",
+                         "Blue Ice Super Fuel",
+                         "Blue Ice Super Fuel (Can)"
+                     ],
+                        "variantImages": {
+                            "Blue Ice Energy":  "assets/monster/hydro/hydro-blue-ice-energy.png",
+                            "Blue Ice Super Fuel":  "assets/monster/hydro/hydro-blue-ice-superfuel.png",
+                            "Blue Ice Super Fuel (Can)":  "assets/monster/hydro/hydro-blue-ice-superfuel-can.png"
+                        }
     },
     {
         "id":  "monster_hydro_watermelon",
@@ -988,20 +1026,30 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Acqua con elettroliti e gusto cocomero.",
         "variants":  [
-                         "Watermelon"
-                     ]
+                         "Watermelon Energy",
+                         "Watermelon Super Fuel"
+                     ],
+                        "variantImages": {
+                            "Watermelon Super Fuel":  "assets/monster/hydro/hydro-watermelon-superfuel.png"
+                        }
     },
     {
         "id":  "monster_hydro_purple_passion",
         "name":  "Hydro Purple Passion",
-        "image":  "assets/monster/hydro/hydro-purple-passion.png",
+        "image":  "assets/monster/hydro/hydro-purple-passion.webp",
         "series":  "hydro",
         "rarity":  "uncommon",
         "limited":  false,
         "description":  "Acqua con elettroliti e passione viola.",
         "variants":  [
-                         "Purple Passion"
-                     ]
+                         "Purple Passion",
+                         "Purple Passion Energy",
+                         "Purple Passion Super Fuel"
+                     ],
+                        "variantImages": {
+                            "Purple Passion Energy":  "assets/monster/hydro/hydro-purple-passion-energy.png",
+                            "Purple Passion Super Fuel":  "assets/monster/hydro/hydro-purple-passion-superfuel.png"
+                        }
     },
     {
         "id":  "monster_hydro_tropical_thunder",
@@ -1012,44 +1060,73 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Acqua con elettroliti e gusto tropicale.",
         "variants":  [
-                         "Tropical Thunder"
-                     ]
+                         "Tropical Thunder",
+                         "Tropical Thunder Glucose",
+                         "Tropical Thunder (Can)",
+                         "Tropical Thunder Energy",
+                         "Tropical Thunder Super Fuel",
+                     ],
+                        "variantImages": {
+                            "Tropical Thunder (Can)":  "assets/monster/hydro/hydro-tropical-thunder-can.png",
+                            "Tropical Thunder Glucose":  "assets/monster/hydro/hydro-tropical-thunder-glucose.png",
+                            "Tropical Thunder Energy":  "assets/monster/hydro/hydro-tropical-thunder-energy.png",
+                            "Tropical Thunder Super Fuel":  "assets/monster/hydro/hydro-tropical-thunder-superfuel.png",
+                        }
     },
     {
         "id":  "monster_hydro_zero_sugar",
         "name":  "Hydro Zero Sugar",
-        "image":  "assets/monster/hydro/hydro-zero-sugar.png",
+        "image":  "assets/monster/hydro/hydro-zero-sugar-white.png",
         "series":  "hydro",
         "rarity":  "common",
         "limited":  false,
         "description":  "Acqua con elettroliti, zero zuccheri.",
         "variants":  [
-                         "Zero Sugar"
-                     ]
+                         "Zero Sugar",
+                         "Zero Sugar Energy Water",
+                         "Zero Sugar Super Fuel"
+                     ],
+                        "variantImages": {
+                            "Zero Sugar Energy Water": "assets/monster/hydro/hydro-zero-sugar.png",
+                            "Zero Sugar Super Fuel":  "assets/monster/hydro/hydro-zero-sugar-superfuel.png"
+                        }
+
     },
     {
         "id":  "monster_hydro_blue_streak",
         "name":  "Hydro Blue Streak",
-        "image":  "assets/monster/hydro/hydro-blue-streak.png",
+        "image":  "assets/monster/hydro/hydro-blue-streak-superfuel.png",
         "series":  "hydro",
         "rarity":  "rare",
         "limited":  false,
         "description":  "Acqua con elettroliti e gusto lampone.",
         "variants":  [
-                         "Blue Streak"
-                     ]
+                         "Blue Streak Super Fuel",
+                         "Blue Streak Super Sport",
+                         "Blue Streak Super Sport (500mL)"
+                         
+                     ],
+                        "variantImages": {
+                            "Blue Streak Super Sport": "assets/monster/hydro/hydro-blue-streak.png",
+                            "Blue Streak Super Sport (500mL)":  "assets/monster/hydro/hydro-blue-streak-500.png"
+                        }
     },
     {
         "id":  "monster_hydro_killer_kiwi",
         "name":  "Hydro Killer Kiwi",
-        "image":  "assets/monster/hydro/hydro-killer-kiwi.png",
+        "image":  "assets/monster/hydro/hydro-killer-kiwi-superfuel.png",
         "series":  "hydro",
         "rarity":  "rare",
         "limited":  false,
         "description":  "Acqua con elettroliti e gusto kiwi.",
         "variants":  [
-                         "Killer Kiwi"
-                     ]
+                         "Killer Kiwi Super Fuel",
+                         "Killer Kiwi Super Sport"
+                         
+                     ],
+                        "variantImages": {
+                            "Killer Kiwi Super Sport": "assets/monster/hydro/hydro-killer-kiwi.png"
+                        }
     },
     {
         "id":  "monster_hydro_macho_mango",
@@ -1066,14 +1143,20 @@ window.MONSTER_CATALOG_DATA = [
     {
         "id":  "monster_hydro_red_dawg",
         "name":  "Hydro Red Dawg",
-        "image":  "assets/monster/hydro/hydro-red-dawg.png",
+        "image":  "assets/monster/hydro/hydro-red-dawg-superfuel.png",
         "series":  "hydro",
         "rarity":  "epic",
         "limited":  true,
         "description":  "Edizione limitata, gusto frutti rossi.",
         "variants":  [
-                         "Red Dawg"
-                     ]
+                         "Red Dawg Super Fuel",
+                         "Red Dawg Super Sport",
+                         "Red Dawg Super Sport (500mL)"
+                     ],
+                        "variantImages": {
+                            "Red Dawg Super Sport": "assets/monster/hydro/hydro-red-dawg.png",
+                            "Red Dawg Super Sport (500mL)":  "assets/monster/hydro/hydro-red-dawg-500.png"
+                        }
     },
     {
         "id":  "monster_muscle_chocolate",
@@ -1088,8 +1171,8 @@ window.MONSTER_CATALOG_DATA = [
                          "Chocolate Bottle"
                      ],
                      "variantImages":  {
-                              "Chocolate Bottle":  "assets/monster/muscle/chocolate-bottle.webp"
-                          }
+                            "Chocolate Bottle":  "assets/monster/muscle/chocolate-bottle.webp"
+                        }
     },
     {
         "id":  "monster_muscle_vanilla",
@@ -1606,15 +1689,19 @@ window.MONSTER_CATALOG_DATA = [
     },
     {
         "id":  "catalog_hydro_58",
-        "name":  "Hydro Manic Melon",
+        "name":  "Manic Melon",
         "image":  "assets/monster/hydro/hydro-manic-melon.jpg",
         "series":  "hydro",
         "rarity":  "rare",
         "limited":  false,
         "description":  "Hydro Manic Melon, gusto melone.",
         "variants":  [
-                         "Hydro Manic Melon"
-                     ]
+                         "Manic Melon",
+                         "Manic Melon (Can)"
+                     ],
+                        "variantImages":  {
+                            "Manic Melon (Can)":  "assets/monster/hydro/hydro-manic-melon-can.png"
+                        }
     },
     {
         "id":  "catalog_special_64",
@@ -1947,63 +2034,117 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_hitman_original",
-        "name":  "Hitman Original",
+        "id":  "monster_hitman",
+        "name":  "Hitman",
         "image":  "assets/monster/special/hitman-original.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Monster Hitman Original. Shot concentrato. Discontinued.",
+        "description":  "Monster Hitman shots concentrati ad alta caffeina. Discontinued.",
         "variants":  [
-                         "Original"
-                     ]
-    },
-    {
-        "id":  "monster_hitman_sniper",
-        "name":  "Hitman Sniper",
-        "image":  "assets/monster/special/hitman-sniper.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Monster Hitman Sniper. Shot ad alta caffeina. Discontinued.",
-        "variants":  [
-                         "Sniper"
-                     ]
-    },
-    {
-        "id":  "monster_hitman_lobo",
-        "name":  "Hitman Lobo",
-        "image":  "assets/monster/special/hitman-lobo.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Monster Hitman Lobo. Shot ad alta caffeina. Discontinued.",
-        "variants":  [
+                         "Original",
+                         "Sniper",
                          "Lobo"
-                     ]
+                     ],
+                     "variantImages":  {
+                              "Sniper": "assets/monster/special/hitman-sniper.png",
+                              "Lobo": "assets/monster/special/hitman-lobo.png"
+                          }
     },
     {
-        "id":  "monster_ghost_m100",
-        "name":  "Ghost M-100",
+        "id":  "monster_m100",
+        "name":  "M-100",
         "image":  "assets/monster/special/ghost-m100.png",
         "series":  "special",
         "rarity":  "epic",
         "limited":  true,
-        "description":  "Monster Ghost M-100. Edizione speciale 2015. Discontinued.",
+        "description":  "Monster Ghost / Phantom M-100. Edizioni speciali 2015. Discontinued.",
         "variants":  [
-                         "Ghost M-100"
+                         "Ghost M-100",
+                         "Phantom M-100"
+                     ],
+                     "variantImages":  {
+                              "Phantom M-100": "assets/monster/special/phantom-m100.png"
+                          }
+    },
+    {
+        "id":  "monster_espresso",
+        "name":  "Espresso",
+        "image":  "assets/monster/java/espresso-cream.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Linea Espresso Monster. Discontinued.",
+        "variants":  [
+                         "Espresso & Cream",
+                         "Vanilla Espresso",
+                         "Salted Caramel"
+                     ],
+                     "variantImages":  {
+                              "Vanilla Espresso": "assets/monster/java/espresso-vanilla.png",
+                              "Salted Caramel": "assets/monster/java/espresso-salted.png"
+                          }
+    },
+    {
+        "id":  "monster_espresso_caffe",
+        "name":  "Espresso Caffe",
+        "image":  "assets/monster/java/espresso-mocha.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Linea Espresso Caffe Monster. Discontinued.",
+        "variants":  [
+                         "Mocha",
+                         "Vanilla",
+                         "Salted Caramel"
+                     ],
+                     "variantImages":  {
+                              "Vanilla": "assets/monster/java/espresso-caffe-vanilla.png",
+                              "Salted Caramel": "assets/monster/java/espresso-caffe-salted.png"
+                          }
+    },
+    {
+        "id":  "monster_xpresso_midnite",
+        "name":  "X-Presso Midnite",
+        "image":  "assets/monster/java/xpresso-midnite.png",
+        "series":  "java",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "X-Presso Midnite. Espresso concentrato. Discontinued.",
+        "variants":  [
+                         "Midnite"
                      ]
     },
     {
-        "id":  "monster_phantom_m100",
-        "name":  "Phantom M-100",
-        "image":  "assets/monster/special/phantom-m100.png",
-        "series":  "special",
-        "rarity":  "epic",
-        "limited":  true,
-        "description":  "Monster Phantom M-100. Edizione speciale 2015. Discontinued.",
+        "id":  "monster_hydro_mean_green",
+        "name":  "Hydro Mean Green",
+        "image":  "assets/monster/hydro/hydro-mean-green.png",
+        "series":  "hydro",
+        "rarity":  "uncommon",
+        "limited":  false,
+        "description":  "Hydro / Super Fuel Mean Green. Acqua con elettroliti gusto mela verde.",
         "variants":  [
-                         "Phantom M-100"
+                         "Mean Green",
+                         "Mean Green Glucose",
+                         "Mean Green (Can)",
+                         "Mean Green Super Fuel"
+                     ],
+                     "variantImages":  {
+                              "Mean Green Glucose": "assets/monster/hydro/hydro-mean-green-glucose.png",
+                              "Mean Green (Can)": "assets/monster/hydro/hydro-mean-green-can.png",
+                              "Mean Green Super Fuel": "assets/monster/hydro/super-fuel-mean-green.png"
+                          }
+    },
+    {
+        "id":  "monster_hydro_subzero",
+        "name":  "Super Fuel Subzero",
+        "image":  "assets/monster/hydro/hydro-subzero.png",
+        "series":  "hydro",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Hydro Super Fuel Subzero. Acqua con elettroliti. Discontinued.",
+        "variants":  [
+                         "Super Fuel Subzero"
                      ]
     },
 ];
