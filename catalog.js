@@ -9,10 +9,14 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La Monster originale, il gusto che ha iniziato tutto.",
         "variants":  [
                          "Original",
-                         "Zero Sugar"
+						 "Original CoD",
+                         "Zero Sugar",
+						 "Zero Sugar CoD"
                      ],
 					 "variantImages":  {
-                              "Zero Sugar":  "assets/monster/classic/original-zero-sugar.webp"
+						      "Original CoD": "assets/monster/classic/original-cod.png",
+                              "Zero Sugar":  "assets/monster/classic/original-zero-sugar.webp",
+							  "Zero Sugar CoD": "assets/monster/classic/original-zero-sugar-cod.png"
                           }
     },
     {
@@ -52,14 +56,32 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Super Carbonated, Super Dry. Un'esperienza unica.",
         "variants":  [
-                         "Super Dry",
+                         "Super Dry"
+                     ]
+    },
+	{
+        "id":  "monster_nitro_peach",
+        "name":  "Nitro Cosmic Peach",
+        "image":  "assets/monster/classic/nitro-cosmic-peach.png",
+        "series":  "classic",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Super Carbonated, Cosmic Peach. Un'esperienza unica.",
+        "variants":  [
                          "Cosmic Peach",
+	                 ]
+    },
+	{
+        "id":  "monster_nitro_flash",
+        "name":  "Nitro Blue Flash",
+        "image":  "assets/monster/classic/nitro-blue-flash.png",
+        "series":  "classic",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Super Carbonated, Blue Flash. Un'esperienza unica.",
+        "variants":  [
                          "Blue Flash"
-                     ],
-					 "variantImages":  {
-                              "Cosmic Peach":  "assets/monster/classic/nitro-cosmic-peach.png",
-                              "Blue Flash":  "assets/monster/classic/nitro-blue-flash.png"
-                          }
+                     ]
     },
     {
         "id":  "monster_import",
@@ -146,20 +168,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Versione zero zuccheri, disponibile in UK/Europa.",
         "variants":  [
-                         "Zero Sugar Full Throttle"
-                     ]
-    },
-    {
-        "id":  "monster_top_speed_zero_sugar",
-        "name":  "Top Speed Zero Sugar",
-        "image":  "assets/monster/classic/top-speed.png",
-        "series":  "classic",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Disponibile in Francia/Europa.",
-        "variants":  [
-                         "Top Speed Zero Sugar"
-                     ]
+                         "Full Throttle",
+						 "Top Speed"
+                     ],
+					 "variantImages": {
+						"Top Speed": "assets/monster/classic/top-speed.png"
+					  }
     },
     {
         "id":  "monster_mule_non_alcoholic",
@@ -184,7 +198,10 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original",
                          "Call of Duty"
-                     ]
+                     ],
+					"variantImages": {
+						 "Call of Duty": "assets/monster/ultra/ultra-white-cod.png"
+					}
     },
     {
         "id":  "monster_ultra_red",
@@ -247,18 +264,6 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_ultra_fiesta",
-        "name":  "Ultra Fiesta Mango",
-        "image":  "assets/monster/ultra/ultra-fiesta-mango.webp",
-        "series":  "ultra",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Edizione limitata con gusto mango, zero zuccheri.",
-        "variants":  [
-                         "Fiesta Mango"
-                     ]
-    },
-    {
         "id":  "catalog_ultra_1",
         "name":  "Ultra Fiesta",
         "image":  "assets/monster/ultra/ultra-fiesta.jpg",
@@ -267,8 +272,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
         "variants":  [
-                            "Fiesta"
-                     ]
+                            "Fiesta",
+							"Mango"
+                     ],
+					 "variantImages": {
+						 "Mango": "assets/monster/ultra/ultra-fiesta-mango.webp"
+					 }
     },
     {
         "id":  "monster_ultra_watermelon",
@@ -448,8 +457,11 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Succo di mango con una carica di energia.",
         "variants":  [
                          "Mango Loco",
-                         "Call of Duty"
-                     ]
+						 "Call of Duty"
+                     ],
+					 "variantImages": {
+						 "Call of Duty": "assets/monster/juice/mango-loco-cod.png"
+					 }
     },
     {
         "id":  "catalog_juice_17",
@@ -460,8 +472,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Juiced Monarch (Papillon), edizione farfalla. Gusto esotico.",
         "variants":  [
-                         "Monarch"
-                     ]
+                         "Monarch",
+						 "Papillon",
+						 "Mariposa"
+                     ],
+					 "variantImages": {
+						 "Papillon": "assets/monster/juice/juiced-papillon.webp",
+						 "Mariposa": "assets/monster/juice/juiced-mariposa.png"
+					 }
     },
     {
         "id":  "monster_juice_pacific",
@@ -497,18 +515,6 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Gusto arancia, passione e frutta tropicale.",
         "variants":  [
                          "Khaotic"
-                     ]
-    },
-    {
-        "id":  "monster_juice_papillon",
-        "name":  "Juice Papillon",
-        "image":  "assets/monster/juice/juiced-papillon.webp",
-        "series":  "juice",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Edizione limitata farfalla. Gusto fruttato esotico.",
-        "variants":  [
-                         "Papillon"
                      ]
     },
     {
@@ -1611,16 +1617,4 @@ window.MONSTER_CATALOG_DATA = [
                          "Mucho Loco"
                      ]
     },
-    {
-        "id":  "catalog_special_81",
-        "name":  "Monster Mule Ginger Brew",
-        "image":  "assets/monster/special/monster-mule-ginger-brew.jpg",
-        "series":  "special",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Monster Mule Ginger Brew, ginger brew non alcolico.",
-        "variants":  [
-                         "Monster Mule Ginger Brew"
-                     ]
-    }
 ];

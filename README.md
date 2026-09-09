@@ -2,8 +2,6 @@
 
 > Il tracker definitivo per i collezionisti di Monster Energy – tieni traccia di ogni lattina, variante ed edizione limitata.
 
-![Monster Energy Tracker](assets/ui/screenshot.png)
-
 ---
 
 ## 📋 Indice
@@ -40,7 +38,7 @@
 
 | Vista Locker | Vista Scaffale |
 |--------------|----------------|
-| ![Locker View](assets/ui/screenshot-locker.jpg) | ![Shelf View](assets/ui/screenshot-shelf.jpg) |
+| ![Locker View](assets/screenshots/locker-view.png) | ![Shelf View](assets/screenshots/grid-view.png) |
 
 ---
 
@@ -66,6 +64,7 @@ cd monster-collector
 monster-tracker/
 ├── index.html
 ├── README.md
+├── screenshots/
 ├── assets/
 │   ├── icons/
 │   │   ├── logo.png
