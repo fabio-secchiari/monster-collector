@@ -1395,7 +1395,7 @@ body.image-bg-on .can-art {
     <div class="search">
   	  <span>🔍</span>
 	  <input id="search-input" placeholder="Cerca lattina ..." />
-	  <span id="search-clear" style="display:none; cursor:pointer; color:var(--muted); font-size:16px; padding:0 4px;"></span>
+	  <span id="search-clear" style="display:none; cursor:pointer; color:var(--muted); font-size:16px; padding:0 4px;">✕</span>
 	</div>
     <div class="sidebar-stats">
       <span id="sidebar-count">0 / 0</span>
@@ -2510,25 +2510,27 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchClear = document.getElementById('search-clear');
 
   if (searchInput && searchClear) {
-    // Mostra/nascondi la X in base al testo
     searchInput.addEventListener('input', function() {
-	  if (searchInput.value.length > 0) {
-		searchClear.classList.add('visible');
-	  } else {
-		searchClear.classList.remove('visible');
-	  }
-	});
+      if (searchInput.value.length > 0) {
+        searchClear.classList.add('visible');
+        searchClear.style.display = 'inline'; // forzato
+      } else {
+        searchClear.classList.remove('visible');
+        searchClear.style.display = 'none';   // forzato
+      }
+    });
 
-	searchClear.addEventListener('click', function() {
-	  searchInput.value = '';
-	  searchInput.dispatchEvent(new Event('input'));
-	  searchInput.focus();
-	  renderSidebar();
-	  if (document.getElementById('grid-view').classList.contains('active')) {
-		buildGridView();
-	  }
-	  searchClear.classList.remove('visible');
-	});
+    searchClear.addEventListener('click', function() {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.focus();
+      renderSidebar();
+      if (document.getElementById('grid-view').classList.contains('active')) {
+        buildGridView();
+      }
+      searchClear.classList.remove('visible');
+      searchClear.style.display = 'none';
+    });
   }
 });
 
