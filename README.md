@@ -2,8 +2,6 @@
 
 > Il tracker definitivo per i collezionisti di Monster Energy – tieni traccia di ogni lattina, variante ed edizione limitata.
 
-![Monster Energy Tracker](assets/ui/screenshot.png)
-
 ---
 
 ## 📋 Indice
