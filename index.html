@@ -40,6 +40,28 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+@media (min-width: 901px) {
+  body:not(.grid-mode) {
+    overflow: hidden;
+  }
+
+  body.grid-mode {
+    overflow-y: auto;
+  }
+
+  body:not(.grid-mode) #locker-view {
+    flex-wrap: nowrap;
+  }
+
+  body.grid-mode .app {
+    height: auto;
+  }
+
+  body.grid-mode .panel {
+    overflow: visible;
+  }
+}
+
 /* ===== HEADER ===== */
 .header {
   background: rgba(0,0,0,0.8);
@@ -283,7 +305,7 @@ body {
 .app {
   display: grid;
   grid-template-columns: 380px 1fr;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
   grid-template-areas:
     "header  header"
     "filters filters"
@@ -292,6 +314,7 @@ body {
   gap: 16px;
   padding: 16px;
   min-height: 100vh;
+  height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -318,7 +341,7 @@ body {
 }
 
 body.grid-mode .sidebar {
-  max-height: none;
+  max-height: 100vh;
 }
 
 .sidebar .list {
@@ -436,6 +459,8 @@ body.grid-mode .sidebar {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* LOCKER VIEW - ora sempre flex per tenere i pannelli affiancati */
@@ -444,6 +469,8 @@ body.grid-mode .sidebar {
   gap: 16px;
   flex-wrap: wrap;
   width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 #locker-view.is-hidden {
@@ -452,6 +479,7 @@ body.grid-mode .sidebar {
 
 .left-panel {
   flex: 0 0 340px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -501,6 +529,7 @@ body.grid-mode .sidebar {
 .right-panel {
   flex: 1;
   min-width: 280px;
+  min-height: 0;
   background: rgba(0,0,0,0.4);
   border-radius: 12px;
   padding: 16px;
@@ -738,9 +767,10 @@ body.grid-mode .sidebar {
 .grid-view {
   display: none;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px 16px;
+  grid-auto-rows: max-content;
+  gap: 10px 16px;
+  align-items: start;
   width: 100%;
-  padding: 20px 0;
   background-image: url('assets/ui/shelf.jpg'); /* Sfondo scaffale se disponibile */
   background-size: cover;
   background-position: center;
@@ -788,6 +818,7 @@ body.grid-mode .sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: start;
 }
 
 .grid-card:hover {
@@ -850,7 +881,6 @@ body.grid-mode .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 320px;
   z-index: 1;
   isolation: isolate;
 }
@@ -1402,47 +1432,6 @@ body.image-bg-on .can-art {
 }
 .series-header:first-child { margin-top: 0; }
 
-/* ===== PULSANTI MENU COLORATI ===== */
-.btn-grid {
-  border-color: #00ff41 !important;
-  color: #00ff41 !important;
-}
-.btn-grid:hover {
-  background: rgba(0,255,65,0.15) !important;
-  border-color: #00ff41 !important;
-  color: #00ff41 !important;
-}
-
-.btn-menu {
-  border-color: #A855F7 !important;
-  color: #A855F7 !important;
-}
-.btn-menu:hover {
-  background: rgba(168,85,247,0.15) !important;
-  border-color: #A855F7 !important;
-  color: #A855F7 !important;
-}
-
-.btn-stats {
-  border-color: #ffd166 !important;
-  color: #ffd166 !important;
-}
-.btn-stats:hover {
-  background: rgba(255,209,102,0.15) !important;
-  border-color: #ffd166 !important;
-  color: #ffd166 !important;
-}
-
-.btn-music {
-  border-color: #FF6B3D !important;
-  color: #FF6B3D !important;
-}
-.btn-music:hover {
-  background: rgba(255,107,61,0.15) !important;
-  border-color: #FF6B3D !important;
-  color: #FF6B3D !important;
-}
-
 /* ===== BOX STATISTICHE HOVER ===== */
 .stats-box {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -1661,10 +1650,10 @@ body.image-bg-on .can-art {
 	
 	<!-- Pulsanti -->
 	<div class="header-controls">
-	  <button class="btn-adaptive ghost btn-grid" id="btn-grid-toggle">📦 Scaffale</button>
-	  <button class="btn-adaptive ghost btn-menu" id="btn-menu">⚙️ Menu</button>
-	  <button class="btn-adaptive ghost btn-stats" id="btn-stats">📊 Statistiche</button>
-	  <button class="btn-adaptive ghost btn-music" id="btn-music">🔇 Effetti</button>
+	  <button class="btn-adaptive ghost" id="btn-grid-toggle">📦 Scaffale</button>
+	  <button class="btn-adaptive ghost" id="btn-menu">⚙️ Menu</button>
+	  <button class="btn-adaptive ghost" id="btn-stats">📊 Statistiche</button>
+	  <button class="btn-adaptive ghost" id="btn-music">🔇 Effetti</button>
 	  <button class="btn-adaptive" id="sidebar-toggle">☰ Lista</button>
 	</div>
   </div>
@@ -1772,7 +1761,7 @@ body.image-bg-on .can-art {
   <!-- FOOTER -->
   <div class="footer">
     <span id="footer-stats">Lattine: 0  Varianti: 0</span>
-    <span id="footer-creators">👥 Creato da <strong><a href = "https://github.com/fabio-secchiari">FabioJava</a></strong> &amp; <a href = "https://github.com/mrpaulgaming"><strong>Mr. Paul Gaming</a></strong></span>
+    <span id="footer-creators">👥 Creato da <strong><a href = "https://github.com/fabio-secchiari" target="_blank" rel="noopener noreferrer">FabioJava</a></strong> &amp; <a href = "https://github.com/mrpaulgaming" target="_blank" rel="noopener noreferrer"><strong>Mr. Paul Gaming</a></strong></span>
     <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
   </div>
 </div>
@@ -2836,6 +2825,14 @@ document.getElementById('confirm-backdrop').addEventListener('click', function(e
 
 let gridMode = false;
 
+function syncGridSidebarHeight() {
+  const grid = document.getElementById('grid-view');
+  const sidebar = document.getElementById('sidebar');
+  requestAnimationFrame(() => {
+    sidebar.style.maxHeight = `${grid.offsetHeight}px`;
+  });
+}
+
 // Applica lo stato alla UI (puro, non tocca la history)
 function applyHistoryState(s) {
   if (!s) return;
@@ -2903,6 +2900,7 @@ function buildGridView() {
   if (filtered.length === 0) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Nessuna lattina trovata</div>`;
     grid.classList.add('active');
+    syncGridSidebarHeight();
     return;
   }
 
@@ -3087,6 +3085,7 @@ function buildGridView() {
   }
 
   grid.classList.add('active');
+  syncGridSidebarHeight();
 }
 
 // ============================================================
