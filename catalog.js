@@ -53,7 +53,7 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Absolutely Zero, versione zero zuccheri classica.",
         "variants":  [
                          "Absolutely Zero",
-                         "Absolutely Zero (2010)"
+                         "Absolutely Zero (2010)",
                      ],
 					 "variantImages":  {
                               "Absolutely Zero (2010)":  "assets/monster/classic/absolute-zero.png"
@@ -216,8 +216,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Versione export con gusto internazionale.",
         "variants":  [
-                         "Export"
-                     ]
+                         "Export",
+                         "Export (Glass)"
+                     ],
+                     "variantImages": { 
+                        "Export (Glass)": "assets/monster/classic/export-glass.png"
+                     }
     },
     {
         "id":  "monster_m3",
@@ -246,8 +250,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Versione non alcolica del Monster Mule, UK/Europa.",
         "variants":  [
-                         "Mule"
-                     ]
+                         "Ginger Brew",
+                         "Gingerade"
+                     ],
+                     "variantImages": {
+                        "Gingerade": "assets/monster/classic/mule-gingerade.png"
+                     }
     },
     {
         "id":  "monster_ultra_white",
@@ -426,8 +434,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto fragola e crema, zero zuccheri.",
         "variants":  [
-                         "Ultra Strawberry Dreams"
-                     ]
+                         "Ultra Strawberry Dreams",
+                         "Ultra Strawberry Dream (grey cap)"
+                     ],
+                     "variantImages": {
+                        "Ultra Strawberry Dream (grey cap)": "assets/monster/ultra/ultra-strawberry-dreams-grey.png"
+                     }
     },
     {
         "id":  "monster_ultra_ruby",
@@ -1839,6 +1851,24 @@ window.MONSTER_CATALOG_DATA = [
                           }
     },
     {
+        "id": "monster_khaos",
+        "name": "Juice Khaos",
+        "image": "assets/monster/juice/juiced-khaos.webp",
+        "series": "juice",
+        "rarity": "rare",
+        "limited": false,
+        "description": "Khaos, il gusto originale arancia e frutta tropicale. Da non confondere con Khaotic.",
+        "variants": [
+            "Khaos",
+            "Khaos (2006)",
+            "Khaos (2014)"
+        ],
+        "variantImages": {
+            "Khaos (2006)": "assets/monster/juice/juiced-khaos-2006.png",
+            "Khaos (2014)": "assets/monster/juice/juiced-khaos-2014.png"
+        }
+    },
+    {
         "id":  "monster_super_cola",
         "name":  "Super Cola",
         "image":  "assets/monster/classic/super-cola.png",
@@ -1951,8 +1981,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Farmer's Oats Vegan Coffee. Caffè con avena. Discontinued.",
         "variants":  [
-                         "Farmer's Oats"
-                     ]
+                         "Farmer's Oats",
+                         "Farmer's Oats (Canada)"
+                     ],
+                     "variantImages": { 
+                        "Farmer's Oats (Canada)": "assets/monster/java/java-farmer-oats-canada.png"
+                     }
     },
     {
         "id":  "monster_muscle_peanut_butter",
@@ -2005,8 +2039,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Übermonster Brew. Versione stile birra tedesca non alcolica. Discontinued.",
         "variants":  [
-                         "Übermonster"
-                     ]
+                         "Übermonster",
+                         "Übermonster (Can)"
+                     ],
+                     "variantImages": {
+                        "Übermonster (Can)": "assets/monster/special/ubermonster-can.png"
+                     }
     },
     {
         "id":  "monster_hitman",
@@ -2041,6 +2079,16 @@ window.MONSTER_CATALOG_DATA = [
                      "variantImages":  {
                               "Phantom M-100": "assets/monster/special/phantom-m100.png"
                           }
+    },
+    {
+        "id": "monster_xg",
+        "name": "XG Monster",
+        "image": "assets/monster/special/xg-monster.png",
+        "series": "special",
+        "rarity": "legendary",
+        "limited": true,
+        "description": "XG Monster, versione estrema. Molto rara, discontinued.",
+        "variants": ["XG"]
     },
     {
         "id":  "monster_espresso",
