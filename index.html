@@ -311,11 +311,14 @@ body {
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
-  min-height: 0;
-  align-self: stretch;      /* si allunga quanto il pannello */
-  /* NIENTE height, NIENTE max-height */
+  max-height: calc(100vh - 10px);
+  align-self: stretch;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+
+body.grid-mode .sidebar {
+  max-height: none;
 }
 
 .sidebar .list {
@@ -922,6 +925,163 @@ body {
   z-index: 100;
 }
 
+.grid-rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  min-height: 16px;
+}
+
+.grid-rating-row .grid-stars {
+  color: #ffd166;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.grid-rating-row .grid-stars.empty { color: #444; }
+.grid-owned-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: inline-block;
+}
+
+.grid-owned-dot.owned {
+  background: #00ff41;
+  box-shadow: 0 0 6px #00ff41;
+  border-color: #00ff41;
+}
+
+/* ===== MOBILE MIGLIORATO ===== */
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "filters"
+      "panel"
+      "footer";
+    padding: 8px;
+    gap: 10px;
+  }
+  .sidebar {
+    max-height: 60vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 88vw;
+    max-width: 360px;
+    z-index: 9998;
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--ease);
+    border-radius: 0 12px 12px 0;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Overlay scuro quando la sidebar è aperta */
+  body.sidebar-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9997;
+  }
+
+  /* Header più compatto */
+  .header { padding: 10px 14px; }
+  .header-left .logo { height: 36px; }
+  .header-left .title div:last-child { font-size: 18px; }
+
+  /* Filter bar scrollabile orizzontalmente */
+  .filter-bar {
+    padding: 6px 10px;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-select {
+    min-width: 0;
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  .toggle-switch { flex-shrink: 0; font-size: 11px; }
+  .toggle-label { font-size: 10px; }
+
+  .header-controls {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .header-controls::-webkit-scrollbar { display: none; }
+  .btn-adaptive { flex-shrink: 0; padding: 7px 12px; font-size: 12px; }
+
+  /* Locker: impila i due pannelli */
+  #locker-view { gap: 10px; }
+  .left-panel {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 12px;
+  }
+  .can-art { width: 180px; height: 220px; }
+  .right-panel { padding: 12px; gap: 8px; }
+  .right-panel .can-name { font-size: 20px; }
+
+  /* Grid: 2 colonne compatte invece di 1 */
+  .grid-view {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .grid-card { padding: 8px; }
+  .grid-card .grid-image { height: 90px; }
+  .grid-card .grid-name { font-size: 11px; }
+  .grid-card .grid-series { font-size: 10px; }
+
+  /* Ventaglio più stretto su mobile */
+  .fan-item { width: 52px; height: 82px; margin: -41px 0 0 -26px; }
+  .grid-card.base.fan-open .fan-item {
+    transform:
+      translateX(calc(var(--offset) * 24px))
+      rotate(calc(var(--offset) * 10deg))
+      scale(1);
+  }
+
+  /* Footer compatto */
+  .footer {
+    font-size: 10px;
+    padding: 8px 12px;
+    gap: 4px;
+  }
+  .footer #footer-creators { width: 100%; text-align: center; }
+
+  /* Modal a tutta larghezza */
+  .modal { width: 94vw; padding: 16px; }
+  .modal .option { font-size: 12px; padding: 8px 6px; }
+}
+
+@media (max-width: 480px) {
+  .grid-view { grid-template-columns: repeat(2, 1fr); }
+  .can-art { width: 150px; height: 190px; }
+  .header-controls { gap: 4px; }
+  .btn-adaptive { padding: 6px 10px; font-size: 11px; }
+}
+
 @media (hover: none) {
   .grid-card.base.fan-open .fan-item {
     opacity: 1;
@@ -1066,11 +1226,6 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
-  .app {
-    grid-template-columns: 1fr;
-    padding: 10px;
-    align-items: stretch;
-  }
   .sidebar {
     max-height: 50vh;
     display: none;
@@ -1080,17 +1235,6 @@ body {
   }
   #sidebar-toggle {
     display: inline-flex !important;
-  }
-  .left-panel {
-    flex: 1;
-    width: 100%;
-  }
-  .can-art {
-    width: 220px;
-    height: 260px;
-  }
-  .right-panel {
-    width: 100%;
   }
 }
 
@@ -1359,6 +1503,27 @@ body.image-bg-on .can-art {
   color: #FF4444 !important;
 }
 
+/* Owned deve sempre battere hover */
+.variant-btn.owned,
+.variant-btn.owned:hover {
+  background: rgba(0,255,65,0.15) !important;
+  border-color: rgba(0,255,65,0.45) !important;
+  color: #fff;
+}
+.variant-btn.owned .dot,
+.variant-btn.owned:hover .dot {
+  background: #00ff41 !important;
+  box-shadow: 0 0 6px #00ff41;
+}
+.variant-btn.owned.limited {
+  border-color: rgba(255,209,102,0.6) !important;
+}
+.variant-btn.selected,
+.variant-btn.selected:hover {
+  border-color: #00ff41 !important;
+  box-shadow: 0 0 0 2px rgba(0,255,65,0.35), 0 0 14px rgba(0,255,65,0.35);
+}
+
 </style>
 </head>
 <body>
@@ -1408,6 +1573,7 @@ body.image-bg-on .can-art {
       <div style="margin-top:12px;font-weight:800;"> Azioni</div>
       <div class="row">
         <div class="option" data-action="reset"> Resetta tutto</div>
+        <div class="row"><div class="option option-catalog" data-action="easter-egg">🎬 Rivedi Intro</div></div>
       </div>
     </div>
     <div style="margin-top:14px;display:flex;justify-content:flex-end;">
@@ -1606,13 +1772,19 @@ body.image-bg-on .can-art {
   <!-- FOOTER -->
   <div class="footer">
     <span id="footer-stats">Lattine: 0  Varianti: 0</span>
-    <span id="footer-limited">⭐ Limited: 0</span>
+    <span id="footer-creators">👥 Creato da <strong><a href = "https://github.com/fabio-secchiari">FabioJava</a></strong> &amp; <a href = "https://github.com/mrpaulgaming"><strong>Mr. Paul Gaming</a></strong></span>
     <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
   </div>
 </div>
 
 <input type="file" id="file-import" accept="application/json" style="display:none">
 <input type="file" id="catalog-file-import" accept="application/json" style="display:none">
+
+<!-- ===== EASTER EGG VIDEO ===== -->
+<div id="easter-egg" style="display:none;position:fixed;inset:0;z-index:10002;background:#000;align-items:center;justify-content:center;">
+  <video id="egg-video" playsinline controls style="max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;background:#000;"></video>
+  <button id="egg-close" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,0.7);border:1.5px solid rgba(0,255,65,0.4);color:#00ff41;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:800;font-family:inherit;">✕ Chiudi</button>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="catalog.js"></script>
@@ -1675,10 +1847,13 @@ const CATEGORY_LOGO_MAP = {
 
 function updateCategoryLogo(category) {
   const logo = document.getElementById('site-logo');
-  const logoPath = CATEGORY_LOGO_MAP[category] || 'assets/icons/logo-extended.png';
-  logo.src = logoPath + '?' + Date.now(); // Forza il refresh
-  logo.onerror = () => { 
-    logo.src = 'assets/icons/logo-extended.png'; 
+  // Se category è null/undefined o non è mappata → logo base
+  const logoPath = (category && CATEGORY_LOGO_MAP[category])
+    ? CATEGORY_LOGO_MAP[category]
+    : 'assets/icons/logo-extended.png';
+  logo.src = logoPath + '?' + Date.now();
+  logo.onerror = () => {
+    logo.src = 'assets/icons/logo-extended.png';
   };
 }
 
@@ -1890,7 +2065,8 @@ function renderSidebar() {
   const limitedOwned = CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => isVariantOwned(state[c.id].variants[v]))).length;
   document.getElementById('sidebar-limited').textContent = `⭐ ${limitedOwned}`;
   document.getElementById('footer-stats').textContent = `Lattine: ${filtered.length} · Varianti: ${totalVariants}`;
-  document.getElementById('footer-limited').textContent = `⭐ Limited: ${limitedOwned}`;
+  const footerLimitedEl = document.getElementById('footer-limited');
+  if (footerLimitedEl) footerLimitedEl.textContent = `⭐ Limited: ${limitedOwned}`;
 }
 
 // ============================================================
@@ -2027,7 +2203,7 @@ function selectIndex(idx) {
 	
   updateCategoryBackground(can.series);
   
-  // Aggiorna logo in base alla categoria
+  // Il logo segue sempre la serie della lattina corrente
   updateCategoryLogo(can.series);
   
   // Note
@@ -2067,16 +2243,12 @@ document.getElementById('filter-series').addEventListener('change', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
-  saveUIState();
-
-  // Aggiorna il logo in base al filtro selezionato
+  // Logo
   const selectedSeries = document.getElementById('filter-series').value;
   if (selectedSeries !== 'all') {
     updateCategoryLogo(selectedSeries);
   } else {
-    // Se è "all", usa il logo della lattina corrente
-    const can = CANS[currentIndex];
-    if (can) updateCategoryLogo(can.series);
+    updateCategoryLogo(null);
   }
   saveUIState();
 });
@@ -2286,59 +2458,55 @@ function renderVariants(can) {
     btn.appendChild(label);
 
     // CLICK sul pulsante INTERO - toggle owned
-	btn.addEventListener('click', (e) => {
-	  const SPECIAL_CAN_ID = 'monster_ultra_white';
-	  const SPECIAL_CAN_ID2 = 'monster_lo_carb';
-	  e.stopPropagation();
-	  const wasOwned = owned;
-	  
-	  // Toggle owned
-	  st.variants[variant] = {
-		...(st.variants[variant] || {}),
-		owned: !wasOwned,
-		rating: st.variants[variant]?.rating || 0,
-		notes: st.variants[variant]?.notes || ''
-	  };
-	  saveState(state);
-	  
-	  // SE STAI TOGLIENDO (wasOwned === true)
-	  if (wasOwned) {
-		// Cerca l'ultima variante posseduta (in ordine di lista)
-		const ownedVariants = can.variants.filter(v => st.variants[v]?.owned === true);
-		let newSelected;
-		if (ownedVariants.length > 0) {
-		  // Prendi la prima variante posseduta (se l'ordine conta, è quella)
-		  // Oppure prendi quella con il rating più alto? No, prendi la prima.
-		  newSelected = ownedVariants[0];
-		} else {
-		  // Se non ce ne sono, torna alla prima variante (base)
-		  newSelected = can.variants[0];
-		}
-		window.selectedVariant = newSelected;
-		saveSelectedVariant(can.id, newSelected);
-	  } else {
-		// STAI AGGIUNGENDO → seleziona la variante appena acquisita
-		window.selectedVariant = variant;
-		saveSelectedVariant(can.id, variant);
-	  }
-	  
-	  // Riproduci il suono speciale SOLO se:
-	  // 1. La variante è stata appena acquisita (non rimossa)
-	  // 2. La lattina corrente è quella specifica
-	  // 3. Il pulsante "Effetti" (musica) è attivo
-	  if (!wasOwned && can.id === SPECIAL_CAN_ID) {
-		  playSpecialSound('special-sound');
-	  }
+    btn.addEventListener('click', (e) => {
+      
+      e.stopPropagation();
+      e.preventDefault();
 
-		// E lo stesso per il secondo:
-	  if (!wasOwned && can.id === SPECIAL_CAN_ID2) {
-		  playSpecialSound('special-sound2');
-	  }
-	  
-	  renderSidebar();
-	  selectIndex(currentIndex);
-	  playClickSound();
-	});
+      const wasOwned = !!st.variants[variant]?.owned;
+
+      // 1) Aggiorna lo stato
+      st.variants[variant] = {
+        ...(st.variants[variant] || {}),
+        owned: !wasOwned,
+        rating: st.variants[variant]?.rating || 0,
+        notes: st.variants[variant]?.notes || ''
+      };
+      saveState(state);
+
+      // 2) Aggiorna la variante selezionata
+      if (wasOwned) {
+        const ownedVariants = can.variants.filter(v => st.variants[v]?.owned === true);
+        window.selectedVariant = ownedVariants.length > 0 ? ownedVariants[0] : can.variants[0];
+      } else {
+        window.selectedVariant = variant;
+      }
+      saveSelectedVariant(can.id, window.selectedVariant);
+
+      if (!wasOwned && can.id === 'monster_ultra_white') playSpecialSound('special-sound');
+      if (!wasOwned && can.id === 'monster_lo_carb') playSpecialSound('special-sound2');
+      // 3) FEEDBACK IMMEDIATO sul bottone cliccato
+      btn.classList.toggle('owned', !wasOwned);
+      const dot = btn.querySelector('.dot');
+      if (dot) dot.style.background = !wasOwned ? '#00ff41' : '';
+
+      // 4) Aggiorna SUBITO la barra di progresso
+      const vc = getVariantCount(can);
+      const pct = vc.total === 0 ? 0 : Math.round((vc.owned / vc.total) * 100);
+      document.getElementById('main-percent').textContent = pct + '%';
+      document.getElementById('main-fill').style.width = pct + '%';
+      document.getElementById('main-count').textContent = `${vc.owned} / ${vc.total}`;
+
+      // 5) Suoni speciali (solo se gli effetti sono attivi)
+      if (musicPlaying && !wasOwned && can.id === 'monster_ultra_white') playSpecialSound('special-sound');
+      if (musicPlaying && !wasOwned && can.id === 'monster_lo_carb') playSpecialSound('special-sound2');
+
+      // 6) Render completo (sidebar, dropdown, rating, ventaglio)
+      selectIndex(currentIndex);
+      renderSidebar();  // dalla fix #1
+
+      playClickSound();
+    });
 
     // HOVER - cambia l'immagine al passaggio del mouse
 	btn.addEventListener('mouseenter', () => {
@@ -2577,6 +2745,7 @@ document.getElementById('clear-all').addEventListener('click', async () => {
 // ============================================================
 
 function playClickSound() {
+  if (!musicPlaying) return;
   const audio = document.getElementById('click-sound');
   audio.currentTime = 0;
   audio.play().catch(() => {});
@@ -2667,32 +2836,63 @@ document.getElementById('confirm-backdrop').addEventListener('click', function(e
 
 let gridMode = false;
 
-function setGridMode(enabled) {
-  const locker = document.getElementById('locker-view');
-  const grid = document.getElementById('grid-view');
-
-  gridMode = enabled;
-  locker.classList.toggle('is-hidden', gridMode);
-  grid.classList.toggle('active', gridMode);
-
-  if (gridMode) {
-    buildGridView();
-    grid.removeAttribute('hidden');
-    document.getElementById('btn-grid-toggle').textContent = '📋 Locker';
-    showToast('📦 Vista scaffale');
+// Applica lo stato alla UI (puro, non tocca la history)
+function applyHistoryState(s) {
+  if (!s) return;
+  const wantGrid = s.view === 'grid';
+  if (wantGrid !== gridMode) {
+    gridMode = wantGrid;
+    document.getElementById('locker-view').classList.toggle('is-hidden', gridMode);
+    document.getElementById('grid-view').classList.toggle('active', gridMode);
+    document.body.classList.toggle('grid-mode', gridMode);
+    document.getElementById('btn-grid-toggle').textContent = gridMode ? '📋 Locker' : '📦 Scaffale';
+    if (gridMode) buildGridView();
     saveUIState();
+  }
+  if (wantGrid) {
+    if (typeof s.scrollY === 'number') {
+      requestAnimationFrame(() => window.scrollTo(0, s.scrollY));
+    }
   } else {
-    grid.setAttribute('hidden', '');
-    document.getElementById('btn-grid-toggle').textContent = '📦 Scaffale';
-    selectIndex(currentIndex);
-    showToast('📋 Vista locker');
-    saveUIState();
+    const idx = typeof s.currentIndex === 'number' ? s.currentIndex : currentIndex;
+    if (s.selectedVariant) {
+      window.selectedVariant = s.selectedVariant;
+      saveSelectedVariant(CANS[idx].id, s.selectedVariant);
+    }
+    selectIndex(idx);
   }
 }
 
-document.getElementById('btn-grid-toggle').addEventListener('click', function() {
-  setGridMode(!gridMode);
+function pushNavState(view, extra = {}) {
+  const s = {
+    view: view,
+    currentIndex: currentIndex,
+    selectedVariant: window.selectedVariant || null,
+    scrollY: view === 'grid' ? window.scrollY : 0,
+    ...extra
+  };
+  history.pushState(s, '', '');
+  applyHistoryState(s);
+}
+
+// UNICO click handler per il toggle
+document.getElementById('btn-grid-toggle').addEventListener('click', () => {
+  const newGrid = !gridMode;
+  pushNavState(newGrid ? 'grid' : 'locker');
+  showToast(newGrid ? '📦 Vista scaffale' : '📋 Vista locker');
 });
+
+// UNICO popstate handler
+window.addEventListener('popstate', (e) => {
+  if (e.state) applyHistoryState(e.state);
+});
+
+// Memorizza lo scroll in grid view
+window.addEventListener('scroll', () => {
+  if (gridMode && history.state && history.state.view === 'grid') {
+    history.replaceState({ ...history.state, scrollY: window.scrollY }, '', '');
+  }
+}, { passive: true });
 
 function buildGridView() {
   const grid = document.getElementById('grid-view');
@@ -2774,13 +2974,15 @@ function buildGridView() {
 
         item.addEventListener('click', (e) => {
           e.stopPropagation();
-          currentIndex = CANS.indexOf(can);
-          window.selectedVariant = variant;
-          saveSelectedVariant(can.id, variant);
-          if (gridMode) setGridMode(false);
-          else selectIndex(currentIndex);
+          pushNavState('locker', {
+            currentIndex: CANS.indexOf(can),
+            selectedVariant: variant
+          });
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        item.addEventListener('mouseenter', () => setCardInfo(variant, false));
+        item.addEventListener('mouseleave', () => setCardInfo(can.variants[0], true));
 
         fan.appendChild(item);
       });
@@ -2813,25 +3015,54 @@ function buildGridView() {
     progText.style.cssText = 'font-size:10px;color:var(--muted);margin-top:2px;';
     progText.textContent = `${ownedCount}/${total} · ${percent}%`;
 
-    card.append(imgDiv, name, sub, prog, progText);
+    // Riga rating dinamica (stelline + pallino)
+    const ratingRow = document.createElement('div');
+    ratingRow.className = 'grid-rating-row';
+    const starsSpan = document.createElement('span');
+    starsSpan.className = 'grid-stars empty';
+    const dotSpan = document.createElement('span');
+    dotSpan.className = 'grid-owned-dot';
+    ratingRow.appendChild(starsSpan);
+    ratingRow.appendChild(dotSpan);
+
+    // Funzione che aggiorna l'info della card
+    function setCardInfo(variant, isBase) {
+      const vData = (st.variants && st.variants[variant]) || { owned: false, rating: 0 };
+      // Titolo
+      if (isBase) name.textContent = can.name + (can.limited ? ' ⭐' : '');
+      else name.textContent = variant;
+      // Stelline
+      const rating = vData.rating || 0;
+      let s = '';
+      for (let i = 1; i <= 5; i++) s += (i <= rating) ? '★' : '☆';
+      starsSpan.textContent = s;
+      starsSpan.classList.toggle('empty', rating === 0);
+      // Pallino
+      dotSpan.classList.toggle('owned', !!vData.owned);
+    }
+
+    // Stato iniziale: variante base
+    setCardInfo(can.variants[0], true);
+
+    // Aggiorna name (già creata prima) con la variante base
+    name.textContent = can.name + (can.limited ? ' ⭐' : '');
+
+    card.append(imgDiv, name, sub, prog, progText, ratingRow);
 
     const isTouch = window.matchMedia('(hover: none)').matches;
 
     card.addEventListener('click', (e) => {
-      // Su mobile: il primo tap apre il ventaglio, il secondo entra nel locker
+      const isTouch = window.matchMedia('(hover: none)').matches;
       if (isTouch && can.variants.length >= 2 && !card.classList.contains('fan-open')) {
         e.stopPropagation();
-        // Chiudi gli altri ventagli aperti
         document.querySelectorAll('.grid-card.base.fan-open').forEach(c => c.classList.remove('fan-open'));
         card.classList.add('fan-open');
         return;
       }
-      // Comportamento normale
-      currentIndex = CANS.indexOf(can);
-      window.selectedVariant = can.variants[0];
-      saveSelectedVariant(can.id, can.variants[0]);
-      if (gridMode) setGridMode(false);
-      else selectIndex(currentIndex);
+      pushNavState('locker', {
+        currentIndex: CANS.indexOf(can),
+        selectedVariant: can.variants[0]
+      });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -2944,6 +3175,7 @@ document.getElementById('btn-menu').addEventListener('click', () => {
 	  <div style="margin-top:12px;font-weight:800;"> ⚠️ Azioni</div>
 	  <div class="row">
 		<div class="option option-danger" data-action="reset"> 🗑️ Resetta tutto</div>
+    <div class="option option-catalog" data-action="replay-intro"> 🎬 Rivedi Intro</div>
 	  </div>
   `;
   modal.style.display = 'flex';
@@ -3131,8 +3363,18 @@ async function exportCollectionImage(onlyMissing = false) {
 
 document.getElementById('sidebar-toggle').addEventListener('click', () => {
   const sidebar = document.getElementById('sidebar');
-  sidebar.classList.toggle('open');
-  document.getElementById('sidebar-toggle').textContent = sidebar.classList.contains('open') ? '' : ' Lista';
+  const isOpen = sidebar.classList.toggle('open');
+  document.body.classList.toggle('sidebar-open', isOpen);
+  document.getElementById('sidebar-toggle').textContent = isOpen ? '✕' : '☰ Lista';
+});
+
+// Chiudi la sidebar quando si clicca una lattina (mobile)
+document.getElementById('sidebar-list').addEventListener('click', () => {
+  if (window.innerWidth <= 900) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.body.classList.remove('sidebar-open');
+    document.getElementById('sidebar-toggle').textContent = '☰ Lista';
+  }
 });
 
 // ============================================================
@@ -3216,6 +3458,20 @@ document.addEventListener('keydown', (e) => {
 		e.preventDefault();
 	  }
   }
+  if (e.key === 'c' || e.key == 'C') {
+    if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      const sidebar = document.getElementById('sidebar');
+      // Su mobile apri la sidebar se chiusa
+      if (window.innerWidth <= 900 && !sidebar.classList.contains('open')) {
+        sidebar.classList.add('open');
+        document.getElementById('sidebar-toggle').textContent = '';
+      }
+      const si = document.getElementById('search-input');
+      si.focus();
+      si.select();
+    }
+  }
   if (e.key === 'Escape') {
     const modal = document.getElementById('modal-backdrop');
     if (modal.style.display === 'flex') {
@@ -3286,15 +3542,20 @@ function playSpecialSound(audioId) {
   const specialAudio = document.getElementById(audioId);
   if (!specialAudio) return;
 
-  // Se la musica è in riproduzione, mettila in pausa
+  // Metti in pausa l'ALTRO suono speciale se sta suonando
+  document.querySelectorAll('audio[id^="special-sound"]').forEach(a => {
+    if (a !== specialAudio && !a.paused) {
+      a.pause();
+      a.currentTime = 0;
+    }
+  });
+
+  // Metti in pausa la musica di sottofondo
   if (musicPlaying) {
     musicAudio.pause();
-    // Riprendi quando il suono finisce
     specialAudio.onended = function() {
-      if (musicPlaying) {
-        musicAudio.play().catch(() => {});
-      }
-      specialAudio.onended = null; // pulisci il listener
+      if (musicPlaying) musicAudio.play().catch(() => {});
+      specialAudio.onended = null;
     };
   }
 
@@ -3329,12 +3590,14 @@ function loadUIState() {
       document.getElementById('toggle-limited').checked = state.limited || false;
       document.getElementById('toggle-group-series').checked = state.groupSeries || false;
       
-      // Imposta gridMode e poi seleziona l'indice
-      if (state.gridMode) {
-        setGridMode(true);
-      } else {
-        setGridMode(false);
-      }
+      // Imposta gridMode senza toccare la history
+      gridMode = !!state.gridMode;
+      document.getElementById('locker-view').classList.toggle('is-hidden', gridMode);
+      document.getElementById('grid-view').classList.toggle('active', gridMode);
+      document.body.classList.toggle('grid-mode', gridMode);
+      document.getElementById('btn-grid-toggle').textContent = gridMode ? '📋 Locker' : '📦 Scaffale';
+      if (gridMode) buildGridView();
+
       if (state.currentIndex !== undefined && state.currentIndex < CANS.length) {
         currentIndex = state.currentIndex;
         if (state.selectedVariant) {
@@ -3353,41 +3616,16 @@ function loadUIState() {
     // Nessun dato salvato: seleziona il primo sprite
     selectIndex(0);
   }
+
+  history.replaceState({
+    view: gridMode ? 'grid' : 'locker',
+    currentIndex: currentIndex,
+    selectedVariant: window.selectedVariant || null,
+    scrollY: 0
+  }, '', '');
+
   _loadingUI = false;
 }
-
-window.addEventListener('popstate', function(e) {
-  if (e.state) {
-    const { index, variant, grid } = e.state;
-    if (index !== undefined && index < CANS.length) {
-      currentIndex = index;
-      if (variant) {
-        window.selectedVariant = variant;
-        saveSelectedVariant(CANS[currentIndex].id, variant);
-      }
-      // Non chiamare setGridMode qui per non innescare un altro pushState
-      if (grid !== undefined) {
-        if (grid !== gridMode) {
-          // Cambia modalità senza salvare
-          const locker = document.getElementById('locker-view');
-          const gridView = document.getElementById('grid-view');
-          gridMode = grid;
-          locker.classList.toggle('is-hidden', gridMode);
-          gridView.classList.toggle('active', gridMode);
-          if (gridMode) {
-            buildGridView();
-            gridView.removeAttribute('hidden');
-            document.getElementById('btn-grid-toggle').textContent = '📋 Locker';
-          } else {
-            gridView.setAttribute('hidden', '');
-            document.getElementById('btn-grid-toggle').textContent = '📦 Scaffale';
-          }
-        }
-      }
-      selectIndex(index);
-    }
-  }
-});
 
 // Su mobile: tocca fuori da una card per chiudere il ventaglio
 document.addEventListener('click', (e) => {
@@ -3395,6 +3633,97 @@ document.addEventListener('click', (e) => {
     document.querySelectorAll('.grid-card.base.fan-open').forEach(c => c.classList.remove('fan-open'));
   }
 });
+
+// ============================================================
+//  INTRO + EASTER EGG VIDEO
+// ============================================================
+
+const EASTER_EGG_KEY = 'monster_intro_seen';
+const INTRO_VIDEO   = 'assets/videos/intro.mp4';
+const EASTER_VIDEO  = 'assets/videos/edit.mp4';
+
+// --- Player video ---
+function playVideo(src) {
+  const overlay = document.getElementById('easter-egg');
+  const video   = document.getElementById('egg-video');
+  if (!overlay || !video) return;
+  overlay.style.display = 'flex';
+  video.src = src;
+  video.currentTime = 0;
+  video.onended = () => closeVideo();
+  video.play().catch(() => {});
+}
+
+function closeVideo() {
+  const overlay = document.getElementById('easter-egg');
+  const video   = document.getElementById('egg-video');
+  if (!overlay || !video) return;
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+  overlay.style.display = 'none';
+  localStorage.setItem(EASTER_EGG_KEY, '1');
+}
+
+document.getElementById('egg-close').addEventListener('click', closeVideo);
+
+// --- Autoplay intro alla prima visita (resta invariato) ---
+if (!localStorage.getItem(EASTER_EGG_KEY)) {
+  setTimeout(() => playVideo(INTRO_VIDEO), 800);
+}
+
+// ============================================================
+//  EASTER EGG NASCOSTO
+// ============================================================
+
+// >>> OPZIONE A: scrivi "monster" sulla tastiera <<<
+let typedBuffer = '';
+document.addEventListener('keydown', (e) => {
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+  if (e.key.length !== 1) return;          // solo lettere singole
+  typedBuffer = (typedBuffer + e.key.toLowerCase()).slice(-7);
+  if (typedBuffer === 'monster') {
+    typedBuffer = '';
+    playVideo(EASTER_VIDEO);
+  }
+});
+
+// >>> OPZIONE B: Konami Code (↑↑↓↓←→←→BA) <<<
+const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIdx = 0;
+document.addEventListener('keydown', (e) => {
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+  const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  if (key === KONAMI[konamiIdx]) {
+    konamiIdx++;
+    if (konamiIdx === KONAMI.length) {
+      konamiIdx = 0;
+      playVideo(EASTER_VIDEO);
+    }
+  } else {
+    // ricomincia (ma controlla se la key è l'inizio della sequenza)
+    konamiIdx = (key === KONAMI[0]) ? 1 : 0;
+  }
+});
+
+// >>> OPZIONE C: 5 click sul logo (portato da 3 a 5) <<<
+let eggClicks = 0, eggTimer = null;
+document.getElementById('site-logo').addEventListener('click', () => {
+  eggClicks++;
+  clearTimeout(eggTimer);
+  eggTimer = setTimeout(() => eggClicks = 0, 1200);   // 1.2s invece di 0.8
+  if (eggClicks >= 5) { eggClicks = 0; playVideo(EASTER_VIDEO); }
+});
+
+// --- Listener "Rivedi Intro" (resta, ma solo per l'intro) ---
+document.addEventListener('click', (e) => {
+  if (e.target.dataset && e.target.dataset.action === 'replay-intro') {
+    document.getElementById('modal-backdrop').style.display = 'none';
+    playVideo(INTRO_VIDEO);
+  }
+});
+
 </script>
+
 </body>
 </html>
