@@ -33,7 +33,7 @@ body {
   font-family: var(--font-body);
   color: #e6e6f0;
   background: var(--bg);
-  background-image: url('assets/ui/background.jpg');
+  background-image: url('assets/ui/background2.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -282,12 +282,14 @@ body {
 /* ===== APP LAYOUT ===== */
 .app {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 380px 1fr;
+  grid-template-rows: auto auto 1fr auto; /* NUOVO: riga centrale elastica */
   gap: 16px;
   padding: 16px;
   min-height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 /* ===== SIDEBAR ===== */
@@ -301,16 +303,17 @@ body {
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
-  height: 100%;
-  max-height: calc(100vh - 120px);
+  min-height: 0;           /* NUOVO: permette al figlio flex di ridursi */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
+
 .sidebar .list {
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1 1 auto;
   min-height: 0;
+  padding: 4px 8px 4px 4px;
 }
 
 .sidebar .search {
@@ -826,6 +829,127 @@ body {
 .grid-card .grid-limited {
   font-size: 14px;
   margin-left: 4px;
+}
+
+/* ===== GRID CARD CON FAN-OUT VARIANTI ===== */
+.grid-card-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 320px;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.grid-card-stack:hover { z-index: 50; }
+
+/* Card base (quella sempre visibile) */
+.grid-card-stack .grid-card.base {
+  position: relative;
+  z-index: 10;
+  margin-top: auto;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.grid-card-stack:hover .grid-card.base {
+  transform: translateY(6px) scale(0.97);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* Contenitore ventaglio */
+.variants-fan {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 5;
+  perspective: 1000px;
+}
+
+/* Singola variante nel ventaglio */
+.fan-item {
+  --offset: calc(var(--i) - (var(--total) - 1) / 2);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 92px;
+  height: 128px;
+  margin-left: -46px;
+  background: linear-gradient(180deg, #14141f, #0a0a0f);
+  border: 1.5px solid rgba(0,255,65,0.25);
+  border-radius: 10px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transform-origin: bottom center;
+  /* Stato iniziale: nascosto DIETRO la card base */
+  transform: translateX(0) translateY(30px) rotate(0deg) scale(0.5);
+  opacity: 0;
+  transition: all 0.45s cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--i) * 35ms);
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+  cursor: pointer;
+}
+
+.fan-item img {
+  max-width: 100%;
+  max-height: 75px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.fan-item .fan-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #00ff41;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.fan-item .fan-owned-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #444;
+}
+.fan-item.owned .fan-owned-dot { background: #00ff41; box-shadow: 0 0 8px #00ff41; }
+
+/* Hover sullo stack → escono a ventaglio */
+.grid-card-stack:hover .fan-item {
+  opacity: 1;
+  pointer-events: auto;
+  transform:
+    translateX(calc(var(--offset) * 58px))
+    translateY(calc(-40px + abs(var(--offset)) * 12px))
+    rotate(calc(var(--offset) * 11deg))
+    scale(1);
+}
+
+/* Hover su una singola variante → si alza */
+.fan-item:hover {
+  transform:
+    translateX(calc(var(--offset) * 58px))
+    translateY(calc(-75px + abs(var(--offset)) * 12px))
+    rotate(calc(var(--offset) * 11deg))
+    scale(1.18) !important;
+  z-index: 200;
+  border-color: #00ff41;
+  box-shadow: 0 14px 36px rgba(0,255,65,0.45);
 }
 
 /* ===== FOOTER ===== */
@@ -2593,147 +2717,152 @@ function buildGridView() {
     return;
   }
 
-  function renderCard(can, variant) {
+  const seriesBgMap = {
+    classic: 'assets/ui/bg-classic.png', ultra: 'assets/ui/bg-ultra.png',
+    juice: 'assets/ui/bg-juice.png',     java: 'assets/ui/bg-java.png',
+    rehab: 'assets/ui/bg-rehab.png',     reserve: 'assets/ui/bg-reserve.png',
+    special: 'assets/ui/bg-special.png', hydro: 'assets/ui/bg-hydro.png',
+    muscle: 'assets/ui/bg-muscle.png',   beast: 'assets/ui/bg-beast.png',
+    dragon: 'assets/ui/bg-dragon.png'
+  };
+
+  const seriesLabels = {
+    classic: 'Classic', ultra: 'Ultra', juice: 'Juice', java: 'Java (Caffè)',
+    rehab: 'Rehab', reserve: 'Reserve', special: 'Special Edition',
+    hydro: 'Hydro', muscle: 'Muscle', beast: 'Beast Unleashed', dragon: 'Dragon Tea'
+  };
+
+  function loadImgWithFallback(imgEl, primary, fallback) {
+    const t = new Image();
+    t.onload = () => { imgEl.src = primary + '?' + Date.now(); };
+    t.onerror = () => {
+      const t2 = new Image();
+      t2.onload = () => { imgEl.src = fallback + '?' + Date.now(); };
+      t2.onerror = () => { imgEl.src = 'assets/monster/classic.png'; };
+      t2.src = fallback;
+    };
+    t.src = primary;
+  }
+
+  function renderCanStack(can) {
     const st = state[can.id] || { variants: {} };
-    const variantData = st.variants[variant] || { owned: false, rating: 0, notes: '' };
-    const owned = variantData.owned;
-    // Calcola progresso totale delle varianti della lattina (per il contatore)
     const { owned: totalOwned, total: totalVariants } = getVariantCount(can);
     const percent = totalVariants === 0 ? 0 : Math.round((totalOwned / totalVariants) * 100);
 
+    // --- STACK ---
+    const stack = document.createElement('div');
+    stack.className = 'grid-card-stack';
+    stack.setAttribute('data-series', can.series);
+
+    // --- FAN ---
+    const fan = document.createElement('div');
+    fan.className = 'variants-fan';
+
+    // Se nessuna variante è posseduta, mostra le prime 3 per non fare un ventaglio enorme
+    const ownedVariants = can.variants.filter(v => st.variants[v]?.owned);
+    const variantsToShow = ownedVariants.length > 0
+      ? ownedVariants
+      : can.variants.slice(0, Math.min(3, can.variants.length));
+
+    variantsToShow.forEach((variant, i) => {
+      const item = document.createElement('div');
+      item.className = 'fan-item' + (st.variants[variant]?.owned ? ' owned' : '');
+      item.style.setProperty('--i', i);
+      item.style.setProperty('--total', variantsToShow.length);
+
+      const img = document.createElement('img');
+      loadImgWithFallback(img, getVariantImageForCan(can, variant), can.image || 'assets/monster/classic.png');
+      item.appendChild(img);
+
+      const label = document.createElement('div');
+      label.className = 'fan-label';
+      label.textContent = variant;
+      item.appendChild(label);
+
+      const dot = document.createElement('span');
+      dot.className = 'fan-owned-dot';
+      item.appendChild(dot);
+
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Esci da grid e apri il locker con quella variante selezionata
+        if (gridMode) setGridMode(false);
+        selectIndex(CANS.indexOf(can));
+        window.selectedVariant = variant;
+        saveSelectedVariant(can.id, variant);
+        selectIndex(CANS.indexOf(can)); // refresh
+      });
+
+      fan.appendChild(item);
+    });
+
+    stack.appendChild(fan);
+
+    // --- CARD BASE ---
     const card = document.createElement('div');
-    card.className = 'grid-card';
-    card.setAttribute('data-series', can.series);
-    card.setAttribute('data-variant', variant);
+    card.className = 'grid-card base';
 
     const imgDiv = document.createElement('div');
     imgDiv.className = 'grid-image';
-    const seriesBgMap = {
-      classic: 'assets/ui/bg-classic.png',
-      ultra: 'assets/ui/bg-ultra.png',
-      juice: 'assets/ui/bg-juice.png',
-      java: 'assets/ui/bg-java.png',
-      rehab: 'assets/ui/bg-rehab.png',
-      reserve: 'assets/ui/bg-reserve.png',
-      special: 'assets/ui/bg-special.png',
-      hydro: 'assets/ui/bg-hydro.png',
-      muscle: 'assets/ui/bg-muscle.png',
-      beast: 'assets/ui/bg-beast.png',
-      dragon: 'assets/ui/bg-dragon.png'
-    };
     imgDiv.style.backgroundImage = `url('${seriesBgMap[can.series] || 'assets/ui/bg-classic.jpg'}')`;
     imgDiv.style.backgroundSize = 'cover';
     imgDiv.style.backgroundPosition = 'center';
 
-    const img = document.createElement('img');
-    const variantImg = getVariantImageForCan(can, variant);
-    const testImg = new Image();
-    testImg.onload = function() { img.src = variantImg; };
-    testImg.onerror = function() {
-      if (can.image) {
-        const testImg2 = new Image();
-        testImg2.onload = function() { img.src = can.image; };
-        testImg2.onerror = function() { img.src = 'assets/monster/classic.png'; };
-        testImg2.src = can.image;
-      } else {
-        img.src = 'assets/monster/classic.png';
-      }
-    };
-    testImg.src = variantImg;
-    img.onerror = function() { this.src = 'assets/monster/classic.png'; };
-    imgDiv.appendChild(img);
+    const baseImg = document.createElement('img');
+    loadImgWithFallback(baseImg, can.image || 'assets/monster/classic.png', 'assets/monster/classic.png');
+    imgDiv.appendChild(baseImg);
 
     const name = document.createElement('div');
     name.className = 'grid-name';
-    name.textContent = variant; // Mostra il nome della variante
+    name.textContent = can.name;
+    if (can.limited) name.textContent += ' ⭐';
 
     const sub = document.createElement('div');
     sub.className = 'grid-series';
-    sub.textContent = can.name; // Mostra il nome della lattina base
+    sub.textContent = `${can.variants.length} varianti · ${seriesLabels[can.series] || can.series}`;
 
-    // Contatore progresso
     const prog = document.createElement('div');
     prog.className = 'grid-progress';
     const fill = document.createElement('div');
     fill.className = 'fill';
     fill.style.width = percent + '%';
     prog.appendChild(fill);
+
     const progText = document.createElement('div');
     progText.style.cssText = 'font-size:10px;color:var(--muted);margin-top:2px;';
-    progText.textContent = `${totalOwned}/${totalVariants}`;
-
-    // Valutazione (specifica per questa variante)
-    const rating = variantData.rating || 0;
-    const ratingDiv = document.createElement('div');
-    ratingDiv.style.cssText = 'margin-top:4px;font-size:12px;color:var(--gold);';
-    if (rating > 0) {
-      let stars = '';
-      for (let i = 1; i <= 5; i++) {
-        if (i <= rating) stars += '★';
-        else if (i - 0.5 <= rating) stars += '★';
-        else stars += '☆';
-      }
-      ratingDiv.textContent = stars + ' ' + rating.toFixed(1);
-    } else {
-      ratingDiv.textContent = '☆☆☆☆☆';
-      ratingDiv.style.color = '#444';
-    }
+    progText.textContent = `${totalOwned}/${totalVariants} · ${percent}%`;
 
     card.appendChild(imgDiv);
     card.appendChild(name);
     card.appendChild(sub);
     card.appendChild(prog);
     card.appendChild(progText);
-    card.appendChild(ratingDiv);
 
     card.addEventListener('click', () => {
-      if (gridMode) {
-        setGridMode(false);
-      }
-      // Seleziona la lattina base e poi imposta la variante selezionata
+      if (gridMode) setGridMode(false);
       selectIndex(CANS.indexOf(can));
-      window.selectedVariant = variant;
-      saveSelectedVariant(can.id, variant);
-      // Forza il refresh dell'immagine e dei dati
-      selectIndex(CANS.indexOf(can)); // chiamata di nuovo per aggiornare
     });
 
-    return card;
+    stack.appendChild(card);
+    return stack;
   }
 
   if (groupBySeries) {
-    // Raggruppa per serie (gruppi di varianti)
     const groups = {};
     filtered.forEach(can => {
-      can.variants.forEach(variant => {
-        const key = can.series;
-        if (!groups[key]) groups[key] = [];
-        groups[key].push({ can, variant });
-      });
+      if (!groups[can.series]) groups[can.series] = [];
+      groups[can.series].push(can);
     });
-    const seriesLabels = { /* ... */ };
-    for (const [series, items] of Object.entries(groups)) {
-      const groupContainer = document.createElement('div');
-      groupContainer.style.cssText = 'grid-column:1/-1;display:contents;';
+    for (const [series, cans] of Object.entries(groups)) {
       const header = document.createElement('div');
       header.className = 'series-header';
-      header.textContent = seriesLabels[series] || series;
       header.style.cssText = 'grid-column:1/-1;font-size:14px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:1px;padding:12px 0 6px 0;border-bottom:2px solid rgba(0,255,65,0.1);margin-top:12px;';
-      groupContainer.appendChild(header);
-      items.forEach(({ can, variant }) => {
-        const card = renderCard(can, variant);
-        groupContainer.appendChild(card);
-      });
-      grid.appendChild(groupContainer);
+      header.textContent = seriesLabels[series] || series;
+      grid.appendChild(header);
+      cans.forEach(can => grid.appendChild(renderCanStack(can)));
     }
   } else {
-    // Lista piatta di varianti
-    filtered.forEach(can => {
-      can.variants.forEach(variant => {
-        const card = renderCard(can, variant);
-        grid.appendChild(card);
-      });
-    });
+    filtered.forEach(can => grid.appendChild(renderCanStack(can)));
   }
 
   grid.classList.add('active');
