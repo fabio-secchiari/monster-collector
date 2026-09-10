@@ -1,355 +1,296 @@
-# 🎮 Fortnite Sprite Locker
+# Monster Energy Tracker
 
----
+Tracker locale per collezionisti di lattine Monster Energy. L'applicazione permette di catalogare lattine e varianti, segnare quelle possedute, aggiungere una valutazione e conservare note personali. Tutti i dati della collezione restano nel browser dell'utente e possono essere esportati in JSON.
 
-<p align="center">
+![Vista principale del Monster Energy Tracker](screenshots/locker-view.png)
 
-🏠 **README** •
-🚀 [Installation](docs/INSTALLATION.md) •
-🎮 [Usage](docs/USAGE.md) •
-✨ [Features](docs/FEATURES.md) •
-📤 [Share & Export](docs/SHARE_AND_EXPORT.md) •
-🎨 [Customization](docs/CUSTOMIZATION.md) •
-📂 [Project Structure](docs/PROJECT_STRUCTURE.md) •
-⚙️ [Technical](docs/TECHNICAL.md) •
-❓ [FAQ](docs/FAQ.md) •
-🗺️ [Roadmap](docs/ROADMAP.md)
+## Indice
 
-</p>
+- [Panoramica](#panoramica)
+- [Funzionalita](#funzionalita)
+- [Anteprima](#anteprima)
+- [Avvio](#avvio)
+- [Guida rapida](#guida-rapida)
+- [Persistenza e backup](#persistenza-e-backup)
+- [Catalogo e modello dati](#catalogo-e-modello-dati)
+- [Architettura](#architettura)
+- [Struttura del progetto](#struttura-del-progetto)
+- [Personalizzazione e sviluppo](#personalizzazione-e-sviluppo)
+- [Limitazioni note](#limitazioni-note)
+- [Contributi](#contributi)
 
----
+## Panoramica
 
-<div align="center">
+Il progetto e una single-page application statica, senza backend e senza fase di build. La UI, gli stili e il runtime sono contenuti in `index.html`; il catalogo iniziale e definito in `catalog.js` e gli helper per l'import/export del catalogo sono in `catalog-manager.js`.
 
-# 🎮 Fortnite Sprite Locker
+Il catalogo incluso contiene **154 schede**, **245 varianti** e **11 serie**:
 
-![Version](https://img.shields.io/badge/version-7.5-blue?style=for-the-badge)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Offline](https://img.shields.io/badge/Offline-Ready-blueviolet?style=for-the-badge)
+- Classic
+- Ultra
+- Juice
+- Java
+- Rehab
+- Reserve
+- Special Edition
+- Hydro
+- Muscle
+- Beast Unleashed
+- Dragon Tea
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/mrpaulgaming/fnspritelocker?style=social"> 
-  <img src="https://img.shields.io/github/forks/mrpaulgaming/fnspritelocker?style=social"> 
-  <img src="https://img.shields.io/github/watchers/mrpaulgaming/fnspritelocker?style=social">
-</p>
+## Funzionalita
 
-### The ultimate Fortnite Chapter 7 Sprite Collection Tracker
+### Gestione della collezione
 
-Track every Sprite, unlock every variant, monitor your progress and share your collection — all offline.
+- Selezione di una scheda dalla lista laterale.
+- Stato posseduto/non posseduto per ogni variante.
+- Azioni `Acquisisci tutte` e `Cancella tutte` per la scheda corrente.
+- Indicatore percentuale e contatore per scheda.
+- Contatori globali nel pannello laterale e nel footer.
+- Evidenza delle edizioni `Limited`.
 
-**Created by Paul**
+### Ricerca, filtri e ordinamento
 
-**👉 [Try it now!](https://fnspritelocker.fabiojava.it/)**
+- Ricerca testuale per nome della lattina.
+- Filtro per serie.
+- Filtro `Solo posseduti`.
+- Filtro `Limited Edition`.
+- Raggruppamento per serie.
+- Ordinamento predefinito, nome A-Z/Z-A, completamento e valutazione.
 
----
+### Due viste
 
-## 🌐 Live Demos
+- **Locker**: dettaglio della scheda corrente, immagine, serie, varianti, note, valutazione e descrizione.
+- **Scaffale**: griglia compatta delle schede filtrate, con immagine, serie, completamento e stelle. Nella vista Scaffale, passando il mouse su una scheda le varianti escono a ventaglio dietro la lattina principale; un click su una variante apre la vista Locker con quella variante già selezionata. Su dispositivi touch lo stesso effetto si ottiene con un tap.
 
-[![fabiojava.it](https://img.shields.io/badge/fabiojava.it-6A0DAD?style=for-the-badge&logo=googlechrome&logoColor=white)](https://fnspritelocker.fabiojava.it/)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://fnspritelocker.vercel.app/)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)](https://mrpaulgaming.github.io/fnspritelocker/)
-> 💡 **Tip:** They works exactly the same, use the one that works best on your device!
+Il passaggio tra Locker e Scaffale è integrato con la cronologia del browser: i tasti Indietro e Avanti tornano alla vista e alla posizione di scroll precedenti.
 
-</div>
+### Note e valutazioni
 
----
+Ogni variante conserva una valutazione da 1 a 5 stelle e una nota libera. Le note sono modificabili dal pulsante `Modifica` nel pannello della scheda; la descrizione del catalogo e invece sola lettura.
 
-## 📑 Table of Contents
+### Import, export e immagini
 
-- 📸 [Screenshots](#-screenshots)
-- ✨ [Features](#-features)
-- 🚀 [Quick Start](#-quick-start)
-- 📚 [Documentation](#-documentation)
-- 🎯 [Use Cases](#-use-cases)
-- 🛠️ [Built With](#️-built-with)
-- 📂 [Project Structure](#-project-structure)
-- 🤖 [AI Assistance](#-ai-assistance)
-- 🗺️ [Roadmap](#️-roadmap)
-- 🤝 [Contributing](#-contributing)
-- 📧 [Contact](#-contact)
+Dal menu sono disponibili:
 
----
+- esportazione dei progressi in `monster_collection.json`;
+- importazione dei progressi da un file JSON;
+- esportazione del catalogo in `monster-catalog.json`;
+- importazione di un catalogo personalizzato;
+- esportazione PNG dell'intera collezione, delle sole lattine mancanti o della scheda corrente;
+- reset completo dei progressi, con conferma.
 
-## 📸 Screenshots
+### Audio e interazione
 
-### Main Interface
+- Effetti sonori per le interazioni.
+- Musica di sottofondo opzionale.
+- Suoni speciali associati ad alcune lattine.
+- Animazione di sfondo durante la riproduzione musicale.
+- Layout responsive con lista collassabile su schermi piccoli.
+- Sfondo e logo contestuali alla serie selezionata.
 
-![](screenshots/locker-view.png)
+## Anteprima
 
----
+### Vista Locker
 
-| Grid View | Export | Share |
-|-----------|--------|-------|
-| ![](screenshots/grid-view.png) | ![](screenshots/export-menu.png) | ![](screenshots/share-menu.png) |
+La vista Locker e pensata per lavorare su una scheda alla volta: mostra l'immagine grande della lattina, lo stato di completamento, le varianti e i metadati personali.
 
-| Filters and more | Statistics |
-|----------|------------|
-| ![](screenshots/filters.png) ![](screenshots/buttons.png) | ![](screenshots/stats.png)
+![Vista Locker](screenshots/locker-view.png)
 
----
+### Vista Scaffale
 
-# ✨ Features
+La vista Scaffale offre una panoramica visuale della collezione filtrata e consente di confrontare rapidamente completamento e valutazione delle schede.
 
-| Feature | Description |
-|---------|-------------|
-| **🗂️ Collection Management** | Track every Sprite and variant |
-| **⭐ Mastery System** | Mark completed Sprites and their variations with a crown |
-| **📊 Statistics** | Real-time completion tracking |
-| **🔲 Locker & Grid View** | Two different viewing modes |
-| **🔍 Filters & Search** | Find any Sprite instantly |
-| **📋 Sort & Group** | Sort by name, rarity, completion or last updated |
-| **📤 PNG Export** | Export beautiful collection images |
-| **💾 JSON Backup** | Import and export your progress |
-| **🔗 Share Collection** | Share your collection with one URL |
-| **🎵 Background Music** | Optional Fortnite lobby music |
-| **📱 Responsive Design** | Desktop, tablet and mobile support |
-| **📱 Touch Gestures** | Swipe to navigate sprites/variants, long-press for details, double-tap to toggle |
-| **🌐 Multi-language** | Full support for Italian, English, Spanish and French |
-| **🎉 Completion Effects (SFX)** | Confetti, sprite rain and dance video when you complete the collection |
-| **🎥 Animated Sprites** | Some basic sprites feature animated videos when SFX is enabled |
-| **🔄 Season 4 (Override)** | Full support for Season 4 Sprites and variants |
-| **🌱 Sprite Garden** | A beautiful, interactive garden showcasing all your collected Sprites |
-| **📋 Lobby Codes S4** | View and copy special codes to unlock exclusive rewards |
-| **🗺️ Interactive Map** | Draw lines, place markers (Chests, Vaults, Cheat Codes, etc.) – all anchored to the map even when zooming or panning |
-| **🕹️ Retro Mode** | Activate a pixel-art style interface (Season 4 only) |
-| **🧮 Sprite Dust Calculator** | Plan your resummons with cost calculation and missing sprite dust tracking |
-| **🎒 Mastery Pod** | Visualize all your mastered sprites in a special back bling view |
-| **⚡ Override List** | Browse all Season 4 Override abilities with descriptions and icons (press `O`) |
-| **⚙️ Settings & Sprite Companion** | Adjust volume, choose a floating sprite companion that bounces around your screen, and toggle it on/off |
+![Vista Scaffale](screenshots/grid-view.png)
 
----
+## Avvio
 
-## ⌨️ Keyboard Shortcuts
+### Requisiti
 
-| Shortcut | Action |
-|----------|--------|
-| `←` / `→` | Navigate between sprites |
-| `↑` / `↓` | Navigate between variants of the current sprite |
-| `Space` | Toggle the selected variant (acquire/remove) |
-| `M` | Play / Pause music |
-| `Shift + M` | Toggle “Mastered” for the current sprite |
-| `G` | Toggle Grid / Locker view |
-| `S` | Focus the search bar |
-| `I` | Open Statistics |
-| `A` | Open Achievements |
-| `E` | Open the Export menu |
-| `J` | Open the Sprite Garden |
-| `K` | Open the Interactive Map |
-| `P` | Open Mastery Pod |
-| `C` | Open Sprite Dust Calculator |
-| `O` | Open the Override List (Season 4 abilities) |
-| `L` | Open Lobby Codes |
-| `?` | Open the Keyboard Shortcuts menu |
-| `↑ ↑ ↓ ↓ ← → ← → b a` | Quickly switch seasons (Konami Code) |
-| `Ctrl + Alt + R` | Toggle Retro Mode (Season 4 only) |
-| `Esc` | Close any modal or blur the input field |
+- Browser moderno con supporto a JavaScript, `localStorage` e download Blob: Chrome, Edge, Firefox o Safari aggiornati.
+- Connessione internet consigliata per i font Google, `html2canvas` e il fallback della musica.
+- Nessuna installazione di Node.js necessaria per usare l'app.
 
-All shortcuts are available from anywhere in the app (except when typing in input fields).
+### Apertura diretta
 
----
+Aprire `index.html` nel browser. Per un'esperienza piu affidabile, soprattutto per audio e caricamento degli asset, e preferibile usare un server locale.
+In alternativa è possibile utilizzare per uso personale questo sito web: [monster.fabiojava.it]
 
-## 📱 Touch Gestures
+### Server locale
 
-| Gesture | Action |
-|---------|--------|
-| Swipe `←` / `→` on sprite | Navigate between sprites |
-| Swipe `↑` / `↓` on sprite | Navigate between variants |
-| Double-tap on sprite | Toggle the selected variant |
-| Long-press on a variant button | Show variant details (cost, bonus, spawn rate) |
-| Double-tap Chapter 7 - Season ... header | Focus search |
-| Double-tap on logo | Open Sprite Garden |
-| Tap season in footer | Toggle Retro Mode (S4 only) |
-
----
-
-# 🚀 Quick Start
-
-## Clone the repository
+Con Python:
 
 ```bash
-git clone https://github.com/mrpaulgaming/fnspritelocker.git
+python -m http.server 8000
 ```
 
-or simply download the ZIP archive.
+Poi visitare <http://localhost:8000>.
 
-## Run the project
+In alternativa e possibile usare l'estensione VS Code **Live Server** o qualunque server statico equivalente.
 
-Open:
+## Guida rapida
+
+1. Aprire l'app e selezionare una lattina dalla lista a sinistra.
+2. Usare i pulsanti delle varianti per segnare quelle possedute.
+3. Aggiungere una valutazione e, se necessario, una nota personale.
+4. Usare ricerca, serie, ordinamento e toggle per restringere la lista.
+5. Passare a `Scaffale` per una panoramica visuale.
+6. Aprire `Menu` e usare `Esporta JSON` per creare un backup.
+
+### Scorciatoie da tastiera
+
+| Tasto | Azione |
+|---|---|
+| `Freccia sinistra` | Scheda precedente |
+| `Freccia destra` | Scheda successiva |
+| `Freccia su` | Variante successiva |
+| `Freccia giu` | Variante precedente |
+| `Spazio` | Acquisisce tutte le varianti della scheda corrente |
+| `G` | Alterna Locker e Scaffale |
+| `S` | Apre Statistiche |
+| `M` | Apre Menu |
+| `C` | Porta il focus sulla barra di ricerca |
+| `E` | Attiva/disattiva musica ed effetti sonori |
+| `Esc` | Chiude il menu o annulla la modifica del campo attivo |
+
+Le scorciatoie non vengono applicate mentre il focus e dentro un campo di testo, una select o l'editor delle note.
+
+## Persistenza e backup
+
+L'app non invia i progressi a un server. Usa due aree di `localStorage`:
+
+| Chiave | Contenuto |
+|---|---|
+| `monster_tracker_v2` | Possesso, valutazioni, note e data dell'ultimo aggiornamento |
+| `monster_tracker_ui` | Filtri, ordinamento, vista attiva, scheda corrente e variante selezionata |
+
+Il backup dei progressi e un oggetto JSON indicizzato dagli ID delle schede. L'importazione verifica che il file contenga almeno una chiave riconosciuta e poi ricarica la UI. Il caricamento dello stato normalizza i campi mancanti e migra automaticamente il precedente formato in cui una variante era rappresentata da un semplice booleano.
+
+Per sicurezza, esportare periodicamente il file JSON prima di modificare il catalogo o cancellare i dati del browser.
+
+## Catalogo e modello dati
+
+Il catalogo iniziale e l'array globale `window.MONSTER_CATALOG_DATA` in `catalog.js`. Ogni elemento ha questa forma:
+
+```json
+{
+	"id": "monster_example",
+	"name": "Example",
+	"image": "assets/monster/classic/example.png",
+	"series": "classic",
+	"rarity": "rare",
+	"limited": false,
+	"description": "Descrizione della scheda.",
+	"variants": ["Original", "Zero Sugar"],
+	"variantImages": {
+		"Zero Sugar": "assets/monster/classic/example-zero.png"
+	}
+}
+```
+
+Campi obbligatori per l'importazione del catalogo: `id`, `name`, `description`, `rarity` e `variants`. `image` e l'immagine principale; `variantImages` permette di associare un asset specifico a una variante. `limited` indica un'edizione limitata e `series` determina sfondo e logo contestuali.
+
+`catalog-manager.js` espone `window.MonsterCatalog`, con i metodi `set`, `toJSON`, `download` e `importFile`. Questo rende possibile aggiornare il catalogo senza modificare la logica della UI.
+
+## Architettura
 
 ```text
 index.html
+	├── struttura HTML e stili CSS
+	├── stato della collezione e rendering UI
+	├── filtri, ricerca, viste e statistiche
+	├── import/export progressi e immagini
+	└── gestione audio e scorciatoie
+
+catalog.js
+	└── dati statici delle schede e delle varianti
+
+catalog-manager.js
+	└── validazione, serializzazione e import/export del catalogo
+
+assets/
+	├── monster/   immagini delle schede e delle varianti
+	├── ui/        sfondi, frecce e animazioni
+	├── icons/     loghi principali e loghi per serie
+	└── audios/    musica ed effetti locali
+	└── videos/    video usati
 ```
 
-No installation.
+La pagina carica `html2canvas` da CDN per generare i PNG. Il catalogo e i dati di stato sono separati: modificare `catalog.js` non dovrebbe cancellare una collezione gia salvata, mentre un import del catalogo puo aggiungere o rimuovere le schede disponibili.
 
-No dependencies.
-
-No server.
-
-Everything runs locally inside your browser.
-
----
-
-# 📚 Documentation
-
-Detailed documentation is available inside the **docs/** folder.
-
-- 📖 FEATURES.md
-- 🚀 INSTALLATION.md
-- 🎮 USAGE.md
-- 📤 SHARE_AND_EXPORT.md
-- 🎨 CUSTOMIZATION.md
-- 📂 PROJECT_STRUCTURE.md
-- ⚙️ TECHNICAL.md
-- ❓ FAQ.md
-- 🗺️ ROADMAP.md
-
----
-
-# 🎯 Use Cases
-
-### 🎮 Fortnite Players
-
-- Track every collected Sprite
-- Complete every variant
-- Monitor overall completion
-- Compare collections with friends
-
-### 🎥 Content Creators
-
-- Export collection images
-- Showcase progress
-- Share collection links
-
-### 👨‍💻 Developers
-
-- Learn SPA architecture
-- Study LocalStorage usage
-- Explore CSS animations
-- Understand state management
-
----
-
-# 🛠️ Built With
-
-| Technology | Purpose |
-|------------|---------|
-| HTML5 | Semantic structure |
-| CSS3 | Responsive UI & animations |
-| JavaScript (ES6+) | Application logic |
-| LocalStorage | Persistent saves |
-| html2canvas | PNG Export |
-| Twemoji | Emoji rendering |
-
----
-
-# 📂 Project Structure
+## Struttura del progetto
 
 ```text
-fortnite-sprite-locker/
-│
-├── index.html                 # Main application (all-in-one)
-├── README.md                  # This file
-├── qr-code.png                # Static QR code image for the modal
-│
-├── assets/                    # All media resources
-│   ├── sprites/               # Sprite images (PNG, named by ID, e.g. water_basic.png)
-│   ├── backgrounds/           # Background images for variants (e.g. gold-bg.png, galaxy-bg.png)
-│   ├── icons/                 # Icons (logo, GitHub, chests, vaults, cheat codes, map markers, etc.)
-│   ├── ui/                    # UI elements (backgrounds, mastered crown, sprite dust, maps, pod images, etc.)
-│   ├── audios/                # Audio files (lobby-music.mp3, click.mp3, extraction.mp3)
-│   └── videos/                # Video files (intro.mp4, dancing.webm, sprite animations, trailers, etc.)
-│
-├── docs/                      # Detailed documentation (Markdown)
-│   ├── FEATURES.md
-│   ├── INSTALLATION.md
-│   ├── USAGE.md
-│   ├── SHARE_AND_EXPORT.md
-│   ├── CUSTOMIZATION.md
-│   ├── PROJECT_STRUCTURE.md
-│   ├── TECHNICAL.md
-│   ├── FAQ.md
-│   └── ROADMAP.md
-│
-└── screenshots/               # Screenshots used in the README
-    ├── locker-view.png
-    ├── grid-view.png
-    ├── export-menu.png
-    ├── share-menu.png
-    ├── filters.png
-    ├── stats.png
-    └── buttons.png
+monster-collector/
+├── index.html
+├── catalog.js
+├── catalog-manager.js
+├── README.md
+├── screenshots/
+│   ├── locker-view.png
+│   └── grid-view.png
+└── assets/
+		├── audios/
+		├── icons/
+		├── monster/
+		│   ├── beast/
+		│   ├── classic/
+		│   ├── dragon/
+		│   ├── hydro/
+		│   ├── java/
+		│   ├── juice/
+		│   ├── muscle/
+		│   ├── rehab/
+		│   ├── reserve/
+		│   ├── special/
+		│   └── ultra/
+		└── ui/
+		└── videos/
 ```
 
----
+## Personalizzazione e sviluppo
 
-# 🤖 AI Assistance
+### Aggiungere una scheda
 
-AI tools (including DeepSeek) assisted during development for:
+1. Inserire l'immagine in una cartella di `assets/monster/`.
+2. Aggiungere un oggetto all'array di `catalog.js`.
+3. Inserire le varianti in `variants`.
+4. Usare `variantImages` solo quando una variante richiede un'immagine distinta.
+5. Ricaricare l'app e verificare filtri, navigazione e immagini.
 
-- 🐛 Bug fixing
-- 🎨 UI/UX improvements
-- ⚡ Performance optimization
-- 📝 Documentation
+### Aggiungere una serie
 
-Final implementation and project design were manually developed and reviewed.
+Per una nuova serie occorre aggiornare sia l'opzione in `#filter-series`, sia le mappe `CATEGORY_BG_MAP` e `CATEGORY_LOGO_MAP` in `index.html`, oltre ad aggiungere gli asset corrispondenti.
 
----
+### Verifica manuale consigliata
 
-# 🗺️ Roadmap
+- apertura con catalogo vuoto;
+- selezione e possesso di singole varianti;
+- note e valutazioni;
+- filtri combinati e ordinamento;
+- cambio Locker/Scaffale;
+- export e re-import dei progressi;
+- import di un catalogo valido e di uno non valido;
+- esportazione PNG;
+- layout mobile e scorciatoie.
 
-| Feature | Status |
-|---------|--------|
-| Light Theme | 📋 Planned |
-| PDF Export | 📋 Planned |
-| Achievement System | ✅ Done |
-| Cloud Backup | 📋 Planned |
-| Multi-season Support | ✅ Done |
-| Mobile App | ✅ (Partly) Done |
+## Limitazioni note
 
-See **ROADMAP.md** for the complete roadmap.
+- I dati sono locali al browser e non vengono sincronizzati tra dispositivi.
+- La cancellazione dei dati del sito elimina la collezione se non e stato creato un backup JSON.
+- Font, `html2canvas` e il fallback musicale dipendono da risorse esterne quando non sono disponibili localmente.
+- Il browser puo richiedere una prima interazione dell'utente prima di consentire la riproduzione audio.
+- Il progetto non include test automatici o una pipeline di build.
 
----
+## Contributi
 
-# 🤝 Contributing
+Per proporre modifiche:
 
-Contributions are welcome!
+1. Creare un fork del progetto.
+2. Creare un branch descrittivo.
+3. Mantenere compatibili i percorsi degli asset e il formato del catalogo.
+4. Verificare manualmente le funzionalita elencate sopra.
+5. Aprire una pull request con una descrizione e, quando utile, uno screenshot.
 
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Open a Pull Request
+## Licenza e asset
 
----
-
-# 📧 Contact
-
-**Developer:** Paul
-
-- 📺 YouTube: **[@MrPaulGaming](https://www.youtube.com/@MrPaulGaming)**
-- 🐙 GitHub: **[mrpaulgaming/fnspritelocker](https://github.com/mrpaulgaming/fnspritelocker)**
-- 🐞 Issues: [GitHub Issues](https://github.com/mrpaulgaming/fnspritelocker/issues)
-
----
-
-# ⭐ Support
-
-If you enjoy this project:
-
-- ⭐ Star the repository
-- 📢 Share it with your friends
-- 🐛 Report bugs
-- 💡 Suggest new features
-
----
-
-<div align="center">
-
-**Built with ❤️ using HTML, CSS and JavaScript**
-
-© 2026 Paul
-
-</div>
+Il progetto e un catalogo amatoriale per uso personale. I marchi, i loghi e le immagini Monster Energy appartengono ai rispettivi proprietari. Verificare i diritti d'uso degli asset prima di distribuire una versione pubblica o commerciale.
