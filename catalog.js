@@ -69,10 +69,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Versione zero zuccheri, disponibile in UK/Europa.",
         "variants":  [
                          "Full Throttle",
-						 "Top Speed"
+						 "Top Speed",
+                         "Lewis Hamilton"
                      ],
 					 "variantImages": {
-						"Top Speed": "assets/monster/classic/top-speed.png"
+						"Top Speed": "assets/monster/classic/top-speed.png",
+						"Lewis Hamilton": "assets/monster/classic/lewis-hamilton.png"
 					  }
     },
     {
