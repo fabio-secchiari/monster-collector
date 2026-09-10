@@ -231,8 +231,8 @@ window.MONSTER_CATALOG_DATA = [
                          "Extra Strength Can",
                      ],
                      "variantImages":  {
-                              "M3 Super Concentrated": "assets/monster/classic/m3-super.png",
-                              "M3 Extra Strength Can": "assets/monster/classic/m3-extra-can.png",
+                              "Super Concentrated": "assets/monster/classic/m3-super.png",
+                              "Extra Strength Can": "assets/monster/classic/m3-extra-can.png",
                           }
     },
     {
