@@ -111,7 +111,7 @@ La vista Scaffale offre una panoramica visuale della collezione filtrata e conse
 ### Apertura diretta
 
 Aprire `index.html` nel browser. Per un'esperienza piu affidabile, soprattutto per audio e caricamento degli asset, e preferibile usare un server locale.
-In alternativa è possibile utilizzare per uso personale questo sito web: [monster.fabiojava.it](monster.fabiojava.it)
+In alternativa è possibile utilizzare per uso personale questo sito web: [monster.fabiojava.it](https://monster.fabiojava.it/)
 
 ### Server locale
 
