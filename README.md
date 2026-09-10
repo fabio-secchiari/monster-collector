@@ -244,6 +244,7 @@ monster-collector/
 		│   ├── special/
 		│   └── ultra/
 		└── ui/
+		└── videos/
 ```
 
 ## Personalizzazione e sviluppo

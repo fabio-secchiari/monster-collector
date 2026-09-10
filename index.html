@@ -3667,11 +3667,6 @@ function closeVideo() {
 
 document.getElementById('egg-close').addEventListener('click', closeVideo);
 
-// --- Autoplay intro alla prima visita (resta invariato) ---
-if (!localStorage.getItem(EASTER_EGG_KEY)) {
-  setTimeout(() => playVideo(INTRO_VIDEO), 800);
-}
-
 // ============================================================
 //  EASTER EGG NASCOSTO
 // ============================================================
@@ -3684,7 +3679,7 @@ document.addEventListener('keydown', (e) => {
   typedBuffer = (typedBuffer + e.key.toLowerCase()).slice(-7);
   if (typedBuffer === 'monster') {
     typedBuffer = '';
-    playVideo(EASTER_VIDEO);
+    playVideo(INTRO_VIDEO);
   }
 });
 
