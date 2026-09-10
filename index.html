@@ -283,14 +283,22 @@ body {
 .app {
   display: grid;
   grid-template-columns: 380px 1fr;
-  grid-template-rows: auto auto 1fr auto; /* NUOVO: riga centrale elastica */
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "header  header"
+    "filters filters"
+    "sidebar panel"
+    "footer  footer";
   gap: 16px;
   padding: 16px;
   min-height: 100vh;
   max-width: 1440px;
   margin: 0 auto;
-  align-items: stretch;
 }
+
+.sidebar     { grid-area: sidebar; }
+.panel       { grid-area: panel;   }
+.footer      { grid-area: footer;  }
 
 /* ===== SIDEBAR ===== */
 .sidebar {
@@ -303,7 +311,9 @@ body {
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
-  min-height: 0;           /* NUOVO: permette al figlio flex di ridursi */
+  min-height: 0;
+  align-self: stretch;      /* si allunga quanto il pannello */
+  /* NIENTE height, NIENTE max-height */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -313,7 +323,7 @@ body {
   overflow-x: hidden;
   flex: 1 1 auto;
   min-height: 0;
-  padding: 4px 8px 4px 4px;
+  padding: 4px 10px 4px 6px;   /* margine per non tagliare l'ombra verde */
 }
 
 .sidebar .search {
@@ -793,8 +803,8 @@ body {
 }
 
 .grid-card .grid-image img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
@@ -844,112 +854,91 @@ body {
 
 .grid-card-stack:hover { z-index: 50; }
 
-/* Card base (quella sempre visibile) */
-.grid-card-stack .grid-card.base {
+.grid-card.base .grid-image {
   position: relative;
-  z-index: 10;
-  margin-top: auto;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-.grid-card-stack:hover .grid-card.base {
-  transform: translateY(6px) scale(0.97);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  overflow: visible;
 }
 
-/* Contenitore ventaglio */
-.variants-fan {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 200px;
-  pointer-events: none;
-  z-index: 5;
-  perspective: 1000px;
-}
-
-/* Singola variante nel ventaglio */
-.fan-item {
-  --offset: calc(var(--i) - (var(--total) - 1) / 2);
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 92px;
-  height: 128px;
-  margin-left: -46px;
-  background: linear-gradient(180deg, #14141f, #0a0a0f);
-  border: 1.5px solid rgba(0,255,65,0.25);
-  border-radius: 10px;
-  padding: 6px 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  transform-origin: bottom center;
-  /* Stato iniziale: nascosto DIETRO la card base */
-  transform: translateX(0) translateY(30px) rotate(0deg) scale(0.5);
-  opacity: 0;
-  transition: all 0.45s cubic-bezier(.2,.9,.3,1);
-  transition-delay: calc(var(--i) * 35ms);
-  pointer-events: none;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
-  cursor: pointer;
-}
-
-.fan-item img {
-  max-width: 100%;
-  max-height: 75px;
+.grid-card.base .grid-image img.base-can {
+  position: relative;      /* necessario per lo z-index */
+  z-index: 10;             /* SOPRA il .variants-fan che ha z-index: 5 */
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   pointer-events: none;
 }
 
-.fan-item .fan-label {
-  font-size: 9px;
-  font-weight: 700;
-  color: #00ff41;
-  text-align: center;
-  line-height: 1.1;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.variants-fan {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
   pointer-events: none;
 }
 
-.fan-item .fan-owned-dot {
+.fan-item {
+  --offset: 1;              /* default, sovrascritto da JS */
   position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #444;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 110px;
+  margin: -55px 0 0 -35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(0) rotate(0deg) scale(0.4);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(.2,.9,.3,1);
+  transition-delay: calc(var(--i) * 40ms);
+  pointer-events: none;
+  cursor: pointer;
 }
-.fan-item.owned .fan-owned-dot { background: #00ff41; box-shadow: 0 0 8px #00ff41; }
 
-/* Hover sullo stack → escono a ventaglio */
-.grid-card-stack:hover .fan-item {
+.fan-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+  pointer-events: none;
+}
+
+/* Hover sulla card → varianti escono (PIÙ VICINE: 38px invece di 58) */
+.grid-card.base:hover .fan-item {
   opacity: 1;
   pointer-events: auto;
   transform:
-    translateX(calc(var(--offset) * 58px))
-    translateY(calc(-40px + abs(var(--offset)) * 12px))
+    translateX(calc(var(--offset) * 32px))
     rotate(calc(var(--offset) * 11deg))
     scale(1);
 }
 
-/* Hover su una singola variante → si alza */
-.fan-item:hover {
+/* Hover su una variante → si alza */
+.grid-card.base:hover .fan-item:hover {
   transform:
-    translateX(calc(var(--offset) * 58px))
-    translateY(calc(-75px + abs(var(--offset)) * 12px))
+    translateX(calc(var(--offset) * 32px))
+    translateY(-14px)
     rotate(calc(var(--offset) * 11deg))
-    scale(1.18) !important;
-  z-index: 200;
-  border-color: #00ff41;
-  box-shadow: 0 14px 36px rgba(0,255,65,0.45);
+    scale(1.15);
+  z-index: 100;
+}
+
+@media (hover: none) {
+  .grid-card.base.fan-open .fan-item {
+    opacity: 1;
+    pointer-events: auto;
+    transform:
+      translateX(calc(var(--offset) * 32px))
+      rotate(calc(var(--offset) * 11deg))
+      scale(1);
+  }
+  .grid-card.base.fan-open .fan-item:active {
+    transform:
+      translateX(calc(var(--offset) * 32px))
+      translateY(-14px)
+      rotate(calc(var(--offset) * 11deg))
+      scale(1.15);
+    z-index: 100;
+  }
 }
 
 /* ===== FOOTER ===== */
@@ -1080,6 +1069,7 @@ body {
   .app {
     grid-template-columns: 1fr;
     padding: 10px;
+    align-items: stretch;
   }
   .sidebar {
     max-height: 50vh;
@@ -2707,7 +2697,6 @@ document.getElementById('btn-grid-toggle').addEventListener('click', function() 
 function buildGridView() {
   const grid = document.getElementById('grid-view');
   grid.innerHTML = '';
-
   const filtered = getSortedAndFilteredCans();
   const groupBySeries = document.getElementById('toggle-group-series').checked;
 
@@ -2718,89 +2707,39 @@ function buildGridView() {
   }
 
   const seriesBgMap = {
-    classic: 'assets/ui/bg-classic.png', ultra: 'assets/ui/bg-ultra.png',
-    juice: 'assets/ui/bg-juice.png',     java: 'assets/ui/bg-java.png',
-    rehab: 'assets/ui/bg-rehab.png',     reserve: 'assets/ui/bg-reserve.png',
-    special: 'assets/ui/bg-special.png', hydro: 'assets/ui/bg-hydro.png',
-    muscle: 'assets/ui/bg-muscle.png',   beast: 'assets/ui/bg-beast.png',
-    dragon: 'assets/ui/bg-dragon.png'
+    classic:'assets/ui/bg-classic.png', ultra:'assets/ui/bg-ultra.png',
+    juice:'assets/ui/bg-juice.png', java:'assets/ui/bg-java.png',
+    rehab:'assets/ui/bg-rehab.png', reserve:'assets/ui/bg-reserve.png',
+    special:'assets/ui/bg-special.png', hydro:'assets/ui/bg-hydro.png',
+    muscle:'assets/ui/bg-muscle.png', beast:'assets/ui/bg-beast.png',
+    dragon:'assets/ui/bg-dragon.png'
   };
-
   const seriesLabels = {
-    classic: 'Classic', ultra: 'Ultra', juice: 'Juice', java: 'Java (Caffè)',
-    rehab: 'Rehab', reserve: 'Reserve', special: 'Special Edition',
-    hydro: 'Hydro', muscle: 'Muscle', beast: 'Beast Unleashed', dragon: 'Dragon Tea'
+    classic:'Classic', ultra:'Ultra', juice:'Juice', java:'Java (Caffè)',
+    rehab:'Rehab', reserve:'Reserve', special:'Special Edition',
+    hydro:'Hydro', muscle:'Muscle', beast:'Beast Unleashed', dragon:'Dragon Tea'
   };
 
-  function loadImgWithFallback(imgEl, primary, fallback) {
+  function loadImg(imgEl, primary, fallback) {
     const t = new Image();
-    t.onload = () => { imgEl.src = primary + '?' + Date.now(); };
+    t.onload  = () => { imgEl.src = primary  + '?' + Date.now(); };
     t.onerror = () => {
       const t2 = new Image();
-      t2.onload = () => { imgEl.src = fallback + '?' + Date.now(); };
+      t2.onload  = () => { imgEl.src = fallback + '?' + Date.now(); };
       t2.onerror = () => { imgEl.src = 'assets/monster/classic.png'; };
       t2.src = fallback;
     };
     t.src = primary;
   }
 
-  function renderCanStack(can) {
+  function renderCard(can) {
     const st = state[can.id] || { variants: {} };
-    const { owned: totalOwned, total: totalVariants } = getVariantCount(can);
-    const percent = totalVariants === 0 ? 0 : Math.round((totalOwned / totalVariants) * 100);
+    const { owned: ownedCount, total } = getVariantCount(can);
+    const percent = total === 0 ? 0 : Math.round((ownedCount / total) * 100);
 
-    // --- STACK ---
-    const stack = document.createElement('div');
-    stack.className = 'grid-card-stack';
-    stack.setAttribute('data-series', can.series);
-
-    // --- FAN ---
-    const fan = document.createElement('div');
-    fan.className = 'variants-fan';
-
-    // Se nessuna variante è posseduta, mostra le prime 3 per non fare un ventaglio enorme
-    const ownedVariants = can.variants.filter(v => st.variants[v]?.owned);
-    const variantsToShow = ownedVariants.length > 0
-      ? ownedVariants
-      : can.variants.slice(0, Math.min(3, can.variants.length));
-
-    variantsToShow.forEach((variant, i) => {
-      const item = document.createElement('div');
-      item.className = 'fan-item' + (st.variants[variant]?.owned ? ' owned' : '');
-      item.style.setProperty('--i', i);
-      item.style.setProperty('--total', variantsToShow.length);
-
-      const img = document.createElement('img');
-      loadImgWithFallback(img, getVariantImageForCan(can, variant), can.image || 'assets/monster/classic.png');
-      item.appendChild(img);
-
-      const label = document.createElement('div');
-      label.className = 'fan-label';
-      label.textContent = variant;
-      item.appendChild(label);
-
-      const dot = document.createElement('span');
-      dot.className = 'fan-owned-dot';
-      item.appendChild(dot);
-
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Esci da grid e apri il locker con quella variante selezionata
-        if (gridMode) setGridMode(false);
-        selectIndex(CANS.indexOf(can));
-        window.selectedVariant = variant;
-        saveSelectedVariant(can.id, variant);
-        selectIndex(CANS.indexOf(can)); // refresh
-      });
-
-      fan.appendChild(item);
-    });
-
-    stack.appendChild(fan);
-
-    // --- CARD BASE ---
     const card = document.createElement('div');
     card.className = 'grid-card base';
+    card.setAttribute('data-series', can.series);
 
     const imgDiv = document.createElement('div');
     imgDiv.className = 'grid-image';
@@ -2808,14 +2747,56 @@ function buildGridView() {
     imgDiv.style.backgroundSize = 'cover';
     imgDiv.style.backgroundPosition = 'center';
 
+    // Ventaglio (solo se >= 2 varianti)
+    const baseVariant = can.variants[0];
+    const fanVariants = can.variants.slice(1);
+
+    if (fanVariants.length >= 1) {
+      const fan = document.createElement('div');
+      fan.className = 'variants-fan';
+
+      // Pattern alternato: +1, -1, +2, -2, +3, -3, ...
+      function fanOffset(i) {
+        const sign = i % 2 === 0 ? 1 : -1;
+        const mag = Math.floor(i / 2) + 1;
+        return sign * mag;
+      }
+
+      fanVariants.forEach((variant, i) => {
+        const item = document.createElement('div');
+        item.className = 'fan-item';
+        item.style.setProperty('--i', i);
+        item.style.setProperty('--offset', fanOffset(i));   /* ← chiave */
+
+        const img = document.createElement('img');
+        loadImg(img, getVariantImageForCan(can, variant), can.image || 'assets/monster/classic.png');
+        item.appendChild(img);
+
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentIndex = CANS.indexOf(can);
+          window.selectedVariant = variant;
+          saveSelectedVariant(can.id, variant);
+          if (gridMode) setGridMode(false);
+          else selectIndex(currentIndex);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        fan.appendChild(item);
+      });
+      imgDiv.appendChild(fan);
+    }
+
+    // Lattina base (SOPRA il ventaglio)
     const baseImg = document.createElement('img');
-    loadImgWithFallback(baseImg, can.image || 'assets/monster/classic.png', 'assets/monster/classic.png');
+    baseImg.className = 'base-can';
+    loadImg(baseImg, can.image || 'assets/monster/classic.png', 'assets/monster/classic.png');
     imgDiv.appendChild(baseImg);
 
+    // Testi
     const name = document.createElement('div');
     name.className = 'grid-name';
-    name.textContent = can.name;
-    if (can.limited) name.textContent += ' ⭐';
+    name.textContent = can.name + (can.limited ? ' ⭐' : '');
 
     const sub = document.createElement('div');
     sub.className = 'grid-series';
@@ -2830,39 +2811,48 @@ function buildGridView() {
 
     const progText = document.createElement('div');
     progText.style.cssText = 'font-size:10px;color:var(--muted);margin-top:2px;';
-    progText.textContent = `${totalOwned}/${totalVariants} · ${percent}%`;
+    progText.textContent = `${ownedCount}/${total} · ${percent}%`;
 
-    card.appendChild(imgDiv);
-    card.appendChild(name);
-    card.appendChild(sub);
-    card.appendChild(prog);
-    card.appendChild(progText);
+    card.append(imgDiv, name, sub, prog, progText);
 
-    card.addEventListener('click', () => {
+    const isTouch = window.matchMedia('(hover: none)').matches;
+
+    card.addEventListener('click', (e) => {
+      // Su mobile: il primo tap apre il ventaglio, il secondo entra nel locker
+      if (isTouch && can.variants.length >= 2 && !card.classList.contains('fan-open')) {
+        e.stopPropagation();
+        // Chiudi gli altri ventagli aperti
+        document.querySelectorAll('.grid-card.base.fan-open').forEach(c => c.classList.remove('fan-open'));
+        card.classList.add('fan-open');
+        return;
+      }
+      // Comportamento normale
+      currentIndex = CANS.indexOf(can);
+      window.selectedVariant = can.variants[0];
+      saveSelectedVariant(can.id, can.variants[0]);
       if (gridMode) setGridMode(false);
-      selectIndex(CANS.indexOf(can));
+      else selectIndex(currentIndex);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    stack.appendChild(card);
-    return stack;
+    return card;
   }
 
   if (groupBySeries) {
     const groups = {};
     filtered.forEach(can => {
-      if (!groups[can.series]) groups[can.series] = [];
-      groups[can.series].push(can);
+      (groups[can.series] = groups[can.series] || []).push(can);
     });
     for (const [series, cans] of Object.entries(groups)) {
-      const header = document.createElement('div');
-      header.className = 'series-header';
-      header.style.cssText = 'grid-column:1/-1;font-size:14px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:1px;padding:12px 0 6px 0;border-bottom:2px solid rgba(0,255,65,0.1);margin-top:12px;';
-      header.textContent = seriesLabels[series] || series;
-      grid.appendChild(header);
-      cans.forEach(can => grid.appendChild(renderCanStack(can)));
+      const h = document.createElement('div');
+      h.className = 'series-header';
+      h.style.cssText = 'grid-column:1/-1;font-size:14px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:1px;padding:12px 0 6px 0;border-bottom:2px solid rgba(0,255,65,0.1);margin-top:12px;';
+      h.textContent = seriesLabels[series] || series;
+      grid.appendChild(h);
+      cans.forEach(can => grid.appendChild(renderCard(can)));
     }
   } else {
-    filtered.forEach(can => grid.appendChild(renderCanStack(can)));
+    filtered.forEach(can => grid.appendChild(renderCard(can)));
   }
 
   grid.classList.add('active');
@@ -3396,6 +3386,13 @@ window.addEventListener('popstate', function(e) {
       }
       selectIndex(index);
     }
+  }
+});
+
+// Su mobile: tocca fuori da una card per chiudere il ventaglio
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.grid-card.base')) {
+    document.querySelectorAll('.grid-card.base.fan-open').forEach(c => c.classList.remove('fan-open'));
   }
 });
 </script>
