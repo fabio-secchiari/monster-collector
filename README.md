@@ -60,7 +60,9 @@ Il catalogo incluso contiene **154 schede**, **245 varianti** e **11 serie**:
 ### Due viste
 
 - **Locker**: dettaglio della scheda corrente, immagine, serie, varianti, note, valutazione e descrizione.
-- **Scaffale**: griglia compatta delle schede filtrate, con immagine, serie, completamento e stelle.
+- **Scaffale**: griglia compatta delle schede filtrate, con immagine, serie, completamento e stelle. Nella vista Scaffale, passando il mouse su una scheda le varianti escono a ventaglio dietro la lattina principale; un click su una variante apre la vista Locker con quella variante già selezionata. Su dispositivi touch lo stesso effetto si ottiene con un tap.
+
+Il passaggio tra Locker e Scaffale è integrato con la cronologia del browser: i tasti Indietro e Avanti tornano alla vista e alla posizione di scroll precedenti.
 
 ### Note e valutazioni
 
@@ -111,7 +113,7 @@ La vista Scaffale offre una panoramica visuale della collezione filtrata e conse
 ### Apertura diretta
 
 Aprire `index.html` nel browser. Per un'esperienza piu affidabile, soprattutto per audio e caricamento degli asset, e preferibile usare un server locale.
-In alternativa è possibile utilizzare per uso personale questo sito web: [monster.fabiojava.it](https://monster.fabiojava.it/)
+In alternativa è possibile utilizzare per uso personale questo sito web: [monster.fabiojava.it]
 
 ### Server locale
 
@@ -146,6 +148,8 @@ In alternativa e possibile usare l'estensione VS Code **Live Server** o qualunqu
 | `G` | Alterna Locker e Scaffale |
 | `S` | Apre Statistiche |
 | `M` | Apre Menu |
+| `C` | Porta il focus sulla barra di ricerca |
+| `E` | Attiva/disattiva musica ed effetti sonori |
 | `Esc` | Chiude il menu o annulla la modifica del campo attivo |
 
 Le scorciatoie non vengono applicate mentre il focus e dentro un campo di testo, una select o l'editor delle note.
@@ -208,6 +212,7 @@ assets/
 	├── ui/        sfondi, frecce e animazioni
 	├── icons/     loghi principali e loghi per serie
 	└── audios/    musica ed effetti locali
+	└── videos/    video usati
 ```
 
 La pagina carica `html2canvas` da CDN per generare i PNG. Il catalogo e i dati di stato sono separati: modificare `catalog.js` non dovrebbe cancellare una collezione gia salvata, mentre un import del catalogo puo aggiungere o rimuovere le schede disponibili.
