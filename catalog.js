@@ -734,8 +734,15 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Caffe e latte, la combinazione perfetta per la mattina.",
         "variants":  [
-                         "Mean Bean"
-                     ]
+                         "Mean Bean",
+                         "Java 300 French Vanilla",
+                         "Killer Brew Mean Bean"
+                     ],
+                        "variantImages": {
+                            "Java 300 French Vanilla": "assets/monster/java/french-vanilla.webp",
+                            "Killer Brew Mean Bean": "assets/monster/java/killer-brew-mean-bean.webp"
+                        }
+
     },
     {
         "id":  "monster_java_loca_moca",
@@ -746,8 +753,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Caffe con cioccolato e latte.",
         "variants":  [
-                         "Loca Moca"
-                     ]
+                         "Loca Moca",
+                         "Java 300 Mocha",
+                         "Killer Brew Loca Moca"
+                     ],
+                        "variantImages": {
+                            "Java 300 Mocha": "assets/monster/java/mocha-300.webp",
+                            "Killer Brew Loca Moca": "assets/monster/java/killer-brew-loca-moca.webp"
+                        }
     },
     {
         "id":  "monster_java_salted",
@@ -770,8 +783,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata, caffe con crema irlandese.",
         "variants":  [
-                         "Irish Creme"
-                     ]
+                         "Irish Creme",
+                         "Irish Blend"
+                     ],
+                        "variantImages": {
+                            "Irish Blend": "assets/monster/java/irish-blend.png"
+                        }
     },
     {
         "id":  "monster_java_kona",
@@ -783,30 +800,6 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Miscela di caffe Kona hawaiano.",
         "variants":  [
                          "Kona Blend"
-                     ]
-    },
-    {
-        "id":  "monster_java_french_vanilla_300",
-        "name":  "Java 300 French Vanilla",
-        "image":  "assets/monster/java/french-vanilla.webp",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Caffe francese vaniglia con 300mg di caffeina.",
-        "variants":  [
-                         "French Vanilla 300"
-                     ]
-    },
-	{
-        "id":  "monster_java_mocha_300",
-        "name":  "Java 300 Mocha",
-        "image":  "assets/monster/java/mocha-300.webp",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  false,
-        "description":  "Caffe mocha con 300mg di caffeina.",
-        "variants":  [
-                         "Mocha 300"
                      ]
     },
     {
@@ -1369,20 +1362,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Java Monster Vanilla Light, caffe a basso contenuto. Discontinued.",
         "variants":  [
-                         "Vanilla Light"
-                     ]
-    },
-	{
-        "id":  "catalog_java_7",
-        "name":  "Java Lo-Ball",
-        "image":  "assets/monster/java/lo-ball.png",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Java Monster Lo-Ball, caffe a basso contenuto. Discontinued.",
-        "variants":  [
+                         "Vanilla Light",
                          "Lo-Ball"
-                     ]
+                     ],
+                        "variantImages": {
+                            "Lo-Ball": "assets/monster/java/lo-ball.png"
+                        }
     },
     {
         "id":  "catalog_java_8",
@@ -1430,18 +1415,6 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Java Toffee, gusto toffee. Discontinued.",
         "variants":  [
                          "Toffee"
-                     ]
-    },
-    {
-        "id":  "catalog_java_12",
-        "name":  "Java Irish Blend",
-        "image":  "assets/monster/java/irish-blend.png",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Java Irish Blend, miscela irlandese. Discontinued.",
-        "variants":  [
-                         "Irish Blend"
                      ]
     },
     {
