@@ -9,13 +9,15 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La Monster originale, il gusto che ha iniziato tutto.",
         "variants":  [
                          "Original",
-						 "Original CoD",
+						 "OG Modern Warfare",
+                         "OG Oscar Piastri",
                          "Mega (US)",
                          "Mega (EU)",
                          "BFC",
                      ],
 					 "variantImages":  {
-						      "Original CoD": "assets/monster/classic/original-cod.png",
+						      "OG Modern Warfare": "assets/monster/classic/original-cod.png",
+                              "OG Oscar Piastri": "assets/monster/classic/oscar-piastri.png",
                               "Mega (US)": "assets/monster/classic/original-mega-us.png",
                               "Mega (EU)": "assets/monster/classic/original-mega-eu.png",
                               "BFC": "assets/monster/classic/original-bfc.png",
@@ -435,10 +437,10 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Gusto fragola e crema, zero zuccheri.",
         "variants":  [
                          "Ultra Strawberry Dreams",
-                         "Ultra Strawberry Dream (grey cap)"
+                         "Ultra Strawberry Dream (EU)"
                      ],
                      "variantImages": {
-                        "Ultra Strawberry Dream (grey cap)": "assets/monster/ultra/ultra-strawberry-dreams-grey.png"
+                        "Ultra Strawberry Dream (EU)": "assets/monster/ultra/ultra-strawberry-dreams-grey.png"
                      }
     },
     {
@@ -990,18 +992,6 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Edizione UK dedicata a Lewis Hamilton. Gusto esclusivo.",
         "variants":  [
                          "Lewis Hamilton"
-                     ]
-    },
-    {
-        "id":  "monster_oscar_piastri",
-        "name":  "Oscar Piastri",
-        "image":  "assets/monster/special/oscar-piastri.png",
-        "series":  "special",
-        "rarity":  "legendary",
-        "limited":  true,
-        "description":  "NUOVO 2026! Edizione limitata per Oscar Piastri.",
-        "variants":  [
-                         "Oscar Piastri"
                      ]
     },
     {
@@ -1982,10 +1972,10 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Java Farmer's Oats Vegan Coffee. Caffè con avena. Discontinued.",
         "variants":  [
                          "Farmer's Oats",
-                         "Farmer's Oats (Canada)"
+                         "Farmer's Oats (CA)"
                      ],
                      "variantImages": { 
-                        "Farmer's Oats (Canada)": "assets/monster/java/java-farmer-oats-canada.png"
+                        "Farmer's Oats (CA)": "assets/monster/java/java-farmers-oats-canada.png"
                      }
     },
     {
