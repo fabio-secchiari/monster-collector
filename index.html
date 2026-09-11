@@ -1138,6 +1138,25 @@ body.grid-mode .sidebar {
       scale(1);
   }
 
+  /* Consenti scroll verticale in locker view su mobile */
+  body:not(.grid-mode) {
+    overflow-y: auto;
+    height: auto;
+  }
+  body:not(.grid-mode) .app {
+    height: auto;
+    min-height: 100vh;
+  }
+  body:not(.grid-mode) .panel {
+    overflow: visible;
+  }
+  body:not(.grid-mode) #locker-view {
+    height: auto;
+  }
+  body:not(.grid-mode) .right-panel {
+    overflow: visible;
+  }
+  
   /* Footer compatto */
   .footer {
     font-size: 10px;
