@@ -10,6 +10,7 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original",
 						 "OG Modern Warfare",
+                         "OG Apex Legends",
                          "OG Oscar Piastri",
                          "Mega (US)",
                          "Mega (EU)",
@@ -17,6 +18,7 @@ window.MONSTER_CATALOG_DATA = [
                      ],
 					 "variantImages":  {
 						      "OG Modern Warfare": "assets/monster/classic/original-cod.png",
+                              "OG Apex Legends": "assets/monster/classic/original-apex.png",
                               "OG Oscar Piastri": "assets/monster/classic/oscar-piastri.png",
                               "Mega (US)": "assets/monster/classic/original-mega-us.png",
                               "Mega (EU)": "assets/monster/classic/original-mega-eu.png",
@@ -90,11 +92,13 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Lo-Carb",
                          "Mega Lo-Carb (US)",
-                         "BFC Lo-Carb"
+                         "BFC Lo-Carb",
+                         "Apex Legends"
                      ],
                      "variantImages":  {
                               "Mega Lo-Carb (US)": "assets/monster/classic/lo-carb-mega.png",
-                              "BFC Lo-Carb": "assets/monster/classic/lo-carb-bfc.png"
+                              "BFC Lo-Carb": "assets/monster/classic/lo-carb-bfc.png",
+                              "Apex Legends": "assets/monster/classic/lo-carb-apex.png"
                           }
     },
     {
@@ -186,6 +190,22 @@ window.MONSTER_CATALOG_DATA = [
                           }
     },
     {
+        "id":  "monster_vanilla_shot",
+        "name":  "Vanilla Shot",
+        "image":  "assets/monster/classic/vanilla-shot.png",
+        "series":  "classic",
+        "rarity":  "uncommon",
+        "limited":  false,
+        "description":  "Nuovo gusto fragola in arrivo ad ottobre 2026.",
+        "variants":  [
+                         "Original",
+                         "Zero Sugar"
+                     ],
+                     "variantImages": {
+                        "Zero Sugar": "assets/monster/classic/vanilla-shot-zero-sugar.png"
+                     }
+    },
+    {
         "id":  "monster_electric_blue",
         "name":  "Electric Blue",
         "image":  "assets/monster/classic/electric-blue.webp",
@@ -270,11 +290,13 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original",
                          "Call of Duty",
+                         "Apex Legends",
                          "Mega Ultra (US)",
                          "Mega Ultra (EU)"
                      ],
 					"variantImages": {
 						 "Call of Duty": "assets/monster/ultra/ultra-white-cod.png",
+                         "Apex Legends": "assets/monster/ultra/ultra-white-apex.png",
                          "Mega Ultra (US)": "assets/monster/ultra/ultra-white-mega-us.png",
                          "Mega Ultra (EU)": "assets/monster/ultra/ultra-white-mega-eu.png"
 					}
@@ -991,8 +1013,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione UK dedicata a Lewis Hamilton. Gusto esclusivo.",
         "variants":  [
-                         "Lewis Hamilton"
-                     ]
+                         "Original",
+                         "5 Star",
+                         "6 Star"
+                     ],
+                     "variantImages": {
+                        "5 Star": "assets/monster/special/lewis-hamilton-5.png",
+                        "6 Star": "assets/monster/special/lewis-hamilton-6.png"
+                    }
     },
     {
         "id":  "monster_hydro_blue_ice",
@@ -1165,10 +1193,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Shake proteico al cioccolato con caffeina.",
         "variants":  [
                          "Chocolate",
-                         "Chocolate Bottle"
+                         "Chocolate Bottle",
+                         "Full Art"
                      ],
                      "variantImages":  {
-                            "Chocolate Bottle":  "assets/monster/muscle/chocolate-bottle.webp"
+                            "Chocolate Bottle":  "assets/monster/muscle/chocolate-bottle.webp",
+                            "Full Art": "assets/monster/muscle/chocolate-full.png"
                         }
     },
     {
@@ -1181,10 +1211,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Shake proteico alla vaniglia con caffeina.",
         "variants":  [
                          "Vanilla",
-                         "Vanilla Bottle"
+                         "Vanilla Bottle",
+                         "Full Art"
                      ],
                      "variantImages":  {
-                              "Vanilla Bottle":  "assets/monster/muscle/vanilla-bottle.webp"
+                              "Vanilla Bottle":  "assets/monster/muscle/vanilla-bottle.webp",
+                              "Full Art": "assets/monster/muscle/vanilla-full.png"
                           }
     },
     {
@@ -1196,8 +1228,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata, shake proteico alla fragola.",
         "variants":  [
-                         "Strawberry"
-                     ]
+                         "Strawberry",
+                         "Full Art"
+                     ],
+                     "variantImages": {
+                        "Full Art": "assets/monster/muscle/strawberry-full.png"
+                     }
     },
     {
         "id":  "monster_beast_mean_green",
@@ -1292,8 +1328,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Nasty Beast, versione alcolica originale.",
         "variants":  [
-                         "Original"
-                     ]
+                         "Original",
+                         "Original (NEW)"
+                     ],
+                     "variantImages": {
+                        "Original (NEW)": "assets/monster/beast/nasty-beast-original-yellow.png"
+                     }
     },
     {
         "id":  "monster_nasty_tea_lemonade",
@@ -1304,8 +1344,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Nasty Beast al te e limonata.",
         "variants":  [
-                         "Tea + Lemonade"
-                     ]
+                         "Tea + Lemonade",
+                         "Tea + Lemonade (NEW)"
+                     ],
+                     "variantImages": {
+                        "Tea + Lemonade (NEW)": "assets/monster/beast/nasty-beast-tealemonade-yellow.png"
+                     }
     },
     {
         "id":  "monster_nasty_peach",
@@ -1340,8 +1384,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Te verde con Dragon Fruit. FUORI PRODUZIONE (marchio cancellato 2025).",
         "variants":  [
-                         "Green Tea"
-                     ]
+                         "Green Tea",
+                         "Green Tea (CN)"
+                     ],
+                     "variantImages": {
+                        "Green Tea (CN)": "assets/monster/dragon/dragon-ice-green-tea.png"
+                     }
     },
     {
         "id":  "monster_dragon_white",
@@ -1516,8 +1564,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Dragon Ice Tea Lemon. FUORI PRODUZIONE.",
         "variants":  [
-                         "Ice Tea Lemon"
-                     ]
+                         "Ice Tea Lemon",
+                         "Lemon Tea (CN)"
+                     ],
+                     "variantImages": {
+                        "Lemon Tea (CN)": "assets/monster/dragon/dragon-ice-tea-lemon.png"
+                     }
     },
     {
         "id":  "catalog_dragon_38b",
@@ -1528,7 +1580,23 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Dragon Ice Tea Peach. FUORI PRODUZIONE.",
         "variants":  [
-                         "Ice Tea Peach"
+                         "Ice Tea Peach",
+                         "Peach Tea (CN)"
+                     ],
+                     "variantImages": {
+                        "Peach Tea (CN)": "assets/monster/dragon/dragon-ice-peach-tea.png"
+                     }
+    },
+    {
+        "id":  "catalog_dragon_39b",
+        "name":  "Dragon Ice Raspberry Trea",
+        "image":  "assets/monster/dragon/dragon-ice-raspberry-tea.png",
+        "series":  "dragon",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Dragon Ice Raspberry Tea. FUORI PRODUZIONE.",
+        "variants":  [
+                         "Raspberry Tea"
                      ]
     },
     {
@@ -1689,8 +1757,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Mutant Original Green. Linea Mutant molto rara, discontinued.",
         "variants":  [
-                         "Original green"
-                     ]
+                         "Original green",
+                         "Original green (PAKISTAN)",
+                         "Original green (bottle)"
+                     ],
+                     "variantImages": {
+                        "Original green (PAKISTAN)": "assets/monster/special/mutant-original-green-pakistan.png",
+                        "Original green (bottle)": "assets/monster/special/mutant-original-green-bottle.png"
+                     }
     },
     {
         "id":  "catalog_special_65",
@@ -1701,8 +1775,14 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Mutant Red Dawn. Linea Mutant discontinued.",
         "variants":  [
-                         "Red Dawn"
-                     ]
+                         "Red Dawn",
+                         "Red Dawn (PAKISTAN)",
+                         "Red Dawn (bottle)"
+                     ],
+                     "variantImages": {
+                        "Red Dawn (PAKISTAN)": "assets/monster/special/mutant-red-dawn-pakistan.png",
+                        "Red Dawn (bottle)": "assets/monster/special/mutant-red-dawn-bottle.png"
+                     }
     },
     {
         "id":  "monster_mutant_gold_strike",
@@ -1713,8 +1793,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Mutant Gold Strike. Linea Mutant discontinued, versione oro.",
         "variants":  [
-                         "Gold Strike"
-                     ]
+                         "Gold Strike",
+                         "Gold Strike (bottle)"
+                     ],
+                     "variantImages": {
+                        "Gold Strike (bottle)": "assets/monster/special/mutant-gold-strike-bottle.png"
+                     }
     },
     {
         "id":  "catalog_special_66",
@@ -2159,5 +2243,23 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Super Fuel Subzero"
                      ]
+    },
+    {
+        "id":  "monster_hydro_sport",
+        "name":  "Hydro Sport",
+        "image":  "assets/monster/hydro/hydro-sport-striker.png",
+        "series":  "hydro",
+        "rarity":  "rare",
+        "limited":  true,
+        "description":  "Linea Hydro Sport",
+        "variants":  [
+                         "Striker",
+                         "Charge",
+                         "Hang Time"
+                     ],
+                     "variantImages": {
+                        "Charge": "assets/monster/hydro/hydro-sport-charge.png",
+                        "Hang Time": "assets/monster/hydro/hydro-sport-hangtime.png"
+                     }
     },
 ];
