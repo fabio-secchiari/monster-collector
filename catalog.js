@@ -9,17 +9,27 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La Monster originale, il gusto che ha iniziato tutto.",
         "variants":  [
                          "Original",
-						 "OG Modern Warfare",
-                         "OG Apex Legends",
-                         "OG Oscar Piastri",
+                         "Modern Warfare 3",
+						 "Modern Warfare 4",
+                         "Black Ops 6",
+                         "Black Ops 7",
+                         "Halo Infinite",
+                         "Assassin Creed Origins",
+                         "Apex Legends",
+                         "Oscar Piastri",
                          "Mega (US)",
                          "Mega (EU)",
                          "BFC",
                      ],
 					 "variantImages":  {
-						      "OG Modern Warfare": "assets/monster/classic/original-cod.png",
-                              "OG Apex Legends": "assets/monster/classic/original-apex.png",
-                              "OG Oscar Piastri": "assets/monster/classic/oscar-piastri.png",
+                              "Modern Warfare 3": "assets/monster/classic/original-modern-warfare-3.png",
+						      "Modern Warfare 4": "assets/monster/classic/original-cod.png",
+                              "Black Ops 6": "assets/monster/classic/original-black-ops-6.png",
+                              "Black Ops 7": "assets/monster/classic/original-black-ops-7.png",
+                              "Halo Infinite": "assets/monster/classic/original-halo-infinite.png",
+                              "Assassin Creed Origins": "assets/monster/classic/original-assassin-creed.png",
+                              "Apex Legends": "assets/monster/classic/original-apex.png",
+                              "Oscar Piastri": "assets/monster/classic/oscar-piastri.png",
                               "Mega (US)": "assets/monster/classic/original-mega-us.png",
                               "Mega (EU)": "assets/monster/classic/original-mega-eu.png",
                               "BFC": "assets/monster/classic/original-bfc.png",
@@ -34,14 +44,18 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "La Monster originale, ma senza zuccheri.",
         "variants":  [
-                         "Zero Sugar",
-						 "Zero Sugar CoD",
+                         "Original",
+						 "Modern Wardare 4",
+                         "Black Ops 6",
+                         "Black Ops 7",
                          "Zero Sugar (EU)",
                          "Zero Sugar (JPN)",
                          "Mega Zero Sugar (Canada)",
                      ],
 					 "variantImages":  {
-							  "Zero Sugar CoD": "assets/monster/classic/original-zero-sugar-cod.png",
+							  "Modern Wardare 4": "assets/monster/classic/original-zero-sugar-cod.png",
+                              "Black Ops 6": "assets/monster/classic/original-zero-sugar-black-ops-6.png",
+                              "Black Ops 7": "assets/monster/classic/original-zero-sugar-black-ops-7.png",
                               "Zero Sugar (EU)": "assets/monster/classic/zero-sugar-blue.png",
                               "Zero Sugar (JPN)": "assets/monster/classic/zero-sugar-japan.png",
                               "Mega Zero Sugar (Canada)": "assets/monster/classic/zero-sugar-mega-canada.png",
@@ -58,9 +72,11 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Absolutely Zero",
                          "Absolutely Zero (2010)",
+                         "Assassin Creed Origins"
                      ],
 					 "variantImages":  {
-                              "Absolutely Zero (2010)":  "assets/monster/classic/absolute-zero.png"
+                              "Absolutely Zero (2010)":  "assets/monster/classic/absolute-zero.png",
+                              "Assassin Creed Origins": "assets/monster/classic/absolutely-zero-assassin-creed.png"
                           }
     },
     {
@@ -289,13 +305,21 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La famosa \"White Monster\". Zero zuccheri, gusto fresco.",
         "variants":  [
                          "Original",
-                         "Call of Duty",
+                         "Modern Warfare 3",
+                         "Modern Warfare 4",
+                         "Black Ops 6",
+                         "Black Ops 7",
+                         "Halo Infinite",
                          "Apex Legends",
                          "Mega Ultra (US)",
                          "Mega Ultra (EU)"
                      ],
 					"variantImages": {
-						 "Call of Duty": "assets/monster/ultra/ultra-white-cod.png",
+                        "Modern Warfare 3": "assets/monster/ultra/ultra-white-modern-warfare-3.png",
+						 "Modern Warfare 4": "assets/monster/ultra/ultra-white-cod.png",
+                         "Black Ops 6": "assets/monster/ultra/ultra-white-black-ops-6.png",
+                         "Black Ops 7": "assets/monster/ultra/ultra-white-black-ops-7.png",
+                         "Halo Infinite": "assets/monster/ultra/ultra-white-halo-infinite.png",
                          "Apex Legends": "assets/monster/ultra/ultra-white-apex.png",
                          "Mega Ultra (US)": "assets/monster/ultra/ultra-white-mega-us.png",
                          "Mega Ultra (EU)": "assets/monster/ultra/ultra-white-mega-eu.png"
@@ -560,11 +584,17 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Mango Loco",
                          "Mango Loco (US)",
-						 "Call of Duty"
+                         "Modern Warfare 3",
+						 "Modern Warfare 4",
+                         "Black Ops 6",
+                         "Black Ops 7"
                      ],
 					 "variantImages": {
                          "Mango Loco (US)": "assets/monster/juice/juice-mango-loco.webp",
-						 "Call of Duty": "assets/monster/juice/mango-loco-cod.png"
+                         "Modern Warfare 3": "assets/monster/juice/mango-loco-modern-warfare-3.png",
+						 "Modern Warfare 4": "assets/monster/juice/mango-loco-cod.png",
+                         "Black Ops 6": "assets/monster/juice/mango-loco-black-ops-6.png",
+                         "Black Ops 7": "assets/monster/juice/mango-loco-black-ops-7.png"
 					 }
     },
     {
@@ -732,15 +762,17 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto tropicale esplosivo.",
         "variants":  [
-                         "Ripper",
+                         "Original",
                          "Ripper (US)",
                          "Ripper (2014)",
-                         "Ripper (2010)"
+                         "Ripper (2010)",
+                         "Assassin Creed Origins"
                      ],
 					 "variantImages": {
 						 "Ripper (US)": "assets/monster/juice/juice-ripper.png",
 						 "Ripper (2014)": "assets/monster/juice/juiced-ripper-black.png",
-                         "Ripper (2010)": "assets/monster/juice/juice-ripper-grey.png"
+                         "Ripper (2010)": "assets/monster/juice/juice-ripper-grey.png",
+                         "Assassin Creed Origins": "assets/monster/juice/juice-ripper-assassin-creed.png"
 					 }
     },
     {
