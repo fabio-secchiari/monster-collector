@@ -107,11 +107,13 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "La versione a basso contenuto di carboidrati.",
         "variants":  [
                          "Lo-Carb",
+                         "Lo-Carb XXL",
                          "Mega Lo-Carb (US)",
                          "BFC Lo-Carb",
                          "Apex Legends"
                      ],
                      "variantImages":  {
+                              "Lo-Carb XXL": "assets/monster/classic/lo-carb-xxl.png",
                               "Mega Lo-Carb (US)": "assets/monster/classic/lo-carb-mega.png",
                               "BFC Lo-Carb": "assets/monster/classic/lo-carb-bfc.png",
                               "Apex Legends": "assets/monster/classic/lo-carb-apex.png"
@@ -426,8 +428,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Gusto frutti di bosco rosa, zero zuccheri.",
         "variants":  [
-                         "Rosa"
-                     ]
+                         "Rosa",
+                         "Rosa (EU)"
+                     ],
+                     "variantImages": {
+                        "Rosa (EU)": "assets/monster/ultra/ultra-rosa-eu.png"
+                     }
     },
     {
         "id":  "monster_ultra_gold",
@@ -2243,6 +2249,18 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Midnite"
                      ]
+    },
+    {
+        "id": "monster_java_dubai_chocolate",
+        "name": "Java Dubai Chocolate",
+        "image": "assets/monster/java/java-dubai-chocolate.png",
+        "series": "java",
+        "rarity": "rare",
+        "limited": false,
+        "description": "NUOVO 2026! Java Monster Dubai Chocolate, ispirato al trend virale del cioccolato di Dubai. Caffè con cioccolato, pistacchio e note cremose.",
+        "variants": [
+                        "Dubai Chocolate"
+                    ]
     },
     {
         "id":  "monster_hydro_mean_green",
