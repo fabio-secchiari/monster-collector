@@ -19,7 +19,11 @@ window.MONSTER_CATALOG_DATA = [
                          "Oscar Piastri",
                          "Mega (US)",
                          "Mega (EU)",
+                         "XXL",
                          "BFC",
+                         "Aluminium Resealable Bottle (JPN)",
+                         "Mega Mouth Glass Bottle",
+                         "Energy Shot"
                      ],
 					 "variantImages":  {
                               "Modern Warfare 3": "assets/monster/classic/original-modern-warfare-3.png",
@@ -32,7 +36,11 @@ window.MONSTER_CATALOG_DATA = [
                               "Oscar Piastri": "assets/monster/classic/oscar-piastri.png",
                               "Mega (US)": "assets/monster/classic/original-mega-us.png",
                               "Mega (EU)": "assets/monster/classic/original-mega-eu.png",
+                              "XXL": "assets/monster/classic/original-xxl.png",
                               "BFC": "assets/monster/classic/original-bfc.png",
+                              "Aluminium Resealable Bottle (JPN)": "assets/monster/classic/original-resealable-bottle.png",
+                              "Mega Mouth Glass Bottle": "assets/monster/classic/original-mega-mouth-bottle.png",
+                              "Energy Shot": "assets/monster/classic/original-energy-shot.png"
                           }
     },
     {
@@ -132,11 +140,13 @@ window.MONSTER_CATALOG_DATA = [
                          "Assault (2005)",
                          "Assault (2006)",
                          "Fury",
+                         "Mega (US)"
                      ],
 					 "variantImages":  {
                               "Assault (2005)": "assets/monster/classic/assault-2005.png",
                               "Assault (2006)": "assets/monster/classic/assault-black.webp",
                               "Fury": "assets/monster/classic/fury.png",
+                              "Mega (US)": "assets/monster/classic/assault-mega.png"
                           }
     },
     {
@@ -360,8 +370,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Zero zuccheri, gusto fruttato e misterioso.",
         "variants":  [
-                         "Violet"
-                     ]
+                         "Violet",
+                         "Mega (US)"
+                     ],
+                     "variantImages": { 
+                        "Mega (US)": "assets/monster/ultra/ultra-violet-bottle.png"
+                    }
     },
     {
         "id":  "monster_ultra_paradise",
@@ -401,10 +415,14 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Ultra Fiesta, gusto tropicale. Variante del catalogo ufficiale.",
         "variants":  [
                             "Fiesta",
-							"Fiesta Mango"
+                            "Mega Fiesta (US)",
+							"Fiesta Mango",
+                            "Mega Fiesta Mango (US)"
                      ],
 					 "variantImages": {
-						 "Fiesta Mango": "assets/monster/ultra/ultra-fiesta-mango.webp"
+                         "Mega Fiesta (US)": "assets/monster/ultra/ultra-fiesta-bottle.png",
+						 "Fiesta Mango": "assets/monster/ultra/ultra-fiesta-mango.webp",
+                         "Mega Fiesta Mango (US)": "assets/monster/ultra/fiesta-mango-bottle.png"
 					 }
     },
     {
@@ -614,11 +632,13 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Monarch",
 						 "Papillon",
-						 "Mariposa"
+						 "Mariposa",
+                         "Monarch (Peach Nettarine)"
                      ],
 					 "variantImages": {
 						 "Papillon": "assets/monster/juice/juiced-papillon.webp",
-						 "Mariposa": "assets/monster/juice/juiced-mariposa.png"
+						 "Mariposa": "assets/monster/juice/juiced-mariposa.png",
+                         "Monarch (Peach Nettarine)": "assets/monster/juice/juiced-monarch-peach-nettarine.png"
 					 }
     },
     {
@@ -647,10 +667,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Il gusto delle Hawaii, frutta tropicale e energia.",
         "variants":  [
                          "Pipeline Punch",
-                         "Pipeline Punch (US)"
+                         "Pipeline Punch (US)",
+                         "Pipeline Punch Bottle (JPN)"
                      ],
 					 "variantImages": {
 						 "Pipeline Punch (US)": "assets/monster/juice/juice-pipeline-punch.png",
+                         "Pipeline Punch Bottle (JPN)": "assets/monster/juice/pipeline-punch-bottle.png"
 					 }
     },
     {
@@ -664,11 +686,13 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Khaotic",
                          "Khaotic (UK)",
-                         "Khaotic (US)"
+                         "Khaotic (US)",
+                         "Khaotic (Tropical Orange)"
                      ],
 					 "variantImages": {
 						 "Khaotic (UK)": "assets/monster/juice/juiced-khaotic.png",
-						 "Khaotic (US)": "assets/monster/juice/juice-khaotic.png"
+						 "Khaotic (US)": "assets/monster/juice/juice-khaotic.png",
+                         "Khaotic (Tropical Orange)": "assets/monster/juice/juiced-khaotic-tropical-orange.png"
 					 }
     },
     {
@@ -716,7 +740,7 @@ window.MONSTER_CATALOG_DATA = [
                          "Rio Punch (US)"
                      ],
 					 "variantImages": {
-						 "Rio Punch (US)": "assets/monster/juice/rio-punch.jpg"
+						 "Rio Punch (US)": "assets/monster/juice/rio-punch.png"
 					 }
     },
     {
@@ -800,6 +824,22 @@ window.MONSTER_CATALOG_DATA = [
 					 }
     },
     {
+        "id":  "monster_java_big_black",
+        "name":  "Java Big Black",
+        "image":  "assets/monster/java/big-black.png",
+        "series":  "java",
+        "rarity":  "common",
+        "limited":  false,
+        "description":  "Java Big Black, caffé forte. Discontinued.",
+        "variants":  [
+                         "Big Black",
+                         "Originale"
+                     ],
+                     "variantImages": {
+                        "Originale": "assets/monster/java/java-original.png"
+                     }
+    },
+    {
         "id":  "monster_java_mean_bean",
         "name":  "Java Mean Bean",
         "image":  "assets/monster/java/java-mean-bean.webp",
@@ -809,10 +849,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Caffe e latte, la combinazione perfetta per la mattina.",
         "variants":  [
                          "Mean Bean",
+                         "Mean Bean (2007)",
                          "Java 300 French Vanilla",
                          "Killer Brew Mean Bean"
                      ],
                         "variantImages": {
+                            "Mean Bean (2007)": "assets/monster/java/java-mean-bean-07.png",
                             "Java 300 French Vanilla": "assets/monster/java/french-vanilla.webp",
                             "Killer Brew Mean Bean": "assets/monster/java/killer-brew-mean-bean.webp"
                         }
@@ -828,10 +870,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Caffe con cioccolato e latte.",
         "variants":  [
                          "Loca Moca",
+                         "Loca Moca (2007)",
                          "Java 300 Mocha",
                          "Killer Brew Loca Moca"
                      ],
                         "variantImages": {
+                            "Loca Moca (2007)": "assets/monster/java/java-loca-moca-07.png",
                             "Java 300 Mocha": "assets/monster/java/mocha-300.webp",
                             "Killer Brew Loca Moca": "assets/monster/java/killer-brew-loca-moca.webp"
                         }
@@ -845,8 +889,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Caffe con caramello salato e latte.",
         "variants":  [
-                         "Salted Caramel"
-                     ]
+                         "Salted Caramel",
+                         "Salted Caramel (JPN)"
+                     ],
+                     "variantImages": {
+                        "Salted Caramel (JPN)": "assets/monster/java/salted-caramel-japan.png"
+                     }
     },
     {
         "id":  "monster_java_irish",
@@ -858,10 +906,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Edizione limitata, caffe con crema irlandese.",
         "variants":  [
                          "Irish Creme",
-                         "Irish Blend"
+                         "Irish Blend",
+                         "Irish Blend (2008)"
                      ],
                         "variantImages": {
-                            "Irish Blend": "assets/monster/java/irish-blend.png"
+                            "Irish Blend": "assets/monster/java/irish-blend.png",
+                            "Irish Blend (2008)": "assets/monster/java/irish-blend-08.png"
                         }
     },
     {
@@ -875,6 +925,22 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Kona Blend"
                      ]
+    },
+    {
+        "id":  "monster_java_kona_cappuccino",
+        "name":  "Java Kona Cappuccino",
+        "image":  "assets/monster/java/kona-cappuccino.png",
+        "series":  "java",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Miscela di cappuccino Kona hawaiano.",
+        "variants":  [
+                         "Kona Cappuccino",
+                         "Kona Cappuccino (2014)"
+                     ],
+                     "variantImages": {
+                        "Kona Cappuccino (2014)": "assets/monster/java/kona-cappuccino-014.png"
+                     }
     },
     {
         "id":  "monster_java_cafe_latte",
@@ -1230,13 +1296,13 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Shake proteico al cioccolato con caffeina.",
         "variants":  [
-                         "Chocolate",
+                         "Chocolate (2015)",
                          "Chocolate Bottle",
-                         "Full Art"
+                         "Chocolate (2013)"
                      ],
                      "variantImages":  {
                             "Chocolate Bottle":  "assets/monster/muscle/chocolate-bottle.webp",
-                            "Full Art": "assets/monster/muscle/chocolate-full.png"
+                            "Chocolate (2013)": "assets/monster/muscle/chocolate-full.png"
                         }
     },
     {
@@ -1248,13 +1314,13 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Shake proteico alla vaniglia con caffeina.",
         "variants":  [
-                         "Vanilla",
+                         "Vanilla (2015)",
                          "Vanilla Bottle",
-                         "Full Art"
+                         "Vanilla (2013)"
                      ],
                      "variantImages":  {
                               "Vanilla Bottle":  "assets/monster/muscle/vanilla-bottle.webp",
-                              "Full Art": "assets/monster/muscle/vanilla-full.png"
+                              "Vanilla (2013)": "assets/monster/muscle/vanilla-full.png"
                           }
     },
     {
@@ -1266,11 +1332,11 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Edizione limitata, shake proteico alla fragola.",
         "variants":  [
-                         "Strawberry",
-                         "Full Art"
+                         "Strawberry (2015)",
+                         "Strawberry (2013)"
                      ],
                      "variantImages": {
-                        "Full Art": "assets/monster/muscle/strawberry-full.png"
+                        "Strawberry (2013)": "assets/monster/muscle/strawberry-full.png"
                      }
     },
     {
@@ -1282,8 +1348,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Beast Unleashed al gusto mela verde.",
         "variants":  [
-                         "Mean Green"
-                     ]
+                         "Mean Green",
+                         "Mean Green (Utah)"
+                     ],
+                     "variantImages": {
+                        "Mean Green (Utah)": "assets/monster/beast/mean-green-utah.png"
+                     }
     },
     {
         "id":  "monster_beast_white_haze",
@@ -1294,8 +1364,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Beast Unleashed al gusto agrumi bianco.",
         "variants":  [
-                         "White Haze"
-                     ]
+                         "White Haze",
+                         "White Haze (Utah)"
+                     ],
+                     "variantImages": {
+                        "White Haze (Utah)": "assets/monster/beast/white-haze-utah.png"
+                     }
     },
     {
         "id":  "monster_beast_peach_perfect",
@@ -1306,8 +1380,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Beast Unleashed al gusto pesca perfetta.",
         "variants":  [
-                         "Peach Perfect"
-                     ]
+                         "Peach Perfect",
+                         "Peach Perfect (Utah)"
+                     ],
+                     "variantImages": {
+                        "Peach Perfect (Utah)": "assets/monster/beast/peach-perfect-utah.png"
+                     }
     },
     {
         "id":  "monster_beast_scary_berries",
@@ -1318,8 +1396,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Beast Unleashed al gusto frutti di bosco.",
         "variants":  [
-                         "Scary Berries"
-                     ]
+                         "Scary Berries",
+                         "Scary Berries (Utah)"
+                     ],
+                     "variantImages": {
+                        "Scary Berries (Utah)": "assets/monster/beast/scary-berries-utah.png"
+                     }
     },
     {
         "id":  "monster_beast_killer_sunrise",
@@ -1438,8 +1520,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Te bianco con Dragon Fruit. FUORI PRODUZIONE (marchio cancellato 2025).",
         "variants":  [
-                         "White Tea"
-                     ]
+                         "White Tea",
+                         "Thé Blanc"
+                     ],
+                     "variantImages": {
+                        "Thé Blanc": "assets/monster/dragon/white-tea.png"
+                     }
     },
     {
         "id":  "catalog_java_6",
@@ -1451,23 +1537,13 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Java Monster Vanilla Light, caffe a basso contenuto. Discontinued.",
         "variants":  [
                          "Vanilla Light",
+                         "Vanilla Light (2010)",
                          "Lo-Ball"
                      ],
                         "variantImages": {
+                            "Vanilla Light (2010)": "assets/monster/java/vanilla-light-010.png",
                             "Lo-Ball": "assets/monster/java/lo-ball.png"
                         }
-    },
-    {
-        "id":  "catalog_java_8",
-        "name":  "Java Big Black",
-        "image":  "assets/monster/java/big-black.png",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Java Big Black, caffe forte. Discontinued.",
-        "variants":  [
-                         "Big Black"
-                     ]
     },
     {
         "id":  "catalog_java_9",
@@ -1638,6 +1714,22 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
+        "id":  "catalog_dragon_tea",
+        "name":  "Dragon Tea",
+        "image":  "assets/monster/dragon/tea.png",
+        "series":  "dragon",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Dragon Tea. FUORI PRODUZIONE.",
+        "variants":  [
+                         "Tea",
+                         "Tea 2"
+                     ],
+                     "variantImages": {
+                        "Tea 2": "assets/monster/dragon/tea-2.png"
+                     }
+    },
+    {
         "id":  "catalog_muscle_39",
         "name":  "Muscle Coffee",
         "image":  "assets/monster/muscle/coffee.webp",
@@ -1719,10 +1811,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Extra Strength / Nitrous Super Dry. Linee discontinued.",
         "variants":  [
                          "Super Dry",
-                         "Nitrous Super Dry"
+                         "Nitrous Super Dry",
+                         "Super Dry (Can)"
                      ],
 					 "variantImages": {
-						 "Nitrous Super Dry": "assets/monster/special/nitrous-super-dry.png"
+						 "Nitrous Super Dry": "assets/monster/special/nitrous-super-dry.png",
+                         "Super Dry (Can)": "assets/monster/special/nitrous-super-dry-can.png"
 					 }
     },
     {
@@ -1735,11 +1829,13 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Extra Strength / Nitrous Anti-Gravity. Linee discontinued.",
         "variants":  [
                          "Anti gravity",
-                         "Nitrous Anti gravity"
+                         "Nitrous Anti gravity",
+                         "Anti gravity (Can)"
 
                      ],
 					 "variantImages": {
-						 "Nitrous Anti gravity": "assets/monster/special/nitrous-anti-gravity.png"
+						 "Nitrous Anti gravity": "assets/monster/special/nitrous-anti-gravity.png",
+                         "Anti gravity (Can)": "assets/monster/special/nitrous-anti-gravity-can.png"
 					 }
     },
     {
@@ -1751,8 +1847,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  true,
         "description":  "Extra Strength Black Ice. Linea Extra Strength discontinued.",
         "variants":  [
-                         "Black Ice"
-                     ]
+                         "Black Ice",
+                         "Black Ice (Can)"
+                     ],
+                     "variantImages": {
+                        "Black Ice (Can)": "assets/monster/special/nitrous-black-ice-can.png"
+                     }
     },
     {
         "id":  "catalog_special_54",
@@ -1764,10 +1864,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Extra Strength / Nitrous Killer-B. Linee discontinued.",
         "variants":  [
                          "Killer-B",
-                         "Nitrous Killer-B"
+                         "Nitrous Killer-B",
+                         "Killer-B (Can)"
                      ],
 					 "variantImages": {
-						 "Nitrous Killer-B": "assets/monster/special/nitrous-killer-b.png"
+						 "Nitrous Killer-B": "assets/monster/special/nitrous-killer-b.png",
+                         "Killer-B (Can)": "assets/monster/special/nitrous-killer-b-can.png"
 					 }
     },
     {
@@ -1797,11 +1899,11 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Original green",
                          "Original green (PAKISTAN)",
-                         "Original green (bottle)"
+                         "Original green (Bottle)"
                      ],
                      "variantImages": {
                         "Original green (PAKISTAN)": "assets/monster/special/mutant-original-green-pakistan.png",
-                        "Original green (bottle)": "assets/monster/special/mutant-original-green-bottle.png"
+                        "Original green (Bottle)": "assets/monster/special/mutant-original-green-bottle.png"
                      }
     },
     {
@@ -1815,11 +1917,11 @@ window.MONSTER_CATALOG_DATA = [
         "variants":  [
                          "Red Dawn",
                          "Red Dawn (PAKISTAN)",
-                         "Red Dawn (bottle)"
+                         "Red Dawn (Bottle)"
                      ],
                      "variantImages": {
                         "Red Dawn (PAKISTAN)": "assets/monster/special/mutant-red-dawn-pakistan.png",
-                        "Red Dawn (bottle)": "assets/monster/special/mutant-red-dawn-bottle.png"
+                        "Red Dawn (Bottle)": "assets/monster/special/mutant-red-dawn-bottle.png"
                      }
     },
     {
@@ -1832,10 +1934,10 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Mutant Gold Strike. Linea Mutant discontinued, versione oro.",
         "variants":  [
                          "Gold Strike",
-                         "Gold Strike (bottle)"
+                         "Gold Strike (Bottle)"
                      ],
                      "variantImages": {
-                        "Gold Strike (bottle)": "assets/monster/special/mutant-gold-strike-bottle.png"
+                        "Gold Strike (Bottle)": "assets/monster/special/mutant-gold-strike-bottle.png"
                      }
     },
     {
@@ -1972,10 +2074,12 @@ window.MONSTER_CATALOG_DATA = [
         "description": "Khaos, il gusto originale arancia e frutta tropicale. Da non confondere con Khaotic.",
         "variants": [
             "Khaos",
+            "Khaos (LN)",
             "Khaos (2006)",
-            "Khaos (2014)"
+            "Khaos (2014)",
         ],
         "variantImages": {
+            "Khaos (LN)": "assets/monster/juice/juiced-khaos-lithuania.png",
             "Khaos (2006)": "assets/monster/juice/juiced-khaos-2006.png",
             "Khaos (2014)": "assets/monster/juice/juiced-khaos-2014.png"
         }
@@ -2061,28 +2165,20 @@ window.MONSTER_CATALOG_DATA = [
                      ]
     },
     {
-        "id":  "monster_java_cold_brew_latte",
-        "name":  "Java Cold Brew Latte",
+        "id":  "monster_java_cold_brew",
+        "name":  "Java Cold Brew",
         "image":  "assets/monster/java/cold-brew-latte.png",
         "series":  "java",
         "rarity":  "rare",
         "limited":  true,
-        "description":  "Java Cold Brew Latte. Caffè cold brew. Discontinued.",
+        "description":  "Java Cold Brew. Caffè cold brew. Discontinued.",
         "variants":  [
-                         "Cold Brew Latte"
-                     ]
-    },
-    {
-        "id":  "monster_java_cold_brew_sweet_black",
-        "name":  "Java Cold Brew Sweet Black",
-        "image":  "assets/monster/java/cold-brew-sweet-black.png",
-        "series":  "java",
-        "rarity":  "rare",
-        "limited":  true,
-        "description":  "Java Cold Brew Sweet Black. Caffè black cold brew. Discontinued.",
-        "variants":  [
-                         "Cold Brew Sweet Black"
-                     ]
+                         "Latte",
+                         "Sweet Black"
+                     ],
+                     "variantImages": {
+                        "Sweet Black": "assets/monster/java/cold-brew-sweet-black.png"
+                     }
     },
     {
         "id":  "monster_java_farmers_oats",
@@ -2203,6 +2299,17 @@ window.MONSTER_CATALOG_DATA = [
         "variants": ["XG"]
     },
     {
+        "id": "monster_dub",
+        "name": "Dub Monster",
+        "image": "assets/monster/special/dub.png",
+        "series": "special",
+        "rarity": "legendary",
+        "limited": true,
+        "description": "DUB edition monster. Molto rara, discontinued.",
+        "variants": ["DUB", "DUB Resealable", "OG DUB"],
+        "variantImages": { "DUB Resealable": "assets/monster/special/dub-resealable.png", "OG DUB": "assets/monster/special/og-dub.png" }
+    },
+    {
         "id":  "monster_espresso",
         "name":  "Espresso",
         "image":  "assets/monster/java/espresso-cream.png",
@@ -2274,7 +2381,7 @@ window.MONSTER_CATALOG_DATA = [
                          "Mean Green",
                          "Mean Green Glucose",
                          "Mean Green (Can)",
-                         "Mean Green Super Fuel"
+                         "Mean Green Super Fuel",
                      ],
                      "variantImages":  {
                               "Mean Green Glucose": "assets/monster/hydro/hydro-mean-green-glucose.png",
