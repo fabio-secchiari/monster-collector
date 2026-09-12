@@ -1940,6 +1940,7 @@ function defaultState() {
         a[v] = { owned: false, rating: 0, notes: '' }; 
         return a; 
       }, {}),
+      lastAcquiredVariant: null,
       lastUpdated: null
     };
   });
@@ -1955,6 +1956,9 @@ function loadState() {
     const base = defaultState();
     Object.keys(base).forEach(id => {
 	  if (!parsed[id]) parsed[id] = { variants: {}, lastUpdated: null };
+    if (typeof parsed[id].lastAcquiredVariant === 'undefined') {
+      parsed[id].lastAcquiredVariant = null;
+    }
 	  const baseVariants = base[id].variants;
 	  Object.keys(baseVariants).forEach(v => {
 		if (!parsed[id].variants[v] || typeof parsed[id].variants[v] !== 'object') {
@@ -2193,14 +2197,24 @@ function createCanItem(can) {
 
 let currentIndex = 0;
 
-function selectIndex(idx) {
+function selectIndex(idx, explicitVariant = null) {
   currentIndex = (idx + CANS.length) % CANS.length;
   const can = CANS[currentIndex];
   const st = state[can.id];
-  let currentVariant = loadSelectedVariant(can.id);
-  if (!currentVariant || !can.variants.includes(currentVariant)) {
-    currentVariant = can.variants[0];
+
+  let currentVariant;
+  if (explicitVariant && can.variants.includes(explicitVariant)) {
+    // Selezione esplicita dell'utente (dropdown / click per acquisire / ventaglio)
+    currentVariant = explicitVariant;
+  } else if (st.lastAcquiredVariant && st.variants[st.lastAcquiredVariant]?.owned) {
+    // Variante acquisita per ultima → mostrala
+    currentVariant = st.lastAcquiredVariant;
+  } else {
+    // Fallback: prima variante posseduta, altrimenti base
+    const firstOwned = can.variants.find(v => st.variants[v]?.owned);
+    currentVariant = firstOwned || can.variants[0];
   }
+  window.selectedVariant = currentVariant;
 
   // Aggiorna sidebar
   document.querySelectorAll('.can-item').forEach(el => el.classList.remove('active'));
@@ -2490,10 +2504,7 @@ document.getElementById('main-notes').addEventListener('keydown', (e) => {
 });
 
 document.getElementById('selected-variant').addEventListener('change', (e) => {
-  const can = CANS[currentIndex];
-  window.selectedVariant = e.target.value;
-  saveSelectedVariant(can.id, window.selectedVariant);
-  selectIndex(currentIndex);
+  selectIndex(currentIndex, e.target.value);
 });
 
 // ============================================================
@@ -2532,46 +2543,43 @@ function renderVariants(can) {
       e.preventDefault();
 
       const wasOwned = !!st.variants[variant]?.owned;
+      const willBeOwned = !wasOwned;
 
-      // 1) Aggiorna lo stato
+      // 1) Aggiorna stato
       st.variants[variant] = {
         ...(st.variants[variant] || {}),
-        owned: !wasOwned,
+        owned: willBeOwned,
         rating: st.variants[variant]?.rating || 0,
         notes: st.variants[variant]?.notes || ''
       };
+
+      // 2) Aggiorna lastAcquiredVariant
+      if (willBeOwned) {
+        st.lastAcquiredVariant = variant;
+      } else if (st.lastAcquiredVariant === variant) {
+        st.lastAcquiredVariant = null;
+      }
       saveState(state);
 
-      // 2) Aggiorna la variante selezionata
-      if (wasOwned) {
-        const ownedVariants = can.variants.filter(v => st.variants[v]?.owned === true);
-        window.selectedVariant = ownedVariants.length > 0 ? ownedVariants[0] : can.variants[0];
-      } else {
-        window.selectedVariant = variant;
-      }
-      saveSelectedVariant(can.id, window.selectedVariant);
+      // 3) Feedback visivo immediato
+      btn.classList.toggle('owned', willBeOwned);
+      const dotEl = btn.querySelector('.dot');
+      if (dotEl) dotEl.style.background = willBeOwned ? '#00ff41' : '';
 
-      if (!wasOwned && can.id === 'monster_ultra_white') playSpecialSound('special-sound');
-      if (!wasOwned && can.id === 'monster_lo_carb') playSpecialSound('special-sound2');
-      // 3) FEEDBACK IMMEDIATO sul bottone cliccato
-      btn.classList.toggle('owned', !wasOwned);
-      const dot = btn.querySelector('.dot');
-      if (dot) dot.style.background = !wasOwned ? '#00ff41' : '';
-
-      // 4) Aggiorna SUBITO la barra di progresso
+      // 4) Barra progresso
       const vc = getVariantCount(can);
       const pct = vc.total === 0 ? 0 : Math.round((vc.owned / vc.total) * 100);
       document.getElementById('main-percent').textContent = pct + '%';
       document.getElementById('main-fill').style.width = pct + '%';
       document.getElementById('main-count').textContent = `${vc.owned} / ${vc.total}`;
 
-      // 5) Suoni speciali (solo se gli effetti sono attivi)
-      if (musicPlaying && !wasOwned && can.id === 'monster_ultra_white') playSpecialSound('special-sound');
-      if (musicPlaying && !wasOwned && can.id === 'monster_lo_carb') playSpecialSound('special-sound2');
+      // 5) Suoni speciali
+      if (musicPlaying && willBeOwned && can.id === 'monster_ultra_white') playSpecialSound('special-sound');
+      if (musicPlaying && willBeOwned && can.id === 'monster_lo_carb') playSpecialSound('special-sound2');
 
-      // 6) Render completo (sidebar, dropdown, rating, ventaglio)
-      selectIndex(currentIndex);
-      renderSidebar();  // dalla fix #1
+      // 6) Render: se sto acquisendo mostra quella variante, altrimenti auto
+      selectIndex(currentIndex, willBeOwned ? variant : null);
+      renderSidebar();
 
       playClickSound();
     });
@@ -2713,6 +2721,7 @@ function getSortedAndFilteredCans() {
 // ============================================================
 
 document.getElementById('search-input').addEventListener('input', () => {
+  saveUIState();
   renderSidebar();
   const filtered = getSortedAndFilteredCans();
   if (filtered.length > 0) {
@@ -2787,6 +2796,7 @@ document.getElementById('acquire-all').addEventListener('click', () => {
   can.variants.forEach(v => {
     st.variants[v] = { ...(st.variants[v] || {}), owned: true, rating: st.variants[v]?.rating || 0, notes: st.variants[v]?.notes || '' };
   });
+  st.lastAcquiredVariant = null;
   saveState(state);
   playClickSound();
   selectIndex(currentIndex);
@@ -2805,6 +2815,7 @@ document.getElementById('clear-all').addEventListener('click', async () => {
   can.variants.forEach(v => {
     st.variants[v] = { ...(st.variants[v] || {}), owned: false, rating: st.variants[v]?.rating || 0, notes: st.variants[v]?.notes || '' };
   });
+  st.lastAcquiredVariant = null;
   saveState(state);
   selectIndex(currentIndex);
   renderSidebar();
@@ -2937,11 +2948,8 @@ function applyHistoryState(s) {
     }
   } else {
     const idx = typeof s.currentIndex === 'number' ? s.currentIndex : currentIndex;
-    if (s.selectedVariant) {
-      window.selectedVariant = s.selectedVariant;
-      saveSelectedVariant(CANS[idx].id, s.selectedVariant);
-    }
-    selectIndex(idx);
+    const variant = s.selectedVariant || null;
+    selectIndex(idx, variant);
   }
 }
 
@@ -3673,7 +3681,8 @@ function saveUIState() {
     gridMode: gridMode,
     currentIndex: currentIndex,
     selectedVariant: window.selectedVariant || null,
-    scrollY: gridMode ? window.scrollY : 0
+    scrollY: gridMode ? window.scrollY : 0,
+    search: document.getElementById('search-input').value
   };
   localStorage.setItem(UI_STATE_KEY, JSON.stringify(state));
 }
@@ -3689,8 +3698,23 @@ function loadUIState() {
       document.getElementById('toggle-owned').checked = state.owned || false;
       document.getElementById('toggle-limited').checked = state.limited || false;
       document.getElementById('toggle-group-series').checked = state.groupSeries || false;
-      
-      // Imposta gridMode senza toccare la history
+
+      // 🔍 Ripristina la ricerca PRIMA di renderSidebar
+      const searchInput = document.getElementById('search-input');
+      const searchClear = document.getElementById('search-clear');
+      if (searchInput) {
+        searchInput.value = state.search || '';
+        if (searchClear) {
+          if (state.search) {
+            searchClear.classList.add('visible');
+            searchClear.style.display = 'inline';
+          } else {
+            searchClear.classList.remove('visible');
+            searchClear.style.display = 'none';
+          }
+        }
+      }
+
       gridMode = !!state.gridMode;
       document.getElementById('locker-view').classList.toggle('is-hidden', gridMode);
       document.getElementById('grid-view').classList.toggle('active', gridMode);
@@ -3698,7 +3722,6 @@ function loadUIState() {
       document.getElementById('btn-grid-toggle').textContent = gridMode ? '📋 Locker' : '📦 Scaffale';
       if (gridMode) buildGridView();
 
-      // Ripristina scroll in grid view (multi-shot perché le immagini caricano dopo)
       if (gridMode && state.scrollY) {
         const targetY = state.scrollY;
         const restore = () => window.scrollTo(0, targetY);
@@ -3710,27 +3733,20 @@ function loadUIState() {
 
       if (state.currentIndex !== undefined && state.currentIndex < CANS.length) {
         currentIndex = state.currentIndex;
-        if (state.selectedVariant) {
-          window.selectedVariant = state.selectedVariant;
-          saveSelectedVariant(CANS[currentIndex].id, state.selectedVariant);
-        }
-        selectIndex(currentIndex);
-      } else {
-        selectIndex(0);
       }
+      selectIndex(currentIndex);
     } catch (e) {
       console.warn('Errore caricamento UI state:', e);
       selectIndex(0);
     }
   } else {
-    // Nessun dato salvato: seleziona il primo sprite
-    selectIndex(0);
+    selectIndex(0, false);
   }
 
   history.replaceState({
     view: gridMode ? 'grid' : 'locker',
     currentIndex: currentIndex,
-    selectedVariant: window.selectedVariant || null,
+    selectedVariant: null,
     scrollY: 0
   }, '', '');
 
