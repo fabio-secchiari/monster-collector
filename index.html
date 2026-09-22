@@ -204,21 +204,53 @@ body {
   color: #e6e6f0;
 }
 
-/* ===== FILTER BAR ===== */
+/* ===== FILTER BAR (due righe: filtri | azioni) ===== */
 .filter-bar {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 18px;
   background: rgba(0,0,0,0.5);
   border-radius: 12px;
   border: 1px solid rgba(0,255,65,0.04);
-  flex-wrap: wrap;
   margin-bottom: 12px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
+/* RIGA 1 — filtri (sfondo neutro) */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* RIGA 2 — azioni (sfondo e bordo VERDE) */
+.filter-bar > .action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(0,255,65,0.05);
+  border: 1px solid rgba(0,255,65,0.20);
+  box-shadow: inset 0 0 20px rgba(0,255,65,0.05);
+}
+
+.filter-bar > .action-row .btn-adaptive {
+  min-width: 110px;
+  text-align: center;
+}
+
+/* FILTER SELECT */
 .filter-select {
   background: rgba(255,255,255,0.04) !important;
   border: 1.5px solid rgba(255,255,255,0.06) !important;
@@ -231,22 +263,20 @@ body {
   transition: all 0.25s ease;
   min-width: 120px;
 }
-
 .filter-select:hover {
   border-color: #00ff41 !important;
   background: rgba(0,255,65,0.06) !important;
 }
-
 .filter-select:focus {
   outline: none;
   border-color: #00ff41;
 }
-
 .filter-select option {
   background: #12121a;
   color: #e6e6f0;
 }
 
+/* TOGGLE SWITCH */
 .toggle-switch {
   display: inline-flex;
   align-items: center;
@@ -262,15 +292,8 @@ body {
   transition: all 0.25s ease;
   user-select: none;
 }
-
-.toggle-switch:hover {
-  border-color: rgba(0,255,65,0.8);
-}
-
-.toggle-switch input {
-  display: none;
-}
-
+.toggle-switch:hover { border-color: rgba(0,255,65,0.8); }
+.toggle-switch input { display: none; }
 .toggle-slider {
   position: relative;
   width: 38px;
@@ -281,7 +304,6 @@ body {
   flex-shrink: 0;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
 }
-
 .toggle-slider::before {
   content: '';
   position: absolute;
@@ -294,19 +316,13 @@ body {
   transition: all 0.3s cubic-bezier(.4,0,.2,1);
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-
 .toggle-switch input:checked + .toggle-slider {
   background: linear-gradient(90deg, #00ff41, #00cc33);
 }
-
 .toggle-switch input:checked + .toggle-slider::before {
   transform: translateX(18px);
 }
-
-.toggle-label {
-  font-size: 11px;
-  letter-spacing: 0.3px;
-}
+.toggle-label { font-size: 11px; letter-spacing: 0.3px; }
 
 /* ===== APP LAYOUT ===== */
 .app {
@@ -1057,22 +1073,26 @@ body.grid-mode .sidebar {
     gap: 10px;
   }
   .sidebar {
-    max-height: 60vh;
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
+    height: 100vh;
+    max-height: 100vh;
     width: 88vw;
     max-width: 360px;
     z-index: 9998;
     transform: translateX(-100%);
-    transition: transform 0.3s var(--ease);
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1);
     border-radius: 0 12px 12px 0;
-  }
-  body.grid-mode .sidebar {
-    max-height: 60vh !important;
+    box-shadow: 6px 0 40px rgba(0,0,0,0.7);
   }
   .sidebar.open {
     transform: translateX(0);
+    box-shadow: 6px 0 40px rgba(0,0,0,0.7), 0 0 40px rgba(0,255,65,0.10);
+  }
+  body.grid-mode .sidebar {
+    max-height: 60vh !important;
   }
 
   /* Overlay scuro quando la sidebar è aperta */
@@ -1082,6 +1102,13 @@ body.grid-mode .sidebar {
     inset: 0;
     background: rgba(0,0,0,0.6);
     z-index: 9997;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
   /* Header più compatto */
@@ -1089,37 +1116,38 @@ body.grid-mode .sidebar {
   .header-left .logo { height: 36px; }
   .header-left .title div:last-child { font-size: 18px; }
 
-  /* Filter bar scrollabile orizzontalmente */
-  .filter-bar {
-    padding: 6px 10px;
-    gap: 6px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .filter-bar::-webkit-scrollbar { display: none; }
+  /* Filter bar: tutto si adatta, niente scroll orizzontale */
+  .filter-bar { padding: 10px 10px; gap: 8px; }
 
-  .filter-select {
-    min-width: 0;
-    flex-shrink: 0;
-    font-size: 12px;
-    padding: 6px 10px;
+  .filter-row,
+  .filter-bar > .action-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 10px;
   }
-  .toggle-switch { flex-shrink: 0; font-size: 11px; }
+
+  /* Select e toggle: 2 per riga */
+  .filter-select {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+  .toggle-switch {
+    flex: 1 1 calc(50% - 4px);
+    font-size: 11px;
+    padding: 5px 8px 5px 6px;
+  }
   .toggle-label { font-size: 10px; }
 
-  .header-controls {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    width: 100%;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+  /* Pulsanti: in riga, si adattano, vanno a capo se serve */
+  .btn-adaptive {
+    flex: 0 1 auto;
+    padding: 7px 12px;
+    font-size: 12px;
   }
-  .header-controls::-webkit-scrollbar { display: none; }
-  .btn-adaptive { flex-shrink: 0; padding: 7px 12px; font-size: 12px; }
+  .filter-bar > .action-row .btn-adaptive { min-width: 0; }
 
   /* Locker: impila i due pannelli */
   #locker-view { gap: 10px; }
@@ -1187,7 +1215,6 @@ body.grid-mode .sidebar {
 @media (max-width: 480px) {
   .grid-view { grid-template-columns: repeat(2, 1fr); }
   .can-art { width: 150px; height: 190px; }
-  .header-controls { gap: 4px; }
   .btn-adaptive { padding: 6px 10px; font-size: 11px; }
 }
 
@@ -1334,21 +1361,14 @@ body.grid-mode .sidebar {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .sidebar {
-    max-height: 50vh;
-    display: none;
-  }
-  .sidebar.open {
-    display: flex;
-  }
-  #sidebar-toggle {
-    display: inline-flex !important;
-  }
-}
-
 #sidebar-toggle {
   display: none;
+}
+
+@media (max-width: 900px) {
+  #sidebar-toggle {
+    display: inline-flex;
+  }
 }
 
 /* Scrollbar */
@@ -1356,30 +1376,6 @@ body.grid-mode .sidebar {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,255,65,0.1); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,255,65,0.2); }
-
-.filter-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* CENTRA TUTTO */
-  gap: 10px;
-  padding: 8px 14px;
-  background: rgba(0,0,0,0.5);
-  border-radius: 12px;
-  border: 1px solid rgba(0,255,65,0.04);
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.header-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center; /* CENTRA I PULSANTI */
-  width: 100%; /* OCCUPA TUTTA LA LARGHEZZA */
-}
 
 /* Sfondo immagini - attivato dal toggle */
 body.image-bg-on .thumb {
@@ -1625,8 +1621,8 @@ body.image-bg-on .can-art {
 <!-- ===== MODAL ===== -->
 <div id="modal-backdrop" class="modal-backdrop">
   <div class="modal">
-    <div id="modal-title" style="font-weight:800;font-size:20px;"> Menu</div>
-    <div id="modal-description" style="font-size:13px;color:var(--muted);margin-top:6px;">Gestisci la tua collezione di Monster</div>
+    <div id="modal-title" style="font-weight:800;font-size:20px;" data-i18n="menu_title">📋 Menu</div>
+    <div id="modal-description" style="font-size:13px;color:var(--muted);margin-top:6px;" data-i18n="menu_desc">Gestisci la tua collezione di Monster</div>
     <div id="modal-content">
       <div style="margin-top:12px;font-weight:800;"> Dati</div>
       <div class="row">
@@ -1645,7 +1641,7 @@ body.image-bg-on .can-art {
       </div>
     </div>
     <div style="margin-top:14px;display:flex;justify-content:flex-end;">
-      <button id="modal-close" class="btn-adaptive ghost">Chiudi</button>
+      <button id="modal-close" class="btn-adaptive ghost" data-i18n="confirm_cancel">Chiudi</button>
     </div>
   </div>
 </div>
@@ -1653,11 +1649,11 @@ body.image-bg-on .can-art {
 <!-- ===== CONFIRM ===== -->
 <div id="confirm-backdrop" class="confirm-backdrop">
   <div class="confirm-modal">
-    <div id="confirm-title" style="font-weight:800;">Conferma</div>
+    <div id="confirm-title" style="font-weight:800;" data-i18n="confirm_title">Conferma</div>
     <div id="confirm-message" style="margin-top:8px;color:var(--muted);"></div>
     <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px;">
-      <button id="confirm-cancel" class="btn-adaptive ghost">Annulla</button>
-      <button id="confirm-ok" class="btn-adaptive">Conferma</button>
+      <button id="confirm-cancel" class="btn-adaptive ghost" data-i18n="confirm_cancel">Annulla</button>
+      <button id="confirm-ok" class="btn-adaptive" data-i18n="confirm_ok">Conferma</button>
     </div>
   </div>
 </div>
@@ -1670,7 +1666,7 @@ body.image-bg-on .can-art {
     <div class="header-left">
       <img src="assets/icons/logo-extended.png" alt="Monster Logo" class="logo" id="site-logo">
       <div class="title">
-        <div>La mia collezione</div>
+        <div data-i18n="header_sub">La mia collezione</div>
         <div>MONSTER</div>
       </div>
     </div>
@@ -1678,71 +1674,68 @@ body.image-bg-on .can-art {
 
   <!-- FILTER BAR -->
   <div class="filter-bar">
-	
-	<!-- Serie -->
-    <select id="filter-series" class="filter-select">
-      <option value="all">Tutte le serie</option>
-      <option value="classic">Classic</option>
-      <option value="ultra">Ultra</option>
-      <option value="juice">Juice</option>
-      <option value="java">Java (Caffe)</option>
-      <option value="rehab">Rehab</option>
-      <option value="reserve">Reserve</option>
-      <option value="special">Special Edition</option>
-      <option value="hydro">Hydro</option>
-      <option value="muscle">Muscle</option>
-      <option value="beast">Beast Unleashed</option>
-      <option value="dragon">Dragon Tea</option>
-    </select>
-	
-	<!-- Ordinamento -->
-	<select id="sort-order" class="filter-select">
-	  <option value="default">Ordine predefinito</option>
-	  <option value="name-asc">Nome A-Z</option>
-	  <option value="name-desc">Nome Z-A</option>
-	  <option value="completion-asc">Completamento ↑</option>
-	  <option value="completion-desc">Completamento ↓</option>
-	  <option value="rating-asc">Valutazione ↑</option>
-	  <option value="rating-desc">Valutazione ↓</option>
-	</select>
-	
-	<!-- Toggle raggruppamento per serie -->
-	<label class="toggle-switch">
-	  <input type="checkbox" id="toggle-group-series">
-	  <span class="toggle-slider"></span>
-	  <span class="toggle-label">Raggruppa per serie</span>
-	</label>
-	
-	<!-- Posseduti Toggle -->
-    <label class="toggle-switch">
-      <input type="checkbox" id="toggle-owned">
-      <span class="toggle-slider"></span>
-      <span class="toggle-label">Solo posseduti</span>
-    </label>
-	
-	<!-- Limited Edition -->
-    <label class="toggle-switch">
-      <input type="checkbox" id="toggle-limited">
-      <span class="toggle-slider"></span>
-      <span class="toggle-label">Limited Edition</span>
-    </label>
-	
-	<!-- Pulsanti -->
-	<div class="header-controls">
-	  <button class="btn-adaptive ghost" id="btn-grid-toggle">📦 Scaffale</button>
-	  <button class="btn-adaptive ghost" id="btn-menu">⚙️ Menu</button>
-	  <button class="btn-adaptive ghost" id="btn-stats">📊 Statistiche</button>
-	  <button class="btn-adaptive ghost" id="btn-music">🔇 Effetti</button>
-	  <button class="btn-adaptive" id="sidebar-toggle">☰ Lista</button>
-	</div>
+
+    <div class="filter-row">
+      <select id="filter-series" class="filter-select">
+        <option value="all" data-i18n="series_all">Tutte le serie</option>
+        <option value="classic" data-i18n="series_classic">Classic</option>
+        <option value="ultra" data-i18n="series_ultra">Ultra</option>
+        <option value="juice" data-i18n="series_juice">Juice</option>
+        <option value="java" data-i18n="series_java">Java (Caffe)</option>
+        <option value="rehab" data-i18n="series_rehab">Rehab</option>
+        <option value="reserve" data-i18n="series_reserve">Reserve</option>
+        <option value="special" data-i18n="series_special">Special Edition</option>
+        <option value="hydro" data-i18n="series_hydro">Hydro</option>
+        <option value="muscle" data-i18n="series_muscle">Muscle</option>
+        <option value="beast" data-i18n="series_beast">Beast Unleashed</option>
+        <option value="dragon" data-i18n="series_dragon">Dragon Tea</option>
+      </select>
+
+      <select id="sort-order" class="filter-select">
+        <option value="default" data-i18n="sort_default">Ordine predefinito</option>
+		<option value="name-asc" data-i18n="sort_name_asc">Nome A-Z</option>
+		<option value="name-desc" data-i18n="sort_name_desc">Nome Z-A</option>
+		<option value="completion-asc" data-i18n="sort_comp_asc">Completamento ↑</option>
+		<option value="completion-desc" data-i18n="sort_comp_desc">Completamento ↓</option>
+		<option value="rating-asc" data-i18n="sort_rating_asc">Valutazione ↑</option>
+		<option value="rating-desc" data-i18n="sort_rating_desc">Valutazione ↓</option>
+      </select>
+
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-group-series">
+        <span class="toggle-slider"></span>
+        <span class="toggle-label" data-i18n="toggle_group">Raggruppa per serie</span>
+      </label>
+
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-owned">
+        <span class="toggle-slider"></span>
+        <span class="toggle-label" data-i18n="toggle_owned">Solo posseduti</span>
+      </label>
+
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-limited">
+        <span class="toggle-slider"></span>
+        <span class="toggle-label" data-i18n="toggle_limited">Limited Edition</span>
+      </label>
+    </div>
+
+    <div class="action-row">
+      <button class="btn-adaptive ghost" id="btn-grid-toggle" data-i18n="btn_shelf">📦 Scaffale</button>
+	  <button class="btn-adaptive ghost" id="btn-menu" data-i18n="btn_menu">⚙️ Menu</button>
+	  <button class="btn-adaptive ghost" id="btn-stats" data-i18n="btn_stats">📊 Statistiche</button>
+	  <button class="btn-adaptive ghost" id="btn-music" data-i18n="btn_effects_off">🔇 Effetti</button>
+	  <button class="btn-adaptive" id="sidebar-toggle" data-i18n="btn_list">☰ Lista</button>
+	  <button class="btn-adaptive ghost" id="btn-lang" title="Language / Lingua">🌐 EN</button>
+    </div>
+
   </div>
-  
 
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="search">
   	  <span>🔍</span>
-	  <input id="search-input" placeholder="Cerca lattina o variante ..." />
+	  <input id="search-input" data-i18n-placeholder="search_ph" placeholder="Cerca lattina o variante ..." />
 	  <span id="search-clear" style="display:none; cursor:pointer; color:var(--muted); font-size:16px; padding:0 4px;">✕</span>
 	</div>
     <div class="sidebar-stats">
@@ -1775,7 +1768,7 @@ body.image-bg-on .can-art {
     <!-- SERIE -->
 	  <div class="details-box">
 		<div class="label">
-		  Serie
+		  <span data-i18n="label_series">Serie</span>
 		  <span style="font-size:11px;color:#fff;font-weight:400;text-transform:none;" id="main-series-label">classic</span>
 		</div>
 	  </div>
@@ -1790,9 +1783,9 @@ body.image-bg-on .can-art {
 
 	  <!-- VARIANTI -->
 	  <div>
-		<div style="font-size:11px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:0.5px;">Varianti</div>
+		<div data-i18n="section_variants" style="font-size:11px;font-weight:800;color:#00ff41;text-transform:uppercase;letter-spacing:0.5px;">Varianti</div>
     <div class="selected-variant-row">
-      <label for="selected-variant">Variante visualizzata</label>
+      <label for="selected-variant" data-i18n="label_variant">Variante visualizzata</label>
       <select id="selected-variant" class="filter-select"></select>
     </div>
 		<div class="variants-grid" id="variants-grid"></div>
@@ -1801,15 +1794,15 @@ body.image-bg-on .can-art {
 	  <!-- NOTE (MODIFICABILE DALL'UTENTE) -->
 	  <div class="details-box">
 		<div class="label">
-		  Note
-      <button class="edit-btn" id="edit-notes-btn">✏️ Modifica</button>
+		  <span data-i18n="label_notes"> Note </span>
+      <button class="edit-btn" id="edit-notes-btn" data-i18n="btn_edit">✏️ Modifica</button>
 		</div>
 		<div class="value" id="main-notes" contenteditable="false"></div>
 	  </div>
 
 	  <!-- VALUTAZIONE -->
 	  <div class="rating-container">
-    <span class="rating-label" id="rating-label">⭐ Valutazione</span>
+    <span class="rating-label" id="rating-label" data-i18n="label_rating">⭐ Valutazione</span>
 		<div class="rating-stars" id="rating-stars">
       <span class="star" data-value="1">☆</span>
       <span class="star" data-value="2">☆</span>
@@ -1822,13 +1815,13 @@ body.image-bg-on .can-art {
 
 	  <!-- DESCRIZIONE (FISSA, NON MODIFICABILE) -->
 	  <div class="details-box">
-		<div class="label">Descrizione</div>
+		<div class="label"><span data-i18n="label_desc">Descrizione</span></div>
 		<div class="value" id="main-desc"></div>
 	  </div>
 
 	  <div class="action-row">
-		<button class="btn-adaptive" id="acquire-all">Acquisisci tutte</button>
-    <button class="btn-adaptive ghost" id="clear-all">Cancella tutte</button>
+		<button class="btn-adaptive" id="acquire-all" data-i18n="btn_acquire">Acquisisci tutte</button>
+		<button class="btn-adaptive ghost" id="clear-all" data-i18n="btn_clear">Cancella tutte</button>
 	  </div>
 	</div>
 	</div>
@@ -1840,7 +1833,7 @@ body.image-bg-on .can-art {
   <!-- FOOTER -->
   <div class="footer">
     <span id="footer-stats">Lattine: 0  Varianti: 0</span>
-    <span id="footer-creators">👥 Creato da <strong><a href = "https://github.com/fabio-secchiari" target="_blank" rel="noopener noreferrer">FabioJava</a></strong> &amp; <a href = "https://github.com/mrpaulgaming" target="_blank" rel="noopener noreferrer"><strong>Mr. Paul Gaming</a></strong></span>
+    <span id="footer-creators"> 👥 Creato da <strong><a href = "https://github.com/fabio-secchiari" target="_blank" rel="noopener noreferrer">FabioJava</a></strong> &amp; <a href = "https://github.com/mrpaulgaming" target="_blank" rel="noopener noreferrer"><strong>Mr. Paul Gaming</a></strong></span>
     <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
   </div>
 </div>
@@ -1868,6 +1861,229 @@ let _loadingUI = false;
 
 const CANS = window.MONSTER_CATALOG_DATA;
 MonsterCatalog.set(CANS);
+
+// ============================================================
+//  INTERNAZIONALIZZAZIONE (i18n) — definizioni
+// ============================================================
+const LANG_KEY = 'monster_lang';
+let currentLang = localStorage.getItem(LANG_KEY) ||
+  (navigator.language && navigator.language.startsWith('it') ? 'it' : 'en');
+
+const TRANSLATIONS = {
+  it: {
+    header_sub: 'La mia collezione',
+
+    series_all: 'Tutte le serie',
+    series_classic: 'Classic',
+    series_ultra: 'Ultra',
+    series_juice: 'Juice',
+    series_java: 'Java (Caffè)',
+    series_rehab: 'Rehab',
+    series_reserve: 'Reserve',
+    series_special: 'Special Edition',
+    series_hydro: 'Hydro',
+    series_muscle: 'Muscle',
+    series_beast: 'Beast Unleashed',
+    series_dragon: 'Dragon Tea',
+
+    sort_default: 'Ordine predefinito',
+    sort_name_asc: 'Nome A-Z',
+    sort_name_desc: 'Nome Z-A',
+    sort_comp_asc: 'Completamento ↑',
+    sort_comp_desc: 'Completamento ↓',
+    sort_rating_asc: 'Valutazione ↑',
+    sort_rating_desc: 'Valutazione ↓',
+
+    toggle_group: 'Raggruppa per serie',
+    toggle_owned: 'Solo posseduti',
+    toggle_limited: 'Limited Edition',
+
+    btn_shelf: '📦 Scaffale',
+    btn_locker: '📋 Locker',
+    btn_menu: '⚙️ Menu',
+    btn_stats: '📊 Statistiche',
+    btn_effects_on: '🔊 Effetti',
+    btn_effects_off: '🔇 Effetti',
+    btn_list: '☰ Lista',
+
+    search_ph: 'Cerca lattina o variante ...',
+
+    label_series: 'Serie',
+    label_variant: 'Variante visualizzata',
+    label_rating: '⭐ Valutazione',
+    label_notes: 'Note',
+    label_desc: 'Descrizione',
+    section_variants: 'Varianti',
+
+    btn_edit: '✏️ Modifica',
+    btn_save: '💾 Salva',
+    btn_acquire: 'Acquisisci tutte',
+    btn_clear: 'Cancella tutte',
+
+    stat_title: '📊 Statistiche',
+    stat_desc: 'La tua collezione di Monster Energy',
+    stat_owned: 'Varianti possedute',
+    stat_of_total: 'su {n} totali',
+    stat_limited: 'Limited Edition',
+    stat_complete: 'Completamento',
+
+    menu_title: '📋 Menu',
+    menu_desc: 'Gestisci la tua collezione di Monster',
+    menu_backup: '💾 Backup e Ripristino',
+    menu_export_json: '📤 Esporta JSON (Progressi)',
+    menu_import_json: '📥 Importa JSON (Progressi)',
+    menu_catalog: '📚 Gestione Catalogo',
+    menu_export_cat: '📤 Esporta Catalogo (Lattine)',
+    menu_import_cat: '📥 Importa Catalogo (Lattine)',
+    menu_image: '🖼️ Esporta Immagine',
+    menu_img_all: '🖼️ Tutta la collezione',
+    menu_img_missing: '🖼️ Solo mancanti',
+    menu_img_current: '🖼️ Lattina corrente',
+    menu_actions: '⚠️ Azioni',
+    menu_reset: '🗑️ Resetta tutto',
+    menu_intro: '🎬 Rivedi Intro',
+
+    confirm_title: 'Conferma',
+    confirm_cancel: 'Annulla',
+    confirm_ok: 'Conferma',
+    confirm_clear: 'Cancellare tutte le varianti?',
+    confirm_reset: 'Resettare TUTTA la collezione?',
+
+    grid_none: 'Nessuna lattina trovata',
+    grid_variants: 'varianti',
+
+    sidebar_variants: 'varianti',
+    footer_cans: 'Lattine',
+    footer_variants: 'Varianti',
+    footer_made_by: '👥 Creato da',
+
+    toast_notes_saved: '✅ Note salvate!',
+    toast_acquired_all: '✅ Tutte le varianti acquisite!',
+    toast_cleared: '🗑️ Varianti cancellate',
+    toast_shelf: '📦 Vista scaffale',
+    toast_locker: '📋 Vista locker',
+    toast_music_error: '❌ Impossibile riprodurre la musica',
+    toast_reset: '🔄 Collezione resettata',
+    toast_invalid_json: '❌ File JSON non valido',
+    toast_json_error: '❌ Errore parsing JSON',
+    toast_imported: '✅ Import completato',
+    toast_catalog: '✅ Catalogo importato',
+    toast_exported: '📤 JSON esportato',
+    toast_img_exported: '🖼️ Immagine esportata',
+    toast_img_gen: '📸 Generazione immagine...',
+    toast_img_error: '❌ Errore esportazione',
+    toast_all_owned: '✅ Tutte le varianti sono già possedute!'
+  },
+
+  en: {
+    header_sub: 'My collection',
+
+    series_all: 'All series',
+    series_classic: 'Classic',
+    series_ultra: 'Ultra',
+    series_juice: 'Juice',
+    series_java: 'Java (Coffee)',
+    series_rehab: 'Rehab',
+    series_reserve: 'Reserve',
+    series_special: 'Special Edition',
+    series_hydro: 'Hydro',
+    series_muscle: 'Muscle',
+    series_beast: 'Beast Unleashed',
+    series_dragon: 'Dragon Tea',
+
+    sort_default: 'Default order',
+    sort_name_asc: 'Name A-Z',
+    sort_name_desc: 'Name Z-A',
+    sort_comp_asc: 'Completion ↑',
+    sort_comp_desc: 'Completion ↓',
+    sort_rating_asc: 'Rating ↑',
+    sort_rating_desc: 'Rating ↓',
+
+    toggle_group: 'Group by series',
+    toggle_owned: 'Owned only',
+    toggle_limited: 'Limited Edition',
+
+    btn_shelf: '📦 Shelf',
+    btn_locker: '📋 Locker',
+    btn_menu: '⚙️ Menu',
+    btn_stats: '📊 Statistics',
+    btn_effects_on: '🔊 Effects',
+    btn_effects_off: '🔇 Effects',
+    btn_list: '☰ List',
+
+    search_ph: 'Search can or variant...',
+
+    label_series: 'Series',
+    label_variant: 'Displayed variant',
+    label_rating: '⭐ Rating',
+    label_notes: 'Notes',
+    label_desc: 'Description',
+    section_variants: 'Variants',
+
+    btn_edit: '✏️ Edit',
+    btn_save: '💾 Save',
+    btn_acquire: 'Acquire all',
+    btn_clear: 'Clear all',
+
+    stat_title: '📊 Statistics',
+    stat_desc: 'Your Monster Energy collection',
+    stat_owned: 'Owned variants',
+    stat_of_total: 'out of {n} total',
+    stat_limited: 'Limited Edition',
+    stat_complete: 'Completion',
+
+    menu_title: '📋 Menu',
+    menu_desc: 'Manage your Monster collection',
+    menu_backup: '💾 Backup & Restore',
+    menu_export_json: '📤 Export JSON (Progress)',
+    menu_import_json: '📥 Import JSON (Progress)',
+    menu_catalog: '📚 Catalog Management',
+    menu_export_cat: '📤 Export Catalog (Cans)',
+    menu_import_cat: '📥 Import Catalog (Cans)',
+    menu_image: '🖼️ Export Image',
+    menu_img_all: '🖼️ Full collection',
+    menu_img_missing: '🖼️ Missing only',
+    menu_img_current: '🖼️ Current can',
+    menu_actions: '⚠️ Actions',
+    menu_reset: '🗑️ Reset all',
+    menu_intro: '🎬 Replay Intro',
+
+    confirm_title: 'Confirm',
+    confirm_cancel: 'Cancel',
+    confirm_ok: 'Confirm',
+    confirm_clear: 'Clear all variants?',
+    confirm_reset: 'Reset the ENTIRE collection?',
+
+    grid_none: 'No cans found',
+    grid_variants: 'variants',
+
+    sidebar_variants: 'variants',
+    footer_cans: 'Cans',
+    footer_variants: 'Variants',
+    footer_made_by: '👥 Created by',
+
+    toast_notes_saved: '✅ Notes saved!',
+    toast_acquired_all: '✅ All variants acquired!',
+    toast_cleared: '🗑️ Variants cleared',
+    toast_shelf: '📦 Shelf view',
+    toast_locker: '📋 Locker view',
+    toast_music_error: '❌ Cannot play music',
+    toast_reset: '🔄 Collection reset',
+    toast_invalid_json: '❌ Invalid JSON file',
+    toast_json_error: '❌ JSON parsing error',
+    toast_imported: '✅ Import completed',
+    toast_catalog: '✅ Catalog imported',
+    toast_exported: '📤 JSON exported',
+    toast_img_exported: '🖼️ Image exported',
+    toast_img_gen: '📸 Generating image...',
+    toast_img_error: '❌ Export error',
+    toast_all_owned: '✅ All variants are already owned!'
+  }
+};
+
+function t(key) {
+  return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || key;
+}
 
 // ============================================================
 //  SFONDI PER CATEGORIA
@@ -1919,7 +2135,7 @@ function updateCategoryLogo(category) {
   const logoPath = (category && CATEGORY_LOGO_MAP[category])
     ? CATEGORY_LOGO_MAP[category]
     : 'assets/icons/logo-extended.png';
-  logo.src = logoPath + '?' + Date.now();
+  logo.src = logoPath;
   logo.onerror = () => {
     logo.src = 'assets/icons/logo-extended.png';
   };
@@ -2089,17 +2305,17 @@ function renderSidebar() {
   let filtered = getSortedAndFilteredCans();
 
   const seriesLabels = {
-    classic: 'Classic',
-    ultra: 'Ultra',
-    juice: 'Juice',
-    java: 'Java',
-    rehab: 'Rehab',
-    reserve: 'Reserve',
-    special: 'Special',
-    hydro: 'Hydro',
-    muscle: 'Muscle',
-    beast: 'Beast',
-    dragon: 'Dragon'
+    classic: t('series_classic'),
+    ultra: t('series_ultra'),
+    juice: t('series_juice'),
+    java: t('series_java'),
+    rehab: t('series_rehab'),
+    reserve: t('series_reserve'),
+    special: t('series_special'),
+    hydro: t('series_hydro'),
+    muscle: t('series_muscle'),
+    beast: t('series_beast'),
+    dragon: t('series_dragon')
   };
 
   if (groupBySeries) {
@@ -2136,7 +2352,7 @@ function renderSidebar() {
   document.getElementById('sidebar-count').textContent = `${totalOwned} / ${totalVariants}`;
   const limitedOwned = CANS.filter(c => c.limited && state[c.id] && c.variants.some(v => isVariantOwned(state[c.id].variants[v]))).length;
   document.getElementById('sidebar-limited').textContent = `⭐ ${limitedOwned}`;
-  document.getElementById('footer-stats').textContent = `Lattine: ${filtered.length} · Varianti: ${totalVariants}`;
+  document.getElementById('footer-stats').textContent = `${t('footer_cans')}: ${filtered.length} · ${t('footer_variants')}: ${totalVariants}`;
   const footerLimitedEl = document.getElementById('footer-limited');
   if (footerLimitedEl) footerLimitedEl.textContent = `⭐ Limited: ${limitedOwned}`;
 }
@@ -2172,7 +2388,7 @@ function createCanItem(can) {
   }
   const sub = document.createElement('div');
   sub.className = 'sub';
-  sub.textContent = `${can.variants.length} varianti · ${can.series}`;
+  sub.textContent = `${can.variants.length} ${t('sidebar_variants')} · ${can.series}`;
 
   const prog = document.createElement('div');
   prog.className = 'progress';
@@ -2234,31 +2450,18 @@ function selectIndex(idx, explicitVariant = null) {
   const variantToShow = currentVariant || can.variants[0];
   const variantImgPath = getVariantImageForCan(can, variantToShow);
 
-  // Funzione per caricare con fallback (forza refresh con timestamp)
-  function loadImageWithFallback(imgElement, primaryPath, fallbackPath) {
-    imgElement.onerror = null; // reset
-    const testImg = new Image();
-    testImg.onload = function() {
-      imgElement.src = primaryPath + '?' + Date.now();
-    };
-    testImg.onerror = function() {
-      if (fallbackPath && fallbackPath !== primaryPath) {
-        const testImg2 = new Image();
-        testImg2.onload = function() {
-          imgElement.src = fallbackPath + '?' + Date.now();
-        };
-        testImg2.onerror = function() {
-          imgElement.src = 'assets/monster/classic.png?' + Date.now();
-        };
-        testImg2.src = fallbackPath;
-      } else {
-        imgElement.src = 'assets/monster/classic.png?' + Date.now();
-      }
-    };
-    testImg.src = primaryPath;
-  }
-
-  loadImageWithFallback(mainImg, variantImgPath, can.image || 'assets/monster/classic.png');
+  mainImg.onerror = function() {
+  mainImg.onerror = null;
+  if (can.image && can.image !== variantImgPath) {
+      mainImg.onerror = function() {
+        mainImg.src = 'assets/monster/classic.png';
+      };
+      mainImg.src = can.image;
+   } else {
+      mainImg.src = 'assets/monster/classic.png';
+    }
+  };
+  mainImg.src = variantImgPath;
   
   // Progresso
   const { owned, total } = getVariantCount(can);
@@ -2492,7 +2695,7 @@ document.getElementById('edit-notes-btn').addEventListener('click', () => {
     }
     document.getElementById('edit-notes-btn').textContent = '✏️ Modifica';
     document.getElementById('edit-notes-btn').style.color = '';
-    showToast('✅ Note salvate!');
+    showToast(t('toast_notes_saved'));
   }
 });
 
@@ -2586,47 +2789,23 @@ function renderVariants(can) {
 
     // HOVER - cambia l'immagine al passaggio del mouse
 	btn.addEventListener('mouseenter', () => {
-	  const variantImg = getVariantImageForCan(can, variant);
-	  // Prova a caricare l'immagine della variante con fallback
-	  const testImg = new Image();
-	  testImg.onload = () => { 
-		mainImg.src = variantImg + '?' + Date.now(); 
-	  };
-	  testImg.onerror = () => {
-		// Se non trova l'immagine della variante, usa l'immagine base della lattina
-		if (can.image) {
-		  const testImg2 = new Image();
-		  testImg2.onload = () => {
-			mainImg.src = can.image + '?' + Date.now();
-		  };
-		  testImg2.onerror = () => {
-			mainImg.src = 'assets/monster/classic.png?' + Date.now();
-		  };
-		  testImg2.src = can.image;
-		} else {
-		  mainImg.src = 'assets/monster/classic.png?' + Date.now();
-		}
-	  };
-	  testImg.src = variantImg;
-	});
+      const variantImg = getVariantImageForCan(can, variant);
+      mainImg.onerror = function() {
+        mainImg.onerror = null;
+        mainImg.src = can.image || 'assets/monster/classic.png';
+      };
+      mainImg.src = variantImg;
+    });
 
-	btn.addEventListener('mouseleave', () => {
-	  // Torna all'immagine della variante selezionata
-	  const currentVariant = window.selectedVariant || can.variants[0];
-	  const currentImg = getVariantImageForCan(can, currentVariant);
-	  const testImg = new Image();
-	  testImg.onload = () => {
-		mainImg.src = currentImg + '?' + Date.now();
-	  };
-	  testImg.onerror = () => {
-		if (can.image) {
-		  mainImg.src = can.image + '?' + Date.now();
-		} else {
-		  mainImg.src = 'assets/monster/classic.png?' + Date.now();
-		}
-	  };
-	  testImg.src = currentImg;
-	});
+    btn.addEventListener('mouseleave', () => {
+      const currentVariant = window.selectedVariant || can.variants[0];
+      const currentImg = getVariantImageForCan(can, currentVariant);
+      mainImg.onerror = function() {
+        mainImg.onerror = null;
+        mainImg.src = can.image || 'assets/monster/classic.png';
+      };
+      mainImg.src = currentImg;
+    });
 
     grid.appendChild(btn);
   });
@@ -2804,12 +2983,12 @@ document.getElementById('acquire-all').addEventListener('click', () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
-  showToast(`✅ Tutte le varianti di ${can.name} acquisite!`);
+  showToast(`${t('toast_acquired_all')} — ${can.name}`);
 });
 
 document.getElementById('clear-all').addEventListener('click', async () => {
   const can = CANS[currentIndex];
-  const ok = await showConfirm(`Cancellare tutte le varianti di ${can.name}?`);
+  const ok = await showConfirm(t('confirm_clear') + ' ' + can.name);
   if (!ok) return;
   const st = state[can.id];
   can.variants.forEach(v => {
@@ -2822,7 +3001,7 @@ document.getElementById('clear-all').addEventListener('click', async () => {
   if (document.getElementById('grid-view').classList.contains('active')) {
     buildGridView();
   }
-  showToast(`🗑️ Varianti di ${can.name} cancellate`);
+  showToast(`${t('toast_cleared')} — ${can.name}`);
 });
 
 // ============================================================
@@ -2846,19 +3025,19 @@ musicBtn.addEventListener('click', () => {
   if (musicPlaying) {
     musicAudio.pause();
     musicPlaying = false;
-    musicBtn.textContent = '🔇 Effetti';
+    musicBtn.textContent = t('btn_effects_off');
     gif.style.opacity = '0';
     gif.style.display = 'none';
   } else {
     musicAudio.play().then(() => {
       musicPlaying = true;
-      musicBtn.textContent = '🔊 Effetti';
+      musicBtn.textContent = t('btn_effects_on');
       gif.style.display = 'block';
       // Forza il reflow per far partire la transizione
       gif.offsetHeight; // trigger reflow
       gif.style.opacity = '0.3';
     }).catch(() => {
-      showToast('❌ Impossibile riprodurre la musica');
+      showToast(t('toast_music_error'));
     });
   }
 });
@@ -2938,7 +3117,7 @@ function applyHistoryState(s) {
     document.getElementById('locker-view').classList.toggle('is-hidden', gridMode);
     document.getElementById('grid-view').classList.toggle('active', gridMode);
     document.body.classList.toggle('grid-mode', gridMode);
-    document.getElementById('btn-grid-toggle').textContent = gridMode ? '📋 Locker' : '📦 Scaffale';
+    document.getElementById('btn-grid-toggle').textContent = gridMode ? t('btn_locker') : t('btn_shelf');
     if (gridMode) buildGridView();
     saveUIState();
   }
@@ -2969,7 +3148,7 @@ function pushNavState(view, extra = {}) {
 document.getElementById('btn-grid-toggle').addEventListener('click', () => {
   const newGrid = !gridMode;
   pushNavState(newGrid ? 'grid' : 'locker');
-  showToast(newGrid ? '📦 Vista scaffale' : '📋 Vista locker');
+  showToast(newGrid ? t('toast_shelf') : t('toast_locker'));
 });
 
 // UNICO popstate handler
@@ -2994,7 +3173,7 @@ function buildGridView() {
   const groupBySeries = document.getElementById('toggle-group-series').checked;
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Nessuna lattina trovata</div>`;
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">${t('grid_none')}</div>`;
     grid.classList.add('active');
     syncGridSidebarHeight();
     return;
@@ -3009,21 +3188,27 @@ function buildGridView() {
     dragon:'assets/ui/bg-dragon.png'
   };
   const seriesLabels = {
-    classic:'Classic', ultra:'Ultra', juice:'Juice', java:'Java (Caffè)',
-    rehab:'Rehab', reserve:'Reserve', special:'Special Edition',
-    hydro:'Hydro', muscle:'Muscle', beast:'Beast Unleashed', dragon:'Dragon Tea'
+    classic: t('series_classic'), ultra: t('series_ultra'),
+    juice: t('series_juice'), java: t('series_java'),
+    rehab: t('series_rehab'), reserve: t('series_reserve'),
+    special: t('series_special'), hydro: t('series_hydro'),
+    muscle: t('series_muscle'), beast: t('series_beast'),
+    dragon: t('series_dragon')
   };
 
   function loadImg(imgEl, primary, fallback) {
-    const t = new Image();
-    t.onload  = () => { imgEl.src = primary  + '?' + Date.now(); };
-    t.onerror = () => {
-      const t2 = new Image();
-      t2.onload  = () => { imgEl.src = fallback + '?' + Date.now(); };
-      t2.onerror = () => { imgEl.src = 'assets/monster/classic.png'; };
-      t2.src = fallback;
+    imgEl.loading = 'lazy';
+    imgEl.decoding = 'async';
+    imgEl.onerror = function() {
+      imgEl.onerror = null;
+      if (fallback && fallback !== primary) {
+        imgEl.onerror = function() { imgEl.src = 'assets/monster/classic.png'; };
+        imgEl.src = fallback;
+      } else {
+        imgEl.src = 'assets/monster/classic.png';
+      }
     };
-    t.src = primary;
+    imgEl.src = primary;
   }
 
   function renderCard(can) {
@@ -3108,7 +3293,7 @@ function buildGridView() {
 
     const sub = document.createElement('div');
     sub.className = 'grid-series';
-    sub.textContent = `${can.variants.length} varianti · ${seriesLabels[can.series] || can.series}`;
+    sub.textContent = `${can.variants.length} ${t('grid_variants')} · ${seriesLabels[can.series] || can.series}`;
 
     const prog = document.createElement('div');
     prog.className = 'grid-progress';
@@ -3206,22 +3391,19 @@ document.getElementById('btn-stats').addEventListener('click', () => {
   const desc = document.getElementById('modal-description');
   const content = document.getElementById('modal-content');
 
-  title.textContent = '📊 Statistiche';
-  desc.textContent = 'La tua collezione di Monster Energy';
+  title.textContent = t('stat_title');
+  desc.textContent = t('stat_desc');
 
-  let totalCans = CANS.length;
   let totalVariants = 0;
   let ownedVariants = 0;
   let limitedTotal = 0;
   let ownedLimited = 0;
-  
+
   CANS.forEach(can => {
     const st = state[can.id];
     can.variants.forEach(v => {
       totalVariants++;
-      if (st && isVariantOwned(st.variants[v])) {
-        ownedVariants++;
-      }
+      if (st && isVariantOwned(st.variants[v])) ownedVariants++;
     });
     if (can.limited) {
       limitedTotal++;
@@ -3235,22 +3417,22 @@ document.getElementById('btn-stats').addEventListener('click', () => {
     <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:16px;margin-top:12px;">
       <div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
         <div style="font-size:32px;font-weight:900;color:#00ff41;">${ownedVariants}</div>
-        <div style="color:var(--muted);font-size:13px;margin-top:4px;">Varianti possedute</div>
-        <div style="color:var(--muted);font-size:11px;">su ${totalVariants} totali</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px;">${t('stat_owned')}</div>
+        <div style="color:var(--muted);font-size:11px;">${t('stat_of_total').replace('{n}', totalVariants)}</div>
       </div>
       <div class="stats-box stats-box-gold" style="background:rgba(255,215,0,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(255,215,0,0.08);">
         <div style="font-size:26px;font-weight:900;color:var(--gold);white-space:nowrap;">${ownedLimited} / ${limitedTotal}</div>
-        <div style="color:var(--muted);font-size:13px;margin-top:4px;">Limited Edition</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px;">${t('stat_limited')}</div>
       </div>
       <div class="stats-box stats-box-green" style="background:rgba(0,255,65,0.05);border-radius:12px;padding:16px;text-align:center;border:1px solid rgba(0,255,65,0.08);">
         <div style="font-size:32px;font-weight:900;color:#00ff41;">${percent}%</div>
-        <div style="color:var(--muted);font-size:13px;margin-top:4px;">Completamento</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:4px;">${t('stat_complete')}</div>
       </div>
     </div>
   `;
 
   modal.style.display = 'flex';
-  document.getElementById('modal-close').textContent = 'Chiudi';
+  document.getElementById('modal-close').textContent = t('confirm_cancel');
   document.getElementById('modal-close').onclick = () => { modal.style.display = 'none'; };
 });
 
@@ -3260,31 +3442,32 @@ document.getElementById('btn-stats').addEventListener('click', () => {
 
 document.getElementById('btn-menu').addEventListener('click', () => {
   const modal = document.getElementById('modal-backdrop');
-  document.getElementById('modal-title').textContent = '📋 Menu';
-  document.getElementById('modal-description').textContent = 'Gestisci la tua collezione di Monster';
+  document.getElementById('modal-title').textContent = t('menu_title');
+  document.getElementById('modal-description').textContent = t('menu_desc');
   document.getElementById('modal-content').innerHTML = `
-	  <div style="margin-top:12px;font-weight:800;"> 💾 Backup e Ripristino</div>
+	  <div style="margin-top:12px;font-weight:800;" data-i18n="menu_backup">💾 Backup e Ripristino</div>
 	  <div class="row">
-		<div class="option option-backup" data-action="export-json"> 📤 Esporta JSON (Progressi)</div>
-		<div class="option option-backup" data-action="import-json"> 📥 Importa JSON (Progressi)</div>
+		<div class="option option-backup" data-action="export-json" data-i18n="menu_export_json">📤 Esporta JSON (Progressi)</div>
+		<div class="option option-backup" data-action="import-json" data-i18n="menu_import_json">📥 Importa JSON (Progressi)</div>
 	  </div>
-	  <div style="margin-top:12px;font-weight:800;"> 📚 Gestione Catalogo</div>
+	  <div style="margin-top:12px;font-weight:800;" data-i18n="menu_catalog">📚 Gestione Catalogo</div>
 	  <div class="row">
-		<div class="option option-catalog" data-action="export-catalog"> 📤 Esporta Catalogo (Lattine)</div>
-		<div class="option option-catalog" data-action="import-catalog"> 📥 Importa Catalogo (Lattine)</div>
+		<div class="option option-catalog" data-action="export-catalog" data-i18n="menu_export_cat">📤 Esporta Catalogo (Lattine)</div>
+		<div class="option option-catalog" data-action="import-catalog" data-i18n="menu_import_cat">📥 Importa Catalogo (Lattine)</div>
 	  </div>
-	  <div style="margin-top:12px;font-weight:800;"> 🖼️ Esporta Immagine</div>
+	  <div style="margin-top:12px;font-weight:800;" data-i18n="menu_image">🖼️ Esporta Immagine</div>
 	  <div class="row">
-		<div class="option option-image" data-action="all"> 🖼️ Tutta la collezione</div>
-		<div class="option option-image" data-action="missing"> 🖼️ Solo mancanti</div>
-		<div class="option option-image" data-action="current"> 🖼️ Lattina corrente</div>
+		<div class="option option-image" data-action="all" data-i18n="menu_img_all">🖼️ Tutta la collezione</div>
+		<div class="option option-image" data-action="missing" data-i18n="menu_img_missing">🖼️ Solo mancanti</div>
+		<div class="option option-image" data-action="current" data-i18n="menu_img_current">🖼️ Lattina corrente</div>
 	  </div>
-	  <div style="margin-top:12px;font-weight:800;"> ⚠️ Azioni</div>
+	  <div style="margin-top:12px;font-weight:800;" data-i18n="menu_actions">⚠️ Azioni</div>
 	  <div class="row">
-		<div class="option option-danger" data-action="reset"> 🗑️ Resetta tutto</div>
-    <div class="option option-catalog" data-action="replay-intro"> 🎬 Rivedi Intro</div>
+		<div class="option option-danger" data-action="reset" data-i18n="menu_reset">🗑️ Resetta tutto</div>
+		<div class="option option-catalog" data-action="replay-intro" data-i18n="menu_intro">🎬 Rivedi Intro</div>
 	  </div>
   `;
+  applyTranslations();
   modal.style.display = 'flex';
 
   document.querySelectorAll('.option').forEach(opt => {
@@ -3295,7 +3478,7 @@ document.getElementById('btn-menu').addEventListener('click', () => {
       else if (action === 'export-catalog') MonsterCatalog.download();
       else if (action === 'import-catalog') document.getElementById('catalog-file-import').click();
       else if (action === 'reset') {
-        const ok = await showConfirm('Resettare TUTTA la collezione?');
+        const ok = await showConfirm(t('confirm_reset'));
         if (ok) {
           state = defaultState();
           saveState(state);
@@ -3304,7 +3487,7 @@ document.getElementById('btn-menu').addEventListener('click', () => {
           if (document.getElementById('grid-view').classList.contains('active')) {
             buildGridView();
           }
-          showToast('🔄 Collezione resettata');
+          showToast(t('toast_reset'));
           modal.style.display = 'none';
         }
       } else if (action === 'all') exportCollectionImage();
@@ -3313,7 +3496,7 @@ document.getElementById('btn-menu').addEventListener('click', () => {
     };
   });
 
-  document.getElementById('modal-close').textContent = 'Chiudi';
+  document.getElementById('modal-close').textContent = t('confirm_cancel');
   document.getElementById('modal-close').onclick = () => { modal.style.display = 'none'; };
 });
 
@@ -3327,7 +3510,7 @@ function exportJSON() {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1500);
-  showToast('📤 JSON esportato');
+  showToast(t('toast_exported'));
 }
 
 document.getElementById('file-import').addEventListener('change', e => {
@@ -3341,7 +3524,7 @@ document.getElementById('file-import').addEventListener('change', e => {
       const keys = Object.keys(base);
       const parsedKeys = Object.keys(parsed);
       if (!parsedKeys.some(k => keys.includes(k))) {
-        showToast('❌ File JSON non valido');
+        showToast(t('toast_invalid_json'));
         return;
       }
       saveState(parsed);
@@ -3351,9 +3534,9 @@ document.getElementById('file-import').addEventListener('change', e => {
       if (document.getElementById('grid-view').classList.contains('active')) {
         buildGridView();
       }
-      showToast('✅ Import completato');
+      showToast(t('toast_imported'));
     } catch {
-      showToast('❌ Errore parsing JSON');
+      showToast(t('toast_json_error'));
     }
   };
   r.readAsText(f);
@@ -3370,7 +3553,7 @@ document.getElementById('catalog-file-import').addEventListener('change', async 
     state = loadState();
     selectIndex(0);
     renderSidebar();
-    showToast('✅ Catalogo importato');
+    showToast(t('toast_catalog'));
   } catch (error) {
     showToast(`❌ ${error.message}`);
   }
@@ -3382,7 +3565,7 @@ document.getElementById('catalog-file-import').addEventListener('change', async 
 // ============================================================
 
 async function exportCollectionImage(onlyMissing = false) {
-  showToast('📸 Generazione immagine...');
+  showToast(t('toast_img_gen'));
   const container = document.createElement('div');
   container.style.cssText = `
     padding: 24px;
@@ -3395,7 +3578,7 @@ async function exportCollectionImage(onlyMissing = false) {
 
   const title = document.createElement('div');
   title.style.cssText = 'font-size:28px;font-weight:900;color:#00ff41;text-align:center;margin-bottom:20px;';
-  title.textContent = onlyMissing ? '🥤 Monster Mancanti' : '🥤 Monster Collection';
+  title.textContent = onlyMissing ? '🥤 Monster — Missing' : '🥤 Monster Collection';
 
   const grid = document.createElement('div');
   grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;';
@@ -3456,9 +3639,9 @@ async function exportCollectionImage(onlyMissing = false) {
     link.download = onlyMissing ? 'monster_mancanti.png' : 'monster_collection.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
-    showToast('🖼️ Immagine esportata');
+    showToast(t('toast_img_exported'));
   } catch (e) {
-    showToast('❌ Errore esportazione');
+    showToast(t('toast_img_error'));
     console.error(e);
   }
   container.remove();
@@ -3472,7 +3655,7 @@ document.getElementById('sidebar-toggle').addEventListener('click', () => {
   const sidebar = document.getElementById('sidebar');
   const isOpen = sidebar.classList.toggle('open');
   document.body.classList.toggle('sidebar-open', isOpen);
-  document.getElementById('sidebar-toggle').textContent = isOpen ? '✕' : '☰ Lista';
+  document.getElementById('sidebar-toggle').textContent = isOpen ? '✕' : t('btn_list');
 });
 
 // Chiudi la sidebar quando si clicca una lattina (mobile)
@@ -3480,7 +3663,7 @@ document.getElementById('sidebar-list').addEventListener('click', () => {
   if (window.innerWidth <= 900) {
     document.getElementById('sidebar').classList.remove('open');
     document.body.classList.remove('sidebar-open');
-    document.getElementById('sidebar-toggle').textContent = '☰ Lista';
+    document.getElementById('sidebar-toggle').textContent = t('btn_list');
   }
 });
 
@@ -3544,9 +3727,9 @@ document.addEventListener('keydown', (e) => {
       if (document.getElementById('grid-view').classList.contains('active')) {
         buildGridView();
       }
-      showToast(`✅ Tutte le varianti di ${can.name} acquisite`);
+      showToast(`${t('toast_acquired_all')} — ${can.name}`);
     } else {
-      showToast('✅ Tutte le varianti sono gia possedute!');
+      showToast(t('toast_all_owned'));
     }
   }
   if (e.key === 'g' || e.key === 'G') {
@@ -3646,6 +3829,7 @@ function updateLevelControl(spriteId, variant) {
 
 // ===== SUONO SPECIALE CON PAUSA MUSICA =====
 function playSpecialSound(audioId) {
+  if (!musicPlaying) return;
   const specialAudio = document.getElementById(audioId);
   if (!specialAudio) return;
 
@@ -3719,7 +3903,7 @@ function loadUIState() {
       document.getElementById('locker-view').classList.toggle('is-hidden', gridMode);
       document.getElementById('grid-view').classList.toggle('active', gridMode);
       document.body.classList.toggle('grid-mode', gridMode);
-      document.getElementById('btn-grid-toggle').textContent = gridMode ? '📋 Locker' : '📦 Scaffale';
+      document.getElementById('btn-grid-toggle').textContent = gridMode ? t('btn_locker') : t('btn_shelf');
       if (gridMode) buildGridView();
 
       if (gridMode && state.scrollY) {
@@ -3843,6 +4027,74 @@ document.addEventListener('click', (e) => {
     playVideo(INTRO_VIDEO);
   }
 });
+
+// Chiudi la sidebar mobile cliccando fuori (backdrop)
+document.addEventListener('click', (e) => {
+  if (window.innerWidth > 900) return;
+  const sidebar = document.getElementById('sidebar');
+  if (!sidebar.classList.contains('open')) return;
+  if (e.target.closest('#sidebar-toggle')) return;
+  if (sidebar.contains(e.target)) return;
+  sidebar.classList.remove('open');
+  document.body.classList.remove('sidebar-open');
+  document.getElementById('sidebar-toggle').textContent = t('btn_list');
+});
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+
+  // Elementi dinamici (cambiano a seconda dello stato)
+  const gridBtn = document.getElementById('btn-grid-toggle');
+  if (gridBtn) gridBtn.textContent = gridMode ? t('btn_locker') : t('btn_shelf');
+
+  const musicBtn = document.getElementById('btn-music');
+  if (musicBtn) musicBtn.textContent = musicPlaying ? t('btn_effects_on') : t('btn_effects_off');
+
+  const editBtn = document.getElementById('edit-notes-btn');
+  if (editBtn && !notesEditing) editBtn.textContent = t('btn_edit');
+
+  const langBtn = document.getElementById('btn-lang');
+  if (langBtn) langBtn.textContent = currentLang === 'it' ? '🌐 EN' : '🌐 IT';
+
+  // Footer "Creato da"
+  const creatorsEl = document.getElementById('footer-creators');
+  if (creatorsEl) {
+    // preserva i link, cambia solo il testo iniziale
+    const link1 = creatorsEl.querySelector('a[href*="fabio-secchiari"]');
+    const link2 = creatorsEl.querySelector('a[href*="mrpaulgaming"]');
+    if (link1 && link2) {
+      creatorsEl.innerHTML = `${t('footer_made_by')} <strong>${link1.outerHTML}</strong> &amp; <strong>${link2.outerHTML}</strong>`;
+    }
+  }
+  
+  document.documentElement.lang = currentLang;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem(LANG_KEY, lang);
+  applyTranslations();
+  // Ricostruisci le parti generate da JS
+  renderSidebar();
+  if (typeof currentIndex === 'number' && CANS[currentIndex]) {
+    renderVariants(CANS[currentIndex]);
+  }
+  if (document.getElementById('grid-view').classList.contains('active')) {
+    buildGridView();
+  }
+}
+
+document.getElementById('btn-lang').addEventListener('click', () => {
+  setLang(currentLang === 'it' ? 'en' : 'it');
+});
+
+// Applica all'avvio (dopo che tutto è pronto)
+applyTranslations();
 
 </script>
 
