@@ -4159,7 +4159,7 @@ if ('serviceWorker' in navigator) {
     const now = Date.now();
     activeMs += now - lastTick;
     lastTick = now;
-    if (activeMs >= 5 * 1000) {   // test: 5 secondi
+    if (activeMs >= 3 * 60 * 1000) {
       clearInterval(timer);
       show();
     }
