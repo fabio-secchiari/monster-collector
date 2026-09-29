@@ -425,14 +425,14 @@ body.grid-mode .sidebar {
   transition: all 0.2s ease;
 }
 
-/* Classic — verde Monster */
+/* Classic — verde Monster (UNICO verde) */
 .can-item[data-series="classic"] {
   --series-color: #00ff41;
   --series-color-soft: rgba(0,255,65,0.10);
 }
 /* Ultra — bianco argento */
 .can-item[data-series="ultra"] {
-  --series-color: #e8e8e8;
+  --series-color: #E8E8E8;
   --series-color-soft: rgba(232,232,232,0.10);
 }
 /* Juice — arancione mango */
@@ -445,10 +445,10 @@ body.grid-mode .sidebar {
   --series-color: #B07A4A;
   --series-color-soft: rgba(176,122,74,0.12);
 }
-/* Rehab — azzurro ghiaccio */
+/* Rehab — rosa recupero */
 .can-item[data-series="rehab"] {
-  --series-color: #4FC3FF;
-  --series-color-soft: rgba(79,195,255,0.10);
+  --series-color: #F472B6;
+  --series-color-soft: rgba(244,114,182,0.12);
 }
 /* Reserve — oro */
 .can-item[data-series="reserve"] {
@@ -460,25 +460,25 @@ body.grid-mode .sidebar {
   --series-color: #A855F7;
   --series-color-soft: rgba(168,85,247,0.12);
 }
-/* Hydro — ciano neon */
+/* Hydro — ciano acqua */
 .can-item[data-series="hydro"] {
   --series-color: #00D4FF;
   --series-color-soft: rgba(0,212,255,0.10);
 }
-/* Muscle — rosso */
+/* Muscle — rosso vivo */
 .can-item[data-series="muscle"] {
   --series-color: #FF4444;
   --series-color-soft: rgba(255,68,68,0.12);
 }
-/* Beast — verde scuro */
+/* Beast Unleashed — bronzo scuro */
 .can-item[data-series="beast"] {
-  --series-color: #16a34a;
-  --series-color-soft: rgba(22,163,74,0.12);
+  --series-color: #78350F;
+  --series-color-soft: rgba(120,53,15,0.18);
 }
-/* Dragon Tea — giada */
+/* Dragon Tea — cremisi cinese */
 .can-item[data-series="dragon"] {
-  --series-color: #22c55e;
-  --series-color-soft: rgba(34,197,94,0.12);
+  --series-color: #DC2626;
+  --series-color-soft: rgba(220,38,38,0.14);
 }
 
 /* Hover: usa il colore della serie */
@@ -492,7 +492,7 @@ body.grid-mode .sidebar {
   background: var(--series-color-soft) !important;
   box-shadow:
     0 0 0 2px var(--series-color),
-    0 0 0 4px color-mix(in srgb, var(--series-color) 20%, transparent),
+    0 0 0 4px rgba(0,0,0,0.2),
     0 0 14px var(--series-color) !important;
   transform: translateX(4px) scale(1.01);
 }
