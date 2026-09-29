@@ -1351,10 +1351,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Beast Unleashed al gusto mela verde.",
         "variants":  [
                          "Mean Green",
-                         "Mean Green (Utah)"
+                         "Mean Green (Utah)",
+                         "Perfect 10 Mean Green"
                      ],
                      "variantImages": {
-                        "Mean Green (Utah)": "assets/monster/beast/mean-green-utah.png"
+                        "Mean Green (Utah)": "assets/monster/beast/mean-green-utah.png",
+                        "Perfect 10 Mean Green": "assets/monster/beast/beast-perfect-10-mean-green.webp"
                      }
     },
     {
@@ -1399,10 +1401,12 @@ window.MONSTER_CATALOG_DATA = [
         "description":  "Beast Unleashed al gusto frutti di bosco.",
         "variants":  [
                          "Scary Berries",
-                         "Scary Berries (Utah)"
+                         "Scary Berries (Utah)",
+                         "Perfect 10 Scary Berries"
                      ],
                      "variantImages": {
-                        "Scary Berries (Utah)": "assets/monster/beast/scary-berries-utah.png"
+                        "Scary Berries (Utah)": "assets/monster/beast/scary-berries-utah.png",
+                        "Perfect 10 Scary Berries": "assets/monster/beast/beast-perfect-10-scary-berries.webp"
                      }
     },
     {
@@ -1438,8 +1442,12 @@ window.MONSTER_CATALOG_DATA = [
         "limited":  false,
         "description":  "Beast Unleashed al gusto uva.",
         "variants":  [
-                         "Gnarly Grape"
-                     ]
+                         "Gnarly Grape",
+                         "Perfect 10 Gnarly Grape"
+                     ],
+                        "variantImages": {
+                            "Perfect 10 Gnarly Grape": "assets/monster/beast/beast-perfect-10-gnarly-grape.webp"
+                        }
     },
     {
         "id":  "monster_nasty_original",
@@ -2421,4 +2429,88 @@ window.MONSTER_CATALOG_DATA = [
                         "Hang Time": "assets/monster/hydro/hydro-sport-hangtime.png"
                      }
     },
+    {
+        "id":  "monster_beast_tiki_terror",
+        "name":  "Perfect 10 Tiki Terror",
+        "image":  "assets/monster/beast/beast-perfect-10-tiki-terror.webp",
+        "series":  "beast",
+        "rarity":  "epic",
+        "limited":  false,
+        "description":  "Beast Unleashed al gusto al gusto tiki con sapore fruttato e delicato ma che raggiunge 10% Vol.",
+        "variants":  [
+                         "Perfect 10 Tiki Terror"
+                     ]
+    },
+    {
+        "id":  "monster_beast_blind_lemon_original",
+        "name":  "Blind Lemon Original Lemonade",
+        "image":  "assets/monster/beast/blind-lemon-original.png",
+        "series":  "beast",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Beast Unleashed al sapore di limonata.",
+        "variants":  [
+                         "Blind Lemon Original Lemonade",
+                         "Blinder Lemon Original Lemonade"
+                     ],
+                        "variantImages": {
+                            "Blinder Lemon Original Lemonade":  "assets/monster/beast/blinder-lemon-original.png"
+                        }
+    },
+    {
+        "id":  "monster_beast_blind_lemon_cherry",
+        "name":  "Blind Lemon Cherry Lemonade",
+        "image":  "assets/monster/beast/blind-lemon-cherry.png",
+        "series":  "beast",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Beast Unleashed al sapore di limonata con un tocco di ciliegie.",
+        "variants":  [
+                         "Blind Lemon Cherry Lemonade"
+                     ]
+    },
+    {
+        "id":  "monster_beast_blind_lemon_peach",
+        "name":  "Blind Lemon Peach Lemonade",
+        "image":  "assets/monster/beast/blind-lemon-peach.png",
+        "series":  "beast",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Beast Unleashed al sapore di limonata con un tocco di pesca.",
+        "variants":  [
+                         "Blind Lemon Peach Lemonade"
+                     ]
+    },
+    {
+        "id":  "monster_beast_blind_lemon_strawberry",
+        "name":  "Blind Lemon Strawberry Lemonade",
+        "image":  "assets/monster/beast/blind-lemon-strawberry.png",
+        "series":  "beast",
+        "rarity":  "rare",
+        "limited":  false,
+        "description":  "Beast Unleashed al sapore di limonata con un tocco di fragole.",
+        "variants":  [
+                         "Blind Lemon Strawberry Lemonade",
+                         "Blinder Lemon Strawberry Lemonade"
+                     ],
+                        "variantImages": {
+                            "Blinder Lemon Strawberry Lemonade":  "assets/monster/beast/blinder-lemon-strawberry.png"
+                        }
+    },
+    {
+        "id":  "monster_tour_water",
+        "name":  "Tour Water",
+        "image":  "assets/monster/special/tour-deep-water.png",
+        "series":  "special",
+        "rarity":  "epic",
+        "limited":  true,
+        "description":  "Tour Deep Well Water. Esclusiva per musicisti e atleti del circuito Vans Warped Tour",
+        "variants":  [
+                         "Deep Well Water",
+                         "Sparkling Deep Well Water"
+                     ],
+                        "variantImages": {
+                                "Sparkling Deep Well Water":  "assets/monster/special/tour-deep-water-sparkling.png"
+                            }
+    }
 ];
