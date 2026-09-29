@@ -406,8 +406,19 @@ body.grid-mode .sidebar {
   padding: 4px 0;
 }
 
-/* ===== COLORI SERIE SULLA SIDEBAR ===== */
 .can-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+  background: rgba(255,255,255,0.02);
+  border-left: 3px solid transparent;
+  width: 100%;
+  box-sizing: border-box;
   --series-color: #00ff41;         /* default: verde Monster */
   --series-color-soft: rgba(0,255,65,0.08);
   border-left: 3px solid var(--series-color) !important;
@@ -485,6 +496,7 @@ body.grid-mode .sidebar {
     0 0 14px var(--series-color) !important;
   transform: translateX(4px) scale(1.01);
 }
+
 
 .can-item .thumb {
   width: 36px;
