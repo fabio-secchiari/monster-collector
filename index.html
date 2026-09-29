@@ -1240,26 +1240,67 @@ body.grid-mode .sidebar {
 .footer {
   grid-column: 1 / -1;
   margin-top: 8px;
-  padding: 10px 18px;
   border-radius: 12px;
   background: rgba(0,0,0,0.5);
   border: 1px solid rgba(0,255,65,0.03);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  color: var(--muted);
-  flex-wrap: wrap;
-  gap: 8px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.footer a {
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 18px;
+}
+
+.footer-chip {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+#footer-creators { justify-self: center; }
+#footer-creators a { color: #00ff41; text-decoration: none; font-weight: 700; }
+#footer-creators a:hover { color: #fff; }
+
+.footer-link {
+  justify-self: end;
+  font-size: 11px;
+  font-weight: 700;
   color: #00ff41;
   text-decoration: none;
-  transition: color 0.2s;
+  white-space: nowrap;
 }
+.footer-link:hover { color: #fff; }
+
+.footer-disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(0,255,65,0.06);
+  color: #ffd166;
+  font-weight: 700;
+  font-size: 9.5px;
+  line-height: 1.35;
+  text-align: center;
+}
+.footer-disclaimer * { text-decoration: none !important; }
+.footer-disclaimer-icon { flex-shrink: 0; }
+
+@media (max-width: 700px) {
+  .footer-main { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
+  .footer-link, #footer-creators { justify-self: center; }
+  .footer-disclaimer { font-size: 8.5px; padding: 6px 10px; }
+}
+
 .footer a:hover {
   color: #fff;
 }
@@ -1831,9 +1872,24 @@ body.image-bg-on .can-art {
 
   <!-- FOOTER -->
   <div class="footer">
-    <span id="footer-stats">Lattine: 0  Varianti: 0</span>
-    <span id="footer-creators"> 👥 Creato da <strong><a href = "https://github.com/fabio-secchiari" target="_blank" rel="noopener noreferrer">FabioJava</a></strong> &amp; <a href = "https://github.com/mrpaulgaming" target="_blank" rel="noopener noreferrer"><strong>Mr. Paul Gaming</a></strong></span>
-    <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
+    <div class="footer-main">
+      <span id="footer-stats" class="footer-chip">Lattine: 0 · Varianti: 0</span>
+      <span id="footer-creators" class="footer-chip">
+        👥 Creato da <a href="https://github.com/fabio-secchiari" target="_blank" rel="noopener">FabioJava</a>
+        &amp; <a href="https://github.com/mrpaulgaming" target="_blank" rel="noopener">Mr. Paul Gaming</a>
+      </span>
+      <a href="https://github.com/fabio-secchiari/monster-collector" target="_blank" rel="noopener" class="footer-link">
+        📂 GitHub
+      </a>
+    </div>
+    <div class="footer-disclaimer">
+      <span class="footer-disclaimer-icon">⚠️</span>
+      <span>
+        Progetto amatoriale non ufficiale: non affiliato, approvato o sponsorizzato da
+        Monster Energy Company. Monster e tutti i marchi correlati sono di proprietà
+        dei rispettivi titolari.
+      </span>
+    </div>
   </div>
 </div>
 
@@ -2369,6 +2425,14 @@ function createCanItem(can) {
 
   const thumb = document.createElement('div');
   thumb.className = 'thumb';
+
+ // Background SEMPRE, in base alla serie della lattina
+  const seriesBg = CATEGORY_BG_MAP[can.series] || 'assets/ui/bg-classic.png';
+  thumb.style.backgroundImage    = `url('${seriesBg}')`;
+  thumb.style.backgroundSize     = 'cover';
+  thumb.style.backgroundPosition = 'center';
+  thumb.style.backgroundColor    = '#0a0a0f';
+
   const img = document.createElement('img');
   img.src = can.image || 'assets/monster/classic.png';
   img.onerror = function() { this.src = 'assets/monster/classic.png'; };
