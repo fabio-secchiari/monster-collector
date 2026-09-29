@@ -406,24 +406,84 @@ body.grid-mode .sidebar {
   padding: 4px 0;
 }
 
+/* ===== COLORI SERIE SULLA SIDEBAR ===== */
 .can-item {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 8px 10px;
-  border-radius: 8px;
-  cursor: pointer;
+  --series-color: #00ff41;         /* default: verde Monster */
+  --series-color-soft: rgba(0,255,65,0.08);
+  border-left: 3px solid var(--series-color) !important;
   transition: all 0.2s ease;
-  margin-bottom: 4px;
-  background: rgba(255,255,255,0.02);
-  border-left: 3px solid transparent;
-  width: 100%;
-  box-sizing: border-box;
 }
 
+/* Classic — verde Monster */
+.can-item[data-series="classic"] {
+  --series-color: #00ff41;
+  --series-color-soft: rgba(0,255,65,0.10);
+}
+/* Ultra — bianco argento */
+.can-item[data-series="ultra"] {
+  --series-color: #e8e8e8;
+  --series-color-soft: rgba(232,232,232,0.10);
+}
+/* Juice — arancione mango */
+.can-item[data-series="juice"] {
+  --series-color: #FF8C00;
+  --series-color-soft: rgba(255,140,0,0.10);
+}
+/* Java — marrone caffè */
+.can-item[data-series="java"] {
+  --series-color: #B07A4A;
+  --series-color-soft: rgba(176,122,74,0.12);
+}
+/* Rehab — azzurro ghiaccio */
+.can-item[data-series="rehab"] {
+  --series-color: #4FC3FF;
+  --series-color-soft: rgba(79,195,255,0.10);
+}
+/* Reserve — oro */
+.can-item[data-series="reserve"] {
+  --series-color: #FFD166;
+  --series-color-soft: rgba(255,209,102,0.12);
+}
+/* Special Edition — viola */
+.can-item[data-series="special"] {
+  --series-color: #A855F7;
+  --series-color-soft: rgba(168,85,247,0.12);
+}
+/* Hydro — ciano neon */
+.can-item[data-series="hydro"] {
+  --series-color: #00D4FF;
+  --series-color-soft: rgba(0,212,255,0.10);
+}
+/* Muscle — rosso */
+.can-item[data-series="muscle"] {
+  --series-color: #FF4444;
+  --series-color-soft: rgba(255,68,68,0.12);
+}
+/* Beast — verde scuro */
+.can-item[data-series="beast"] {
+  --series-color: #16a34a;
+  --series-color-soft: rgba(22,163,74,0.12);
+}
+/* Dragon Tea — giada */
+.can-item[data-series="dragon"] {
+  --series-color: #22c55e;
+  --series-color-soft: rgba(34,197,94,0.12);
+}
+
+/* Hover: usa il colore della serie */
 .can-item:hover {
-  background: rgba(0,255,65,0.04);
+  background: var(--series-color-soft) !important;
   transform: translateX(4px);
+}
+
+/* Attivo: contorno + glow del colore della serie */
+.can-item.active {
+  background: var(--series-color-soft) !important;
+  box-shadow:
+    0 0 0 2px var(--series-color),
+    0 0 0 4px color-mix(in srgb, var(--series-color) 20%, transparent),
+    0 0 14px var(--series-color) !important;
+  transform: translateX(4px) scale(1.01);
 }
 
 .can-item .thumb {
@@ -1525,15 +1585,6 @@ body.image-bg-on .can-art {
   transform: translateY(-2px) scale(1.02);
 }
 
-/* Evidenziazione sidebar: bordo rarità + verde */
-.can-item.active {
-  background: rgba(0,255,65,0.08);
-  border-radius: 8px;
-  box-shadow: 0 0 0 2px #00ff41, 0 0 0 4px rgba(0,255,65,0.15);
-  transform: translateX(4px) scale(1.01);
-  transition: all 0.2s ease;
-}
-
 /* Intestazione serie nella sidebar */
 .series-header {
   font-size: 11px;
@@ -1884,7 +1935,7 @@ body.image-bg-on .can-art {
     </div>
     <div class="footer-disclaimer">
       <span class="footer-disclaimer-icon">⚠️</span>
-      <span>
+      <span data-i18n="footer_disclaimer">
         Progetto amatoriale non ufficiale: non affiliato, approvato o sponsorizzato da
         Monster Energy Company. Monster e tutti i marchi correlati sono di proprietà
         dei rispettivi titolari.
@@ -2027,7 +2078,8 @@ const TRANSLATIONS = {
     toast_img_exported: '🖼️ Immagine esportata',
     toast_img_gen: '📸 Generazione immagine...',
     toast_img_error: '❌ Errore esportazione',
-    toast_all_owned: '✅ Tutte le varianti sono già possedute!'
+    toast_all_owned: '✅ Tutte le varianti sono già possedute!',
+    footer_disclaimer: 'Progetto amatoriale non ufficiale: non affiliato, approvato o sponsorizzato da Monster Energy Company. Monster e tutti i marchi correlati sono di proprietà dei rispettivi titolari.',
   },
 
   en: {
@@ -2132,7 +2184,8 @@ const TRANSLATIONS = {
     toast_img_exported: '🖼️ Image exported',
     toast_img_gen: '📸 Generating image...',
     toast_img_error: '❌ Export error',
-    toast_all_owned: '✅ All variants are already owned!'
+    toast_all_owned: '✅ All variants are already owned!',
+    footer_disclaimer: 'Unofficial fan-made project: not affiliated with, endorsed by, or sponsored by Monster Energy Company. Monster and all related trademarks are property of their respective owners.',
   }
 };
 
@@ -2421,6 +2474,9 @@ function createCanItem(can) {
   const { owned, total } = getVariantCount(can);
   const item = document.createElement('div');
   item.className = 'can-item';
+
+  item.setAttribute('data-series', can.series);
+
   if (idx === currentIndex) item.classList.add('active');
 
   const thumb = document.createElement('div');
