@@ -7,7 +7,7 @@ Tracker locale per collezionisti di lattine Monster Energy. L'applicazione perme
 ## Indice
 
 - [Panoramica](#panoramica)
-- [Funzionalita](#funzionalita)
+- [Funzionalità](#funzionalità)
 - [Anteprima](#anteprima)
 - [Avvio](#avvio)
 - [Guida rapida](#guida-rapida)
@@ -21,7 +21,7 @@ Tracker locale per collezionisti di lattine Monster Energy. L'applicazione perme
 
 ## Panoramica
 
-Il progetto e una single-page application statica, senza backend e senza fase di build. La UI, gli stili e il runtime sono contenuti in `index.html`; il catalogo iniziale e definito in `catalog.js` e gli helper per l'import/export del catalogo sono in `catalog-manager.js`.
+Il progetto è una single-page application statica, senza backend e senza fase di build. La struttura HTML è in `index.html`, gli stili in `css/style.css` e il runtime in `js/app.js`; il catalogo iniziale è definito in `catalog.js` e gli helper per l'import/export del catalogo sono in `catalog-manager.js`.
 
 Il catalogo incluso contiene **154 schede**, **245 varianti** e **11 serie**:
 
@@ -37,7 +37,7 @@ Il catalogo incluso contiene **154 schede**, **245 varianti** e **11 serie**:
 - Beast Unleashed
 - Dragon Tea
 
-## Funzionalita
+## Funzionalità
 
 ### Gestione della collezione
 
@@ -66,7 +66,7 @@ Il passaggio tra Locker e Scaffale è integrato con la cronologia del browser: i
 
 ### Note e valutazioni
 
-Ogni variante conserva una valutazione da 1 a 5 stelle e una nota libera. Le note sono modificabili dal pulsante `Modifica` nel pannello della scheda; la descrizione del catalogo e invece sola lettura.
+Ogni variante conserva una valutazione da 1 a 5 stelle e una nota libera. Le note sono modificabili dal pulsante `Modifica` nel pannello della scheda; la descrizione del catalogo è invece in sola lettura.
 
 ### Import, export e immagini
 
@@ -81,7 +81,7 @@ Dal menu sono disponibili:
 
 ### Collezione pubblica (vetrina)
 
-Chi visita il sito puo cliccare **🏆 Collezione di Fabio** (oppure aprire `https://monster.fabiojava.it/?vetrina`) per vedere la collezione del proprietario in **sola lettura**: varianti possedute, valutazioni, note e statistiche. I dati locali del visitatore non vengono toccati e il pulsante **↩️ La mia collezione** riporta alla propria.
+Chi visita il sito può cliccare **🏆 Collezione di Fabio** (oppure aprire `https://monster.fabiojava.it/?vetrina`) per vedere la collezione del proprietario in **sola lettura**: varianti possedute, valutazioni, note e statistiche. I dati locali del visitatore non vengono toccati e il pulsante **↩️ La mia collezione** riporta alla propria.
 
 La vetrina mostra l'ultima versione pubblicata. Per aggiornarla, dal proprio browser:
 
@@ -89,7 +89,7 @@ La vetrina mostra l'ultima versione pubblicata. Per aggiornarla, dal proprio bro
 2. La prima volta viene chiesto un token GitHub *fine-grained* ([crealo qui](https://github.com/settings/personal-access-tokens/new)) con accesso al solo repository `monster-collector` e permesso **Contents: Read and write**. Il token resta salvato solo in quel browser (`Menu` → `🔑 Dimentica token` per rimuoverlo).
 3. L'app scrive `public-collection.json` sul branch `main`; il sito si aggiorna in 1-2 minuti.
 
-Nome visualizzato, repository e branch si configurano in cima a `showcase.js`.
+Nome visualizzato, repository e branch si configurano in cima a `js/showcase.js`.
 
 ### Audio e interazione
 
@@ -104,7 +104,7 @@ Nome visualizzato, repository e branch si configurano in cima a `showcase.js`.
 
 ### Vista Locker
 
-La vista Locker e pensata per lavorare su una scheda alla volta: mostra l'immagine grande della lattina, lo stato di completamento, le varianti e i metadati personali.
+La vista Locker è pensata per lavorare su una scheda alla volta: mostra l'immagine grande della lattina, lo stato di completamento, le varianti e i metadati personali.
 
 ![Vista Locker](screenshots/locker-view.png)
 
@@ -124,7 +124,7 @@ La vista Scaffale offre una panoramica visuale della collezione filtrata e conse
 
 ### Apertura diretta
 
-Aprire `index.html` nel browser. Per un'esperienza piu affidabile, soprattutto per audio e caricamento degli asset, e preferibile usare un server locale.
+Aprire `index.html` nel browser. Per un'esperienza più affidabile, soprattutto per audio e caricamento degli asset, è preferibile usare un server locale.
 In alternativa è possibile utilizzare per uso personale questo sito web: [monster.fabiojava.it]
 
 ### Server locale
@@ -137,7 +137,7 @@ python -m http.server 8000
 
 Poi visitare <http://localhost:8000>.
 
-In alternativa e possibile usare l'estensione VS Code **Live Server** o qualunque server statico equivalente.
+In alternativa è possibile usare l'estensione VS Code **Live Server** o qualunque server statico equivalente.
 
 ## Guida rapida
 
@@ -155,7 +155,7 @@ In alternativa e possibile usare l'estensione VS Code **Live Server** o qualunqu
 | `Freccia sinistra` | Scheda precedente |
 | `Freccia destra` | Scheda successiva |
 | `Freccia su` | Variante successiva |
-| `Freccia giu` | Variante precedente |
+| `Freccia giù` | Variante precedente |
 | `Spazio` | Acquisisce tutte le varianti della scheda corrente |
 | `G` | Alterna Locker e Scaffale |
 | `S` | Apre Statistiche |
@@ -164,7 +164,7 @@ In alternativa e possibile usare l'estensione VS Code **Live Server** o qualunqu
 | `E` | Attiva/disattiva musica ed effetti sonori |
 | `Esc` | Chiude il menu o annulla la modifica del campo attivo |
 
-Le scorciatoie non vengono applicate mentre il focus e dentro un campo di testo, una select o l'editor delle note.
+Le scorciatoie non vengono applicate mentre il focus è dentro un campo di testo, una select o l'editor delle note.
 
 ## Persistenza e backup
 
@@ -175,13 +175,13 @@ L'app non invia i progressi a un server. Usa due aree di `localStorage`:
 | `monster_tracker_v2` | Possesso, valutazioni, note e data dell'ultimo aggiornamento |
 | `monster_tracker_ui` | Filtri, ordinamento, vista attiva, scheda corrente e variante selezionata |
 
-Il backup dei progressi e un oggetto JSON indicizzato dagli ID delle schede. L'importazione verifica che il file contenga almeno una chiave riconosciuta e poi ricarica la UI. Il caricamento dello stato normalizza i campi mancanti e migra automaticamente il precedente formato in cui una variante era rappresentata da un semplice booleano.
+Il backup dei progressi è un oggetto JSON indicizzato dagli ID delle schede. L'importazione verifica che il file contenga almeno una chiave riconosciuta e poi ricarica la UI. Il caricamento dello stato normalizza i campi mancanti e migra automaticamente il precedente formato in cui una variante era rappresentata da un semplice booleano.
 
 Per sicurezza, esportare periodicamente il file JSON prima di modificare il catalogo o cancellare i dati del browser.
 
 ## Catalogo e modello dati
 
-Il catalogo iniziale e l'array globale `window.MONSTER_CATALOG_DATA` in `catalog.js`. Ogni elemento ha questa forma:
+Il catalogo iniziale è l'array globale `window.MONSTER_CATALOG_DATA` in `catalog.js`. Ogni elemento ha questa forma:
 
 ```json
 {
@@ -199,7 +199,7 @@ Il catalogo iniziale e l'array globale `window.MONSTER_CATALOG_DATA` in `catalog
 }
 ```
 
-Campi obbligatori per l'importazione del catalogo: `id`, `name`, `description`, `rarity` e `variants`. `image` e l'immagine principale; `variantImages` permette di associare un asset specifico a una variante. `limited` indica un'edizione limitata e `series` determina sfondo e logo contestuali.
+Campi obbligatori per l'importazione del catalogo: `id`, `name`, `description`, `rarity` e `variants`. `image` è l'immagine principale; `variantImages` permette di associare un asset specifico a una variante. `limited` indica un'edizione limitata e `series` determina sfondo e logo contestuali.
 
 `catalog-manager.js` espone `window.MonsterCatalog`, con i metodi `set`, `toJSON`, `download` e `importFile`. Questo rende possibile aggiornare il catalogo senza modificare la logica della UI.
 
@@ -207,11 +207,19 @@ Campi obbligatori per l'importazione del catalogo: `id`, `name`, `description`, 
 
 ```text
 index.html
-	├── struttura HTML e stili CSS
+	└── struttura HTML e meta tag
+
+css/style.css
+	└── tutti gli stili
+
+js/app.js
 	├── stato della collezione e rendering UI
 	├── filtri, ricerca, viste e statistiche
 	├── import/export progressi e immagini
 	└── gestione audio e scorciatoie
+
+js/pwa.js
+	└── banner di installazione come app
 
 catalog.js
 	└── dati statici delle schede e delle varianti
@@ -219,7 +227,7 @@ catalog.js
 catalog-manager.js
 	└── validazione, serializzazione e import/export del catalogo
 
-showcase.js
+js/showcase.js
 	└── vetrina pubblica in sola lettura e pubblicazione via API GitHub
 
 assets/
@@ -230,13 +238,20 @@ assets/
 	└── videos/    video usati
 ```
 
-La pagina carica `html2canvas` da CDN per generare i PNG. Il catalogo e i dati di stato sono separati: modificare `catalog.js` non dovrebbe cancellare una collezione gia salvata, mentre un import del catalogo puo aggiungere o rimuovere le schede disponibili.
+La pagina carica `html2canvas` da CDN per generare i PNG. Il catalogo e i dati di stato sono separati: modificare `catalog.js` non dovrebbe cancellare una collezione già salvata, mentre un import del catalogo può aggiungere o rimuovere le schede disponibili.
 
 ## Struttura del progetto
 
 ```text
 monster-collector/
 ├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── app.js
+│   ├── showcase.js
+│   └── pwa.js
+├── service-worker.js
 ├── catalog.js
 ├── catalog-manager.js
 ├── README.md
@@ -274,7 +289,7 @@ monster-collector/
 
 ### Aggiungere una serie
 
-Per una nuova serie occorre aggiornare sia l'opzione in `#filter-series`, sia le mappe `CATEGORY_BG_MAP` e `CATEGORY_LOGO_MAP` in `index.html`, oltre ad aggiungere gli asset corrispondenti.
+Per una nuova serie occorre aggiornare sia l'opzione in `#filter-series`, sia le mappe `CATEGORY_BG_MAP` e `CATEGORY_LOGO_MAP` in `js/app.js`, oltre ad aggiungere gli asset corrispondenti.
 
 ### Verifica manuale consigliata
 
@@ -291,9 +306,9 @@ Per una nuova serie occorre aggiornare sia l'opzione in `#filter-series`, sia le
 ## Limitazioni note
 
 - I dati sono locali al browser e non vengono sincronizzati tra dispositivi.
-- La cancellazione dei dati del sito elimina la collezione se non e stato creato un backup JSON.
+- La cancellazione dei dati del sito elimina la collezione se non è stato creato un backup JSON.
 - Font, `html2canvas` e il fallback musicale dipendono da risorse esterne quando non sono disponibili localmente.
-- Il browser puo richiedere una prima interazione dell'utente prima di consentire la riproduzione audio.
+- Il browser può richiedere una prima interazione dell'utente prima di consentire la riproduzione audio.
 - Il progetto non include test automatici o una pipeline di build.
 
 ## Contributi
@@ -303,9 +318,9 @@ Per proporre modifiche:
 1. Creare un fork del progetto.
 2. Creare un branch descrittivo.
 3. Mantenere compatibili i percorsi degli asset e il formato del catalogo.
-4. Verificare manualmente le funzionalita elencate sopra.
+4. Verificare manualmente le funzionalità elencate sopra.
 5. Aprire una pull request con una descrizione e, quando utile, uno screenshot.
 
 ## Licenza e asset
 
-Il progetto e un catalogo amatoriale per uso personale. I marchi, i loghi e le immagini Monster Energy appartengono ai rispettivi proprietari. Verificare i diritti d'uso degli asset prima di distribuire una versione pubblica o commerciale.
+Il progetto è un catalogo amatoriale per uso personale. I marchi, i loghi e le immagini Monster Energy appartengono ai rispettivi proprietari. Verificare i diritti d'uso degli asset prima di distribuire una versione pubblica o commerciale.

@@ -1,7 +1,13 @@
-const CACHE_NAME = 'monster-tracker-v2';
+const CACHE_NAME = 'monster-tracker-v3';
 const CORE_ASSETS = [
   './',
   './index.html',
+  './css/style.css',
+  './catalog.js',
+  './catalog-manager.js',
+  './js/app.js',
+  './js/showcase.js',
+  './js/pwa.js',
   './site.webmanifest',
   './assets/icons/logo-extended.png'
 ];
