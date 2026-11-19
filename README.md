@@ -79,6 +79,18 @@ Dal menu sono disponibili:
 - esportazione PNG dell'intera collezione, delle sole lattine mancanti o della scheda corrente;
 - reset completo dei progressi, con conferma.
 
+### Collezione pubblica (vetrina)
+
+Chi visita il sito puo cliccare **🏆 Collezione di Fabio** (oppure aprire `https://monster.fabiojava.it/?vetrina`) per vedere la collezione del proprietario in **sola lettura**: varianti possedute, valutazioni, note e statistiche. I dati locali del visitatore non vengono toccati e il pulsante **↩️ La mia collezione** riporta alla propria.
+
+La vetrina mostra l'ultima versione pubblicata. Per aggiornarla, dal proprio browser:
+
+1. `Menu` → `🌍 Pubblica la mia collezione`.
+2. La prima volta viene chiesto un token GitHub *fine-grained* ([crealo qui](https://github.com/settings/personal-access-tokens/new)) con accesso al solo repository `monster-collector` e permesso **Contents: Read and write**. Il token resta salvato solo in quel browser (`Menu` → `🔑 Dimentica token` per rimuoverlo).
+3. L'app scrive `public-collection.json` sul branch `main`; il sito si aggiorna in 1-2 minuti.
+
+Nome visualizzato, repository e branch si configurano in cima a `showcase.js`.
+
 ### Audio e interazione
 
 - Effetti sonori per le interazioni.
@@ -206,6 +218,9 @@ catalog.js
 
 catalog-manager.js
 	└── validazione, serializzazione e import/export del catalogo
+
+showcase.js
+	└── vetrina pubblica in sola lettura e pubblicazione via API GitHub
 
 assets/
 	├── monster/   immagini delle schede e delle varianti

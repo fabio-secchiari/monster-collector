@@ -1,4 +1,4 @@
-const CACHE_NAME = 'monster-tracker-v1';
+const CACHE_NAME = 'monster-tracker-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -24,6 +24,8 @@ self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   // Network-first per HTML/JS/CSS, cache-first per immagini
   const url = new URL(e.request.url);
+  // Mai mettere in cache le chiamate all'API GitHub (pubblicazione collezione)
+  if (url.hostname === 'api.github.com') return;
   const isImage = /\.(png|jpg|jpeg|webp|svg|gif|ico)$/i.test(url.pathname);
 
   if (isImage) {
