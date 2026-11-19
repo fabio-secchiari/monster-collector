@@ -2054,6 +2054,7 @@ body.image-bg-on .can-art {
 	  <button class="btn-adaptive ghost" id="btn-music" data-i18n="btn_effects_off">🔇 Effetti</button>
 	  <button class="btn-adaptive" id="sidebar-toggle" data-i18n="btn_list">☰ Lista</button>
 	  <button class="btn-adaptive ghost" id="btn-lang" title="Language / Lingua">🌐 EN</button>
+	  <button class="btn-adaptive" id="btn-showcase" data-i18n="btn_showcase">🏆 Collezione di Fabio</button>
     </div>
 
   </div>
@@ -2492,6 +2493,10 @@ function updateCategoryLogo(category) {
 const STORAGE_KEY = 'monster_tracker_v2';
 const UI_STATE_KEY = 'monster_tracker_ui';
 
+// Modalità "vetrina": ?vetrina nell'URL mostra la collezione pubblicata
+// dal proprietario, in sola lettura, senza toccare i dati locali del visitatore.
+const IS_PUBLIC_VIEW = new URLSearchParams(location.search).has('vetrina');
+
 function defaultState() {
   const s = {};
   CANS.forEach(can => {
@@ -2507,15 +2512,12 @@ function defaultState() {
   return s;
 }
 
-function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-
-    if (!raw) return defaultState();
-    const parsed = JSON.parse(raw);
+function normalizeState(parsed) {
+    if (!parsed || typeof parsed !== 'object') return defaultState();
     const base = defaultState();
     Object.keys(base).forEach(id => {
 	  if (!parsed[id]) parsed[id] = { variants: {}, lastUpdated: null };
+    if (!parsed[id].variants || typeof parsed[id].variants !== 'object') parsed[id].variants = {};
     if (typeof parsed[id].lastAcquiredVariant === 'undefined') {
       parsed[id].lastAcquiredVariant = null;
     }
@@ -2531,12 +2533,21 @@ function loadState() {
       });
     });
     return parsed;
+}
+
+function loadState() {
+  if (IS_PUBLIC_VIEW) return defaultState();
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    return normalizeState(JSON.parse(raw));
   } catch {
     return defaultState();
   }
 }
 
 function saveState(s) {
+  if (IS_PUBLIC_VIEW) return; // la vetrina non scrive mai nel localStorage
   localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
 }
 
@@ -3805,6 +3816,11 @@ document.getElementById('btn-menu').addEventListener('click', () => {
 		<div class="option option-backup" data-action="export-json" data-i18n="menu_export_json">📤 Esporta JSON (Progressi)</div>
 		<div class="option option-backup" data-action="import-json" data-i18n="menu_import_json">📥 Importa JSON (Progressi)</div>
 	  </div>
+	  <div style="margin-top:12px;font-weight:800;" data-i18n="menu_public">🌍 Collezione pubblica</div>
+	  <div class="row">
+		<div class="option option-backup" data-action="publish" data-i18n="menu_publish">🌍 Pubblica la mia collezione</div>
+		<div class="option option-catalog" data-action="forget-token" data-i18n="menu_forget_token">🔑 Dimentica token</div>
+	  </div>
 	  <div style="margin-top:12px;font-weight:800;" data-i18n="menu_catalog">📚 Gestione Catalogo</div>
 	  <div class="row">
 		<div class="option option-catalog" data-action="export-catalog" data-i18n="menu_export_cat">📤 Esporta Catalogo (Lattine)</div>
@@ -3829,6 +3845,8 @@ document.getElementById('btn-menu').addEventListener('click', () => {
     opt.onclick = async () => {
       const action = opt.dataset.action;
       if (action === 'export-json') exportJSON();
+      else if (action === 'publish') { modal.style.display = 'none'; Showcase.publish(); }
+      else if (action === 'forget-token') Showcase.forgetToken();
       else if (action === 'import-json') document.getElementById('file-import').click();
       else if (action === 'export-catalog') MonsterCatalog.download();
       else if (action === 'import-catalog') document.getElementById('catalog-file-import').click();
@@ -4210,7 +4228,7 @@ function playSpecialSound(audioId) {
 }
 
 function saveUIState() {
-  if (_loadingUI) return;
+  if (_loadingUI || IS_PUBLIC_VIEW) return;
   const state = {
     series: document.getElementById('filter-series').value,
     sortOrder: document.getElementById('sort-order').value,
@@ -4456,6 +4474,7 @@ if ('serviceWorker' in navigator) {
 }
 
 </script>
+<script src="showcase.js"></script>
 
 <style>
 #pwa-prompt {
