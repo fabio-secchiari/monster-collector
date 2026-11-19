@@ -1215,7 +1215,7 @@ musicBtn.addEventListener('click', () => {
 // Tasto E per musica
 document.addEventListener('keydown', (e) => {
   if (e.key === 'e' || e.key === 'E') {
-    if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+    if (!isTypingInField()) {
       musicBtn.click();
       e.preventDefault();
     }
@@ -1848,8 +1848,16 @@ document.getElementById('sidebar-list').addEventListener('click', () => {
 //  KEYBOARD SHORTCUTS
 // ============================================================
 
+// True se l'utente sta scrivendo (input, textarea, select o note contentEditable):
+// in quel caso nessuna scorciatoia deve scattare.
+function isTypingInField() {
+  const el = document.activeElement;
+  if (!el) return false;
+  return ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) || el.isContentEditable;
+}
+
 document.addEventListener('keydown', (e) => {
-  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) || document.activeElement.isContentEditable) {
+  if (isTypingInField()) {
     if (e.key === 'Escape') document.activeElement.blur();
     return;
   }
@@ -1914,19 +1922,19 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
   }
   if (e.key === 's' || e.key === 'S') {
-  if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+  if (!isTypingInField()) {
     document.getElementById('btn-stats').click();
     e.preventDefault();
    }
   }
   if (e.key === 'm' || e.key === 'M') {
-	  if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+	  if (!isTypingInField()) {
 		document.getElementById('btn-menu').click();
 		e.preventDefault();
 	  }
   }
   if (e.key === 'c' || e.key == 'C') {
-    if (!['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+    if (!isTypingInField()) {
       e.preventDefault();
       const sidebar = document.getElementById('sidebar');
       // Su mobile apri la sidebar se chiusa
@@ -2154,7 +2162,7 @@ document.getElementById('egg-close').addEventListener('click', closeVideo);
 // >>> OPZIONE A: scrivi "monster" sulla tastiera <<<
 let typedBuffer = '';
 document.addEventListener('keydown', (e) => {
-  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+  if (isTypingInField()) return;
   if (e.key.length !== 1) return;          // solo lettere singole
   typedBuffer = (typedBuffer + e.key.toLowerCase()).slice(-7);
   if (typedBuffer === 'monster') {
@@ -2167,7 +2175,7 @@ document.addEventListener('keydown', (e) => {
 const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
 let konamiIdx = 0;
 document.addEventListener('keydown', (e) => {
-  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+  if (isTypingInField()) return;
   const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
   if (key === KONAMI[konamiIdx]) {
     konamiIdx++;
